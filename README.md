@@ -1,5 +1,5 @@
-# yatabashi
-学生
+# yatabashi.github.io
+yatabashi、学生
 
 ## Liens
 * [Twitter](https://twitter.com/yatabashi)
