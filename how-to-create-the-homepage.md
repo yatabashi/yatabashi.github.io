@@ -68,7 +68,7 @@ git remote add origin https://github.com/yatabashi/yatabashi.github.io.git
 ## 参考文献
 * [Google アカウントで名前だけ登録する方法｜G Tips](https://g-tips.jp/google-account/account-only-name/)
 * [github.ioを使ってMySiteを作ろう - Qiita](https://qiita.com/MokeeeMokeee/items/4b33691b829aaf119bbf)
-* [自分で作ったWebページをインターネット上に公開しよう！ | プログラミングの入門なら基礎から学べるProgate[プロゲート]](https://prog-8.com/docs/github-pages)
+* [自分で作ったWebページをインターネット上に公開しよう！ \| プログラミングの入門なら基礎から学べるProgate[プロゲート]](https://prog-8.com/docs/github-pages)
 * [githubで本名が暴露してしまった件 - Qiita](https://qiita.com/428desmo/items/307e33ceff168966fa50)
 * [すべてのリポジトリで .DS_Store を gitignore する方法](https://zenn.dev/phi/articles/gitignore-global-ds-store)
 * [【 git remote 】コマンド（基礎編）――リモートリポジトリを追加、削除する：Linux基本コマンドTips（395） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2005/08/news017.html)
