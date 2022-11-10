@@ -11,6 +11,5 @@ yatabashi、学生
 
 ## Aide-mémoire
 * [GitHub Pages でホームページを作る](./how-to-create-the-homepage.html)
-* markdownまとめ
-* Linuxコマンドまとめ
-* gitとは
+* [よく使うLinuxコマンド](./frequently-used-linux-commands.md)
+* [Git基礎](./fundamentals-of-git.md)

@@ -24,7 +24,7 @@ git branch -M main
 git remote add origin https://github.com/yatabashi/yatabashi.github.io.git
 git push -u origin main
 ```
-これらのコマンドによってgitが設定され、README.mdが追加された状態でリモートリポジトリがローカルリポジトリに同期する（ディレクトリが空だった場合）。なお、コマンドの働きの詳細については、[Linuxコマンドまとめ](./personal-reference-of-linux-commands.html)及び[gitとは](./what-is-git.html)を参照せよ（未公開）。
+これらのコマンドによってgitが設定され、README.mdが追加された状態でリモートリポジトリがローカルリポジトリに同期する（ディレクトリが空だった場合）。なお、コマンドの働きの詳細については、[よく使うLinuxコマンド](./frequently-used-linux-commands.md)及び[Git基礎](./fundamentals-of-git.md)を参照せよ（未公開・未完成）。
 
 **以下はgit一般の設定であって、ホームページ作成に直接関わるものではない。**  
 gitの設定が記載されている.gitconfigを確認したところ、現ユーザーがgitを利用する際に使われるユーザー名とメールアドレスが本名に結びついたもののままであったため、修正した。.gitconfigは以下のコマンドで確認した。  
@@ -46,7 +46,7 @@ echo '.DS_Store' >> ~/.config/git/ignore
 **以上**
 
 ## 5. README.mdを記述する
-ソースコードにある通りに記述した。記法については[markdownまとめ](./summary-of-markdown.html)へ（未公開）。
+ソースコードにある通りに記述した。
 
 ## 6. 変更と反映
 README.mdを編集したのち、ワークツリーの状態をリモートリポジトリに反映させるために、以下のコマンドを実行した。
@@ -55,7 +55,7 @@ git add README.md
 git commit -m "added links"
 git push origin master
 ```
-上に同じく、詳細については、[Linuxコマンドまとめ](./personal-reference-of-linux-commands.html)及び[gitとは](./what-is-git.html)を参照せよ（未公開）。これ以降もワークツリーでの変更を保存したいときは、addするファイルとコミットメッセージを必要に応じて変更しつつこのコマンドを実行していった。  
+上に同じく、詳細については、[よく使うLinuxコマンド](./frequently-used-linux-commands.md)及び[Git基礎](./fundamentals-of-git.md)を参照せよ（未公開・未完成）。これ以降もワークツリーでの変更を保存したいときは、addするファイルとコミットメッセージを必要に応じて変更しつつこのコマンドを実行していった。  
 ところで、実際の最初の数度の手続きにおいてはcommitとpushの間に以下のコマンドを挟んで毎回実行してしまっており、毎度fatalではないエラーを吐いていた。
 ```
 git remote add origin https://github.com/yatabashi/yatabashi.github.io.git
