@@ -11,5 +11,6 @@ yatabashi、学生
 
 ## Aide-mémoire
 * [GitHub Pages でホームページを作る](./how-to-create-the-homepage.html)
-* [よく使うLinuxコマンド](./frequently-used-linux-commands.md)
-* [Git基礎](./fundamentals-of-git.md)
+* [よく使うLinuxコマンド](./frequently-used-linux-commands.html)
+* [Git基礎](./fundamentals-of-git.html)
+* [Gitを実用する](./utilise-git.html)
