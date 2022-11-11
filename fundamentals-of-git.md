@@ -1,3 +1,5 @@
+<link rel="icon" href="./favicon.ico">
+
 <!-- TODO:
 * 用語の統一：保存、保管、記録など
  -->
