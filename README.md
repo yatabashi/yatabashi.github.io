@@ -11,6 +11,7 @@ yatabashi、学生
 
 ## Aide-mémoire
 * [UNIXコマンド集](./unix-commands.html)
+* [Gitコマンド逆引き](./git-commands.html)
 
 ## Article
 * [GitHub Pages でホームページを作る](./how-to-create-the-homepage.html)
