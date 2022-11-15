@@ -115,7 +115,7 @@ git push origin main
 ```
 
 ## Gitの実用
-実際にGitを使っていく上では、これらに加えて幾らかの追加知識があると望ましい。「[Git実用編]()」を参照せよ（未公開）。 <!-- ./utilise-git.md -->  
+実際にGitを使っていく上では、これらに加えて幾らかの追加知識があると望ましい。「[Git実用編](./utilise-git.html)」を参照せよ（未公開）。
 
 ---
 [^0]: [難しいGitコマンドは、仕組みから理解してみよう - Qiita](https://qiita.com/_ha1f/items/2dca1047c57d4f0bd465)  
