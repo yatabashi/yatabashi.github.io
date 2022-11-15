@@ -142,6 +142,10 @@ GitHubはGit操作におけるパスワード認証を廃止しており、HTTP�
 参考：
 * [GitHubのAccess token認証方法とは？Password認証の廃止 \| ポテパンスタイル](https://style.potepan.com/articles/34189.html)
 
+### コミットをやり直す
+コミットを行った直後で、そのコミットをまだプッシュしていない場合、`git commit --amend`を利用してコミットをやり直すことができる。具体的には、コミットするファイルを追加したり、コミットメッセージを変更したりすることができる。前者のためには追加したいファイルをステージした上でコマンドを実行すればよく、後者のためにはオプションとして`-m "commit message"`を指定してコマンドを実行すればよい。コミットメッセージを変更したくない場合は、`--no-edit`を指定すればよい。
+
+参考：[コミットの修正には git commit --amend が便利 - RAKUS Developers Blog \| ラクス エンジニアブログ](https://tech-blog.rakus.co.jp/entry/20191113/git)
 
 
 
