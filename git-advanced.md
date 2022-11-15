@@ -85,6 +85,8 @@ git addのオプション
     最初のコミットがあるまではブランチもHEADも存在しない
     リモート追跡ブランチ
 
+    git logはブランチでないコミットからでも見られるよ
+
 [gitconfig の基本を理解する - Qiita](https://qiita.com/shionit/items/fb4a1a30538f8d335b35)
 
 git reset --soft: コミットを取り消す
