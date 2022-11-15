@@ -5,7 +5,7 @@ yatabashi、学生
 * Twitter: [@yatabashi](https://twitter.com/yatabashi)
 * Mastodon: [@yatabashi](https://fedibird.com/@yatabashi)
 * GitHub: [yatabashi](https://github.com/yatabashi)
-* Discord: [yatabashi#2074]()
+* Discord: yatabashi#2074
 
 大体Twitterにいます
 
