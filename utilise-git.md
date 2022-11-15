@@ -47,7 +47,7 @@ git commit -m "commit message"
 ```
 git config --global core.editor 'code --wait'
 ```
-なお、実際にVSCodeを利用する場合には、VSCode側での設定も必要である（参考文献参照）。
+なお、実際にVSCodeを利用する場合には、VSCode側での設定も必要である（→参考）。
 
 参考：
 * [vim コマンド集 - Qiita](https://qiita.com/ktoyod/items/0a8491cdb6c0191ab0cc)  
@@ -137,7 +137,7 @@ git mv README.md DONTREADME.md
 
 ### GitHubでアクセストークンによる認証を行う
 GitではなくGitHubに関する話題だが、ここに併載する。  
-GitHubはGit操作におけるパスワード認証を廃止しており、HTTP接続状態では`git push`時にパスワード入力を求められるにも関わらず、github.comでログインに用いるパスワードを入力しても認証に失敗し、personal access tokenを利用せよと案内される。よって、アクセストークンを取得する必要がある。アクセストークンの取得は、Github.comにアクセスし、Settings内のDeveloper Settingsから行うことができる（参考文献参照）。
+GitHubはGit操作におけるパスワード認証を廃止しており、HTTP接続状態では`git push`時にパスワード入力を求められるにも関わらず、github.comでログインに用いるパスワードを入力しても認証に失敗し、personal access tokenを利用せよと案内される。よって、アクセストークンを取得する必要がある。アクセストークンの取得は、github.comにアクセスし、Settings内のDeveloper Settingsから行うことができる（→参考）。
 
 参考：
 * [GitHubのAccess token認証方法とは？Password認証の廃止 \| ポテパンスタイル](https://style.potepan.com/articles/34189.html)
@@ -153,6 +153,10 @@ GitHubはGit操作におけるパスワード認証を廃止しており、HTTP�
     * https://backlog.com/ja/git-tutorial/
     * https://note.com/asahi_ictrad/n/n8764312bd843
     * https://qiita.com/_ha1f/items/2dca1047c57d4f0bd465
+    * [Git の仕組み (1) - こせきの技術日記](https://koseki.hatenablog.com/entry/2014/04/22/inside-git-1)  
+    * [Git の仕組み (2) - コミット・ブランチ・タグ - こせきの技術日記](https://koseki.hatenablog.com/entry/2014/06/11/inside-git-2)  
+    * [【Git】新人エンジニア、git pushまでの道 - Qiita](https://qiita.com/yukibe/items/9ef9d54f2e7d53cfb51c)  
+    * [あなたはまだGitを使いこなせていない - Qiita](https://qiita.com/hitochan/items/32f43181a3e7db342188)  
 * リモートリポジトリ作成後の初手
     * https://prograshi.com/general/git/create-a-new-repository-on-the-command-line/
     echo "# yatabashi.github.io" >> README.md
@@ -179,6 +183,7 @@ GitHubはGit操作におけるパスワード認証を廃止しており、HTTP�
     * https://ebc-2in2crc.hatenablog.jp/entry/2020/11/22/130521
 * リモート追跡ブランチ
     * 後述するリモートリポジトリを設定した場合、ローカルリポジトリ内のブランチにはそれぞれ、リモート追跡ブランチと呼ばれる、リモートリポジトリ内の対応するブランチ（＝上流ブランチ）を追跡する（反映する）ブランチが設定される。リモート追跡ブランチは、変更をリモートリポジトリからローカルリポジトリに取り込む際に利用される。
+    [Git で「追跡ブランチ」って言うのやめましょう - Qiita](https://qiita.com/uasi/items/69368c17c79e99aaddbf)  
 * pull, fetch
     * https://tech-blog.rakus.co.jp/entry/20220805/git
     * リモートリポジトリ内のあるブランチを、フェッチはリモート追跡ブランチに、プルは*作業中のワークツリーに、*「マージ」する。次のコマンドは、どちらもリモートのoriginリポジトリ内のmainブランチを「マージ」してきている。フェッチだけでは変更がワークツリーに反映されないことに注意せよ。そのためには別途マージが必要である。
@@ -186,6 +191,7 @@ GitHubはGit操作におけるパスワード認証を廃止しており、HTTP�
     git fetch origin main
     git pull origin main
     ```
+    [【初心者向け】git fetch、git merge、git pullの違いについて - Qiita](https://qiita.com/wann/items/688bc17460a457104d7d)
 
     リモート追跡ブランチってリモート（origin）がmasterブランチ、ローカルがmainブランチだったらorigin/master？
     「作業中のワークツリーに」は本当？非ブランチのコミットへもプルできる？
@@ -195,7 +201,8 @@ GitHubはGit操作におけるパスワード認証を廃止しており、HTTP�
     * https://kemarii.com/blog/git/git-diff-cached/
     * ステージした変更を参照する
         * https://qiita.com/miriwo/items/74ec1cfe2f4754d4cb8a
-    
+* インデックスの正体
+    * [Gitのインデックスの中身](https://zenn.dev/kaityo256/articles/inside_the_index)
 git switchによってコミットがどこからも参照されなくなることがあるという話
 
 git addのオプション

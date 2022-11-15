@@ -24,7 +24,7 @@ git branch -M main
 git remote add origin https://github.com/yatabashi/yatabashi.github.io.git
 git push -u origin main
 ```
-これらのコマンドによってgitが設定され、README.mdが追加された状態でリモートリポジトリがローカルリポジトリに同期する（ディレクトリが空だった場合）。なお、コマンドの働きの詳細については、[よく使うLinuxコマンド]()及び[Git基礎](./fundamentals-of-git.md)を参照せよ（前者は未公開）。
+これらのコマンドによってgitが設定され、README.mdが追加された状態でリモートリポジトリがローカルリポジトリに同期する（ディレクトリが空だった場合）。なお、コマンドの働きの詳細については、[よく使うLinuxコマンド]()及び[Git基礎](./fundamentals-of-git.html)を参照せよ（前者は未公開）。
 <!-- ./frequently-used-linux-commands.md -->
 
 **以下はgit一般の設定であって、ホームページ作成に直接関わるものではない。**  
@@ -56,7 +56,7 @@ git add README.md
 git commit -m "added links"
 git push origin master
 ```
-上に同じく、詳細については、[よく使うLinuxコマンド]()及び[Git基礎](./fundamentals-of-git.md)を参照せよ（前者は未公開）。これ以降もワークツリーでの変更を保存したいときは、addするファイルとコミットメッセージを必要に応じて変更しつつこのコマンドを実行していった。  
+上に同じく、詳細については、[よく使うLinuxコマンド]()及び[Git基礎](./fundamentals-of-git.html)を参照せよ（前者は未公開）。これ以降もワークツリーでの変更を保存したいときは、addするファイルとコミットメッセージを必要に応じて変更しつつこのコマンドを実行していった。  
 ところで、実際の最初の数度の手続きにおいてはcommitとpushの間に以下のコマンドを挟んで毎回実行してしまっており、毎度fatalではないエラーを吐いていた。
 <!-- ./frequently-used-linux-commands.md -->
 ```
