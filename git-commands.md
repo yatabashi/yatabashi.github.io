@@ -142,9 +142,7 @@ Gitを介さずにファイル名（ディレクトリ名）の変更を行っ�
 ```
 git mv [oldname] [newname]
 ```
-「`README.md`を`DONTREADME.md`に移動する」ことで、ファイル名の変更を実現している。
-
-<!-- ファイルの移動も -->
+`git mv`は、`mv`, `git add`, `git rm`の組み合わせである。よって、詳細は[UNIXコマンド集](./unix-commands.html)の`mv`の項目も参照せよ。
 
 ## GitHubでアクセストークンによる認証を行う
 GitではなくGitHubに関する話題だが、ここに併載する。  
