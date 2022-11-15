@@ -9,8 +9,32 @@ Gitの仕組みと基本的な操作について。
 その見出し内の情報についての参考になりうべき文献を、見出しにつけた脚注で示している。
 
 
-## Gitとは
-Gitは、分散型のバージョン管理システムの一つであるとされる。分散型というのは、バージョン管理を行うリポジトリが中央だけにではなく各端末に存在する（＝各端末がバージョン管理を行う）ものを言う。
+## Gitとは[^0-1-2]
+Gitは、分散型のバージョン管理システムの一つであるとされる。分散型というのは、バージョン管理を行うリポジトリが中央だけにではなく各端末に存在する（＝各端末がバージョン管理を行う）ものを言う。  
+
+## Gitの導入と初期設定
+Gitの利用には、そのインストールと、いくつかの初期設定が必要である。  
+まず、Gitをインストールする。Macの場合は次をターミナルから実行する（Homebrewのインストールを前提）。
+```
+brew install git
+```
+Windowsの場合は次をPowerShellから実行する（Chocolateyのインストールを前提）。
+```
+choco install git
+```
+HomebrewやChocolateyがインストールされていない場合は、次のページを参考にするなどしてインストールすること。
+[Homebrewのインストール - Qiita](https://qiita.com/zaburo/items/29fe23c1ceb6056109fd)  
+[Windows10環境からChocolateyを使ってGitをインストール - Qiita](https://qiita.com/uroshinse/items/18ec7e88c50e99889d5b)  
+
+次に、Gitで使用するユーザー名とメールアドレスを登録する。これは次のコマンドをターミナルやGit Bashから実行することで可能である。クォーテーション内にそれぞれ希望する文字列を代入すること。
+```
+git config --global user.name "username"
+git config --global user.email "email-address"
+```
+設定は`~/.gitconfig`に保存されており、次のコマンドで確認できる。
+```
+cat ~/.gitconfig
+```
 
 
 ## Gitの構造[^0-2]
@@ -90,6 +114,7 @@ git push origin main
 
 ---
 [^0]: [難しいGitコマンドは、仕組みから理解してみよう - Qiita](https://qiita.com/_ha1f/items/2dca1047c57d4f0bd465)  
+[^0-1-2]: [MacにGitをインストールする - Qiita](https://qiita.com/suke_masa/items/4bed855628f7414293f8)  
 [^0-2]: [Gitではじめるバージョン管理 〜ローカルリポジトリでファイルを管理してみよう〜 - Hivelocity (ハイベロシティ) デジタルでビジネスを最適化](https://prograshi.com/general/git/create-a-new-repository-on-the-command-line/)  
 [^1]: [誰得UNIX: ステージを理解して git をもっと便利に使う](http://daretoku-unix.blogspot.com/2009/08/git.html)  
 [^2]: [Git の仕組み (1) - こせきの技術日記](https://koseki.hatenablog.com/entry/2014/04/22/inside-git-1)  
