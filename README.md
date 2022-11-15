@@ -10,7 +10,10 @@ yatabashi、学生
 大体Twitterにいます
 
 ## Aide-mémoire
-* [GitHub Pages でホームページを作る](./how-to-create-the-homepage.html)
 * [UNIXコマンド集](./unix-commands.html)
+
+## Article
+* [GitHub Pages でホームページを作る](./how-to-create-the-homepage.html)
 * [Git基礎編](./fundamentals-of-git.html)
 * [Git実用編](./utilise-git.html)
+<!-- 基礎と発展、basic/advanced -->
