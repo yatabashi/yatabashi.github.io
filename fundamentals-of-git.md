@@ -1,16 +1,17 @@
 <!-- TODO:
 * 図解
-* 参考文献の精選
  -->
 
-# Git基礎編[^0]
+# Git基礎編
 Gitの仕組みと基本的な操作について。  
 内容の正確性については、その向上に努めてはいるものの、完全ではないことに留意せよ。
 その見出し内の情報についての参考になりうべき文献を、見出しにつけた脚注で示している。
 
 
-## Gitとは[^0-1-2]
-Gitは、分散型のバージョン管理システムの一つであるとされる。分散型というのは、バージョン管理を行うリポジトリが中央だけにではなく各端末に存在する（＝各端末がバージョン管理を行う）ものを言う。  
+## Gitとは
+Gitは、分散型のバージョン管理システムの一つであるとされる。分散型というのは、バージョン管理を行うリポジトリが中央だけにではなく各端末に存在する（＝各端末がバージョン管理を行う）ものを言う。
+
+参考：[MacにGitをインストールする - Qiita](https://qiita.com/suke_masa/items/4bed855628f7414293f8)
 
 ## Gitの導入と初期設定
 Gitの利用には、そのインストールと、いくつかの初期設定が必要である。  
@@ -59,6 +60,8 @@ Gitは、実際にファイルを編集する場である「ワークツリー�
 #### HEAD[^4]
 HEADもまたポインタであり、作業中の（現在の作業の元になっている）ブランチを指定する。
 
+参考：[GitのHEADとは何者なのか - Qiita](https://qiita.com/ymzkjpx/items/00ff664da60c37458aaa) 
+
 ### リモートリポジトリ[^7]
 リモートリポジトリは、端末ごとのローカルリポジトリで記録されているコミット履歴を共有するために設置されるリポジトリである。一つのリモートリポジトリは複数のローカルリポジトリと対応することができる。  
 GitHubは、このリモートリポジトリを提供するサービスである。  
@@ -79,6 +82,8 @@ git init
 git add README.md
 ```
 ところで、インデックスは初回のステージングの際に作成される。
+
+参考：[誰得UNIX: ステージを理解して git をもっと便利に使う](http://daretoku-unix.blogspot.com/2009/08/git.html)
 
 ### コミット
 その時点でインデックスに載っている変更内容をまとめてリポジトリに記録することを言う。コミットした変更のまとまりのこともコミットと言う。コミットには、そのコミットを説明する「コミットメッセージ」が必要である。
@@ -113,25 +118,7 @@ git push origin main-l:main-r
 ```
 git push origin main
 ```
+参考：[git - 違うgitのURLにプロダクトをpushしたい - スタック・オーバーフロー](https://ja.stackoverflow.com/questions/42216/%E9%81%95%E3%81%86git%E3%81%AEurl%E3%81%AB%E3%83%97%E3%83%AD%E3%83%80%E3%82%AF%E3%83%88%E3%82%92push%E3%81%97%E3%81%9F%E3%81%84)
 
 ## Gitの実用
 実際にGitを使っていく上では、これらに加えて幾らかの追加知識があると望ましい。「[Git実用編](./utilise-git.html)」を参照せよ（未公開）。
-
----
-[^0]: [難しいGitコマンドは、仕組みから理解してみよう - Qiita](https://qiita.com/_ha1f/items/2dca1047c57d4f0bd465)  
-[^0-1-2]: [MacにGitをインストールする - Qiita](https://qiita.com/suke_masa/items/4bed855628f7414293f8)  
-[^0-2]: [Gitではじめるバージョン管理 〜ローカルリポジトリでファイルを管理してみよう〜 - Hivelocity (ハイベロシティ) デジタルでビジネスを最適化](https://prograshi.com/general/git/create-a-new-repository-on-the-command-line/)  
-[^1]: [誰得UNIX: ステージを理解して git をもっと便利に使う](http://daretoku-unix.blogspot.com/2009/08/git.html)  
-[^2]: [Git の仕組み (1) - こせきの技術日記](https://koseki.hatenablog.com/entry/2014/04/22/inside-git-1)  
-[^3]: [Git の仕組み (2) - コミット・ブランチ・タグ - こせきの技術日記](https://koseki.hatenablog.com/entry/2014/06/11/inside-git-2)  
-[^3-2]: [ブランチとは｜サル先生のGit入門【プロジェクト管理ツールBacklog】](https://backlog.com/ja/git-tutorial/stepup/01/)  
-[^4]: [GitのHEADとは何者なのか - Qiita](https://qiita.com/ymzkjpx/items/00ff664da60c37458aaa)  
-[^5]: [Git で「追跡ブランチ」って言うのやめましょう - Qiita](https://qiita.com/uasi/items/69368c17c79e99aaddbf)  
-[^6]: [【初心者向け】git fetch、git merge、git pullの違いについて - Qiita](https://qiita.com/wann/items/688bc17460a457104d7d)  
-[^7]: [Git用語：上流ブランチとは？ \| WWWクリエイターズ](https://www-creators.com/archives/4931)  
-[^8]: [【Git】新人エンジニア、git pushまでの道 - Qiita](https://qiita.com/yukibe/items/9ef9d54f2e7d53cfb51c)  
-[^9]: [あなたはまだGitを使いこなせていない - Qiita](https://qiita.com/hitochan/items/32f43181a3e7db342188)  
-[^10]: [Gitのインデックスの中身](https://zenn.dev/kaityo256/articles/inside_the_index)  
-[^10-2]: [1. ブランチを作成する｜サル先生のGit入門【プロジェクト管理ツールBacklog】](https://backlog.com/ja/git-tutorial/stepup/07/)
-[^11]: [【Github】git pushの-uオプションとは何か？上流ブランチやupstreamについて実例で解説｜–set-upstreamとの違いや上流ブランチの確認・設定方法（初心者向け、わかりやすい）](https://prograshi.com/general/git/git-push-u-upstream/)  
-[^12]: [git - 違うgitのURLにプロダクトをpushしたい - スタック・オーバーフロー](https://ja.stackoverflow.com/questions/42216/%E9%81%95%E3%81%86git%E3%81%AEurl%E3%81%AB%E3%83%97%E3%83%AD%E3%83%80%E3%82%AF%E3%83%88%E3%82%92push%E3%81%97%E3%81%9F%E3%81%84)  
