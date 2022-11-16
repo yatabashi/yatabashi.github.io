@@ -31,6 +31,7 @@
 
 
 <!-- 
+概念の導入
 * git 一般
     * https://snowsystem.net/git/git-master/git-1/
     * https://backlog.com/ja/git-tutorial/
@@ -40,30 +41,15 @@
     * [Git の仕組み (2) - コミット・ブランチ・タグ - こせきの技術日記](https://koseki.hatenablog.com/entry/2014/06/11/inside-git-2)  
     * [【Git】新人エンジニア、git pushまでの道 - Qiita](https://qiita.com/yukibe/items/9ef9d54f2e7d53cfb51c)  
     * [あなたはまだGitを使いこなせていない - Qiita](https://qiita.com/hitochan/items/32f43181a3e7db342188)  
-* リモートリポジトリ作成後の初手
-    * https://prograshi.com/general/git/create-a-new-repository-on-the-command-line/
-    echo "# yatabashi.github.io" >> README.md
-        README書き込み
-    git init
-        git開始
-    git add README.md
-        ステージング
-    git commit -m "initial commit"
-        ローカルリポジトリに追加
-    git branch -M main
-        現在の（ローカル？）リポジトリ内のブランチに名前を設定
-        https://qiita.com/obonno3/items/f44bb730facc29a3b7d5
-    git remote add origin https://github.com/yatabashi/yatabashi.github.io.git
-        対応するリモートリポジトリを設定
-    git push -u origin main
-        リモートリポジトリにpushしつつ、現在のローカルのブランチに対応する、リモート内のupstreamブランチを設定する？
+    * https://www.asobou.co.jp/blog/web/git-beginner
+    * https://zenn.dev/coder_ka/articles/1424213850674e#fn-8c67-1
 * 過去のコミットを参照する
     * https://qiita.com/yagaodekawasu/items/18a2c395722a4f012338
     * https://prograshi.com/general/git/meaning-of-head-and-at-mark/
 * checkout, switch; reset, restore
-    * https://www.sejuku.net/blog/71457
     * https://kakakakakku.hatenablog.com/entry/2020/04/08/151627
     * https://ebc-2in2crc.hatenablog.jp/entry/2020/11/22/130521
+    * https://qiita.com/shuntaro_tamura/items/db1aef9cf9d78db50ffe
 * リモート追跡ブランチ
     * 後述するリモートリポジトリを設定した場合、ローカルリポジトリ内のブランチにはそれぞれ、リモート追跡ブランチと呼ばれる、リモートリポジトリ内の対応するブランチ（＝上流ブランチ）を追跡する（反映する）ブランチが設定される。リモート追跡ブランチは、変更をリモートリポジトリからローカルリポジトリに取り込む際に利用される。
     [Git で「追跡ブランチ」って言うのやめましょう - Qiita](https://qiita.com/uasi/items/69368c17c79e99aaddbf)  
@@ -86,7 +72,6 @@
         * https://qiita.com/miriwo/items/74ec1cfe2f4754d4cb8a
 * インデックスの正体
     * [Gitのインデックスの中身](https://zenn.dev/kaityo256/articles/inside_the_index)
-git switchによってコミットがどこからも参照されなくなることがあるという話
 
 git addのオプション
     git add -u
@@ -96,17 +81,6 @@ git addのオプション
     git add -A
     ```
     `-A`オプションを用いると、`-u`オプションでステージされるものに加えて、まだGitに管理されていないファイルにおける変更（すなわちGit管理下へのそのファイルの追加）もステージされる。
-
-概念の導入
-    HEADはコミットも指せる
-    ブランチでないコミットにもいられる（detached HEAD）、そうしたコミットに関わる操作もいろいろできる、という話
-        遡ってブランチを作成する
-        detached HEAD
-            HEADは、通常ブランチを指定し、コミットを指定している状態は「detached HEAD」と呼ばれる。この状態でコミットを行っても、そのコミットを参照できるブランチがないことに注意せよ。
-    最初のコミットがあるまではブランチもHEADも存在しない
-    リモート追跡ブランチ
-
-    git logはブランチでないコミットからでも見られるよ
 
 [gitconfig の基本を理解する - Qiita](https://qiita.com/shionit/items/fb4a1a30538f8d335b35)
 
