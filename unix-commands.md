@@ -1,6 +1,6 @@
 # UNIXコマンド集
 Macではターミナルで利用できるUNIXコマンドについて、記録しておく価値の高いと思われるものを記録するページである。  
-最終更新：2022年11月15日、MacOS Monterey 12.5
+最終更新：2022年11月、MacOS Monterey 12.5
 <!-- https://qiita.com/arene-calix/items/41d8d4ba572f1d652727 -->
 
 ## コマンドでないもの
