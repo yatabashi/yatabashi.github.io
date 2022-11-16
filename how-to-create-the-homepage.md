@@ -37,7 +37,7 @@ git config --global user.name 'xxx'
 git config --global user.email 'yyy'
 ```
 
-また、.DS_Storeが監視対象となることを（あらゆるプロジェクトで）避けるため、gitが.DS_Storeを常に無視するように`~/.config/git/ignore`に設定した。このファイルに書き込まれたファイルは、すべてのプロジェクトで無視される。
+また、.DS_Storeが追跡対象となることを（あらゆるプロジェクトで）避けるため、gitが.DS_Storeを常に無視するように`~/.config/git/ignore`に設定した。このファイルに書き込まれたファイルは、すべてのプロジェクトで無視される。
 ```
 mkdir ~/.config/git
 echo '.DS_Store' >> ~/.config/git/ignore
