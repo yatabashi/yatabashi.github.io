@@ -15,5 +15,5 @@ yatabashi、学生
 
 ## Article
 * [GitHub Pages でホームページを作る](./how-to-create-the-homepage.html)
-* [Git基礎編](./fundamentals-of-git.html)
-* [Git発展編](./utilise-git.html)
+* [Git基礎編](./git-basic.html)
+* [Git発展編](./git-advanced.html)
