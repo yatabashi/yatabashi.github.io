@@ -17,3 +17,4 @@ yatabashi、学生
 * [GitHub Pages でホームページを作る](./how-to-create-the-homepage.html)
 * [Git基礎編](./git-basic.html)
 * [Git発展編](./git-advanced.html)
+* [はじめてのAppleScript](./applescript.html)
