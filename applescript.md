@@ -126,3 +126,18 @@ open location linkWithQuery
 ```
 クエリ付きで生成されたURLを開く。
 * `open location [URL]`で、デフォルトに設定されたブラウザでURLを開くことができる。
+
+## 参考にした文献
+* [AppleScript 最速基本文法マスター-life log](https://mc909j.blogspot.com/p/document.html)
+* [AppleScript の基本文法 \| DevelopersIO](https://dev.classmethod.jp/articles/applescript-basic-grammar/)
+* [鳶嶋工房 / AppleScript / Dictionary / Basic(索引)](http://tonbi.jp/AppleScript/Dictionary/Basic/)
+* [鳶嶋工房 / AppleScript / Dictionary / OSAX(索引)](http://tonbi.jp/AppleScript/Dictionary/OSAX/)
+* [テキスト入力を促す - mytrans マニュアル等の個人的な翻訳](https://sites.google.com/site/zzaatrans/home/macautomationscriptingguide/promptfortext-html)
+* [display dialogとdisplay alertの違い - ザリガニが見ていた...。](https://zariganitosh.hatenablog.jp/entry/20110622/display_dialog_vs_alert)
+* [AppleScript : display dialog の表示と返り値 - GameSprit](https://sdesignlabo.com/web/favicon/)
+* [AppleScriptで文字列を処理する](https://www.12kai.com/scr/proptext.html) (1)
+* [AppleScriptで文字列を処理する](https://www.12kai.com/scr/proptext2.html) (2)
+* [AppleScriptで文字列を処理する](https://www.12kai.com/scr/proptext3.html) (3)
+
+## 参考になりそうな文献
+* [For Beginners – AppleScriptの穴](http://piyocast.com/as/master)
