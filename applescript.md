@@ -22,7 +22,7 @@ URLの入力を受け取り、それがGoogleのページのものであれば�
 ## 解説
 AppleScriptはそのまま比較的自然な英語として解釈できるように作られている（例：無意味語として`the`を挿入できる）。  
 
-```
+```applescript
 -- dialogのdefault answerを定義
 set def to ""
 ```
@@ -30,13 +30,13 @@ set def to ""
 * `--`から始まる行はコメントとして無視される。
 * `set A to B`は、`B`を代入する形で、変数`A`を定義する（なんと**代入に等号を使わない**）。
 
-```
+```applescript
 repeat
 ```
 後述。
 * ループは`repeat`で始まり`end repeat`で終わる。
 
-```
+```applescript
 -- URLを入力
 display dialog "Tu veux aller où (dans docs.google.com) ?" default answer def with icon note
 --> result = {button returned:"OK", text returned:"docs.google.com"}
@@ -47,7 +47,7 @@ set input to text returned of result
 * `display dialog`は、デフォルトで「OK」「キャンセル」のボタンを表示する。ここではオプションとして`default answer`と`with icon`を指定していて、前者は指定した文字列をデフォルト値とする入力欄を設け、後者はアイコンを表示する。ここで入力された値と押されたボタンの情報は、デフォルトでRecord型（辞書型に相当）の変数`result`に格納される。
 * Record型の変数からの取り出しには`of`を用いる。
 
-```
+```applescript
 -- 末尾の改行文字を削除
 if characters -2 thru -1 of input is "\r\n" then
 	set input to characters 1 thru -3 of input as text
@@ -61,7 +61,7 @@ end if
 * 値の同等比較は、ここでは`is`で行っているが、`=`や`is equal to`でも可能。
 * 条件式は`and`や`or`で並べることができる。
 
-```
+```applescript
 -- スキームを含まなければhttps://を前置
 if "://" is not in input then
 	set link to "https://" & input
@@ -74,7 +74,7 @@ AppleScriptからURLにアクセスするにはスキームが必須なような
 * 文字列の連結には`&`を用いる。
 * if文で条件式が偽であった場合の処理は、`else`で書けばよい。
 
-```
+```applescript
 -- 既にクエリがあれば削除
 if "?" is in link then
 	set lastIndex to (offset of "?" in link) - 1
@@ -85,14 +85,14 @@ Googleドキュメントのページでクエリを複数指定する方法が�
 * `is in`で、右辺に左辺が含まれるかどうかを確かめることができる。
 * `offset of [文字列A] in [文字列B]`によって、Bの中でA（の先頭の文字）のある位置を求めることができる。AがBに含まれていなければ0が返される。
 
-```
+```applescript
 -- クエリを付与
 set linkWithQuery to link & "?authuser=2"
 ```
 正規化されたURLにクエリを付与する。  
 google.com内ではログインした順にアカウントに0以上の整数が割り当てられており、クエリとして「authuser」でその値を指定してやることで、特定のアカウントにログインした状態でアクセスすることができる。
 
-```
+```applescript
 -- docs.google.comでない場合の註記を生成
 if "docs.google.com" is not in linkWithQuery then
 	set annotation to "* This is not a URL of docs.google.com ."
@@ -102,7 +102,7 @@ end if
 ```
 開くURLに「docs.google.com」が含まれていない場合に表示する警告を生成する。
 
-```
+```applescript
 -- 開くURLを提示
 display dialog linkWithQuery & "\n\n" & annotation buttons {"キャンセル", "修正", "OK"} default button 3 with icon note
 
@@ -113,14 +113,14 @@ else if button returned of result is "修正" then
 	set def to input
 end if
 ```
-```
+```applescript
 end repeat
 ```
 生成されたURLを提示し、それを開くか、修正するか（、キャンセルするか）を選択させる。開く場合はループを抜けさせ、修正する場合は`input`を表示させるために保存し、ループの末尾に到達させる（→ループの先頭に戻す）。
 * 「キャンセル」と名付けられたボタンは、クリック時にエラー-128を吐いて終了する（デフォルトのキャンセルボタンと同じ）ように自動的に設定される。
 * ループは`exit repeat`で抜けられる。
 
-```
+```applescript
 -- URLを開く
 open location linkWithQuery
 ```
