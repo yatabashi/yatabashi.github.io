@@ -73,9 +73,6 @@
     * [Gitのインデックスの中身](https://zenn.dev/kaityo256/articles/inside_the_index)
 
 git addのオプション
-    git add -u
-    ```
-    `-u`オプションを用いると、已にGitで管理されている全てのファイルに生じた変更が登録される。
     ```
     git add -A
     ```
@@ -100,10 +97,7 @@ git merge sub
 * [git merge(マージ)とは何か？使い方を実例で解説｜-mオプションでコミットメッセージを指定する方法](https://prograshi.com/general/git/how-to-use-git-merge/)
 * [git merge でのコンフリクト(競合)の解決方法まとめ \| WWWクリエイターズ](https://www-creators.com/archives/1938)
 
-### リモートリポジトリの状態をローカルにコピーする
-すでにリモートリポジトリに存在するプロジェクトをローカルにダウンロードしたい場合、クローンを行えばよい。次のコマンドは、URLのリモートリポジトリにあるファイル群を含む新たなディレクトリを、現在の位置に作成する。
-```
-git clone https://github.com/xxx/yyy.git
-```
+リモート追跡ブランチとdiffをとる
+第9話 git diff で差分を確認！【連載】マンガでわかるGit ～コマンド編～ - itstaffing エンジニアスタイル
 
 -->
