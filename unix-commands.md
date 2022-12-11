@@ -1,6 +1,5 @@
 # UNIXコマンド集
 Macではターミナルで利用できるUNIXコマンドについて、記録しておく価値の高いと思われるものを記録するページである。  
-最終更新：2022年11月、MacOS Monterey 12.5
 <!-- [よく使うLinuxコマンド - Qiita](https://qiita.com/arene-calix/items/41d8d4ba572f1d652727) -->
 <!-- [Bashショートカットキー - Qiita](https://qiita.com/takayu90/items/011a674b0a903572a50c) -->
 
