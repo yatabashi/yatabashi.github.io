@@ -6,6 +6,7 @@ yatabashi、学生
 * Mastodon: [@yatabashi](https://fedibird.com/@yatabashi)
 * GitHub: [yatabashi](https://github.com/yatabashi)
 * Discord: yatabashi#2074
+* はてなブログ: [хотетьの活用が覚えられない](https://yatabashi.hatenablog.com/)
 
 大体Twitterにいます
 
