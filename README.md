@@ -3,6 +3,8 @@ yatabashi、学生
 
 ## Liens
 * Twitter: [@yatabashi](https://twitter.com/yatabashi)
+    * 人工言語創作: [@szuerke_abarke](https://twitter.com/szuerke_abarke)
+    * 暗号: [@1DcYp96ujGOj3ON](https://twitter.com/1DcYp96ujGOj3ON)
 * Mastodon: [@yatabashi](https://fedibird.com/@yatabashi)
 * GitHub: [yatabashi](https://github.com/yatabashi)
 * Discord: yatabashi#2074
