@@ -5,7 +5,8 @@ yatabashi、学生
 * Twitter: [@yatabashi](https://twitter.com/yatabashi)
     * 人工言語創作: [@szuerke_abarke](https://twitter.com/szuerke_abarke)
     * 暗号: [@1DcYp96ujGOj3ON](https://twitter.com/1DcYp96ujGOj3ON)
-* Mastodon: [@yatabashi](https://fedibird.com/@yatabashi)
+* ~~Mastodon: @yatabashi@fedibird.com~~ - Moved Permanently
+* Misskey: [@yatabashi@misskey.io](https://misskey.io/@yatabashi)
 * GitHub: [yatabashi](https://github.com/yatabashi)
 * Discord: yatabashi#2074
 * はてなブログ: [хотетьの活用が覚えられない](https://yatabashi.hatenablog.com/)
