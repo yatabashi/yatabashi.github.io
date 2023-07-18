@@ -9,7 +9,7 @@ SATySFiを、Easytableを導入して使おうとしていました。
 
 次に、 [本家のREADME](https://github.com/gfngfn/SATySFi/blob/master/README-ja.md) に従って導入を試みました。この文書では二つのインストール方法が示されています。しかし私はそれに気が付かず、それら二つを続けて実行することが求められているものと捉えてしまったため、すでに「Satyrographos を使ったインストール方法」に当たる操作を済ませていたにも関わらず、「OPAM を使ったインストール方法」を重ねて実行しました。当然コンフリクトを起こし（「セットアップ」節の `./install-libs.sh` の段階だったかな）、これも放棄することにしました。
 
-また、ブラウザでSATySFiをコンパイルする方法を探し、例えば [SATYSFI Playground](www.satysfi-playground.tech)を試すなどしましたが、Easytableを呼ぶことに失敗したため、やはり諦めることになりました。なお、高校生の頃にOverleafをSATySFiをブラウザから編集する環境として推奨されたことがあり、それをまず試そうと思ったものの名前を思い出せなかったために他をあたるなどしていました（記事を書いているうちに思い出しました）。
+また、ブラウザでSATySFiをコンパイルする方法を探し、例えば [SATYSFI Playground](www.satysfi-playground.tech) を試すなどしましたが、Easytableを呼ぶことに失敗したため、やはり諦めることになりました。なお、高校生の頃にOverleafをSATySFiをブラウザから編集する環境として推奨されたことがあり、それをまず試そうと思ったものの名前を思い出せなかったために他をあたるなどしていました（記事を書いているうちに思い出しました）。
 
 ところで、ここまでの段階で一度も最初からやり直すと言うことをしていないのは、その発想がなかったのに加え、実行してきたコマンドが具体的に何をどこに生成しているのかを理解していなかったためです。しかし、手当たり次第に調べるうちに[あるページ](https://www.fos.kuis.kyoto-u.ac.jp/~igarashi/class/pl/setup.html)に到達し、次の記述を見つけました：  
 > それでもだめなら、opamを再インストールしてみましょう。 ~/.opam を削除した上でこのページの手順を最初からやり直してみてください。
@@ -37,7 +37,7 @@ opam install satysfi satysfi-dist satyrographos
 ```
 （[gfngfn/SATySFi/README-ja.md](https://github.com/gfngfn/SATySFi/blob/master/README-ja.md) より引用）
 
-すると `satyrographos install` の段階で `command not found: satyrographos` とエラーを吐かれましたが、[Satyrographos でパッケージの簡単インストール](https://qiita.com/na4zagin3/items/14fe2647b663eeac6ac2#%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E3%82%A2%E3%83%83%E3%83%97%E3%83%87%E3%83%BC%E3%83%88%E6%96%B9%E6%B3%95)によれば `eval $(opam env)` の実行が必要とのことだったので従い、再び実行して事無きを得ました。  
+すると `satyrographos install` の段階で `command not found: satyrographos` とエラーを吐かれましたが、「[Satyrographos でパッケージの簡単インストール](https://qiita.com/na4zagin3/items/14fe2647b663eeac6ac2#%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E3%82%A2%E3%83%83%E3%83%97%E3%83%87%E3%83%BC%E3%83%88%E6%96%B9%E6%B3%95)」によれば `eval $(opam env)` の実行が必要とのことだったので従い、再び実行して事無きを得ました。  
 ```
 eval $(opam env)
 ```
@@ -49,15 +49,15 @@ cd SATySFi/demo
 make
 ```
 
-ところで、Easytableは外部ライブラリです。よって何らかの方法で導入する必要があり、その方法については再び [Satyrographos でパッケージの簡単インストール](https://qiita.com/na4zagin3/items/14fe2647b663eeac6ac2#%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E3%82%A2%E3%83%83%E3%83%97%E3%83%87%E3%83%BC%E3%83%88%E6%96%B9%E6%B3%95) に記載がありました。Easytableは `satyrographos-repo` に含まれていたため、次を実行するだけで済みました。
+ところで、Easytableは外部ライブラリです。よって何らかの方法で導入する必要があり、その方法については再び「[Satyrographos でパッケージの簡単インストール](https://qiita.com/na4zagin3/items/14fe2647b663eeac6ac2#%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E3%82%A2%E3%83%83%E3%83%97%E3%83%87%E3%83%BC%E3%83%88%E6%96%B9%E6%B3%95)」に記載がありました。Easytableは `satyrographos-repo` に含まれていたため、次を実行するだけで済みました。
 ```
 opam install satysfi-easytable
 satyrographos install
 eval $(opam env)
 ```
 
-なお、 `satyrographos install` により、目的のライブラリは次の場所にコピーされます：`~/.satysfi/dist/packages/easytable/easytable.satyh`。よって、 [Easytableのドキュメント](https://github.com/monaqa/satysfi-easytable/blob/master/doc/easytable.pdf) には`@require: easytable`とありますが、これは`@require: easytable/easytable`の誤りであるようです（[@yatabashiと@puripuri2100の会話](https://twitter.com/puripuri2100/status/1681282119245664257)を参照）。  
-また、`open EasyTableAlias`の後には`in`が必要です。[コマンド定義の最後に必要という記事](https://zenn.dev/monaqa/articles/2020-12-17-satysfi-for-beginner-command-definition)を見つけたためそれに倣いましたが、一般にdocument宣言の前で操作を行う場合には末尾に必要になるようです（[@puripuri2100の解説](https://twitter.com/puripuri2100/status/1681282678413479936)）。
+なお、 `satyrographos install` により、目的のライブラリは次の場所にコピーされます： `~/.satysfi/dist/packages/easytable/easytable.satyh` 。よって、[Easytableのドキュメント](https://github.com/monaqa/satysfi-easytable/blob/master/doc/easytable.pdf)には `@require: easytable` とありますが、これは `@require: easytable/easytable` の誤りであるようです（[@yatabashiと@puripuri2100の会話](https://twitter.com/puripuri2100/status/1681282119245664257)を参照）。  
+また、 `open EasyTableAlias` の後には `in` が必要です。[コマンド定義の最後に必要という記事](https://zenn.dev/monaqa/articles/2020-12-17-satysfi-for-beginner-command-definition)を見つけたためそれに倣いましたが、一般にdocument宣言の前で操作を行う場合には末尾に必要になるようです（[@puripuri2100の解説](https://twitter.com/puripuri2100/status/1681282678413479936)）。
 
 ## 延長戦
 ここまでで当初の意図は達されましたが、キリル文字を表示しようと思ったら詰まったので、それにも言及しておきます。  
