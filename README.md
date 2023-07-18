@@ -5,7 +5,7 @@ yatabashi、学生
 * Twitter: [@yatabashi](https://twitter.com/yatabashi)
     * 人工言語創作: [@szuerke_abarke](https://twitter.com/szuerke_abarke)
     * 暗号: [@1DcYp96ujGOj3ON](https://twitter.com/1DcYp96ujGOj3ON)
-* ~~Mastodon: @yatabashi@fedibird.com~~ - Moved Permanently
+* ~~Mastodon: @yatabashi@fedibird.com~~ - inactif
 * Misskey: [@yatabashi@misskey.io](https://misskey.io/@yatabashi)
 * GitHub: [yatabashi](https://github.com/yatabashi)
 * Discord: yatabashi#2074
@@ -24,6 +24,7 @@ yatabashi、学生
 * [Git発展編](./git-advanced.html)
 * [はじめてのAppleScript](./applescript.html)
 * [特定の文字列を表示できるフォントの一覧を出力したい](./font-availability-checker.html)
+* [SATySFiを導入した](./install_satysfi.html)
 
 ## Outil
 * [font_availability_checker (fontac)](https://github.com/yatabashi/font_availability_checker)  
