@@ -78,3 +78,15 @@ let-inline ctx \cyrillic it =
 
 ## 完成品
 ![numerals](./res/fontac/numerals.png)
+
+## 後日談（2023年8月20日追記）
+stdja で採用される欧字フォント（ Junicode ）に、 Theano がどうもそぐわなかったので、自前で EBGaramond を入れることにしました。ライブラリ化はせず（一つには面倒に感じ、もう一つにはやり方を知りません）、ただ該当フォントファイルを `~/.satysfi/dist/fonts` に手動で投げ込んだだけなので、フォントの入ったディレクトリ、他のライブラリに関する操作を加えた際にはその都度入れ直す必要があります（`satyrographos install` によって削除されます）。また、アラビア文字も表示できるようにと同様の処置をしました（フォントは Amiri ）が、SATySFiは今のところ（バージョン0.0.8）RTLに対応していないようです。
+
+また、フッターに表示されるページ数を無駄に大きな値にしたかったのでそのやり方を考えて[唸っていた](https://twitter.com/yatabashi/status/1682696187495981057)ところ SATySFi 作者本人から直接救いの手が差し伸べられたので、指示に従って[クラスファイル stdja.satyh の388行目](https://github.com/gfngfn/SATySFi/blob/211ac10bbb13f68f604af60ab18b11cd3f409395/lib-satysfi/dist/packages/stdja.satyh#L388)の
+```
+let it-pageno = embed-string (arabic pbinfo#page-number) in
+```
+を以下のように変更したファイルを mystdja.satyh とし、 `~/.satysfi/dist/packages` に置いて読ませることにしました。
+```
+let it-pageno = embed-string (arabic (pbinfo#page-number + 64)) in
+```
