@@ -29,3 +29,5 @@ yatabashi、学生
 ## Outil
 * [font_availability_checker (fontac)](https://github.com/yatabashi/font_availability_checker)  
     指定した文字列を表示できるフォントの一覧を出力してくれるプログラム（参考：[特定の文字列を表示できるフォントの一覧を出力したい](./font-availability-checker.html)）
+* [timetable.py](./res/timetable-20231011.py)
+    Firefoxの拡張機能として開発予定のリンク付時間割生成ツールの実装を考えるために一旦Pythonで書いたもの。
