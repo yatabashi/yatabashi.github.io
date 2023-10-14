@@ -31,3 +31,5 @@ yatabashi、学生
     指定した文字列を表示できるフォントの一覧を出力してくれるプログラム（参考：[特定の文字列を表示できるフォントの一覧を出力したい](./font-availability-checker.html)）
 * [timetable.py](https://github.com/yatabashi/yatabashi.github.io/blob/main/res/timetable-20231011.py)  
     Firefoxの拡張機能として開発予定のリンク付時間割生成ツールの実装を考えるために一旦Pythonで書いたもの。
+* [KUTimetable](https://github.com/yatabashi/yatabashi.github.io/tree/main/res/kutimetable)  
+    京大生向けのローカル時間割生成用拡張機能。
