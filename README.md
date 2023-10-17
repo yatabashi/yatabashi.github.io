@@ -7,6 +7,7 @@ yatabashi、学生
     * 暗号: [@1DcYp96ujGOj3ON](https://twitter.com/1DcYp96ujGOj3ON)
 * ~~Mastodon: @yatabashi@fedibird.com~~ - inactif
 * Misskey: [@yatabashi@misskey.io](https://misskey.io/@yatabashi)
+* Bluesky: [@yatabashi.bsky.social](https://bsky.app/profile/yatabashi.bsky.social)
 * GitHub: [yatabashi](https://github.com/yatabashi)
 * Discord: yatabashi#2074
 * はてなブログ: [хотетьの活用が覚えられない](https://yatabashi.hatenablog.com/)
