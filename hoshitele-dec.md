@@ -104,25 +104,25 @@
 
 | latina | kosma |
 | ------ | ------- |
-| a      | <img src="./res/hoshitele-dec/_a.png"> |
-| b      | <img src="./res/hoshitele-dec/_b.png"> |
-| c, ĉ   | <img src="./res/hoshitele-dec/_c.png"> <img src="./res/hoshitele-dec/_ĉ.png"> |
-| d      | <img src="./res/hoshitele-dec/_d.png"> |
-| e      | <img src="./res/hoshitele-dec/_e.png"> |
-| f      | <img src="./res/hoshitele-dec/_f.png"> |
-| g, ĝ   | <img src="./res/hoshitele-dec/_g.png"> <img src="./res/hoshitele-dec/_ĝ.png"> |
+| a      | <img src="./res/hoshitele-dec/single-a.png"> |
+| b      | <img src="./res/hoshitele-dec/single-b.png"> |
+| c, ĉ   | <img src="./res/hoshitele-dec/single-c.png"> <img src="./res/hoshitele-dec/single-ĉ.png"> |
+| d      | <img src="./res/hoshitele-dec/single-d.png"> |
+| e      | <img src="./res/hoshitele-dec/single-e.png"> |
+| f      | <img src="./res/hoshitele-dec/single-f.png"> |
+| g, ĝ   | <img src="./res/hoshitele-dec/single-g.png"> <img src="./res/hoshitele-dec/single-ĝ.png"> |
 | h, ĥ   | - - |
-| i      | <img src="./res/hoshitele-dec/_i.png"> |
-| j, ĵ   | <img src="./res/hoshitele-dec/_j.png"> - |
-| k      | <img src="./res/hoshitele-dec/_k.png"> |
-| l      | <img src="./res/hoshitele-dec/_l.png"> |
-| m      | <img src="./res/hoshitele-dec/_m.png"> |
-| n      | <img src="./res/hoshitele-dec/_n.png"> |
-| o      | <img src="./res/hoshitele-dec/_o.png"> |
-| p      | <img src="./res/hoshitele-dec/_p.png"> |
-| r      | <img src="./res/hoshitele-dec/_r.png"> |
-| s, ŝ   | <img src="./res/hoshitele-dec/_s.png"> - |
-| t      | <img src="./res/hoshitele-dec/_t.png"> |
-| u, ŭ   | <img src="./res/hoshitele-dec/_u.png"> - |
-| v      | <img src="./res/hoshitele-dec/_v.png"> |
-| z      | <img src="./res/hoshitele-dec/_z.png"> |
+| i      | <img src="./res/hoshitele-dec/single-i.png"> |
+| j, ĵ   | <img src="./res/hoshitele-dec/single-j.png"> - |
+| k      | <img src="./res/hoshitele-dec/single-k.png"> |
+| l      | <img src="./res/hoshitele-dec/single-l.png"> |
+| m      | <img src="./res/hoshitele-dec/single-m.png"> |
+| n      | <img src="./res/hoshitele-dec/single-n.png"> |
+| o      | <img src="./res/hoshitele-dec/single-o.png"> |
+| p      | <img src="./res/hoshitele-dec/single-p.png"> |
+| r      | <img src="./res/hoshitele-dec/single-r.png"> |
+| s, ŝ   | <img src="./res/hoshitele-dec/single-s.png"> - |
+| t      | <img src="./res/hoshitele-dec/single-t.png"> |
+| u, ŭ   | <img src="./res/hoshitele-dec/single-u.png"> - |
+| v      | <img src="./res/hoshitele-dec/single-v.png"> |
+| z      | <img src="./res/hoshitele-dec/single-z.png"> |
