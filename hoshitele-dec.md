@@ -1,7 +1,7 @@
 <style type="text/css">
     img:not(.original){
-        height: 1.5em; 
-        vertical-align: middle;
+        height: 1.6em; 
+        vertical-align: top;
     }
 </style>
 
@@ -113,7 +113,7 @@
 | g, ĝ   | <img src="./res/hoshitele-dec/single-g.png"> <img src="./res/hoshitele-dec/single-ĝ.png"> |
 | h, ĥ   | - - |
 | i      | <img src="./res/hoshitele-dec/single-i.png"> |
-| j, ĵ   | <img src="./res/hoshitele-dec/single-j.png"> - |
+| j, ĵ   | <img src="./res/hoshitele-dec/single-j2.png">* - |
 | k      | <img src="./res/hoshitele-dec/single-k.png"> |
 | l      | <img src="./res/hoshitele-dec/single-l.png"> |
 | m      | <img src="./res/hoshitele-dec/single-m.png"> |
@@ -126,3 +126,8 @@
 | u, ŭ   | <img src="./res/hoshitele-dec/single-u.png"> - |
 | v      | <img src="./res/hoshitele-dec/single-v.png"> |
 | z      | <img src="./res/hoshitele-dec/single-z.png"> |
+
+\* この記事を公開したら、冒頭の友人から
+> 管見のかぎり、jには異体字があります
+
+と来ました。よく見てみたら表紙の j は▽が逆向きの<img src="./res/hoshitele-dec/single-j1.png">という形になってましたね。自由な variation なのかな……
