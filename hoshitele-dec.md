@@ -100,7 +100,8 @@
 > —kiun mi ir—  
 > —o.
 
-対応表：  
+対応表：
+
 | latina | kosma |
 | ------ | ------- |
 | a      | <img src="./res/hoshitele-dec/_a.png"> |
