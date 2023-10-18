@@ -99,3 +99,29 @@
 > <u>brilla</u> [brila] mondo, luma m—  
 > —kiun mi ir—  
 > —o.
+
+対応表：
+| latina | kosma |
+| ------ | ------- |
+| a      | <img src="./res/hoshitele-dec/_a.png"> |
+| b      | <img src="./res/hoshitele-dec/_b.png"> |
+| c, ĉ   | <img src="./res/hoshitele-dec/_c.png"> <img src="./res/hoshitele-dec/_ĉ.png"> |
+| d      | <img src="./res/hoshitele-dec/_d.png"> |
+| e      | <img src="./res/hoshitele-dec/_e.png"> |
+| f      | <img src="./res/hoshitele-dec/_f.png"> |
+| g, ĝ   | <img src="./res/hoshitele-dec/_g.png"> <img src="./res/hoshitele-dec/_ĝ.png"> |
+| h, ĥ   | - - |
+| i      | <img src="./res/hoshitele-dec/_i.png"> |
+| j, ĵ   | <img src="./res/hoshitele-dec/_j.png"> - |
+| k      | <img src="./res/hoshitele-dec/_k.png"> |
+| l      | <img src="./res/hoshitele-dec/_l.png"> |
+| m      | <img src="./res/hoshitele-dec/_m.png"> |
+| n      | <img src="./res/hoshitele-dec/_n.png"> |
+| o      | <img src="./res/hoshitele-dec/_o.png"> |
+| p      | <img src="./res/hoshitele-dec/_p.png"> |
+| r      | <img src="./res/hoshitele-dec/_r.png"> |
+| s, ŝ   | <img src="./res/hoshitele-dec/_s.png"> - |
+| t      | <img src="./res/hoshitele-dec/_t.png"> |
+| u, ŭ   | <img src="./res/hoshitele-dec/_u.png"> - |
+| v      | <img src="./res/hoshitele-dec/_v.png"> |
+| z      | <img src="./res/hoshitele-dec/_z.png"> |

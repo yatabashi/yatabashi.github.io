@@ -26,6 +26,7 @@ yatabashi、学生
 * [はじめてのAppleScript](./applescript.html)
 * [特定の文字列を表示できるフォントの一覧を出力したい](./font-availability-checker.html)
 * [SATySFiを導入した](./install_satysfi.html)
+* [宇宙語（星屑テレパス）を読むぞ](./hoshitele-dec.html)
 
 ## Outil
 * [font_availability_checker (fontac)](https://github.com/yatabashi/font_availability_checker)  
