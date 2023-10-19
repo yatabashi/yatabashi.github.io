@@ -82,16 +82,17 @@
 > ĉi tiu kosmoveturilo ne  
 > plu utilas.  
 > iuj el la funkcioj  
-> jam finis <u>sion</u> [siajn] <u>rolon</u> [rolojn].  
+> jam finis <u>sion</u> [sian] rolon\*.  
 > mi ne <u>pavas</u> [povas] ripari ilin.  
 > <u>ĉio mi povos fari</u> [ĉio, kion mi povas fari,] estas <u>atendo</u> [atendi]  
-> la momenton de la <u>kraso</u> [kraŝo]\*.  
+> la momenton de la <u>kraso</u> [kraŝo]\*\*.  
 > la anta*ŭ*vidita <u>alteri<i>g</i>a</u> [alteriĝa]  
 > punkto estas la tero.  
 > sur ĉi tiu planedo,  
 > mi deziras  
 
-\* 字上符がないので s 相当と解釈しています
+\* [PMEG](https://bertilow.com/pmeg/gramatiko/unu-nombro_multe-nombro/uzado/specialaj_okazoj.html#i-81z) に従えば、 funkcio の一つ一つに単一の rolo が対応する場合は «sian rolon» で構いません。実際、ここではそれでよいでしょう（2023/10/19 修正・追記）。  
+\*\* 字上符がないので s 相当と解釈しています。
 
 本文（奥）：
 > —aj prepar—  
@@ -106,14 +107,14 @@
 | ------ | ------- |
 | a      | <img src="./res/hoshitele-dec/single-a.png"> |
 | b      | <img src="./res/hoshitele-dec/single-b.png"> |
-| c, ĉ   | <img src="./res/hoshitele-dec/single-c.png"> <img src="./res/hoshitele-dec/single-ĉ.png"> |
+| c, ĉ   | <img src="./res/hoshitele-dec/single-c.png">, <img src="./res/hoshitele-dec/single-ĉ.png"> |
 | d      | <img src="./res/hoshitele-dec/single-d.png"> |
 | e      | <img src="./res/hoshitele-dec/single-e.png"> |
 | f      | <img src="./res/hoshitele-dec/single-f.png"> |
-| g, ĝ   | <img src="./res/hoshitele-dec/single-g.png"> <img src="./res/hoshitele-dec/single-ĝ.png"> |
+| g, ĝ   | <img src="./res/hoshitele-dec/single-g.png">, <img src="./res/hoshitele-dec/single-ĝ.png"> |
 | h, ĥ   | - - |
 | i      | <img src="./res/hoshitele-dec/single-i.png"> |
-| j, ĵ   | <img src="./res/hoshitele-dec/single-j2.png">* - |
+| j, ĵ   | <img src="./res/hoshitele-dec/single-j1.png">* aŭ <img src="./res/hoshitele-dec/single-j2.png">, - |
 | k      | <img src="./res/hoshitele-dec/single-k.png"> |
 | l      | <img src="./res/hoshitele-dec/single-l.png"> |
 | m      | <img src="./res/hoshitele-dec/single-m.png"> |
@@ -121,13 +122,10 @@
 | o      | <img src="./res/hoshitele-dec/single-o.png"> |
 | p      | <img src="./res/hoshitele-dec/single-p.png"> |
 | r      | <img src="./res/hoshitele-dec/single-r.png"> |
-| s, ŝ   | <img src="./res/hoshitele-dec/single-s.png"> - |
+| s, ŝ   | <img src="./res/hoshitele-dec/single-s.png">, - |
 | t      | <img src="./res/hoshitele-dec/single-t.png"> |
-| u, ŭ   | <img src="./res/hoshitele-dec/single-u.png"> - |
+| u, ŭ   | <img src="./res/hoshitele-dec/single-u.png">, - |
 | v      | <img src="./res/hoshitele-dec/single-v.png"> |
 | z      | <img src="./res/hoshitele-dec/single-z.png"> |
 
-\* この記事を公開したら、冒頭の友人から
-> 管見のかぎり、jには異体字があります
-
-と来ました。よく見てみたら表紙の j は▽が逆向きの<img src="./res/hoshitele-dec/single-j1.png">という形になってましたね。自由な variation なのかな……
+\* 2023/10/19 追記
