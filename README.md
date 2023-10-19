@@ -10,7 +10,7 @@ yatabashi、学生
 * Bluesky: [@yatabashi.bsky.social](https://bsky.app/profile/yatabashi.bsky.social)
 * GitHub: [yatabashi](https://github.com/yatabashi)
 * Discord: yatabashi#2074
-* はてなブログ: [хотетьの活用が覚えられない](https://yatabashi.hatenablog.com/)
+<!-- * はてなブログ: ['ヮ'](https://yatabashi.hatenablog.com/) -->
 
 大体Twitterにいます
 
