@@ -31,5 +31,5 @@ yatabashi、学生
 ## Outil
 * [font_availability_checker (fontac)](https://github.com/yatabashi/font_availability_checker)  
     指定した文字列を表示できるフォントの一覧を出力してくれるプログラム（参考：[特定の文字列を表示できるフォントの一覧を出力したい](./font-availability-checker.html)）
-* [KUTimetable](https://github.com/yatabashi/yatabashi.github.io/tree/main/res/kutimetable)  
+* [KUTimetable](https://github.com/yatabashi/kutimetable)  
     京大生向けのローカル時間割生成用拡張機能。
