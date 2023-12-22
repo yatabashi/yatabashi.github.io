@@ -21,13 +21,13 @@
 
 \* 画像はgg sans採用前です。gg sansは「ŋ」との組み合わせにも対応していない（12月4日未明現在）ようで、表示はより崩れることになりました。悲しい。
 
-![disaster](./obs/res/fontac/disaster.png)
+![disaster](./res/fontac/disaster.png)
 
 普段なら放置するところですが、この日はなぜか気が向いたので、Font Book*でカスタム文字列に上の文字列を設定して、正しい表示ができているかどうか虱潰しに調べて行きました。結果、写真にある「[Koruri](https://koruri.github.io/)」を含むいくつかのフォントが対応していることがわかりました。
 
 \* macOSのフォントマネージャであり、インストールされているフォントを一覧することができます。この作業をした当時のmacOS Montereyでは次のような見た目でした。
 
-![fontbook](./obs/res/fontac/fontbook.png)
+![fontbook](./res/fontac/fontbook.png)
 
 この作業を簡単にするために、プログラムを組むことにしました。
 
@@ -65,7 +65,7 @@ fontac -p 'հայերեն'
 
 \* 一旦`D`を介しているのは、他の関数との兼ね合いのためです。
 
-![sample](./obs/res/fontac/sample.png)
+![sample](./res/fontac/sample.png)
 
 ## 知識
 * Pythonの話
