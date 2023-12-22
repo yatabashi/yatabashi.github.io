@@ -105,4 +105,21 @@ git reset --soft: コミットを取り消す
 リモート追跡ブランチとdiffをとる
 第9話 git diff で差分を確認！【連載】マンガでわかるGit ～コマンド編～ - itstaffing エンジニアスタイル
 
+git rm
+git reset
+
+一連の流れ：
+echo "# randomwalk" >> README.md
+git init
+git add README.md
+git commit -m "initial commit"
+git branch -M main
+git remote add origin https://github.com/yatabashi/randomwalk.git
+git push -u origin main
+
+-
+
+git add .
+git commit -m "bug fixed"
+git push origin main # 上流ブランチを設定していればorigin mainは不要？
 -->

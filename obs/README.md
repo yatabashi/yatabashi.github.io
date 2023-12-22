@@ -1,10 +1,10 @@
-# yatabashi.github.io
+# [yatabashi.github.io](https://github.com/yatabashi/yatabashi.github.io)
 yatabashi、学生
 
 ## Liens
 * Twitter: [@yatabashi](https://twitter.com/yatabashi)
-    * 人工言語創作: [@szuerke_abarke](https://twitter.com/szuerke_abarke)
-    * 暗号: [@1DcYp96ujGOj3ON](https://twitter.com/1DcYp96ujGOj3ON)
+    <!-- * 人工言語創作: [@szuerke_abarke](https://twitter.com/szuerke_abarke) -->
+    <!-- * 暗号: [@1DcYp96ujGOj3ON](https://twitter.com/1DcYp96ujGOj3ON) -->
 * ~~Mastodon: @yatabashi@fedibird.com~~ - inactif
 * Misskey: [@yatabashi@misskey.io](https://misskey.io/@yatabashi)
 * Bluesky: [@yatabashi.bsky.social](https://bsky.app/profile/yatabashi.bsky.social)

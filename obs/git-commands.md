@@ -154,9 +154,9 @@ git commit --amend -m "commit message"
 参考：[コミットの修正には git commit --amend が便利 - RAKUS Developers Blog \| ラクス エンジニアブログ](https://tech-blog.rakus.co.jp/entry/20191113/git)
 
 ## リモートリポジトリをローカルにコピーする
-リモートにあるプロジェクトをローカルにコピーしてきたい場合、クローンを行うことでカレントディレクトリにダウンロードすることができる。
+リモートにあるプロジェクトをローカルにコピーしてきたい場合、クローンを行うことでカレントディレクトリにダウンロードすることができる。コピー元のレポジトリに続いて指定されるコピー先のディレクトリは省略可能である。
 ```
-git clone https://github.com/xxx/yyy.git
+git clone https://github.com/xxx/yyy.git ~/yyy
 ```
 
 ## 変更を退避する

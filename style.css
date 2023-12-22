@@ -1,0 +1,90 @@
+@font-face {
+    font-family: 'Koruri';
+    font-weight: 400;
+    src: url('fonts/Koruri/Koruri-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Koruri';
+    font-weight: 700;
+    src: url('fonts/Koruri/Koruri-Bold.ttf');
+}
+
+body {
+    padding: 20px 40px;
+    font-family: 'Koruri', sans-serif;
+}
+
+header {
+    padding: 0px 4px 4px 0px;
+    border-bottom: 4px solid black;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+h1 {
+    margin: 0px;
+}
+
+.card {
+    margin: 0px;
+}
+
+.icon, .name {
+    display: inline;
+    vertical-align: middle;
+}
+
+.icon {
+    width: 48px;
+    aspect-ratio: 1;
+}
+
+.notice {
+    position: relative;
+    padding-left: 2em;
+    padding-right: 0.5rem;
+    width: fit-content;
+    border-left: 4px solid gray;
+    border-bottom: 2px solid gray;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.notice::before {
+    content: '⚠︎';
+    position: absolute;
+    left: 0.5em;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 4px 6px;
+    border: 1px solid;
+}
+
+p.advent-calendar {
+    border-top: 2px solid lightgray;
+    border-bottom: 2px solid lightgray;
+    padding: 6px 0px;
+}
+
+p.indent {
+    margin-left: 40px;
+}
+
+span.roman-quote {
+    margin-inline: 0.25rem;
+    font-style: italic;
+}
+
+footer {
+    border-top: 1px solid black;
+    margin-top: 40px;
+    padding-top: 4px;
+}
