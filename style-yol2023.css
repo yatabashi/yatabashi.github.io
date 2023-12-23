@@ -1,0 +1,29 @@
+table.v th, td {
+    text-align: center;
+    width: 32px;
+}
+
+table.v td.lengthening {
+    background-color: rgb(208, 208, 255);
+}
+
+table.v td.diphthongization {
+    background-color: rgb(208, 255, 208);
+}
+
+table.v td.elision {
+    background-color: rgb(255, 208, 208);
+}
+
+p.q {
+    counter-increment: qm;
+    position: relative;
+    padding-left: 1.3em;
+}
+
+p.q::before {
+    content: counter(qm, lower-alpha) ") ";
+    font-weight: 700;
+    position: absolute;
+    left: 0;
+}

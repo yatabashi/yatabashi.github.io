@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>私家版言語学オリンピック 2023 - yatabashi</title>
+        <link rel="icon" href="res/favicon.ico">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="style-yol2023.css">
+    </head>
+    <body>
+        <header>
+            <h1>私家版言語学オリンピック 2023</h1>
+            <div class="home"><a href="index.html">Accueil / Главная</a></div>
+        </header>
+        
+        <p class="advent-calendar">
+            この記事は、<a href="https://adventar.org/calendars/8540">語学・言語学・言語創作 Advent Calendar 2023</a>の12日目の記事です。<span style="font-size: 70%;">今日は……23日……？　（申し訳ないです）</span>
+        </p>
+        
+        <p>
+            3年振りに自言語で言オリ風の問題を作ってみました。
+            <br>
+            過去作として、<a href="https://twitter.com/yatabashi/status/1354788421764431878">2021年1月にTwitterで公開したもの</a>もあるのでどうぞ。
+        </p>
+        
+        <section>
+            <h2>問題</h2>
+            <div class="notice">
+                本家らしい体裁のPDF版もあります → <a href="./res/yol2023.pdf">yol2023.pdf</a>
+                <br>
+                ただし、以下の部分を読み替えて利用してください。
+                <ol>
+                    <li>6. ferle -> 6. feule</li>
+                    <li>17. 5511個の卵 -> 17. 5500個の卵</li>
+                </ol>
+                これらの修正は予定されていますが、公開時期は未定です。
+            </div>
+            <p>
+                以下に10個の立方数が与えられている：1, 8, 27, 64, 125, 216, 343, 512, 729, 1000.
+                <br>
+                これらを言語Aで表したものを、辞書順に並び替えた：
+            </p>
+            <ol>
+                <li>bazutekai</li>
+                <li>duteineva</li>
+                <li>epuna eşeluzutesuka</li>
+                <li>epuna yanazutepewalu</li>
+                <li>eşezuteyana</li>
+                <li>feule</li>
+                <li>inevaluzuteva</li>
+                <li>luzutéşelu</li>
+                <li>pewaipuna luzute</li>
+                <li>su</li>
+            </ol>
+            <p>
+                以下に回答せよ。
+            </p>
+            <p class="q">どれがどれに対応するか明らかにしなさい。</p>
+            <p class="q">以下の3つの数表現は名詞<span class="roman-quote">avumú</span>「卵」を伴っている。算用数字を用いて、「○○個の卵」の形で日本語に訳しなさい：</p>
+            <ol start="11">
+                <li>feulépuna dutekai avumú</li>
+                <li>kaipuna pewai avumú</li>
+                <li>lepuna duteli avumú</li>
+            </ol>
+            <p class="q">言語Aに訳しなさい：</p>
+            <ol start="14">
+                <li>81個の卵</li>
+                <li>193個の卵</li>
+                <li>2408個の卵</li>
+                <li>5500個の卵</li>
+            </ol>
+        </section>
+        
+        <section>
+            <h2>解答</h2>
+            <details>
+                <summary>表示</summary>
+                <ol>
+                    <li>64</li>
+                    <li>27</li>
+                    <li>729</li>
+                    <li>512</li>
+                    <li>125</li>
+                    <li>8</li>
+                    <li>343</li>
+                    <li>216</li>
+                    <li>1000</li>
+                    <li style="padding-bottom: 8px;">1</li>
+                    <li>3224個の卵</li>
+                    <li>1602個の卵</li>
+                    <li style="padding-bottom: 8px;">4030個の卵</li>
+                    <li>kaizutesi avumú</li>
+                    <li>sukazutevali avumú</li>
+                    <li>eşépunafeuli avumú</li>
+                    <li>balepuna yanaluzutei avumú</li>
+                </ol>
+            </details>
+        </section>
+        
+        <section>
+            <h2>解説（規則）</h2>
+            <details>
+                <summary>表示</summary>
+                <h3>底</h3>
+                <p>10進法（20未満）と20進法（20以上）を混用する。
+                <h3>数詞の構成</h3>
+                <table>
+                    <tr>
+                        <th>1</th>
+                        <td>su</td>
+                        <th>6</th>
+                        <td>eşe</td>
+                    </tr>
+                    <tr>
+                        <th>2</th>
+                        <td>pewa</td>
+                        <th>7</th>
+                        <td>ineva</td>
+                    </tr>
+                    <tr>
+                        <th>3</th>
+                        <td>ba</td>
+                        <th>8</th>
+                        <td>feule</td>
+                    </tr>
+                    <tr>
+                        <th>4</th>
+                        <td>kai</td>
+                        <th>9</th>
+                        <td>suka</td>
+                    </tr>
+                    <tr>
+                        <th>5</th>
+                        <td>yana</td>
+                        <th>10</th>
+                        <td>lu</td>
+                    </tr>
+                </table>
+                <p>
+                    11から19は、1から9の語形に<span class="roman-quote">-lu</span>を付加して作られる。
+                    <br>
+                    20以上の数では、次の数詞を位取りに使う：
+                </p>
+                <table>
+                    <tr>
+                        <th>20</th>
+                        <td>dute</td>
+                    </tr>
+                    <tr>
+                        <th>400</th>
+                        <td>epuna</td>
+                    </tr>
+                </table>
+                <p>
+                    これらを合わせて、数詞は位を下るように構成される：
+                </p>
+                <p class="indent">
+                    (400の位の数) + epuna # (20の位の数) + dute + (1の位の数)
+                </p>
+                <p>
+                    ただし、400の位の数と20の位の数は、1のときは位取り数詞だけで現れる。
+                    また、ある位の数が0のときは（位取り数詞ごと）脱落する。
+                    <br>
+                    400の位は、それ以下の部分とは別語を形成し、分かち書きされる。
+                </p>
+                
+                <h3>個数を数えるとき</h3>
+                <p>
+                    基数詞に接尾辞<span class="roman-quote">-i</span>を付加する。
+                </p>
+                
+                <h3>連声</h3>
+                <p>
+                    数詞を構成する上で、二つの連声が生じうる：
+                </p>
+                <ul>
+                    <li>連続する母音の融合</li>
+                    <li>語中の有声破裂音の弱化</li>
+                </ul>
+                
+                <h4>連続する母音の融合</h4>
+                <p>
+                    まず、言語Aの母音（のうちこの問題に現れるもの）は次のとおり：
+                </p>
+                <ul>
+                    <li>
+                        短母音：
+                        <ul>
+                            <li>狭母音：i, u</li>
+                            <li>広母音：e, a</li>
+                        </ul>
+                    </li>
+                    <li>長母音：é</li>
+                    <li>二重母音：ei, eu, ai</li>
+                </ul>
+                <p>
+                    これらが連続したときは、何らかの連声（融合・脱落）が生じて母音連続が回避される。この問題に現れている範囲では、次の通り：
+                </p>
+                <table class="v">
+                    <tr>
+                        <th></th>
+                        <th>e</th>
+                        <th>i</th>
+                    </tr>
+                    <tr>
+                        <th>a</th>
+                        <td>ai</td>
+                        <td>ai</td>
+                    </tr>
+                    <tr>
+                        <th>e</th>
+                        <td>é</td>
+                        <td>ei</td>
+                    </tr>
+                    <tr>
+                        <th>u</th>
+                        <td>e</td>
+                        <td>i</td>
+                    </tr>
+                    <tr>
+                        <th>ai</th>
+                        <td>ai</td>
+                        <td>ai</td>
+                    </tr>
+                </table>
+                <p>
+                    これらは、次のように説明される：
+                </p>
+                <ul>
+                    <li>同じ母音が続くとき、長母音になる。</li>
+                    <li>広母音＋母音のとき、（広母音は狭くして）二重母音になる。</li>
+                    <li>狭母音＋母音のとき、前の母音が脱落する。</li>
+                    <li>二重母音＋母音のとき、後の母音が脱落する。</li>
+                </ul>
+                <details>
+                    <summary>参考：短母音同士の連声の一覧</summary>
+                    <table class="v">
+                        <tr>
+                            <th></th>
+                            <th>a</th>
+                            <th>e</th>
+                            <th>u</th>
+                            <th>i</th>
+                        </tr>
+                        <tr>
+                            <th>a</th>
+                            <td class="lengthening">á</td>
+                            <td class="diphthongization">ai</td>
+                            <td class="diphthongization">au</td>
+                            <td class="diphthongization">ai</td>
+                        </tr>
+                        <tr>
+                            <th>e</th>
+                            <td class="diphthongization">eu</td>
+                            <td class="lengthening">é</td>
+                            <td class="diphthongization">eu</td>
+                            <td class="diphthongization">ei</td>
+                        </tr>
+                        <tr>
+                            <th>u</th>
+                            <td class="elision">a</td>
+                            <td class="elision">e</td>
+                            <td class="lengthening">ú</td>
+                            <td class="elision">i</td>
+                        </tr>
+                        <tr>
+                            <th>i</th>
+                            <td class="elision">a</td>
+                            <td class="elision">e</td>
+                            <td class="elision">u</td>
+                            <td class="lengthening">í</td>
+                        </tr>
+                    </table>
+                </details>
+                
+                <h4>語中の有声破裂音の弱化</h4>
+                <p>語中にきた有声破裂音（b, d）は、摩擦音（v, z）に弱化し、その通りに表記される。</p>
+                
+                <h3>余談</h3>
+                <p>
+                    最近の本家JOLはオンラインで開催されており、本番の問題文では不正防止のためか言語名が伏せられています。今回の私家版言オリもこれに倣った、と言って間違いではないのですが、実のところ言語名が未だに決まっていないというのが本当です（創作を始めてから4年半も経っているのに！）。「言語A」というのは、この言語で「言語」を意味する語<span class="roman-quote">apala</span>[əpʌlʌ] の頭文字を採用したものです。
+                </p>
+            </details>
+        </section>
+        
+        <footer>
+            公開日：2023-12-23
+        </footer>
+    </body>
+</html>
