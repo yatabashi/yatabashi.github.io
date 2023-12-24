@@ -83,6 +83,11 @@ span.roman-quote {
     font-style: italic;
 }
 
+blockquote.text {
+    background-color: rgb(240, 240, 240);
+    padding: 8px 16px;
+}
+
 footer {
     border-top: 1px solid black;
     margin-top: 40px;
