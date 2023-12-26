@@ -74,7 +74,7 @@ p.advent-calendar {
     padding: 6px 0px;
 }
 
-p.indent {
+.indent {
     margin-left: 40px;
 }
 
@@ -86,6 +86,17 @@ span.roman-quote {
 blockquote.text {
     background-color: rgb(240, 240, 240);
     padding: 8px 16px;
+}
+
+code {
+    background-color: rgb(240, 240, 240);
+    padding: 0.1rem 0.2rem;
+    border-radius: 0.2rem;
+    margin-inline: 0.2rem;
+}
+
+img {
+    width: 60%;
 }
 
 footer {

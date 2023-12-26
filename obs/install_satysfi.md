@@ -77,7 +77,7 @@ let-inline ctx \cyrillic it =
 本文中のキリル文字部分を`\cyrillic{}`で囲うことで目的を達成しました。  
 
 ## 完成品
-![numerals](./res/fontac/numerals.png)
+![numerals](./res/numerals.png)
 
 ## 後日談（2023年8月20日追記）
 stdja で採用される欧字フォント（ Junicode ）に、 Theano がどうもそぐわなかったので、自前で EBGaramond を入れることにしました。ライブラリ化はせず（一つには面倒に感じ、もう一つにはやり方を知りません）、ただ該当フォントファイルを `~/.satysfi/dist/fonts` に手動で投げ込んだだけなので、フォントの入ったディレクトリ、他のライブラリに関する操作を加えた際にはその都度入れ直す必要があります（`satyrographos install` によって削除されます）。また、アラビア文字も表示できるようにと同様の処置をしました（フォントは Amiri ）が、SATySFiは今のところ（バージョン0.0.8）RTLに対応していないようです。

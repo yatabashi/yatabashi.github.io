@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>特定の文字列を表示できるフォントの一覧を出力したい - yatabashi</title>
+        <link rel="icon" href="res/favicon.ico">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1>特定の文字列を表示できるフォントの一覧を出力したい</h1>
+            <div class="home"><a href="index.html">Accueil / Главная</a></div>
+        </header>
+        
+        <p>人には、特定の文字列を表示できるフォントの一覧を出力したくなるときがあります。</p>
+        
+        <p class="advent-calendar">
+            この記事は、<a href="https://adventar.org/calendars/7668">語学・言語学・言語創作 Advent Calendar 2022</a>の12日目の記事です。
+        </p>
+        
+        <section>
+            <h2>経緯</h2>
+            <p>
+                11月某日、Discordで「ə」にCOMBINING VERTICAL LINE BELOW（U+0329）を合成する機会がありました。しかしフォントがこの組み合わせに未対応だったようで、表示が崩れる憂き目に遭うことになりました。
+            </p>
+            <img src="./res/fontac/disaster.png">
+            <p>
+                （画像はgg sans採用前です。gg sansは「ŋ」との組み合わせにも対応していない（12月4日未明現在）ようで、表示はより崩れることになりました。悲しい）
+            </p>
+            <img src="./res/fontac/retsasid.png">
+            <p>
+                （その後どこかのタイミングで対応したようです。よかったね）（2023-12-27 追記）
+            </p>
+            <p>
+                普段なら放置するところですが、この日はなぜか気が向いたので、Font Book*でカスタム文字列に上の文字列を設定して、正しい表示ができているかどうか虱潰しに調べて行きました。結果、写真にある「<a href="https://koruri.github.io/">Koruri</a>」を含むいくつかのフォントが対応していることがわかりました。
+            </p>
+            <p>
+                * macOSのフォントマネージャであり、インストールされているフォントを一覧することができます。この作業をした当時（macOS Monterey）では次のような見た目でした：
+            </p>
+            <img src="./res/fontac/fontbook.png">
+            <p>
+                この作業を簡単にするために、プログラムを組むことにしました。
+            </p>
+        </section>
+        
+        <section>
+            <h2>生成物</h2>
+            <p>
+                そうして出来上がったものがこちらです。
+                <br>
+                →<a href="https://github.com/yatabashi/font_availability_checker">yatabashi/font_availability_checker</a>
+            </p>
+            <p>
+                端末にインストールされているフォントのうちから、指定した文字列を表示可能なもの（文字列の全ての文字を収録するもの）の一覧を出力するプログラムです。オプションとして、いくつかの条件が設定可能です：
+            </p>
+            <ul>
+                <li>検索対象：単一のフォント、単一ディレクトリ内のフォント、全フォント</li>
+                <li>検索方法：検索を徹底的に行う（サブファミリー名も確認し、Collectionファイルに対しては各フォントを精査する）かどうか</li>
+                <li>出力形式（検索対象が複数のフォントである場合のみ有効）：検索結果の出力にフォントファイルのパスを加えるかどうか</li>
+            </ul>
+        </section>
+        
+        <section>
+            <h2>実行例</h2>
+            <p>
+                例えば、次のコマンドを実行したときのことを考えます：<code>fontac -p 'հայերեն'</code>
+                <br>
+                これは、
+            </p>
+            <ul>
+                <li>「հայերեն」を表示できるフォントを、</li>
+                <li>全フォントを対象に、</li>
+                <li>同じファミリーのフォントは一つだけを選択して検索し、</li>
+                <li>フォントファイルへのパスを省略して出力する</li>
+            </ul>
+            <p>ものです。このとき、次のような処理が行われます：</p>
+            <ol>
+                <li>空の辞書<code>D_a</code>を生成する</li>
+                <li>
+                    フォントファイルの格納されている各ディレクトリに対して以下を実行する：
+                    <ol>
+                        <li>空の辞書<code>D</code>を生成する</li>
+                        <li>
+                            ディレクトリ内の各フォントファイルに対して以下を実行する：
+                            <ol>
+                                <li>フォントファミリー名を取得する</li>
+                                <li>同名のフォントがすでに見つかっている場合は返る</li>
+                                <li>利用可能な文字のリストを取得する</li>
+                                <li>「հայերեն」の全ての文字がリストに含まれていれば、フォントファミリー名とファイルパスを<code>D</code>に追加する</li>
+                            </ol>
+                        </li>
+                        <li><code>D</code>を<code>D_a</code>に付け加える</li>
+                    </ol>
+                </li>
+                <li><code>D_a</code>を出力する</li>
+            </ol>
+            <img src="./res/fontac/sample.png">
+        </section>
+        
+        <section>
+            <h2>知識</h2>
+            <h3>Pythonの話</h3>
+            <ul>
+                <li><code>set</code>オブジェクトに対して、要素を一つ追加したい場合は<code>.add()</code>を、複数追加したい場合は<code>.update()</code>を用いる。</li>
+                <li><code>str.endswith()</code>にはタプルを渡して、その中のいずれかに一致するかどうかを返させることもできる。</li>
+                <li><code>os.path.abspath()</code>: 自動的に相対パスを絶対パスに変換することができる。</li>
+                <li><code>os.path.expanduser()</code>: ホームディレクトリの略記を自動的に展開することができる。</li>
+                <li><code>logging.disable()</code>: 基準以下の重要度のログの出力を抑制することができる。</li>
+                <li><code>tqdm.tqdm()</code>: 実行中のfor文の進捗を可視化することができる。簡単。すごい。</li>
+                <li><code>sys.platform</code>: コードを実行中のOSを判定することができる。</li>
+                <li><code>fontTools.ttLib.TTFont()</code>: フォントファイルを解析することができる。</li>
+            </ul>
+            <p>参考：</p>
+            <ul>
+                <li><a href="https://qiita.com/ysk24ok/items/2711295d83218c699276">[Python] importの躓きどころ - Qiita</a></li>
+            </ul>
+            <h3>PythonをCLIツールにする話</h3>
+            <ul>
+                <li>Pythonのモジュール（パッケージ）は、<code>setuptools.setup</code>モジュールを利用することで（macOSのターミナルから利用できる）CLIツールにできる。</li>
+                <li>
+                    <code>argparse</code>モジュールを利用することで、<code>sys.argv</code>で扱えるのよりも複雑な構造のコマンドライン引数を利用できる。
+                    <ul>
+                    <li><code>argparse.ArgumentParser().add_mutually_exclusive_group()</code>を用いると、排他的な複数のオプションを設定できる。</li>
+                    <li>ハイフン入りの引数名は、アンダースコアに変換して参照できる。</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>参考：</p>
+            <ul>
+                <li><a href="https://rooter.jp/data-format/my-csv-tool-by-python/">[CSV]Pythonで作る自作CLI(コマンドラインツール) – 株式会社ルーター</a></li>
+                <li><a href="https://zenn.dev/d_forest/articles/b8358c56725e51da43d9">PythonでCLIツールを作ってPyPIに公開せずにpipでインストールする</a></li>
+            </ul>
+            <h3>フォントファイルの話</h3>
+            <ul>
+                <li>フォントファイルは<code>cmap</code>なるテーブルを持ち、文字コードとフォントの持つ各文字を対応付けている。よって<code>cmap</code>を解析することで、そのフォントが対応している文字を文字コードとして取得することができる。</li>
+                <li>また、フォントファイルは<code>name</code>なるテーブルも持つ。フォント名は、著作権表示やフォントの説明などとともに、ここに格納されている。</li>
+                <li>
+                    macOSではフォントファイルは、その種類に応じて、以下のように分散して保存されている。最後の二つはFont Bookに表示されず、上から二つ目はFont Bookに表示こそされるが、「Finderに表示」することができない。ややこしい。
+                    <ul>
+                        <li><code>/System/Library/Fonts/</code>: 既定のシステムフォント</li>
+                        <li>
+                            <code>/System/Library/AssetsV2/com_apple_MobileAsset_Font7/</code>: 必要に応じてダウンロードされたシステムフォント
+                            <br>
+                            おそらく、Font Bookで「Finder に表示」が薄字になっていて選択できないのはここにあるフォント。
+                        </li>
+                        <li><code>/Library/Fonts/</code>: サードパーティ製アプリケーションの規定フォント</li>
+                        <li><code>~/Library/Fonts/</code>: ユーザが追加したフォント</li>
+                        <li>
+                            <code>/System/Library/PrivateFrameworks/FontServices.framework/Versions/A/Resources/Fonts/ApplicationSupport/</code>: 特定のフォントを指定しているファイルやアプリケーションに対応するためにダウンロード可能なフォント（以前のmacOSに組み込まれていたフォントを含む）
+                            <br>
+                            今回のプログラムでは無視している。
+                        </li>
+                        <li>
+                            <code>/System/Library/PrivateFrameworks/FontServices.framework/Versions/A/Resources/Fonts/Subsets/</code>: ダウンロード可能なフォント？（詳細不明）
+                            <br>
+                            今回のプログラムでは無視している。
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Windowsでは、フォントファイルは以下の二箇所にある。わかりやすい。
+                    <ul>
+                        <li><code>C:\Windows\Fonts</code>: 全ユーザ共用</li>
+                        <li><code>%USERPROFILE%\AppData\Local\Microsoft\Windows\Fonts</code>: 個人用</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>参考：</p>
+            <ul>
+                <li><a href="https://force4u.cocolog-nifty.com/skywalker/2021/10/post-110ae6.html">[macOS12]システムフォント: [FORCE]</a></li>
+                <li><a href="https://dslabo.blog.fc2.com/blog-entry-2451.html">自分めも：macOS 13.0のフォントファイル情報 - 実験る～む</a></li>
+                <li><a href="https://support.apple.com/ja-jp/HT213266">macOS Ventura に組み込まれているフォント - Apple サポート (日本)</a></li>
+                <li><a href="https://www.umayadia.com/pysample/sample0300/Sample338EnumFonts.htm">Python インストールされているフォント名を列挙する</a></li>
+            </ul>
+            <h3>Gitの話</h3>
+            <ul>
+                <li>
+                    <code>git commit --amend</code>
+                    <br>
+                    新たにステージングした変更を最新のコミットに付け加えることができる。
+                </li>
+                <li>
+                    <code>git stash</code>
+                    <br>
+                    コミットされていない変更を一時的に退避させておくことができる。
+                </li>
+                <li>
+                    <code>git diff [commit]..[commit]</code>
+                    <br>
+                    二つのコミットの間の差分を見ることができる。
+                </li>
+            </ul>
+            <p>参考：</p>
+            <ul>
+                <li><a href="https://it-syoya-engineer.com/python-github-package-install/">【Python】GitHubから直接パッケージをインストールする方法</a></li>
+            </ul>
+        </section>
+        
+        <section>
+            <h2>後記</h2>
+            <p>今回のプログラムは、例えば国際音声記号（IPA）を完璧に表示できるフォントをパソコンにインストールされた中から<b>検索する</b>のには役立ちます。そのようなフォントを<b>入手したい</b>場合は、サークル・ヒュアリニオス（<a href="https://twitter.com/na4zagin3">ざぎん</a>氏）によりC92で発行された『国際音声記号フォント見本帖』が有用です（筆者はC100で入手）。</p>
+            <p>ところで、これは「語学・言語学・言語創作」の記事なんですか……？</p>
+        </section>
+        
+        <footer>
+            公開：2022-12-12
+            <br>
+            HTML化・追記・修正：2023-12-27
+        </footer>
+    </body>
+</html>
