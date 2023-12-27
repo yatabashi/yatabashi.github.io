@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>SATySFiを導入した - yatabashi</title>
+        <link rel="icon" href="res/favicon.ico">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1>SATySFiを導入した</h1>
+            <div class="home"><a href="index.html">Accueil / Главная</a></div>
+        </header>
+        
+        <p>レポート作成のためにSATySFiの環境構築をしようとしたら（無知と不慣れのせいで）数時間かかって少し苦労したので、行動記録をつけておきます。</p>
+        
+        <section>
+            <h2>何をしたかったか</h2>
+            <p>SATySFiを、Easytableを導入して使おうとしていました。</p>
+        </section>
+        
+        <section>
+            <h2>失敗</h2>
+            <p>まず<a href="https://puripuri2100.github.io/learn-satysfi/chapter3/chapter_3.html">SATySFi Documents</a>を参照しました。satyrographosをインストールしたのち、それを使ってSATySFiを導入しようとしたところまで覚えています。が、その後のどこかの段階で失敗しました（記憶がない）。不確かですが、SATySFiのインストールには成功し、「Hello SATySFi!」にも成功したものの、Easytableの導入に失敗したような気がします。この時点では殆ど闇雲に試行していたので、続行を諦め、他の文書を当たりました。</p>
+            <p>次に、<a href="https://github.com/gfngfn/SATySFi/blob/master/README-ja.md">本家のREADME</a>に従って導入を試みました。この文書では二つのインストール方法が示されています。しかし私はそれに気が付かず、それら二つを続けて実行することが求められているものと捉えてしまったため、すでに「Satyrographos を使ったインストール方法」に当たる操作を済ませていたにも関わらず、「OPAM を使ったインストール方法」を重ねて実行しました。当然コンフリクトを起こし（「セットアップ」節の<code>./install-libs.sh</code>の段階だったかな）、これも放棄することにしました。</p>
+            <p>また、ブラウザでSATySFiをコンパイルする方法を探し、例えば<a href="https://www.satysfi-playground.tech/">SATYSFI Playground</a>を試すなどしましたが、Easytableを呼ぶことに失敗したため、やはり諦めることになりました。なお、高校生の頃にOverleafをSATySFiをブラウザから編集する環境として推奨されたことがあり、それをまず試そうと思ったものの名前を思い出せなかったために他をあたるなどしていました（記事を書いているうちに思い出しました）。</p>
+            <p>ところで、ここまでの段階で一度も最初からやり直すと言うことをしていないのは、その発想がなかったのに加え、実行してきたコマンドが具体的に何をどこに生成しているのかを理解していなかったためです。しかし、<a href="https://www.fos.kuis.kyoto-u.ac.jp/~igarashi/class/pl/setup.html">手当たり次第に調べるうちに到達したページ</a>で、次の記述を見つけました：</p>
+            <blockquote>それでもだめなら、opamを再インストールしてみましょう。 <code>~/.opam</code> を削除した上でこのページの手順を最初からやり直してみてください。</blockquote>
+            <p>ここでやっと「やり直し」という概念を手に入れた私は、<code>~/.opam</code>を削除し、<code>brew uninstall opam</code>を実行しました。</p>
+        </section>
+        
+        <section>
+            <h2>成功</h2>
+            <p>まず、次のページを必要に応じて参照していたことを附記しておきます：<a href="https://qiita.com/na4zagin3/items/a6e025c17ef991a4c923">SATySFi インストール手引き 2021年5月版</a></p>
+            <p>再び<a href="https://github.com/gfngfn/SATySFi/blob/master/README-ja.md">本家のREADME</a>を参照したところ、「Satyrographos を使ったインストール方法」のみを実行すればいいことに気がついたため、己の注意力を心配しつつ、再び導入を始めました。以下引用：</p>
+            <pre class="codeblock">
+<code class="block">brew update
+brew install opam
+
+# 共通 OPAM の設定
+opam init
+eval $(opam env)
+opam repository add satysfi-external https://github.com/gfngfn/satysfi-external-repo.git
+opam repository add satyrographos https://github.com/na4zagin3/satyrographos-repo.git
+opam update
+
+# 共通 SATySFi のインストール
+opam depext satysfi satysfi-dist satyrographos
+opam install satysfi satysfi-dist satyrographos
+
+# 共通 SATySFi 標準ライブラリのセットアップ
+satyrographos install</code></pre>
+            <p>すると<code>satyrographos install</code>の段階で<code>command not found: satyrographos</code>とエラーを吐かれましたが、「<a href="https://qiita.com/na4zagin3/items/14fe2647b663eeac6ac2#ライブラリのダウンロードアップデート方法">Satyrographos でパッケージの簡単インストール</a>」によれば<code>eval $(opam env)</code>の実行が必要とのことだったので従い、再び実行して事無きを得ました。</p>
+            <p>これでインストールが完了したので、デモファイルを実行し、成功しました（<a href="https://github.com/gfngfn/SATySFi/blob/master/README-ja.md">本家</a>参照）：</p>
+            <pre class="codeblock">
+<code class="block">git clone https://github.com/gfngfn/SATySFi.git
+cd SATySFi/demo
+make</code></pre>
+            <p>ところで、Easytableは外部ライブラリです。よって何らかの方法で導入する必要があり、その方法については再び「<a href="https://qiita.com/na4zagin3/items/14fe2647b663eeac6ac2#%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E3%82%A2%E3%83%83%E3%83%97%E3%83%87%E3%83%BC%E3%83%88%E6%96%B9%E6%B3%95">Satyrographos でパッケージの簡単インストール</a>」に記載がありました。Easytableは<code>satyrographos-repo</code>に含まれていたため、次を実行するだけで済みました。</p>
+            <pre class="codeblock">
+<code class="block">opam install satysfi-easytable
+satyrographos install
+eval $(opam env)</code></pre>
+            <p>なお、<code>satyrographos install</code>により、目的のライブラリは次の場所にコピーされます：<code>~/.satysfi/dist/packages/easytable/easytable.satyh</code>。よって、<a href="https://github.com/monaqa/satysfi-easytable/blob/master/doc/easytable.pdf">Easytableのドキュメント</a>には<code>@require: easytable</code>とありますが、これは<code>@require: easytable/easytable</code>の誤りであるようです（<a href="https://twitter.com/puripuri2100/status/1681282119245664257">@yatabashiと@puripuri2100の会話</a>を参照）。</p>
+            <p>また、<code>open EasyTableAlias</code>の後には<code>in</code>が必要です。<a href="https://zenn.dev/monaqa/articles/2020-12-17-satysfi-for-beginner-command-definition">コマンド定義の最後に必要という記事</a>を見つけたためそれに倣いましたが、一般にdocument宣言の前で操作を行う場合には末尾に必要になるようです（<a href="https://twitter.com/puripuri2100/status/1681282678413479936">@puripuri2100の説明</a>）。</p>
+        </section>
+        
+        <section>
+            <h2>延長線</h2>
+            <p>ここまでで当初の意図は達されましたが、キリル文字を表示しようと思ったら詰まったので、それにも言及しておきます。</p>
+            <p><a href="https://github.com/gfngfn/SATySFi/wiki/%E7%9B%AE%E7%9A%84%E5%88%A5%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E4%B8%80%E8%A6%A7">軽く調べた</a>ところ、<a href="https://github.com/na4zagin3/SATySFi-fonts-theano">Fonts-Theano</a>というパッケージが見つかりました。これも<code>satyrographos-repo</code>内にあるので</p>
+            <pre class="codeblock">
+<code class="block">opam install satysfi-fonts-theano
+satyrographos install</code></pre>
+            <p>によりインストールし、用例（<a href="https://qiita.com/na4zagin3/items/627599ca746756e93bc1">参照1</a>、<a href="https://github.com/na4zagin3/SATySFi-fonts-theano/blob/master/doc-fonts-theano-ja.saty">参照2</a>）を参考に（あまり理解しないまま）次を追記し、</p>
+            <pre class="codeblock">
+<code class="block">let-inline ctx \cyrillic it = 
+  let ctx =
+    ctx |> set-font OtherScript (`fonts-theano:TheanoOldStyle`, 1., 0.)
+  in
+  read-inline ctx it</code></pre>
+            <p>本文中のキリル文字部分を<code>\cyrillic{}</code>で囲うことで目的を達成しました。</p>
+        </section>
+        
+        <section>
+            <h2>完成品</h2>
+            <img src="./res/numerals.png">
+        </section>
+        
+        <section>
+            <h2>後日談（2023年8月20日追記）</h2>
+            <p>stdjaで採用される欧字フォント（Junicode）に、Theanoがどうもそぐわなかったので、自前でEBGaramondを入れることにしました。ライブラリ化はせず（一つには面倒に感じ、もう一つにはやり方を知りません）、ただ該当フォントファイルを<code>~/.satysfi/dist/fonts</code>に手動で投げ込んだだけなので、フォントの入ったディレクトリ、他のライブラリに関する操作を加えた際にはその都度入れ直す必要があります（<code>satyrographos install</code>によって削除されます）。また、アラビア文字も表示できるようにと同様の処置をしました（フォントはAmiri）が、SATySFiは今のところ（バージョン0.0.8）RTLに対応していないようです。</p>
+            <p>また、フッターに表示されるページ数を無駄に大きな値にしたかったのでそのやり方を考えて<a href="https://twitter.com/yatabashi/status/1682696187495981057">唸っていたところSATySFi作者本人から直接救いの手が差し伸べられた</a>ので、指示に従って<a href="https://github.com/gfngfn/SATySFi/blob/211ac10bbb13f68f604af60ab18b11cd3f409395/lib-satysfi/dist/packages/stdja.satyh#L388">クラスファイル<code>stdja.satyh</code>の388行目</a>の</p>
+            <pre class="codeblock">
+<code class="block">let it-pageno = embed-string (arabic pbinfo#page-number) in</code></pre>
+            <p>を</p>
+            <pre class="codeblock">
+<code class="block">let it-pageno = embed-string (arabic (pbinfo#page-number + 64)) in</code></pre>
+            <p>に変更したファイルを<code>mystdja.satyh</code>とし、<code>~/.satysfi/dist/packages</code>に置いて読ませることにしました。</p>
+        </section>
+        
+        <footer>
+            公開：2023-07-19
+            <br>
+            HTML化・修正：2023-12-28
+        </footer>
+    </body>
+</html>

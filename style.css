@@ -88,11 +88,17 @@ blockquote.text {
     padding: 8px 16px;
 }
 
-code {
+code:not(.block) {
     background-color: rgb(240, 240, 240);
     padding: 0.1rem 0.2rem;
     border-radius: 0.2rem;
     margin-inline: 0.2rem;
+}
+
+pre.codeblock {
+    background-color: rgb(240, 240, 240);
+    /* white-space: pre-line; */
+    padding: 0.75rem 1rem;
 }
 
 img {
