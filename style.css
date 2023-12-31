@@ -105,6 +105,16 @@ img {
     width: 60%;
 }
 
+body {
+    counter-reset: h2_c;
+}
+
+h2.ordered::before {
+    content: counter(h2_c) ".";
+    counter-increment: h2_c;
+    margin-inline-end: 0.2em;
+}
+
 footer {
     border-top: 1px solid black;
     margin-top: 40px;
