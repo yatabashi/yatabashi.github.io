@@ -1,3 +1,4 @@
+/* https://koruri.github.io/ */
 @font-face {
     font-family: 'Koruri';
     font-weight: 400;
@@ -10,9 +11,21 @@
     src: url('fonts/Koruri/Koruri-Bold.ttf');
 }
 
+/* https://mplusfonts.github.io/ */
+@font-face {
+    font-family: 'MplusCodeLatin60';
+    font-weight: 400;
+    src: url('fonts/MplusCodeLatin60/MplusCodeLatin60-Regular.otf');
+}
+
 body {
     padding: 20px 40px;
     font-family: 'Koruri', sans-serif;
+}
+
+code {
+    font-family: 'MplusCodeLatin60', monospace;
+    font-size: 0.9rem;
 }
 
 header {
