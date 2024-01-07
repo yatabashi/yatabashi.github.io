@@ -13,6 +13,7 @@ textarea {
 .review {
     font-family: 'GentiumPlus';
     font-size: 2rem;
+    margin: 1rem 0;
 }
 
 #review::before {

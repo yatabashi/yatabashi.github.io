@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>自言語用キーボード - yatabashi</title>
         <link rel="icon" href="res/favicon.ico">
-        <link rel="stylesheet" href="style-fontonly.css">
+        <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="style-conlang-keyboard.css">
         <script>
             let last_input = "";
@@ -19,6 +19,8 @@
                     
                     review();
                 });
+                
+                review();
             }
             
             function replace() {
@@ -31,7 +33,7 @@
                 if (last_input !== null && Object.keys(table).includes(target)) {
                     const prefix = textarea.value.slice(0, textarea.selectionStart - 2);
                     const suffix = textarea.value.slice(textarea.selectionStart);
-                    const pos = textarea.selectionStart - 1
+                    const pos = textarea.selectionStart - 1;
                     
                     textarea.value = prefix + table[target] + suffix;
                     
@@ -40,7 +42,7 @@
             }
             
             function review() {
-                replace()
+                replace();
                 
                 const text = document.querySelector('textarea').value;
                 
@@ -82,12 +84,23 @@
         </script>
     </head>
     <body>
-        <textarea placeholder="á é í ú ç ņ ş"></textarea>
-        <p class="review" id="review"></p>
-        <p class="review" id="review-cyrl"></p>
+        <header>
+            <h1>自言語用キーボード</h1>
+            <div class="home"><a href="index.html">Accueil / Главная</a></div>
+        </header>
+        
+        <textarea placeholder="á é í ú ç ņ ş" style="margin-top: 20px;"></textarea>
+        <p class="review">
+            <span id="review"></span>
+            <br>
+            <span id="review-cyrl"></span>
+        </p>
         <!-- <p class="review" id="review-arab"></p> -->
-        <p>aa > á, ee > é, ii > í, uu > ú, cs > ç, ny > ņ, sy > ş</p>
+        <p>置換規則: aa > á, ee > é, ii > í, uu > ú, cs > ç, ny > ņ, sy > ş.</p>
         <p><a href="https://fonts.google.com/specimen/Gentium+Plus">Gentium Plus</a>を使用</p>
-        <div class="home"><a href="index.html">Accueil / Главная</a></div>
+        
+        <footer>
+            公開：2024-01-07
+        </footer>
     </body>
 </html>
