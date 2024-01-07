@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'GentiumPlus';
+    font-weight: 400;
+    src: url('fonts/GentiumPlus/GentiumPlus-Regular.ttf');
+}
+
+textarea {
+    font-family: 'GentiumPlus';
+    font-size: 4rem;
+}
+
+.review {
+    font-family: 'GentiumPlus';
+    font-size: 2rem;
+}
+
+#review::before {
+    content: 'Latn: ';
+}
+
+#review-cyrl::before {
+    content: 'Cyrl: ';
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>自言語用キーボード - yatabashi</title>
+        <link rel="icon" href="res/favicon.ico">
+        <link rel="stylesheet" href="style-fontonly.css">
+        <link rel="stylesheet" href="style-conlang-keyboard.css">
+        <script>
+            let last_input = "";
+            
+            window.onload = function () {
+                const textarea = document.querySelector('textarea');
+                
+                textarea.focus();
+                
+                textarea.addEventListener("input", (e) => {
+                    last_input = e.data;
+                    
+                    review();
+                });
+            }
+            
+            function replace() {
+                const table = {"ny": "ņ", "cs": "ç", "sy": "ş", "ii": "í", "uu": "ú", "ee": "é", "aa": "á"};
+                
+                const textarea = document.querySelector('textarea');
+                
+                const target = textarea.value.slice(textarea.selectionStart - 2, textarea.selectionStart);
+                
+                if (last_input !== null && Object.keys(table).includes(target)) {
+                    const prefix = textarea.value.slice(0, textarea.selectionStart - 2);
+                    const suffix = textarea.value.slice(textarea.selectionStart);
+                    const pos = textarea.selectionStart - 1
+                    
+                    textarea.value = prefix + table[target] + suffix;
+                    
+                    textarea.setSelectionRange(pos, pos);
+                }
+            }
+            
+            function review() {
+                replace()
+                
+                const text = document.querySelector('textarea').value;
+                
+                document.getElementById('review').textContent = text;
+                
+                const cyrl_table = {"m": "м", "n": "н", "ņ": "њ", "g": "ң", "p": "п", "b": "б", "t": "т", "d": "д", "ç": "ч", "c": "ҹ", "k": "к", "q": "г", "f": "ф", "v": "в", "s": "с", "z": "з", "ş": "ш", "j": "ж", "h": "х", "r": "ғ", "w": "ԝ", "l": "л", "y": "ј", "x": "ц", "a": "а", "e": "е", "i": "и", "u": "у", "á": "а̄", "é": "е̄", "í": "ӣ", "ú": "ӯ"};
+                
+                // const arab_table = {"m": "م", "n": "ن", "ņ": "ڽ", "g": "ڠ", "p": "ڤ", "b": "ب", "t": "ت", "d": "د", "ç": "چ", "c": "ج", "k": "ک", "q": "ݢ", "f": "ف", "v": "ۏ", "s": "س", "z": "ز", "ş": "ش", "j": "ژ", "h": "خ", "r": "غ", "w": "ۋ", "l": "ل", "y": "ي", "x": "څ", "a": "َ", "e": "ࣦ", "i": "ِ", "u": "ُ", "á": "ا", "é": "ې", "í": "ى", "ú": "و"};
+                
+                const cyrl_text = (() => {
+                    let tp = "";
+                    
+                    for (let i = 0; i < text.length; i++) {
+                        const table = {"ei": "й", "eu": "ў", "ai": "й", "eu": "ў"};
+                        
+                        if (Object.keys(table).includes(text[i-1]+text[i])) {
+                            tp += table[text[i-1]+text[i]];
+                        } else {
+                            tp += cyrl_table[text[i]] ?? text[i];
+                        }
+                    }
+                    
+                    return tp;
+                })();
+                
+                // const arab_text = (() => {
+                //     let tp = "";
+                    
+                //     for (let i = 0; i < text.length; i++) {
+                //         tp += arab_table[text[i]] ?? text[i];
+                //     }
+                    
+                //     return tp;
+                // })();
+                
+                document.getElementById('review-cyrl').textContent = cyrl_text;
+                // document.getElementById('review-arab').textContent = arab_text;
+            }
+        </script>
+    </head>
+    <body>
+        <textarea placeholder="á é í ú ç ņ ş"></textarea>
+        <p class="review" id="review"></p>
+        <p class="review" id="review-cyrl"></p>
+        <!-- <p class="review" id="review-arab"></p> -->
+        <p>aa > á, ee > é, ii > í, uu > ú, cs > ç, ny > ņ, sy > ş</p>
+        <div class="home"><a href="index.html">Accueil / Главная</a></div>
+    </body>
+</html>
