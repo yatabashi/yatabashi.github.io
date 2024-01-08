@@ -6,12 +6,12 @@
 }
 
 textarea {
-    font-family: 'GentiumPlus';
+    font-family: 'GentiumPlus', serif;
     font-size: 3rem;
 }
 
 .review {
-    font-family: 'GentiumPlus';
+    font-family: 'GentiumPlus', serif;
     font-size: 2rem;
     margin: 1rem 0;
 }
