@@ -50,13 +50,11 @@
                 
                 const cyrl_table = {"m": "м", "n": "н", "ņ": "њ", "g": "ң", "p": "п", "b": "б", "t": "т", "d": "д", "ç": "ч", "c": "ҹ", "k": "к", "q": "г", "f": "ф", "v": "в", "s": "с", "z": "з", "ş": "ш", "j": "ж", "h": "х", "r": "ғ", "w": "ԝ", "l": "л", "y": "ј", "x": "ц", "a": "а", "e": "е", "i": "и", "u": "у", "á": "а̄", "é": "е̄", "í": "ӣ", "ú": "ӯ"};
                 
-                // const arab_table = {"m": "م", "n": "ن", "ņ": "ڽ", "g": "ڠ", "p": "ڤ", "b": "ب", "t": "ت", "d": "د", "ç": "چ", "c": "ج", "k": "ک", "q": "ݢ", "f": "ف", "v": "ۏ", "s": "س", "z": "ز", "ş": "ش", "j": "ژ", "h": "خ", "r": "غ", "w": "ۋ", "l": "ل", "y": "ي", "x": "څ", "a": "َ", "e": "ࣦ", "i": "ِ", "u": "ُ", "á": "ا", "é": "ې", "í": "ى", "ú": "و"};
-                
                 const cyrl_text = (() => {
                     let tp = "";
                     
                     for (let i = 0; i < text.length; i++) {
-                        const table = {"ei": "й", "eu": "ў", "ai": "й", "eu": "ў"};
+                        const table = {"ei": "й", "eu": "ў", "ai": "й", "au": "ў"};
                         
                         if (Object.keys(table).includes(text[i-1]+text[i])) {
                             tp += table[text[i-1]+text[i]];
@@ -68,18 +66,7 @@
                     return tp;
                 })();
                 
-                // const arab_text = (() => {
-                //     let tp = "";
-                    
-                //     for (let i = 0; i < text.length; i++) {
-                //         tp += arab_table[text[i]] ?? text[i];
-                //     }
-                    
-                //     return tp;
-                // })();
-                
                 document.getElementById('review-cyrl').textContent = cyrl_text;
-                // document.getElementById('review-arab').textContent = arab_text;
             }
         </script>
     </head>
@@ -95,12 +82,13 @@
             <br>
             <span id="review-cyrl"></span>
         </p>
-        <!-- <p class="review" id="review-arab"></p> -->
         <p>置換規則: aa > á, ee > é, ii > í, uu > ú, cs > ç, ny > ņ, sy > ş.</p>
         <p><a href="https://fonts.google.com/specimen/Gentium+Plus">Gentium Plus</a>を使用</p>
         
         <footer>
             公開：2024-01-07
+            <br>
+            修正：2024-01-08
         </footer>
     </body>
 </html>
