@@ -65,6 +65,29 @@
         </style>
         
         <script>
+            function change_graph_visibility() {
+                const v = document.getElementById('graph_visibility').value;
+                
+                if (v == 'visible') {
+                    document.getElementById('bg').hidden = false;
+                    document.getElementById('bgs').hidden = true;
+                } else if (v == 'history') {
+                    document.getElementById('bg').hidden = true;
+                    document.getElementById('bgs').hidden = false;
+                } else {
+                    document.getElementById('bg').hidden = true;
+                    document.getElementById('bgs').hidden = true;
+                }
+            }
+            
+            function setGraph(r) {
+                document.getElementById('bg').style.height = (document.documentElement.clientHeight * r[r.length - 1])+"px";
+                
+                for (let i = 0; i < r.length; i++) {
+                    document.getElementById('bg'+i).style.height = (document.documentElement.clientHeight * r[i])+"px";
+                }
+            }
+            
             function getPrimenessAndLeastPrimeFactor(n) {
                 if (n % 2 == 0) {
                     return [(n == 2), 2];
@@ -85,29 +108,33 @@
                 return [true, n];
             }
             
-            let r = (new Array(16)).fill(0);
+            function getDatetime() {
+                let now = new Date();
+                let year = now.getFullYear().toString();
+                let month = (now.getMonth() + 1).toString().padStart(2, '0');
+                let day = now.getDate().toString().padStart(2, '0');
+                let hour = now.getHours().toString().padStart(2, '0');
+                let minute = now.getMinutes().toString().padStart(2, '0');
+                let second = now.getSeconds().toString().padStart(2, '0');
+                
+                return year+month+day+hour+minute+second;
+            }
             
             window.onload = () => {
                 change_graph_visibility();
                 
+                let r = (new Array(16)).fill(0);
+                
                 setTimeout(function updateClock() {
-                    let now = new Date();
-                    let year = now.getFullYear().toString();
-                    let month = (now.getMonth() + 1).toString().padStart(2, '0');
-                    let day = now.getDate().toString().padStart(2, '0');
-                    let hour = now.getHours().toString().padStart(2, '0');
-                    let minute = now.getMinutes().toString().padStart(2, '0');
-                    let second = now.getSeconds().toString().padStart(2, '0');
-                    
-                    let datetime = year+month+day+hour+minute+second;
+                    let datetime = getDatetime();
                     
                     let clock = document.getElementById('clock');
                     
-                    let flag = clock.textContent.slice(-2) != second;
-                    
-                    clock.textContent = datetime;
-                    
-                    if (flag) {
+                    if (clock.textContent != datetime) {
+                        clock.textContent = datetime;
+                        
+                        // バックグラウンドからの復帰直後は履歴が乱れる；バックグラウンドでの実行中はsetTimeoutの周期性が保たれない
+                        
                         let result = document.getElementById('result');
                         
                         const v = getPrimenessAndLeastPrimeFactor(datetime);
@@ -122,43 +149,11 @@
                         
                         r[r.length - 1] = Math.log10(lpf) / Math.log10(datetime);
                         
-                        document.getElementById('bg').style.height = (document.documentElement.clientHeight * r[r.length - 1])+"px";
-                        
-                        document.getElementById('bg0').style.height = (document.documentElement.clientHeight * r[0])+"px";
-                        document.getElementById('bg1').style.height = (document.documentElement.clientHeight * r[1])+"px";
-                        document.getElementById('bg2').style.height = (document.documentElement.clientHeight * r[2])+"px";
-                        document.getElementById('bg3').style.height = (document.documentElement.clientHeight * r[3])+"px";
-                        document.getElementById('bg4').style.height = (document.documentElement.clientHeight * r[4])+"px";
-                        document.getElementById('bg5').style.height = (document.documentElement.clientHeight * r[5])+"px";
-                        document.getElementById('bg6').style.height = (document.documentElement.clientHeight * r[6])+"px";
-                        document.getElementById('bg7').style.height = (document.documentElement.clientHeight * r[7])+"px";
-                        document.getElementById('bg8').style.height = (document.documentElement.clientHeight * r[8])+"px";
-                        document.getElementById('bg9').style.height = (document.documentElement.clientHeight * r[9])+"px";
-                        document.getElementById('bg10').style.height = (document.documentElement.clientHeight * r[10])+"px";
-                        document.getElementById('bg11').style.height = (document.documentElement.clientHeight * r[11])+"px";
-                        document.getElementById('bg12').style.height = (document.documentElement.clientHeight * r[12])+"px";
-                        document.getElementById('bg13').style.height = (document.documentElement.clientHeight * r[13])+"px";
-                        document.getElementById('bg14').style.height = (document.documentElement.clientHeight * r[14])+"px";
-                        document.getElementById('bg15').style.height = (document.documentElement.clientHeight * r[15])+"px";
+                        setGraph(r);
                     }
                     
                     setTimeout(updateClock, 100);
                 }, 100);
-            }
-            
-            function change_graph_visibility() {
-                const v = document.getElementById('graph_visibility').value;
-                
-                if (v == 'visible') {
-                    document.getElementById('bg').hidden = false;
-                    document.getElementById('bgs').hidden = true;
-                } else if (v == 'history') {
-                    document.getElementById('bg').hidden = true;
-                    document.getElementById('bgs').hidden = false;
-                } else {
-                    document.getElementById('bg').hidden = true;
-                    document.getElementById('bgs').hidden = true;
-                }
             }
         </script>
     </head>
