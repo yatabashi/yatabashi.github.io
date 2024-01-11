@@ -8,6 +8,9 @@
 textarea {
     font-family: 'GentiumPlus', serif;
     font-size: 3rem;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 20px;
 }
 
 .review {
