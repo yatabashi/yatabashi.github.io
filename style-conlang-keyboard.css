@@ -17,12 +17,18 @@ textarea {
     font-family: 'GentiumPlus', serif;
     font-size: 2rem;
     margin: 1rem 0;
+    position: relative;
+    padding-left: 2.3em;
 }
 
 #review::before {
     content: 'Latn: ';
+    position: absolute;
+    left: 0;
 }
 
 #review-cyrl::before {
     content: 'Cyrl: ';
+    position: absolute;
+    left: 0;
 }
