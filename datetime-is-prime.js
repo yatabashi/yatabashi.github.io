@@ -43,7 +43,7 @@ function createGraph(n) {
             style += `    #bg${i} { left: calc(${i} * 100% / ${n}); }
 `;
         }
-
+        
         style += '</style>';
         
         document.querySelector('style').insertAdjacentHTML('beforeend', style);
@@ -52,8 +52,6 @@ function createGraph(n) {
             let elm = document.createElement('div');
             elm.id = 'bg'+i;
             elm.className = 'bg';
-            
-            console.log(elm);
             
             if (i) {
                 document.getElementById('bg'+(i-1)).after(elm);
