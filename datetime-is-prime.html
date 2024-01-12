@@ -5,39 +5,14 @@
         <title>素数判定時計 - yatabashi</title>
         <link rel="icon" href="res/favicon.ico">        
         <link rel="stylesheet" href="style-fontonly.css">
+        <script src="datetime-is-prime.js"></script>
         
         <style>
-            #bg {
+            .bg {
                 position: fixed;
                 bottom: 0;
-                left: 0;
-                width: 100%;
                 background-color: #ddf;
             }
-            
-            #bg0, #bg1, #bg2, #bg3, #bg4, #bg5, #bg6, #bg7, #bg8, #bg9, #bg10, #bg11, #bg12, #bg13, #bg14, #bg15 {
-                position: fixed; 
-                bottom: 0;
-                width: calc(100% / 16);
-                background-color: #ddf; 
-            }
-            
-            #bg0 { left: calc(0 * 100% / 16); }
-            #bg1 { left: calc(1 * 100% / 16); }
-            #bg2 { left: calc(2 * 100% / 16); }
-            #bg3 { left: calc(3 * 100% / 16); }
-            #bg4 { left: calc(4 * 100% / 16); }
-            #bg5 { left: calc(5 * 100% / 16); }
-            #bg6 { left: calc(6 * 100% / 16); }
-            #bg7 { left: calc(7 * 100% / 16); }
-            #bg8 { left: calc(8 * 100% / 16); }
-            #bg9 { left: calc(9 * 100% / 16); }
-            #bg10 { left: calc(10 * 100% / 16); }
-            #bg11 { left: calc(11 * 100% / 16); }
-            #bg12 { left: calc(12 * 100% / 16); }
-            #bg13 { left: calc(13 * 100% / 16); }
-            #bg14 { left: calc(14 * 100% / 16); }
-            #bg15 { left: calc(15 * 100% / 16); }
             
             #selector {
                 position: fixed;
@@ -62,130 +37,13 @@
                 font-size: 6rem;
                 margin: 1rem;
             }
+            
+            sup {
+                line-height: 1;
+            }
         </style>
-        
-        <script>
-            function change_graph_visibility() {
-                const v = document.getElementById('graph_visibility').value;
-                
-                if (v == 'visible') {
-                    document.getElementById('bg').hidden = false;
-                    document.getElementById('bgs').hidden = true;
-                } else if (v == 'history') {
-                    document.getElementById('bg').hidden = true;
-                    document.getElementById('bgs').hidden = false;
-                } else {
-                    document.getElementById('bg').hidden = true;
-                    document.getElementById('bgs').hidden = true;
-                }
-            }
-            
-            function setGraph(r) {
-                document.getElementById('bg').style.height = (document.documentElement.clientHeight * r[r.length - 1])+"px";
-                
-                for (let i = 0; i < r.length; i++) {
-                    document.getElementById('bg'+i).style.height = (document.documentElement.clientHeight * r[i])+"px";
-                }
-            }
-            
-            function getPrimenessAndLeastPrimeFactor(n) {
-                if (n % 2 == 0) {
-                    return [(n == 2), 2];
-                } else if (n % 3 == 0) {
-                    return [(n == 3), 3];
-                }
-                
-                let bound = Math.sqrt(n);
-                
-                for (let i = 5; i <= bound; i += 6) {
-                    if (n % i == 0) {
-                        return [false, i];
-                    } else if (n % (i + 2) == 0) {
-                        return [false, i + 2];
-                    }
-                }
-                
-                return [true, n];
-            }
-            
-            function getDatetime() {
-                let now = new Date();
-                let year = now.getFullYear().toString();
-                let month = (now.getMonth() + 1).toString().padStart(2, '0');
-                let day = now.getDate().toString().padStart(2, '0');
-                let hour = now.getHours().toString().padStart(2, '0');
-                let minute = now.getMinutes().toString().padStart(2, '0');
-                let second = now.getSeconds().toString().padStart(2, '0');
-                
-                return year+month+day+hour+minute+second;
-            }
-            
-            window.onload = () => {
-                change_graph_visibility();
-                
-                let r = (new Array(16)).fill(0);
-                
-                setTimeout(function updateClock() {
-                    let datetime = getDatetime();
-                    
-                    let clock = document.getElementById('clock');
-                    
-                    if (clock.textContent != datetime) {
-                        clock.textContent = datetime;
-                        
-                        // バックグラウンドからの復帰直後は履歴が乱れる；バックグラウンドでの実行中はsetTimeoutの周期性が保たれない
-                        
-                        let result = document.getElementById('result');
-                        
-                        const v = getPrimenessAndLeastPrimeFactor(datetime);
-                        const isPrime = v[0];
-                        const lpf = v[1];
-                        
-                        result.textContent = isPrime ? 'は素数です。' : `は ${lpf} で割り切れます。`;
-                        
-                        for (let i = 0; i < r.length - 1; i++) {
-                            r[i] = r[i+1];
-                        }
-                        
-                        r[r.length - 1] = Math.log10(lpf) / Math.log10(datetime);
-                        
-                        setGraph(r);
-                    }
-                    
-                    setTimeout(updateClock, 100);
-                }, 100);
-            }
-        </script>
     </head>
     <body>
-        <div id="bg"></div>
-        <div id="bgs">
-            <div id="bg0"></div>
-            <div id="bg1"></div>
-            <div id="bg2"></div>
-            <div id="bg3"></div>
-            <div id="bg4"></div>
-            <div id="bg5"></div>
-            <div id="bg6"></div>
-            <div id="bg7"></div>
-            <div id="bg8"></div>
-            <div id="bg9"></div>
-            <div id="bg10"></div>
-            <div id="bg11"></div>
-            <div id="bg12"></div>
-            <div id="bg13"></div>
-            <div id="bg14"></div>
-            <div id="bg15"></div>
-        </div>
-        
-        <div id="selector">
-            <select name="graph_visibility" id="graph_visibility" onchange="change_graph_visibility()">
-                <option value="invisible">非表示</option>
-                <option value="visible">表示</option>
-                <option value="history">履歴付きで表示</option>
-            </select>
-        </div>
-        
         <div class="main">
             <p>現在時刻</p>
             <p id="clock"></p>
