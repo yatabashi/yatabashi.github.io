@@ -64,7 +64,12 @@ function createGraph(n) {
 
 window.onload = () => {
     const params = new URLSearchParams(window.location.search);
-    const n = Math.min(Number(params.get('n')), 100)
+    
+    if (params.get('r') == 'pf11n') {
+        document.title = '素因数分解時計 - yatabashi';
+    }
+    
+    const n = Math.min(Number(params.get('n')), 100);
     
     createGraph(n);
     
@@ -104,12 +109,12 @@ window.onload = () => {
                 
                 let factorization = {};
                 tpfn.split("×").forEach((factor) => {
-                    factorization[factor] = (factorization[factor] ?? 0) + 1
+                    factorization[factor] = (factorization[factor] ?? 0) + 1;
                 })
                 
                 result.innerText = "= ";
                 for (let factor in factorization) {
-                    result.innerHTML = result.innerHTML + factor + (factorization[factor] == 1 ? "" : `<sup>${factorization[factor]}</sup>`) + "×"
+                    result.innerHTML = result.innerHTML + factor + (factorization[factor] == 1 ? "" : `<sup>${factorization[factor]}</sup>`) + "×";
                 }
                 
                 result.innerHTML = result.innerHTML.slice(0, -1);
