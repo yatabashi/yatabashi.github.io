@@ -92,14 +92,14 @@ window.onload = () => {
         if (dat.length == 3) { // 欠番・廃館
             if (dat[2]) {
                 let postDat = parsed((new RegExp(`^${dat[2]}.*$`, 'm')).exec(ISIL)[0]);
-                return `<span style="text-decoration: line-through;">${dat[0]}<br>${dat[1]} （廃館）</span>`
+                return `${dat[0]}<br><span class="del">${dat[1]}</span>`
                        + `<br>↓`
                        + `<br>${getInsertion(postDat)}`;
             } else {
                 if (dat[1] == "[欠番]") {
                     return `${dat[0]}<br>${dat[1]}`;
                 } else {
-                    return `${dat[0]}<br>${dat[1]} （廃館）`;
+                    return `${dat[0]}<br><span class="del">${dat[1]}</span><br>（廃館）`;
                 }
             }
         } else {
