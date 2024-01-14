@@ -11,17 +11,16 @@
     src: url('fonts/Koruri/Koruri-Bold.ttf');
 }
 
-/* https://mplusfonts.github.io/ */
-@font-face {
-    font-family: 'MplusCodeLatin60';
-    font-weight: 400;
-    src: url('fonts/MplusCodeLatin60/MplusCodeLatin60-Regular.otf');
-}
-
 /* https://fonts.google.com/noto/specimen/Noto+Sans+JP */
 @font-face {
     font-family: 'NotoSansJP';
     src: url('fonts/Noto_Sans_JP/NotoSansJP-VariableFont_wght.ttf');
+}
+
+/* https://fonts.google.com/noto/specimen/Noto+Sans+Mono */
+@font-face {
+    font-family: 'NotoSansMono';
+    src: url('fonts/Noto_Sans_Mono/NotoSansMono-VariableFont_wdth\,wght.ttf');
 }
 
 body {
@@ -30,7 +29,7 @@ body {
 }
 
 code {
-    font-family: 'MplusCodeLatin60', monospace;
+    font-family: 'NotoSansMono', 'NotoSansJP', monospace;
     font-size: 0.9rem;
 }
 
