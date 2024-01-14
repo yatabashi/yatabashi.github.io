@@ -69,7 +69,8 @@ window.onload = () => {
         document.title = '素因数分解時計 - yatabashi';
     }
     
-    const n = Math.min(Number(params.get('n')), 100);
+    let n = Math.min(Number(params.get('n')), 100);
+    n = n > 0 ? n : 0;
     
     createGraph(n);
     
