@@ -146,3 +146,15 @@ footer {
     margin-top: 40px;
     padding-top: 4px;
 }
+
+header a:link {
+    color: black;
+}
+
+header a:visited {
+    color: black;
+}
+
+header a:hover {
+    text-decoration: none;
+}
