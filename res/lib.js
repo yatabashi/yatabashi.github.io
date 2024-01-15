@@ -92,25 +92,25 @@ window.onload = () => {
         if (dat.length == 3) { // 欠番・廃館
             if (dat[2]) {
                 let postDat = parsed((new RegExp(`^${dat[2]}.*$`, 'm')).exec(ISIL)[0]);
-                return `${dat[0]}<br><span class="del">${dat[1]}</span>`
-                       + `<br>↓`
-                       + `<br>${getInsertion(postDat)}`;
+                return `${dat[0]} <span class="del">${dat[1]}</span>`
+                       + `<br>→`
+                       + ` ${getInsertion(postDat)}`;
             } else {
                 if (dat[1] == "[欠番]") {
-                    return `${dat[0]}<br>${dat[1]}`;
+                    return `${dat[0]} ${dat[1]}`;
                 } else {
-                    return `${dat[0]}<br><span class="del">${dat[1]}</span><br>（廃館）`;
+                    return `${dat[0]} <span class="del">${dat[1]}</span>（廃館）`;
                 }
             }
         } else {
             if (!dat[2] && !dat[5]) { // 住所なし、リンクなし
-                return `${dat[0]}<br>${dat[1]}<br>（住所不明）`
+                return `${dat[0]} ${dat[1]}（住所不明）`
             } else if (!dat[2] && dat[5]) { // 住所なし、リンクあり
-                return `${dat[0]}<br><a href="${dat[5]}">${dat[1]}</a><br>（住所不明）`
+                return `${dat[0]} <a href="${dat[5]}">${dat[1]}</a>（住所不明）`
             } else if (!dat[5]) { // 住所あり、リンクなし
-                return `${dat[0]}<br>${dat[1]}<br>（${dat[2]+dat[3]+dat[4]}）`
+                return `${dat[0]} ${dat[1]}（${dat[2]+dat[3]+dat[4]}）`
             } else { // 住所あり、リンクあり
-                return `${dat[0]}<br><a href="${dat[5]}">${dat[1]}</a><br>（${dat[2]+dat[3]+dat[4]}）`
+                return `${dat[0]} <a href="${dat[5]}">${dat[1]}</a>（${dat[2]+dat[3]+dat[4]}）`
             }
         }
     }
