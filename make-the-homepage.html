@@ -12,41 +12,27 @@
             <div class="home"><a href="index.html">ホームへ</a></div>
         </header>
         
-        <p>
-            <a href="https://yatabashi.github.io">ホームページ</a>を作成した手順について記述する。なお、実際に実行したものから順序を整理しているほか、不要であった手続きの掲載を省略している。
-        </p>
+        <p><a href="https://yatabashi.github.io">ホームページ</a>を作成した手順について記述する。なお、実際に実行したものから順序を整理しているほか、不要であった手続きの掲載を省略している。</p>
         
         <section>
             <h2 class="ordered">Gmailアドレスを取得</h2>
-            <p>
-                もともと持っていたGitHubのアカウントは本名と結び付いていたので、新しく作成することにした。GitHub登録用のメールアドレスとしてGmailを利用するために、Googleアカウントを「<a href="https://accounts.google.com/SignUp">Googleアカウントの作成</a>」から作成し、Gmailアドレスを取得した。
-                <br>
-                なお、Googleアカウントの名前を名のみにしようとしたものの、登録時に姓の欄を空けておくことはできなかったため、一度姓に空でない文字列を設定しアカウントを作成したのち、「<a href="https://myaccount.google.com/personal-info">個人情報</a>」から姓を空に変更することで目的を達した。
-            </p>
+            <p>もともと持っていたGitHubのアカウントは本名と結び付いていたので、新しく作成することにした。GitHub登録用のメールアドレスとしてGmailを利用するために、Googleアカウントを「<a href="https://accounts.google.com/SignUp">Googleアカウントの作成</a>」から作成し、Gmailアドレスを取得した。<br>なお、Googleアカウントの名前を名のみにしようとしたものの、登録時に姓の欄を空けておくことはできなかったため、一度姓に空でない文字列を設定しアカウントを作成したのち、「<a href="https://myaccount.google.com/personal-info">個人情報</a>」から姓を空に変更することで目的を達した。</p>
             <p>こののちにGitHubの複数アカウントの所有を禁止する規定を知り、以前のアカウントは削除されました。 (2023-12-31 追記)</p>
         </section>
         
         <section>
             <h2 class="ordered">GitHubアカウントを作成する</h2>
-            <p>
-                「<a href="https://github.com/join">Join GitHub · GitHub</a>」からGitHubアカウントを作成した。Email address欄には 1. で取得したメールアドレスを入力した。
-            </p>
+            <p>「<a href="https://github.com/join">Join GitHub · GitHub</a>」からGitHubアカウントを作成した。Email address欄には 1. で取得したメールアドレスを入力した。</p>
         </section>
         
         <section>
             <h2 class="ordered">リポジトリを作成する</h2>
-            <p>
-                「&lt;user&gt;.github.io」という名前のリポジトリを作成することで、リポジトリ内のファイルをそのドメイン下で公開できる。
-                <br>
-                アカウントを作成したのち、「<a href="https://github.com/new">Create a New Repository</a>」でのリポジトリの作成に移った。Repository name欄には<code>yatabashi.github.io</code>と入力し、公開範囲はPublicに設定して、リポジトリを作成した。
-            </p>
+            <p>「&lt;user&gt;.github.io」という名前のリポジトリを作成することで、リポジトリ内のファイルをそのドメイン下で公開できる。<br>アカウントを作成したのち、「<a href="https://github.com/new">Create a New Repository</a>」でのリポジトリの作成に移った。Repository name欄には<code>yatabashi.github.io</code>と入力し、公開範囲はPublicに設定して、リポジトリを作成した。</p>
         </section>
         
         <section>
             <h2 class="ordered">gitを設定する</h2>
-            <p>
-                リポジトリが作成されると、gitを設定するためのいくつかの方法が表示された。今回は2番目の「...or create a new repository on the command line」を使用した。この欄には、コマンドラインから（gitを設定したいディレクトリで）実行する以下のコマンドが表示されている。
-            </p>
+            <p>リポジトリが作成されると、gitを設定するためのいくつかの方法が表示された。今回は2番目の「...or create a new repository on the command line」を使用した。この欄には、コマンドラインから（gitを設定したいディレクトリで）実行する以下のコマンドが表示されている。</p>
             <pre class="codeblock">
 <code class="block">echo "# yatabashi.github.io" >> README.md
 git init
@@ -55,23 +41,15 @@ git commit -m "first commit"
 git branch -M main
 git remote add origin https://github.com/yatabashi/yatabashi.github.io.git
 git push -u origin main</code></pre>
-            <p>
-                これらのコマンドによってgitが設定され、README.mdが追加された状態でリモートリポジトリがローカルリポジトリに同期する（ディレクトリが空だった場合）。
-            </p>
-            <p>
-                <b>以下はgit一般の設定であって、ホームページ作成に直接関わるものではない。</b>
-            </p>
-            <p>
-                gitの設定が記載されている.gitconfigを確認したところ、現ユーザーがgitを利用する際に使われるユーザー名とメールアドレスが本名に結びついたもののままであったため、修正した。.gitconfigは以下のコマンドで確認した：
-            </p>
+            <p>これらのコマンドによってgitが設定され、README.mdが追加された状態でリモートリポジトリがローカルリポジトリに同期する（ディレクトリが空だった場合）。</p>
+            <p><b>以下はgit一般の設定であって、ホームページ作成に直接関わるものではない。</b></p>
+            <p>gitの設定が記載されている.gitconfigを確認したところ、現ユーザーがgitを利用する際に使われるユーザー名とメールアドレスが本名に結びついたもののままであったため、修正した。.gitconfigは以下のコマンドで確認した：</p>
             <pre class="codeblock"><code class="block">cat ~/.gitconfig</code></pre>
             <p>設定は以下のコマンドで行った（設定値は伏せた）：</p>
             <pre class="codeblock">
 <code class="block">git config --global user.name 'xxx'
 git config --global user.email 'yyy'</code></pre>
-            <p>
-                また、.DS_Storeが追跡対象となることを（あらゆるプロジェクトで）避けるため、gitが.DS_Storeを常に無視するように<code>~/.config/git/ignore</code>に設定した。このファイルに書き込まれたファイルは、すべてのプロジェクトで無視される：
-            </p>
+            <p>また、.DS_Storeが追跡対象となることを（あらゆるプロジェクトで）避けるため、gitが.DS_Storeを常に無視するように<code>~/.config/git/ignore</code>に設定した。このファイルに書き込まれたファイルは、すべてのプロジェクトで無視される：</p>
             <pre class="codeblock">
 <code class="block">mkdir ~/.config/git
 echo '.DS_Store' >> ~/.config/git/ignore</code></pre>
@@ -115,10 +93,6 @@ git push origin master</code></pre>
             </ul>
         </section>
         
-        <footer>
-            公開：2022-11-08
-            <br>
-            HTML化・追記：2023-12-31
-        </footer>
+        <footer>公開：2022-11-08<br>HTML化・追記：2023-12-31</footer>
     </body>
 </html>
