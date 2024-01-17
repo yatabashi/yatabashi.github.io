@@ -4,15 +4,15 @@ table.v th, td {
 }
 
 table.v td.lengthening {
-    background-color: rgb(208, 208, 255);
+    background-color: #CCF;
 }
 
 table.v td.diphthongization {
-    background-color: rgb(208, 255, 208);
+    background-color: #CFC;
 }
 
 table.v td.elision {
-    background-color: rgb(255, 208, 208);
+    background-color: #FCC;
 }
 
 p.q {
