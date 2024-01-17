@@ -5,7 +5,50 @@
         <title>自言語用キーボード - yatabashi</title>
         <link rel="icon" href="res/favicon.ico">
         <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="style-conlang-keyboard.css">
+        
+        <style>
+            /* https://software.sil.org/gentium/ */
+            @font-face {
+                font-family: 'GentiumPlus';
+                font-weight: 400;
+                src: url('fonts/GentiumPlus/GentiumPlus-Regular.woff');
+            }
+
+            textarea {
+                font-family: 'GentiumPlus', serif;
+                font-size: 3rem;
+                width: 100%;
+                box-sizing: border-box;
+                margin-top: 20px;
+            }
+
+            .review {
+                font-family: 'GentiumPlus', serif;
+                font-size: 2rem;
+                margin: 1rem 0;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>自言語用キーボード</h1>
+            <div class="home"><a href="index.html">ホームへ</a></div>
+        </header>
+        
+        <textarea placeholder="á é í ú ç ņ ş = aa ee ii uu cs ny sy" rows="2"></textarea>
+        <p class="review">
+            <span style="display: inline-block; width: 4.5rem;">Latn:</span><span id="review"></span>
+            <br>
+            <span style="display: inline-block; width: 4.5rem;">Cyrl:</span><span id="review-cyrl"></span>
+        </p>
+        <p><a href="https://software.sil.org/gentium/">Gentium Plus</a>を使用</p>
+        
+        <footer>
+            公開：2024-01-07
+            <br>
+            最終更新：2024-01-11
+        </footer>
+        
         <script>
             let last_input = "";
             
@@ -69,25 +112,5 @@
                 document.getElementById('review-cyrl').innerText = cyrl_text;
             }
         </script>
-    </head>
-    <body>
-        <header>
-            <h1>自言語用キーボード</h1>
-            <div class="home"><a href="index.html">ホームへ</a></div>
-        </header>
-        
-        <textarea placeholder="á é í ú ç ņ ş = aa ee ii uu cs ny sy" rows="2"></textarea>
-        <p class="review">
-            <span style="display: inline-block; width: 4.5rem;">Latn:</span><span id="review"></span>
-            <br>
-            <span style="display: inline-block; width: 4.5rem;">Cyrl:</span><span id="review-cyrl"></span>
-        </p>
-        <p><a href="https://software.sil.org/gentium/">Gentium Plus</a>を使用</p>
-        
-        <footer>
-            公開：2024-01-07
-            <br>
-            最終更新：2024-01-11
-        </footer>
     </body>
 </html>
