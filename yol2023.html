@@ -6,6 +6,12 @@
         <link rel="icon" href="res/favicon.ico">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="style-yol2023.css">
+        
+        <style>
+            table.numerals tr:first-child th {
+                width: 3rem;
+            }
+        </style>
     </head>
     <body>
         <header>
@@ -104,35 +110,29 @@
                 <h3>底</h3>
                 <p>10進法（20未満）と20進法（20以上）を混用する。
                 <h3>数詞の構成</h3>
-                <table>
+                <table class="numerals">
                     <tr>
                         <th>1</th>
-                        <td>su</td>
-                        <th>6</th>
-                        <td>eşe</td>
-                    </tr>
-                    <tr>
                         <th>2</th>
-                        <td>pewa</td>
-                        <th>7</th>
-                        <td>ineva</td>
-                    </tr>
-                    <tr>
                         <th>3</th>
-                        <td>ba</td>
-                        <th>8</th>
-                        <td>feule</td>
-                    </tr>
-                    <tr>
                         <th>4</th>
-                        <td>kai</td>
+                        <th>5</th>
+                        <th>6</th>
+                        <th>7</th>
+                        <th>8</th>
                         <th>9</th>
-                        <td>suka</td>
+                        <th>10</th>
                     </tr>
                     <tr>
-                        <th>5</th>
+                        <td>su</td>
+                        <td>pewa</td>
+                        <td>ba</td>
+                        <td>kai</td>
                         <td>yana</td>
-                        <th>10</th>
+                        <td>eşe</td>
+                        <td>ineva</td>
+                        <td>feule</td>
+                        <td>suka</td>
                         <td>lu</td>
                     </tr>
                 </table>
@@ -141,13 +141,13 @@
                     <br>
                     20以上の数では、次の数詞を位取りに使う：
                 </p>
-                <table>
+                <table class="numerals">
                     <tr>
                         <th>20</th>
-                        <td>dute</td>
+                        <th>400</th>
                     </tr>
                     <tr>
-                        <th>400</th>
+                        <td>dute</td>
                         <td>epuna</td>
                     </tr>
                 </table>
@@ -285,6 +285,8 @@
         
         <footer>
             公開：2023-12-23
+            <br>
+            最終更新：2024-01-17
         </footer>
     </body>
 </html>
