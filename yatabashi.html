@@ -5,6 +5,36 @@
         <title>谷田橋 - yatabashi</title>
         <link rel="icon" href="res/favicon.ico">
         <link rel="stylesheet" href="style.css">
+        
+        <style>
+            .stat tr:first-child th {
+                width: 3.6rem;
+            }
+            
+            .stat tr:first-child th:nth-child(2) {
+                background-color: #FFDAD5 /* 5R 9/4 */ ;
+            }
+            
+            .stat tr:first-child th:nth-child(3) {
+                background-color: #F5E6A9 /* 5Y 9/4 */ ;
+            }
+            
+            .stat tr:first-child th:nth-child(4) {
+                background-color: #B8F3D2 /* 5G 9/4 */ ;
+            }
+            
+            .stat tr:first-child th:nth-child(5) {
+                background-color: #B4EFFD /* 5B 9/4 */ ;
+            }
+            
+            .stat tr:first-child th:nth-child(6) {
+                background-color: #EEE0FD /* 5P 9/4 */ ;
+            }
+            
+            .stat tr:first-child th:nth-child(7) {
+                background-color: #E5E5E5; /* N 9 */ ;
+            }
+        </style>
     </head>
     <body>
         <header>
@@ -17,8 +47,8 @@
         </p>
         
         <section>
-            <h2>「やたばし」と読むもの</h2>
-            <p>「年報」「データベース」によれば、「やたばし」と読む橋は3つしかないようです。それらに2地点を加えて紹介します。</p>
+            <h2>「やたばし」</h2>
+            <p>「年報」「データベース」によれば、「谷田橋」と書き「やたばし」と読む道路橋は3つしかないようです。それらに2地点を加えて紹介します。</p>
             
             <section>
                 <h3>谷田橋交差点（旧谷田川）</h3>
@@ -47,8 +77,8 @@
                     <!-- 〒361-0004 -->
                     <li>リンク：<a href="https://maps.gsi.go.jp/#16/36.183153/139.496961">地理院地図</a>、<a href="https://www.mapion.co.jp/m2/36.183153,139.496961,16">Mapion</a>、<a href="https://www.google.com/maps/place/36.183153,139.496961">Google マップ</a></li>
                     <li>
-                        「年報」と「データベース」では「2-10号橋」として掲載されているが、日本語版ウィキペディア「<a href="https://ja.wikipedia.org/wiki/%E5%9F%BC%E7%8E%89%E7%94%A8%E6%B0%B4%E8%B7%AF">埼玉用水路</a>」、また原生生物情報サーバ内「<a href="http://protist.i.hosei.ac.jp/PDB/Sampling/2009/0222/index-7.html">採取の記録：埼玉用水路沿い</a>」では「谷田橋」として言及されており、Google
-                        ストリートビューでも「谷田橋」との橋名板が確認できる。
+                        「年報」と「データベース」では「2-10号橋」として掲載されているが、日本語版ウィキペディア「<a href="https://ja.wikipedia.org/wiki/%E5%9F%BC%E7%8E%89%E7%94%A8%E6%B0%B4%E8%B7%AF">埼玉用水路</a>」、また原生生物情報サーバ内「<a href="http://protist.i.hosei.ac.jp/PDB/Sampling/2009/0222/index-7.html">採集の記録：埼玉用水路沿い</a>」では「谷田橋」として言及されており（Google
+                        ストリートビューでも漢字の橋名板が確認できる。<a href="https://maps.app.goo.gl/QGbVpNJuw1A9d8z2A">2023年5月撮影分</a>）、同「採集の記録」は平仮名表記の橋名板の写真とともに読みを「やたばし」と明記している。
                     </li>
                 </ul>
             </section>
@@ -75,14 +105,14 @@
         </section>
         
         <section>
-            <h2>「谷田橋」一覧</h2>
-            <p>読み方を問わないと、「谷田橋」は全国に41橋あるようです。</p>
+            <h2>「谷田橋」</h2>
+            <p>読み方を問わないと、「谷田橋」という道路橋は全国に41橋あるようです。</p>
         
             <details>
                 <summary>リスト</summary>
                 <p>「データベース」から引いてきたデータにリンクを加えています。</p>
                 
-                <table id="bridges">
+                <table class="bridges">
                     <tr>
                         <th>橋名</th>
                         <th>(ﾌﾘｶﾞﾅ)</th>
@@ -468,14 +498,14 @@
             
             <iframe src="https://www.google.com/maps/d/u/2/embed?mid=1soBwuG8b8SdvrZCOSPsn_ypj1cq8VHY&ehbc=2E312F&noprof=1" width="640" height="480"></iframe>
             
-            <table>
+            <table class="stat">
                 <tr>
-                    <th style="width: 3.5rem;"></th>
-                    <th style="width: 3.5rem; background-color: #FFDAD5;">たにた-</th>
-                    <th style="width: 3.5rem; background-color: #F5E6A9;">たにだ-</th>
-                    <th style="width: 3.5rem; background-color: #B8F3D2;">たんだ-</th>
-                    <th style="width: 3.5rem; background-color: #B4EFFD;">やた-</th>
-                    <th style="width: 3.5rem; background-color: #EEE0FD;">やだ-</th>
+                    <th></th>
+                    <th>たにた-</th>
+                    <th>たにだ-</th>
+                    <th>たんだ-</th>
+                    <th>やた-</th>
+                    <th>やだ-</th>
                 </tr>
                 <tr>
                     <th>-はし</th>
@@ -499,46 +529,434 @@
             </p>
         </section>
         
+        <section>
+            <h2>「.*谷田橋」（2024-01-17追記）</h2>
+            <p>「谷田橋」の前に何かがくっついているものも探しました。36橋あるらしいですね。</p>
+        
+            <details>
+                <summary>リスト</summary>
+            
+                <table class="bridges">
+                    <tr>
+                        <th>橋名</th>
+                        <th>(ﾌﾘｶﾞﾅ)</th>
+                        <th>路線名</th>
+                        <th>都道府県名</th>
+                        <th>市区町村名</th>
+                        <th>緯度</th>
+                        <th>経度</th>
+                    </tr>
+                    <tr>
+                        <td>町谷田橋</td>
+                        <td>(ﾏﾁﾀﾆﾀﾊﾞｼ)</td>
+                        <td>市道下伊豆島町谷田線</td>
+                        <td>福島県</td>
+                        <td>郡山市</td>
+                        <td>37.45481度</td>
+                        <td>140.32384度</td>
+                    </tr>
+                    <tr>
+                        <td>下谷田橋</td>
+                        <td>(ｼﾓﾀﾆﾀﾞﾊｼ)</td>
+                        <td>市道一乗寺緯３７号線</td>
+                        <td>京都府</td>
+                        <td>京都市</td>
+                        <td>35.04556度</td>
+                        <td>135.7925度</td>
+                    </tr>
+                    <tr>
+                        <td>一谷田橋</td>
+                        <td>(ｲﾁﾀﾆﾀﾞﾊｼ)</td>
+                        <td>市道井手野ぞうめき線</td>
+                        <td>佐賀県</td>
+                        <td>佐賀市</td>
+                        <td>33.43833度</td>
+                        <td>130.32056度</td>
+                    </tr>
+                    <tr>
+                        <td>仁谷田橋</td>
+                        <td>(ﾆﾀﾆﾀﾞﾊｼ)</td>
+                        <td>県道340号線</td>
+                        <td>宮崎県</td>
+                        <td>宮崎市</td>
+                        <td>31.82579度</td>
+                        <td>131.3591度</td>
+                    </tr>
+                    <tr>
+                        <td>大谷田橋</td>
+                        <td>(ｵｵﾀﾆﾀﾞﾊﾞｼ)</td>
+                        <td>町道大谷・蝉口線</td>
+                        <td>福井県</td>
+                        <td>越前町</td>
+                        <td>35.94178度</td>
+                        <td>136.11838度</td>
+                    </tr>
+                    <tr>
+                        <td>関谷田橋</td>
+                        <td>(ｾｷﾀﾆﾀﾞﾊﾞｼ)</td>
+                        <td>市道乙栗子旧国道線</td>
+                        <td>三重県</td>
+                        <td>松阪市</td>
+                        <td>34.40807度</td>
+                        <td>136.19548度</td>
+                    </tr>
+                    <tr>
+                        <td>第１谷田橋</td>
+                        <td>(ﾀﾞｲ1ﾀﾆﾀﾞﾊﾞｼ)</td>
+                        <td>南2419</td>
+                        <td>滋賀県</td>
+                        <td>大津市</td>
+                        <td>34.97047度</td>
+                        <td>135.90066度</td>
+                    </tr>
+                    <tr>
+                        <td>家俊谷田橋</td>
+                        <td>(ｲｴﾄｼﾀﾆﾀﾞﾊﾞｼ)</td>
+                        <td>市道森国前谷田線</td>
+                        <td>高知県</td>
+                        <td>土佐市</td>
+                        <td>33.4638度</td>
+                        <td>133.34967度</td>
+                    </tr>
+                    <tr>
+                        <td>西谷田橋</td>
+                        <td>(ﾆｼﾀﾆﾀﾞﾊﾞｼ)</td>
+                        <td>市道樫ノ木線</td>
+                        <td>高知県</td>
+                        <td>土佐市</td>
+                        <td>33.47度</td>
+                        <td>133.35444度</td>
+                    </tr>
+                    <tr>
+                        <td>上谷田橋</td>
+                        <td>(ｶﾐﾀﾝﾀﾞﾊｼ)</td>
+                        <td>町道2113号線</td>
+                        <td>福井県</td>
+                        <td>若狭町</td>
+                        <td>35.49583度</td>
+                        <td>135.86528度</td>
+                    </tr>
+                    <tr>
+                        <td>小谷田橋</td>
+                        <td>(ｺﾔﾀﾊｼ)</td>
+                        <td>市道幹31号線</td>
+                        <td>埼玉県</td>
+                        <td>入間市</td>
+                        <td>35.82483度</td>
+                        <td>139.36777度</td>
+                    </tr>
+                    <tr>
+                        <td>小谷田橋歩道橋</td>
+                        <td>(ｺﾔﾀﾊｼﾎﾄﾞｳｷｮｳ)</td>
+                        <td>市道幹31号線</td>
+                        <td>埼玉県</td>
+                        <td>入間市</td>
+                        <td>35.82485度</td>
+                        <td>139.36782度</td>
+                    </tr>
+                    <tr>
+                        <td>内谷田橋</td>
+                        <td>(ｳﾁﾔﾀﾊｼ)</td>
+                        <td>市道D-132号線</td>
+                        <td>埼玉県</td>
+                        <td>深谷市</td>
+                        <td>36.20545度</td>
+                        <td>139.28813度</td>
+                    </tr>
+                    <tr>
+                        <td>上谷田橋</td>
+                        <td>(ｶﾐﾔﾀﾊｼ)</td>
+                        <td>市道B-631号線</td>
+                        <td>埼玉県</td>
+                        <td>深谷市</td>
+                        <td>36.21056度</td>
+                        <td>139.2625度</td>
+                    </tr>
+                    <tr>
+                        <td>北谷田橋</td>
+                        <td>(ｷﾀﾔﾀﾊｼ)</td>
+                        <td>市道B-193号線</td>
+                        <td>埼玉県</td>
+                        <td>深谷市</td>
+                        <td>36.21611度</td>
+                        <td>139.26389度</td>
+                    </tr>
+                    <tr>
+                        <td>刈谷田橋０２９２</td>
+                        <td>(ｶﾘﾔﾀﾊｼ)</td>
+                        <td>県道長岡栃尾巻線</td>
+                        <td>新潟県</td>
+                        <td>長岡市</td>
+                        <td>37.47829度</td>
+                        <td>138.99624度</td>
+                    </tr>
+                    <tr>
+                        <td>高谷田橋</td>
+                        <td>(ｺｳﾔﾀﾊﾞｼ)</td>
+                        <td>町道184号線</td>
+                        <td>栃木県</td>
+                        <td>高根沢町</td>
+                        <td>36.65083度</td>
+                        <td>140.03361度</td>
+                    </tr>
+                    <tr>
+                        <td>仲伊谷田橋</td>
+                        <td>(ﾅｶｲﾔﾀﾊﾞｼ)</td>
+                        <td>東北縦貫自動車道弘前線</td>
+                        <td>群馬県</td>
+                        <td>館林市</td>
+                        <td>36.25544度</td>
+                        <td>139.59658度</td>
+                    </tr>
+                    <tr>
+                        <td>仲伊谷田橋</td>
+                        <td>(ﾅｶｲﾔﾀﾊﾞｼ)</td>
+                        <td>東北縦貫自動車道弘前線</td>
+                        <td>群馬県</td>
+                        <td>館林市</td>
+                        <td>36.25548度</td>
+                        <td>139.59636度</td>
+                    </tr>
+                    <tr>
+                        <td>仲伊谷田橋</td>
+                        <td>(ﾅｶｲﾔﾀﾊﾞｼ)</td>
+                        <td>市道8223号線</td>
+                        <td>群馬県</td>
+                        <td>館林市</td>
+                        <td>36.27328度</td>
+                        <td>139.52198度</td>
+                    </tr>
+                    <tr>
+                        <td>新刈谷田橋</td>
+                        <td>(ｼﾝｶﾘﾔﾀﾊﾞｼ)</td>
+                        <td>市道栃尾金町栃高線</td>
+                        <td>新潟県</td>
+                        <td>長岡市</td>
+                        <td>37.48075度</td>
+                        <td>138.99528度</td>
+                    </tr>
+                    <tr>
+                        <td>刈谷田橋０８５９</td>
+                        <td>(ｶﾘﾔﾀﾊﾞｼ)</td>
+                        <td>国道４０３号</td>
+                        <td>新潟県</td>
+                        <td>三条市</td>
+                        <td>37.6度</td>
+                        <td>138.87608度</td>
+                    </tr>
+                    <tr>
+                        <td>後谷田橋</td>
+                        <td>(ｺﾞﾔﾀﾊﾞｼ)</td>
+                        <td>市道北498号線</td>
+                        <td>静岡県</td>
+                        <td>袋井市</td>
+                        <td>34.716389度</td>
+                        <td>137.92444度</td>
+                    </tr>
+                    <tr>
+                        <td>三谷田橋</td>
+                        <td>(ﾐﾔﾀﾊﾞｼ)</td>
+                        <td>市道長谷大池線</td>
+                        <td>静岡県</td>
+                        <td>掛川市</td>
+                        <td>34.7675度</td>
+                        <td>137.98944度</td>
+                    </tr>
+                    <tr>
+                        <td>美谷田橋</td>
+                        <td>(ﾋﾞﾔﾀﾞﾊｼ)</td>
+                        <td>町道美谷田中里線</td>
+                        <td>福島県</td>
+                        <td>浅川町</td>
+                        <td>37.08246度</td>
+                        <td>140.42851度</td>
+                    </tr>
+                    <tr>
+                        <td>大谷田橋</td>
+                        <td>(ｵｵﾔﾀﾞﾊｼ)</td>
+                        <td>市道大谷田線</td>
+                        <td>静岡県</td>
+                        <td>掛川市</td>
+                        <td>34.70611度</td>
+                        <td>138.03861度</td>
+                    </tr>
+                    <tr>
+                        <td>神谷田橋</td>
+                        <td>(ｶﾐﾔﾀﾞﾊｼ)</td>
+                        <td>市道田代分垂線</td>
+                        <td>愛知県</td>
+                        <td>新城市</td>
+                        <td>34.97111度</td>
+                        <td>137.56583度</td>
+                    </tr>
+                    <tr>
+                        <td>橋谷田橋</td>
+                        <td>(ﾊｼﾔﾀﾞﾊﾞｼ)</td>
+                        <td>市道豊岡４線</td>
+                        <td>北海道</td>
+                        <td>芦別市</td>
+                        <td>43.60434度</td>
+                        <td>142.17437度</td>
+                    </tr>
+                    <tr>
+                        <td>糀谷田橋</td>
+                        <td>(ｺｳｼﾞﾔﾀﾞﾊﾞｼ)</td>
+                        <td>市道郷田森下線</td>
+                        <td>岩手県</td>
+                        <td>奥州市</td>
+                        <td>39.12152度</td>
+                        <td>141.09533度</td>
+                    </tr>
+                    <tr>
+                        <td>東谷田橋</td>
+                        <td>(ﾋｶﾞｼﾔﾀﾞﾊﾞｼ)</td>
+                        <td>市道８２０号線</td>
+                        <td>栃木県</td>
+                        <td>宇都宮市</td>
+                        <td>36.50002度</td>
+                        <td>139.84856度</td>
+                    </tr>
+                    <tr>
+                        <td>下谷田橋</td>
+                        <td>(ｼﾓﾔﾀﾞﾊﾞｼ)</td>
+                        <td>村道谷田立線新道２号線</td>
+                        <td>長野県</td>
+                        <td>中川村</td>
+                        <td>35.64745度</td>
+                        <td>137.96171度</td>
+                    </tr>
+                    <tr>
+                        <td>中谷田橋</td>
+                        <td>(ﾅｶﾔﾀﾞﾊﾞｼ)</td>
+                        <td>村道谷田線</td>
+                        <td>長野県</td>
+                        <td>中川村</td>
+                        <td>35.64922度</td>
+                        <td>137.9643度</td>
+                    </tr>
+                    <tr>
+                        <td>平野谷田橋</td>
+                        <td>(ﾋﾗﾉﾔﾀﾞﾊﾞｼ)</td>
+                        <td>市道平野沢左岸2号線</td>
+                        <td>静岡県</td>
+                        <td>掛川市</td>
+                        <td>34.75194度</td>
+                        <td>137.9775度</td>
+                    </tr>
+                    <tr>
+                        <td>西谷田橋</td>
+                        <td>(ﾆｼﾔﾀﾞﾊﾞｼ)</td>
+                        <td>市道下西郷1－8号線</td>
+                        <td>静岡県</td>
+                        <td>掛川市</td>
+                        <td>34.78222度</td>
+                        <td>138.00972度</td>
+                    </tr>
+                    <tr>
+                        <td>長谷田橋</td>
+                        <td>(ﾊｾﾀﾞﾊﾞｼ)</td>
+                        <td>長谷田2号線</td>
+                        <td>青森県</td>
+                        <td>大鰐町</td>
+                        <td>40.51333度</td>
+                        <td>140.59472度</td>
+                    </tr>
+                    <tr>
+                        <td>長谷田橋</td>
+                        <td>(ﾊｾﾀﾞﾊﾞｼ)</td>
+                        <td>県道熊谷小川秩父線</td>
+                        <td>埼玉県</td>
+                        <td>東秩父村</td>
+                        <td>36.06269度</td>
+                        <td>139.18152度</td>
+                    </tr>
+                </table>
+            </details>
+            
+            <p>前に何もついていないものと合わせて77橋を、改めてプロットしたり数えたりしました。</p>
+            
+            <iframe src="https://www.google.com/maps/d/u/2/embed?mid=1QRTH4FMcX8zCdNa1C0YlZH_jqAmTTaM&ehbc=2E312F&noprof=1" width="640" height="480"></iframe>
+            
+            <table class="stat">
+                <tr>
+                    <th></th>
+                    <th>たにた-</th>
+                    <th>たにだ-</th>
+                    <th>たんだ-</th>
+                    <th>やた-</th>
+                    <th>やだ-</th>
+                    <th>その他</th>
+                </tr>
+                <tr>
+                    <th>-はし</th>
+                    <td>0</td>
+                    <td>11</td>
+                    <td>2</td>
+                    <td>7</td>
+                    <td>5</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <th>-ばし</th>
+                    <td>5</td>
+                    <td>21</td>
+                    <td>5</td>
+                    <td>11</td>
+                    <td>8</td>
+                    <td>2*</td>
+                </tr>
+            </table>
+            
+            <p>* 長谷田橋（はせだばし）</p>
+            
+            <p>こちらを見ると北海道から九州まで広く分布しているのがわかります。タニとヤの地域差もはっきり見えますね。</p>
+        </section>
+        
         <footer>
             公開：2024-01-16
+            <br>
+            最終更新：2024-01-17
         </footer>
         
         <script>
-            const table = document.getElementById('bridges');
-            for (let i = 0; i < table.rows.length; i++) {
-                const row = table.rows[i];
-                
-                if (i == 0) {
-                    let cell = row.insertCell(-1);
-                    cell.outerHTML = "<th colspan=\"3\">リンク</th>"
-                } else {
-                    const lat = row.cells[5].firstChild.data.slice(0, -1);
-                    const lon = row.cells[6].firstChild.data.slice(0, -1);
+            for (let table of document.getElementsByClassName('bridges')) {
+                for (let i = 0; i < table.rows.length; i++) {
+                    const row = table.rows[i];
                     
-                    let gsi = row.insertCell(-1);
-                    gsi.innerHTML = `<a href="https://maps.gsi.go.jp/#16/${lat}/${lon}">地理院地図</a>`;
+                    if (i == 0) {
+                        let cell = row.insertCell(-1);
+                        cell.outerHTML = "<th colspan=\"3\">リンク</th>"
+                    } else {
+                        const lat = row.cells[5].firstChild.data.slice(0, -1);
+                        const lon = row.cells[6].firstChild.data.slice(0, -1);
+                        
+                        let gsi = row.insertCell(-1);
+                        gsi.innerHTML = `<a href="https://maps.gsi.go.jp/#16/${lat}/${lon}">地理院地図</a>`;
+                        
+                        let mapion = row.insertCell(-1);
+                        mapion.innerHTML = `<a href="https://www.mapion.co.jp/m2/${lat},${lon},16">Mapion</a>`;
+                        
+                        let google = row.insertCell(-1);
+                        google.innerHTML = `<a href="https://www.google.com/maps/place/${lat},${lon}">Google マップ</a>`;
+                    }
                     
-                    let mapion = row.insertCell(-1);
-                    mapion.innerHTML = `<a href="https://www.mapion.co.jp/m2/${lat},${lon},16">Mapion</a>`;
+                    if (i == 0) {
+                        continue;
+                    }
                     
-                    let google = row.insertCell(-1);
-                    google.innerHTML = `<a href="https://www.google.com/maps/place/${lat},${lon}">Google マップ</a>`;
-                }
-                
-                if (i == 0) {
-                    continue;
-                }
-                
-                if (row.cells[1].innerText.includes('ﾀﾆﾀﾞ')) {
-                    row.bgColor = '#F5E6A9';
-                } else if (row.cells[1].innerText.includes('ﾀﾆﾀ')) {
-                    row.bgColor = '#FFDAD5';
-                } else if (row.cells[1].innerText.includes('ﾀﾝﾀﾞ')) {
-                    row.bgColor = '#B8F3D2';
-                } else if (row.cells[1].innerText.includes('ﾔﾀﾞ')) {
-                    row.bgColor = '#EEE0FD';
-                } else if (row.cells[1].innerText.includes('ﾔﾀ')) {
-                    row.bgColor = '#B4EFFD';
+                    if (row.cells[1].innerText.includes('ﾀﾆﾀﾞ')) {
+                        row.bgColor = '#F5E6A9';
+                    } else if (row.cells[1].innerText.includes('ﾀﾆﾀ')) {
+                        row.bgColor = '#FFDAD5';
+                    } else if (row.cells[1].innerText.includes('ﾀﾝﾀﾞ')) {
+                        row.bgColor = '#B8F3D2';
+                    } else if (row.cells[1].innerText.includes('ﾔﾀﾞ')) {
+                        row.bgColor = '#EEE0FD';
+                    } else if (row.cells[1].innerText.includes('ﾔﾀ')) {
+                        row.bgColor = '#B4EFFD';
+                    } else {
+                        row.bgColor = '#E5E5E5';
+                    }
                 }
             }
         </script>
