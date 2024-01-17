@@ -52,20 +52,6 @@
         <script>
             let last_input = "";
             
-            window.onload = function () {
-                const textarea = document.querySelector('textarea');
-                
-                textarea.focus();
-                
-                textarea.addEventListener("input", (e) => {
-                    last_input = e.data;
-                    
-                    review();
-                });
-                
-                review();
-            }
-            
             function replace() {
                 const table = {"ny": "ņ", "cs": "ç", "sy": "ş", "ii": "í", "uu": "ú", "ee": "é", "aa": "á"};
                 
@@ -111,6 +97,18 @@
                 
                 document.getElementById('review-cyrl').innerText = cyrl_text;
             }
+            
+            const textarea = document.querySelector('textarea');
+            
+            textarea.focus();
+            
+            textarea.addEventListener("input", (e) => {
+                last_input = e.data;
+                
+                review();
+            });
+            
+            review();
         </script>
     </body>
 </html>
