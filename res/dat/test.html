@@ -13,12 +13,13 @@
                 const LIST = await response.text();
                 const dat = (new RegExp(`^JP-1003415.*$`, 'm')).exec(LIST)[0];
                 
-                console.log(LIST);
-                console.log((await (new RegExp(`^JP-1003415.*$`, 'm')).exec(LIST)[0]));
-                console.log(dat);
+                console.log("LIST:", LIST);
+                console.log("LINE1:", (await (new RegExp(`^JP-1003415.*$`, 'm')).exec(LIST)[0]));
+                console.log("LINE2:", dat);
                 return dat;
             }
             
+            getDat();
             document.getElementById('p1').textContent = (await getDat());
         </script>
     </body>
