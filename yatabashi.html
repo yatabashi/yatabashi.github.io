@@ -212,7 +212,7 @@
             ]
             
             async function main() {
-                let sources = await Promise.all(
+                await Promise.all(
                     data.forEach(set => 
                         fetch(set.file)
                         .then(response => {
