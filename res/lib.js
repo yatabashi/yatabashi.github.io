@@ -33,7 +33,7 @@ function getTodaysNumber() {
     return w;
 }
 
-function getLibDatStr(n) {
+async function getLibDatStr(n) {
     const LIB = 7936;
     const MUS = 4372;
     const ARC = 102;
@@ -60,10 +60,13 @@ function getLibDatStr(n) {
         nextISIL = `JP-1${(1).toString().padStart(6, '0')}`;
     }
     
-    return (new RegExp(`^${rISIL}.*$`, 'm')).exec(ISIL)[0];
+    const response = await fetch("https://yatabashi.github.io/res/dat/isildat.csv");
+    const LIST = await response.text();
+    return (new RegExp(`^${rISIL}.*$`, 'm')).exec(LIST)[0];
 }
 
 function parsed(s) {
+    // 値に改行文字を含む場合その手前まで (JP-1007833)
     let result = [""];
     let k = 0;
     let betweenQuotes = false;
@@ -85,9 +88,6 @@ function parsed(s) {
 }
 
 window.onload = () => {
-    const dat = parsed(getLibDatStr(getTodaysNumber()));
-    // 値に改行文字を含む場合その手前まで (JP-1007833)
-    
     function getInsertion(dat) {
         if (dat.length == 3) { // 欠番・廃館
             if (dat[2]) {
@@ -115,5 +115,8 @@ window.onload = () => {
         }
     }
     
-    document.getElementById('lib').innerHTML = getInsertion(dat);
+    getLibDatStr(getTodaysNumber()).onload(line => {
+        const dat = parsed(line);
+        document.getElementById('lib').innerHTML = getInsertion(dat);
+    })
 }
