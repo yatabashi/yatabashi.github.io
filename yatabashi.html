@@ -200,11 +200,6 @@
         <footer>公開：2024-01-16<br>最終更新：2024-01-17</footer>
         
         <script>
-            async function fetchDat(url) {
-                const response = await fetch(url);
-                return await response.text();
-            }
-            
             const data = [
                 {
                     "table": document.getElementById('gtq'),
@@ -216,28 +211,31 @@
                 }
             ]
             
-            async function insertTable(set) {
-                let source = await fetchDat(set.file);
+            (async () => {
+                let sources = await Promise.all(
+                    data.forEach(set => 
+                        fetch(set.file)
+                        .then(response => {
+                            set.source = response.text();
+                        })
+                    )
+                )
                 
-                let inner = '';
-                
-                let tag = 'th';
-                source.split('\n').map((line) => {
-                    inner += '<tr>';
-                    line.split(',').map((item) => {
-                        inner += `<${tag}>${item}</${tag}>`
-                    });
-                    inner += '</tr>';
-                    
-                    tag = 'td';
-                })
-                
-                set.table.insertAdjacentHTML('afterbegin', inner);
-            }
-            
-            async function main() {
                 for (let set of data) {
-                    await insertTable(set);
+                    let inner = '';
+                    
+                    let tag = 'th';
+                    set.source.split('\n').map((line) => {
+                        inner += '<tr>';
+                        line.split(',').map((item) => {
+                            inner += `<${tag}>${item}</${tag}>`
+                        });
+                        inner += '</tr>';
+                        
+                        tag = 'td';
+                    })
+                    
+                    set.table.insertAdjacentHTML('afterbegin', inner);
                 }
                 
                 for (let table of document.getElementsByClassName('bridges')) {
@@ -280,9 +278,7 @@
                         }
                     }
                 }   
-            }
-            
-            main();
+            })();
         </script>
     </body>
 </html>
