@@ -211,7 +211,7 @@
                 }
             ]
             
-            (async () => {
+            async function main() {
                 let sources = await Promise.all(
                     data.map(set => 
                         fetch(set.file)
@@ -280,7 +280,9 @@
                         }
                     }
                 }   
-            })();
+            }
+            
+            main();
         </script>
     </body>
 </html>
