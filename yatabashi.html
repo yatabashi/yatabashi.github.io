@@ -211,9 +211,7 @@
                 }
             ]
             
-            async function main() {
-                console.log(0);
-                
+            (async () => {
                 let sources = await Promise.all(
                     data.map(set => 
                         fetch(set.file)
@@ -221,13 +219,9 @@
                     )
                 )
                 
-                console.log(1);
-                
                 for (let i = 0; i < data.length; i++) {
                     data[i].source = sources[i]
                 }
-                
-                console.log(1.5);
                 
                 for (let set of data) {
                     let inner = '';
@@ -245,8 +239,6 @@
                     
                     set.table.insertAdjacentHTML('afterbegin', inner);
                 }
-                
-                console.log(2);
                 
                 for (let table of document.getElementsByClassName('bridges')) {
                     for (let i = 0; i < table.rows.length; i++) {
@@ -288,9 +280,7 @@
                         }
                     }
                 }   
-            }
-            
-            main();
+            })();
         </script>
     </body>
 </html>
