@@ -115,7 +115,7 @@ window.onload = () => {
         }
     }
     
-    getLibDatStr(getTodaysNumber()).onload(line => {
+    getLibDatStr(getTodaysNumber()).then(line => {
         const dat = parsed(line);
         document.getElementById('lib').innerHTML = getInsertion(dat);
     })
