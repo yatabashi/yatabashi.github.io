@@ -22,7 +22,10 @@
             }
             
             getDat();
-            document.getElementById('p1').textContent = await getDat();
+            
+            getDat().then(result => {
+                document.getElementById('p1').textContent = result;
+            });
         </script>
     </body>
 </html>
