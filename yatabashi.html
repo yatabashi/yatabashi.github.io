@@ -217,16 +217,14 @@
                 let sources = await Promise.all(
                     data.map(set => 
                         fetch(set.file)
-                        .then(response => {
-                            response.text();
-                        })
+                        .then(response => response.text())
                     )
                 )
                 
                 console.log(1);
                 
-                for (let source of sources) {
-                    data.source = source
+                for (let i = 0; i < data.length; i++) {
+                    data[i].source = sources[i]
                 }
                 
                 console.log(1.5);
