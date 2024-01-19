@@ -214,16 +214,22 @@
             async function main() {
                 console.log(0);
                 
-                await Promise.all(
-                    data.forEach(set => 
+                let sources = await Promise.all(
+                    data.map(set => 
                         fetch(set.file)
                         .then(response => {
-                            set.source = response.text();
+                            response.text();
                         })
                     )
                 )
                 
                 console.log(1);
+                
+                for (let source of sources) {
+                    data.source = source
+                }
+                
+                console.log(1.5);
                 
                 for (let set of data) {
                     let inner = '';
