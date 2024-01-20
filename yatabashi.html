@@ -228,13 +228,15 @@
                     
                     let tag = 'th';
                     set.source.split('\n').map((line) => {
-                        inner += '<tr>';
-                        line.split(',').map((item) => {
-                            inner += `<${tag}>${item}</${tag}>`
-                        });
-                        inner += '</tr>';
-                        
-                        tag = 'td';
+                        if (line != "") {
+                            inner += '<tr>';
+                            line.split(',').map((item) => {
+                                inner += `<${tag}>${item}</${tag}>`
+                            });
+                            inner += '</tr>';
+                            
+                            tag = 'td';
+                        }
                     })
                     
                     set.table.insertAdjacentHTML('afterbegin', inner);
