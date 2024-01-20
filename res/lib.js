@@ -33,7 +33,7 @@ function getTodaysNumber() {
     return w;
 }
 
-async function getLibDatStr(n) {
+function getLibDatStr(n) {
     console.log(`startgetdat: ${(new Date()).getTime()} ms`);
     
     const LIB = 7936;
@@ -62,77 +62,38 @@ async function getLibDatStr(n) {
         nextISIL = `JP-1${(1).toString().padStart(6, '0')}`;
     }
     
-    console.log(`  startfetch: ${(new Date()).getTime()} ms`);
-    
-    const response = await fetch("https://yatabashi.github.io/res/dat/isildat.csv");
-    
-    console.log(`  endfetch: ${(new Date()).getTime()} ms`);
-    console.log(`  startgettext: ${(new Date()).getTime()} ms`);
-    
-    const LIST = await response.text();
-    
-    console.log(`  endgettext: ${(new Date()).getTime()} ms`);
-    console.log(`endgetdat: ${(new Date()).getTime()} ms`);
-    
-    return (new RegExp(`^${rISIL}.*$`, 'm')).exec(LIST)[0];
+    return [rISIL].concat(ISILTABLE[rISIL]);
 }
 
-function parsed(s) {
-    // 値に改行文字を含む場合その手前まで (JP-1007833)
-    let result = [""];
-    let k = 0;
-    let betweenQuotes = false;
-    
-    for (let i = 0; i < s.length; i++) {
-        if (s[i] == "\"") {
-            betweenQuotes = !betweenQuotes;
+function getInsertion(dat) {
+    if (dat.length == 3) { // 欠番・廃館
+        if (dat[2]) {
+            let postDat = [dat[2]].concat(ISILTABLE[dat[2]]);
+            return `${dat[0]} <span class="del">${dat[1]}</span>`
+                   + `<br>→`
+                   + ` ${getInsertion(postDat)}`;
         } else {
-            if (s[i] == "," && !betweenQuotes) {
-                k++;
-                result[k] = "";
+            if (dat[1] == "[欠番]") {
+                return `${dat[0]} ${dat[1]}`;
             } else {
-                result[k] += s[i];
+                return `${dat[0]} <span class="del">${dat[1]}</span>（廃館）`;
             }
         }
+    } else {
+        if (!dat[2] && !dat[5]) { // 住所なし、リンクなし
+            return `${dat[0]} ${dat[1]}（住所不明）`
+        } else if (!dat[2] && dat[5]) { // 住所なし、リンクあり
+            return `${dat[0]} <a href="${dat[5]}">${dat[1]}</a>（住所不明）`
+        } else if (!dat[5]) { // 住所あり、リンクなし
+            return `${dat[0]} ${dat[1]}（${dat[2]+dat[3]+dat[4]}）`
+        } else { // 住所あり、リンクあり
+            return `${dat[0]} <a href="${dat[5]}">${dat[1]}</a>（${dat[2]+dat[3]+dat[4]}）`
+        }
     }
-    
-    return result;
 }
+
+let data = getLibDatStr(getTodaysNumber());
 
 window.onload = () => {
-    function getInsertion(dat) {
-        if (dat.length == 3) { // 欠番・廃館
-            if (dat[2]) {
-                let postDat = parsed((new RegExp(`^${dat[2]}.*$`, 'm')).exec(ISIL)[0]);
-                return `${dat[0]} <span class="del">${dat[1]}</span>`
-                       + `<br>→`
-                       + ` ${getInsertion(postDat)}`;
-            } else {
-                if (dat[1] == "[欠番]") {
-                    return `${dat[0]} ${dat[1]}`;
-                } else {
-                    return `${dat[0]} <span class="del">${dat[1]}</span>（廃館）`;
-                }
-            }
-        } else {
-            if (!dat[2] && !dat[5]) { // 住所なし、リンクなし
-                return `${dat[0]} ${dat[1]}（住所不明）`
-            } else if (!dat[2] && dat[5]) { // 住所なし、リンクあり
-                return `${dat[0]} <a href="${dat[5]}">${dat[1]}</a>（住所不明）`
-            } else if (!dat[5]) { // 住所あり、リンクなし
-                return `${dat[0]} ${dat[1]}（${dat[2]+dat[3]+dat[4]}）`
-            } else { // 住所あり、リンクあり
-                return `${dat[0]} <a href="${dat[5]}">${dat[1]}</a>（${dat[2]+dat[3]+dat[4]}）`
-            }
-        }
-    }
-    
-    console.log(`start: ${(new Date()).getTime()} ms`);
-    
-    getLibDatStr(getTodaysNumber()).then(line => {
-        const dat = parsed(line);
-        document.getElementById('lib').innerHTML = getInsertion(dat);
-    })
-    
-    console.log(`end: ${(new Date()).getTime()} ms`);
+    document.getElementById('lib').innerHTML = getInsertion(data);
 }
