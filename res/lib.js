@@ -1,4 +1,6 @@
 function getTodaysNumber() {
+    console.log(`startgetn: ${(new Date()).getTime()} ms`);
+    
     function now() {
         let now = new Date();
         let year = now.getFullYear().toString();
@@ -30,10 +32,14 @@ function getTodaysNumber() {
         xorshift();
     }
     
+    console.log(`endgetn: ${(new Date()).getTime()} ms`);
+    
     return w;
 }
 
 async function getLibDatStr(n) {
+    console.log(`startgetdat: ${(new Date()).getTime()} ms`);
+    
     const LIB = 7936;
     const MUS = 4372;
     const ARC = 102;
@@ -60,12 +66,21 @@ async function getLibDatStr(n) {
         nextISIL = `JP-1${(1).toString().padStart(6, '0')}`;
     }
     
+    console.log(`  startfetch: ${(new Date()).getTime()} ms`);
+    
     const response = await fetch("https://yatabashi.github.io/res/dat/isildat.csv");
     const LIST = await response.text();
+    
+    console.log(`  endfetch: ${(new Date()).getTime()} ms`);
+    
+    console.log(`endgetdat: ${(new Date()).getTime()} ms`);
+    
     return (new RegExp(`^${rISIL}.*$`, 'm')).exec(LIST)[0];
 }
 
 function parsed(s) {
+    console.log(`startparse: ${(new Date()).getTime()} ms`);
+    
     // 値に改行文字を含む場合その手前まで (JP-1007833)
     let result = [""];
     let k = 0;
@@ -83,6 +98,8 @@ function parsed(s) {
             }
         }
     }
+    
+    console.log(`endparse: ${(new Date()).getTime()} ms`);
     
     return result;
 }
@@ -115,8 +132,14 @@ window.onload = () => {
         }
     }
     
+    console.log(`start: ${(new Date()).getTime()} ms`);
+    
     getLibDatStr(getTodaysNumber()).then(line => {
+        console.log(`startthen: ${(new Date()).getTime()} ms`);
         const dat = parsed(line);
         document.getElementById('lib').innerHTML = getInsertion(dat);
+        console.log(`endthen: ${(new Date()).getTime()} ms`);
     })
+    
+    console.log(`end: ${(new Date()).getTime()} ms`);
 }
