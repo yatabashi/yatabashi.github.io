@@ -5,16 +5,75 @@
         <title>ISIL: 図書館及び関連組織のための国際標準識別子 - yatabashi</title>
         <link rel="icon" href="res/favicon.ico">
         <link rel="stylesheet" href="style.css">
+        <script src="res/isildat.js"></script>
     </head>
     <body>
         <header>
             <h1>ISIL: 図書館及び関連組織のための国際標準識別子</h1>
             <div class="home"><a href="index.html">ホームへ</a></div>
         </header>
-        <p>「図書館及び関連組織のための国際標準識別子（<abbr title="International Standard identifier for libraries and related organizations">ISIL</abbr>）」とは、図書館やその関連組織に付与される国際的なIDであり、ISO 15511に定められています。日本においては国立国会図書館（NDL）が登録機関であり、国内の機関に対するISILの付与とその管理を行っています。NDLによれば、日本のISILは図書館、博物館、公文書館の3つの種別ごとに連番で付与され、例えば東京都台東区にある「東京都恩賜上野動物園」には1309番目の博物館として<code>JP-2001309</code>という付番がなされています。「今日の図書館・博物館・公文書館」に利用している2023年12月25日時点のデータでは、図書館7936 (7607)館、博物館4372 (4360)館、公文書館102 (101)館が登録されています（括弧内は欠番・廃館を除いた数）。</p>
+        <p>「図書館及び関連組織のための国際標準識別子（<abbr title="International Standard identifier for libraries and related organizations">ISIL</abbr>）」とは、図書館やその関連組織に付与される国際的なIDであり、ISO 15511に定められています。日本においては国立国会図書館（NDL）が登録機関であり、国内の機関に対するISILの付与とその管理を行っています。NDLによれば、日本のISILは図書館、博物館、公文書館の3つの種別ごとに連番で付与され、例えば東京都台東区にある「東京都恩賜上野動物園」には1309番目の博物館として<code>JP-2001309</code>という付番がなされています。「今日の図書館・博物館・公文書館」に利用している2023年12月25日時点のデータでの登録館数は、次のようになっています。</p>
+        <table>
+            <tr>
+                <th colspan="2">種別</th>
+                <th>現行館</th>
+                <th>廃館・欠番</th>
+                <th>合計（付番の最大値）</th>
+            </tr>
+            <tr>
+                <th rowspan="2">図書館</th>
+                <th>公共図書館</th>
+                <td id="PUBLIB"></td>
+                <td rowspan="2" id="DELLIB"></td>
+                <td rowspan="2" id="SUMLIB"></td>
+            </tr>
+            <tr>
+                <th>公共図書館以外</th>
+                <td id="LIB"></td>
+            </tr>
+            <tr>
+                <th colspan="2">博物館</th>
+                <td id="MUS"></td>
+                <td id="DELMUS"></td>
+                <td id="SUMMUS"></td>
+            </tr>
+            <tr>
+                <th colspan="2">公文書館</th>
+                <td id="ARC"></td>
+                <td id="DELARC"></td>
+                <td id="SUMARC"></td>
+            </tr>
+            <tr>
+                <th colspan="2">合計</th>
+                <td id="ALL">12069</td>
+                <td id="DELALL">342</td>
+                <td id="SUMALL">12411</td>
+            </tr>
+        </table>
         <p>「今日の図書館・博物館・公文書館」では、欠番・廃館になっているものを含めて登録されている全て識別子からランダムに選択し、その館の名称と住所を表示しています。なお、廃館となったものであって後継館が記載されているものについては、後継館の情報を合わせて表示しています。</p>
         <p>参考：<a href="https://www.ndl.go.jp/jp/library/isil/index.html">図書館及び関連組織のための国際標準識別子(ISIL)｜国立国会図書館―National Diet Library</a></p>
         
+        <!-- JP-1007833 東京福祉専門学校ライブラリー : URLに改行文字が含まれる -->
+        <!-- JP-1003497 九州大学文系合同図書室 : 後継ISILが ISIL-1003496 として登録されている -->
+        
         <footer>公開：2024-01-14</footer>
+        
+        <script>
+            document.getElementById('PUBLIB').textContent = ISILNUMS.PUBLIB;
+            document.getElementById('LIB').textContent = ISILNUMS.LIB;
+            document.getElementById('DELLIB').textContent = ISILNUMS.DELLIB;
+            document.getElementById('MUS').textContent = ISILNUMS.MUS;
+            document.getElementById('DELMUS').textContent = ISILNUMS.DELMUS;
+            document.getElementById('ARC').textContent = ISILNUMS.ARC;
+            document.getElementById('DELARC').textContent = ISILNUMS.DELARC;
+            document.getElementById('ALL').textContent = ISILNUMS.PUBLIB + ISILNUMS.LIB + ISILNUMS.MUS + ISILNUMS.ARC;
+            document.getElementById('DELALL').textContent = ISILNUMS.DELLIB + ISILNUMS.DELMUS + ISILNUMS.DELARC;
+            
+            document.getElementById('SUMLIB').textContent = ISILNUMS.PUBLIB + ISILNUMS.LIB + ISILNUMS.DELLIB;
+            document.getElementById('SUMMUS').textContent = ISILNUMS.MUS + ISILNUMS.DELMUS;
+            document.getElementById('SUMARC').textContent = ISILNUMS.ARC + ISILNUMS.DELARC;
+            
+            document.getElementById('SUMALL').textContent = ISILNUMS.PUBLIB + ISILNUMS.LIB + ISILNUMS.DELLIB + ISILNUMS.MUS + ISILNUMS.DELMUS + ISILNUMS.ARC + ISILNUMS.DELARC;
+        </script>
     </body>
 </html>

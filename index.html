@@ -5,7 +5,7 @@
         <title>yatabashi</title>
         <link rel="icon" href="res/favicon.ico">
         <link rel="stylesheet" href="style.css">
-        <script src="res/index/dat.js"></script>
+        <script src="res/isildat.js"></script>
         
         <style>
             #lib-container {
@@ -119,25 +119,19 @@
                 const ARC = 102;
                 
                 const r = (n % (LIB + MUS + ARC)) + 1;
-                let rISIL, nextISIL;
+                let rISIL;
                 if (r < LIB) {
                     rISIL = `JP-1${r.toString().padStart(6, '0')}`;
-                    nextISIL = `JP-1${(r + 1).toString().padStart(6, '0')}`;
                 } else if (r == LIB) {
                     rISIL = `JP-1${r.toString().padStart(6, '0')}`;
-                    nextISIL = `JP-2${(1).toString().padStart(6, '0')}`;
                 } else if (r < LIB + MUS) {
                     rISIL = `JP-2${(r - LIB).toString().padStart(6, '0')}`;
-                    nextISIL = `JP-2${(r - LIB + 1).toString().padStart(6, '0')}`;
                 } else if (r == LIB + MUS) {
                     rISIL = `JP-2${(r - LIB).toString().padStart(6, '0')}`;
-                    nextISIL = `JP-3${(1).toString().padStart(6, '0')}`;
                 } else if (r < LIB + MUS + ARC) {
                     rISIL = `JP-3${(r - LIB - MUS).toString().padStart(6, '0')}`;
-                    nextISIL = `JP-3${(r - LIB - MUS + 1).toString().padStart(6, '0')}`;
                 } else { // r = LIB + MUS + ARC
                     rISIL = `JP-3${(r - LIB - MUS).toString().padStart(6, '0')}`;
-                    nextISIL = `JP-1${(1).toString().padStart(6, '0')}`;
                 }
                 
                 return [rISIL].concat(ISILTABLE[rISIL]);

@@ -12411,3 +12411,13 @@ Ls6sZhlbgNdUgNAgCd0EWE5vfbmVOr6fk_J0lHPAqGwcFVaofHdEaAtR_EAL`],
     "JP-3000101": ["北谷町公文書館", "沖縄県", "中頭郡北谷町", "桑江一丁目1番1号", "http://www.chatan.jp/choseijoho/kobunshokan/index.html"],
     "JP-3000102": ["沖縄県公文書館", "沖縄県", "島尻郡南風原町", "新川148-3", "https://www.archives.pref.okinawa.jp/"]
 }
+
+const ISILNUMS = {
+    "PUBLIB": 4995,
+    "LIB": 2612,
+    "MUS": 4360,
+    "ARC": 101,
+    "DELLIB": 329,
+    "DELMUS": 12,
+    "DELARC": 1
+}
