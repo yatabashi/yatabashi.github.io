@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>塵劫記を読む - yatabashi</title>
+        <link rel="icon" href="res/favicon.ico">
+        <link rel="stylesheet" href="style.css">
+        <script src="zinkoki.js"></script>
+        
+        <style>
+            @font-face {
+                font-family: 'Shippori';
+                font-weight: 400;
+                src: url(fonts/Shippori/ShipporiMincho-OTF-Regular.otf);
+            }
+            
+            @font-face {
+                font-family: 'Shippori';
+                font-weight: 700;
+                src: url(fonts/Shippori/ShipporiMincho-OTF-Bold.otf);
+            }
+            
+            @font-face {
+                font-family: 'SourceHanSerif';
+                font-weight: 400;
+                src: url(fonts/SourceHanSerif/SourceHanSerif-Regular.otf);
+            }
+            
+            @font-face {
+                font-family: 'SourceHanSerif';
+                font-weight: 700;
+                src: url(fonts/SourceHanSerif/SourceHanSerif-Bold.otf);
+            }
+            
+            #text-container {
+                width: 100%;
+                overflow: scroll;
+                font-family: 'Shippori', 'SourceHanSerif';
+                writing-mode: vertical-rl;
+            }
+            
+            ol {
+                list-style-type: cjk-ideographic;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>塵劫記を読む</h1>
+            <div class="home"><a href="index.html">ホームへ</a></div>
+        </header>
+        
+        <p>塵劫記を翻刻します。ただし、対象に国立国会図書館デジタルコレクションで公開されている<a href="https://doi.org/10.11501/3511858">『新編塵劫記』（元禄二年刊）</a>を採用しています（<a href="https://www.ndl.go.jp/math/s2/1.html">参考</a>）。<br>これは原著者・吉田光由の死後に刊行された増補版ですが、吉田光由自身により刊行されたものとしては、京都府立京都学・歴彩館デジタルアーカイブに<a href="http://www.archives.kyoto.jp/websearchpe/detail?cls=152_old_books_catalog&pkey=0000001487">寛永十一年本</a>があります。</p>
+        
+        <p>行頭の漢数字はデジタルコレクション上でのコマ番号であり、また半丁ずつ区切り線を入れています。本文中「？」で措いているのは、翻刻できなかった部分です。</p>
+        
+        <button id="rubySwitch" type="button" onclick=switchRubyVisibility()>ルビ非表示</button>
+        <button id="brSwitch" type="button" onclick=switchBrVisibility()>改行非表示</button>
+        <button id="wmSwitch" type="button" onclick=switchWritingMode()>横書きで読む</button>
+        
+        <div id="text-container"></div>
+        
+        <p><a href="https://fontdasu.com/shippori-mincho/">しっぽり明朝</a>、<a href="https://source.typekit.com/source-han-serif/jp/">源ノ明朝</a>を使用</p>
+        
+        <footer>
+            公開：2024-02-02<br>
+            <details>
+                <summary>随時更新</summary>
+                <ul>
+                    <li>2024-02-02: 〜コマ番号4</li>
+                </ul>
+            </details>
+        </footer>
+        
+        <script>
+            rubyIsVisible = true
+            brIsVisible = true
+            showsVertically = true
+            
+            function switchRubyVisibility() {
+                rubyIsVisible = !rubyIsVisible;
+                for (let e of document.getElementById("text-container").getElementsByTagName("rt")) {
+                    e.hidden = !rubyIsVisible
+                }
+                
+                document.getElementById("rubySwitch").textContent = rubyIsVisible ? "ルビ非表示" : "ルビ表示" ;
+            }
+            
+            function switchBrVisibility() {
+                brIsVisible = !brIsVisible;
+                for (let e of document.getElementById("text-container").getElementsByTagName("br")) {
+                    e.hidden = !brIsVisible
+                }
+                
+                document.getElementById("brSwitch").textContent = brIsVisible ? "改行非表示" : "改行表示" ;
+            }
+            
+            function switchWritingMode() {
+                showsVertically = !showsVertically;
+                document.getElementById("text-container").style.writingMode = showsVertically ? "vertical-rl" : "horizontal-tb";
+                document.getElementById("text-container").style.lineHeight = showsVertically ? null : "1.8rem";
+                
+                document.getElementById("wmSwitch").textContent = showsVertically ? "横書きで読む" : "縦書きで読む" ;
+            }
+            
+            inserted = "<ol><li>"
+            
+            for (let line of TEXT.split("\n")) {
+                if (line == "EOF") {
+                    inserted += "</li></ol>"
+                } else if (line == "") {
+                    inserted += "</li><li>"
+                } else if (line == "<hr>") {
+                    inserted += line
+                } else {
+                    line = line.replace(/｜([^（]+)（([^）]+)）/g, "<ruby>$1<rt>$2</rt></ruby>").replace(/(.)（([^）]+)）/g, "<ruby>$1<rt>$2</rt></ruby>")
+                    inserted += `${line}<br>`
+                }
+            }
+            
+            document.getElementById("text-container").innerHTML = inserted
+        </script>
+    </body>
+</html>
