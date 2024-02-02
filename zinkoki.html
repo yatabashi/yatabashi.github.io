@@ -8,7 +8,7 @@
         <script src="zinkoki.js"></script>
         
         <script>
-            console.log("stylestart", (new Date()).getTime())
+            console.log("start", (new Date()).getTime())
         </script>
         
         <style>
@@ -35,8 +35,6 @@
                 list-style-type: cjk-ideographic;
             }
         </style>
-        
-        <script>console.log("styleend", (new Date()).getTime())</script>
     </head>
     <body>
         <header>
@@ -66,29 +64,29 @@
             </details>
         </footer>
         
-        <script>console.log("scriptend", (new Date()).getTime())</script>
-        
         <script>
-            rubyIsVisible = true
-            brIsVisible = true
-            showsVertically = true
+            console.log("scriptstart", (new Date()).getTime());
+            
+            rubyIsVisible = true;
+            brIsVisible = true;
+            showsVertically = true;
             
             function switchRubyVisibility() {
                 rubyIsVisible = !rubyIsVisible;
                 for (let e of document.getElementById("text-container").getElementsByTagName("rt")) {
-                    e.hidden = !rubyIsVisible
+                    e.hidden = !rubyIsVisible;
                 }
                 
-                document.getElementById("rubySwitch").textContent = rubyIsVisible ? "ルビ非表示" : "ルビ表示" ;
+                document.getElementById("rubySwitch").textContent = rubyIsVisible ? "ルビ非表示" : "ルビ表示";
             }
             
             function switchBrVisibility() {
                 brIsVisible = !brIsVisible;
                 for (let e of document.getElementById("text-container").getElementsByTagName("br")) {
-                    e.hidden = !brIsVisible
+                    e.hidden = !brIsVisible;
                 }
                 
-                document.getElementById("brSwitch").textContent = brIsVisible ? "改行非表示" : "改行表示" ;
+                document.getElementById("brSwitch").textContent = brIsVisible ? "改行非表示" : "改行表示";
             }
             
             function switchWritingMode() {
@@ -96,27 +94,29 @@
                 document.getElementById("text-container").style.writingMode = showsVertically ? "vertical-rl" : "horizontal-tb";
                 document.getElementById("text-container").style.lineHeight = showsVertically ? null : "1.8rem";
                 
-                document.getElementById("wmSwitch").textContent = showsVertically ? "横書きで読む" : "縦書きで読む" ;
+                document.getElementById("wmSwitch").textContent = showsVertically ? "横書きで読む" : "縦書きで読む";
             }
             
-            inserted = "<ol><li>"
+            console.log("scriptend", (new Date()).getTime());
+            
+            inserted = "<ol><li>";
             
             for (let line of TEXT.split("\n")) {
                 if (line == "EOF") {
-                    inserted += "</li></ol>"
+                    inserted += "</li></ol>";
                 } else if (line == "") {
-                    inserted += "</li><li>"
+                    inserted += "</li><li>";
                 } else if (line == "<hr>") {
-                    inserted += line
+                    inserted += line;
                 } else {
-                    line = line.replace(/｜([^（]+)（([^）]+)）/g, "<ruby>$1<rt>$2</rt></ruby>").replace(/(.)（([^）]+)）/g, "<ruby>$1<rt>$2</rt></ruby>")
-                    inserted += `${line}<br>`
+                    line = line.replace(/｜([^（]+)（([^）]+)）/g, "<ruby>$1<rt>$2</rt></ruby>").replace(/(.)（([^）]+)）/g, "<ruby>$1<rt>$2</rt></ruby>");
+                    inserted += `${line}<br>`;
                 }
             }
             
-            document.getElementById("text-container").innerHTML = inserted
+            document.getElementById("text-container").innerHTML = inserted;
+            
+            console.log("scriptend", (new Date()).getTime());
         </script>
-        
-        <script>console.log("scriptstart", (new Date()).getTime())</script>
     </body>
 </html>
