@@ -23,12 +23,6 @@
     src: url('fonts/Koruri/Koruri-Bold.ttf');
 }
 
-/* https://fonts.google.com/noto/specimen/Noto+Sans+JP */
-@font-face {
-    font-family: 'NotoSansJP';
-    src: url('fonts/Noto_Sans_JP/NotoSansJP-VariableFont_wght.ttf');
-}
-
 /* https://fonts.google.com/noto/specimen/Noto+Sans+Mono */
 @font-face {
     font-family: 'NotoSansMono';
@@ -37,11 +31,11 @@
 
 body {
     padding: 20px 40px;
-    font-family: 'Koruri', 'NotoSansJP', sans-serif;
+    font-family: 'Koruri', sans-serif;
 }
 
 code {
-    font-family: 'NotoSansMono', 'NotoSansJP', monospace;
+    font-family: 'NotoSansMono', monospace;
     font-size: 0.9rem;
 }
 

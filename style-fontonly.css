@@ -23,12 +23,6 @@
     src: url('fonts/Koruri/Koruri-Bold.ttf');
 }
 
-/* https://fonts.google.com/noto/specimen/Noto+Sans+JP */
-@font-face {
-    font-family: 'NotoSansJP';
-    src: url('fonts/Noto_Sans_JP/NotoSansJP-VariableFont_wght.ttf');
-}
-
 body {
-    font-family: 'Koruri', 'NotoSansJP', sans-serif;
+    font-family: 'Koruri', sans-serif;
 }
