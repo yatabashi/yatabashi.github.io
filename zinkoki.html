@@ -7,20 +7,18 @@
         <link rel="stylesheet" href="style.css">
         <script src="zinkoki.js"></script>
         
-        <script>
-            console.log("start", (new Date()).getTime())
-        </script>
-        
         <style>
             @font-face {
                 font-family: 'Shippori';
                 font-weight: 400;
+                font-display: swap;
                 src: url(fonts/Shippori/ShipporiMincho-OTF-Regular.otf);
             }
             
             @font-face {
                 font-family: 'SourceHanSerif';
                 font-weight: 400;
+                font-display: swap;
                 src: url(fonts/SourceHanSerif/SourceHanSerif-Regular.otf);
             }
             
@@ -65,8 +63,6 @@
         </footer>
         
         <script>
-            console.log("scriptstart", (new Date()).getTime());
-            
             rubyIsVisible = true;
             brIsVisible = true;
             showsVertically = true;
@@ -97,8 +93,6 @@
                 document.getElementById("wmSwitch").textContent = showsVertically ? "横書きで読む" : "縦書きで読む";
             }
             
-            console.log("scriptend", (new Date()).getTime());
-            
             inserted = "<ol><li>";
             
             for (let line of TEXT.split("\n")) {
@@ -115,8 +109,6 @@
             }
             
             document.getElementById("text-container").innerHTML = inserted;
-            
-            console.log("scriptend", (new Date()).getTime());
         </script>
     </body>
 </html>
