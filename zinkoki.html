@@ -21,7 +21,7 @@
             }
             
             #text-container {
-                /* width: 100%; */
+                width: 100%;
                 overflow: scroll;
                 font-family: 'Shippori', 'SourceHanSerif';
                 line-height: 2rem;
@@ -110,6 +110,9 @@
                 }
                 
                 document.getElementById("brSwitch").textContent = brIsVisible ? "改行非表示" : "改行表示";
+                document.getElementById("text-container").style.maxHeight = brIsVisible ? null : "90%";
+                document.getElementById("text-container").style.overflowY = brIsVisible ? null : "hidden";
+                document.getElementById("text-container").style.whiteSpace = brIsVisible ? "nowrap" : "normal";
             }
             
             function switchIDCVisibility() {
@@ -183,6 +186,8 @@
             }
             
             document.getElementById("text-container").innerHTML = inserted;
+            
+            switchBrVisibility();
         </script>
     </body>
 </html>
