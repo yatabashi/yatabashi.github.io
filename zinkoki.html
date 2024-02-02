@@ -7,6 +7,10 @@
         <link rel="stylesheet" href="style.css">
         <script src="zinkoki.js"></script>
         
+        <script>
+            console.log("stylestart", (new Date()).getTime())
+        </script>
+        
         <style>
             @font-face {
                 font-family: 'Shippori';
@@ -31,6 +35,8 @@
                 list-style-type: cjk-ideographic;
             }
         </style>
+        
+        <script>console.log("styleend", (new Date()).getTime())</script>
     </head>
     <body>
         <header>
@@ -59,6 +65,8 @@
                 </ul>
             </details>
         </footer>
+        
+        <script>console.log("scriptend", (new Date()).getTime())</script>
         
         <script>
             rubyIsVisible = true
@@ -108,5 +116,7 @@
             
             document.getElementById("text-container").innerHTML = inserted
         </script>
+        
+        <script>console.log("scriptstart", (new Date()).getTime())</script>
     </body>
 </html>
