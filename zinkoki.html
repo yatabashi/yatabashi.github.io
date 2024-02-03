@@ -20,6 +20,16 @@
                 src: url(fonts/SourceHanSerif/SourceHanSerif-Regular-subset20240203^2.otf);
             }
             
+            div.prefs {
+                display: inline;
+                font-family: initial;
+                line-height: 1.2rem;
+            }
+            
+            div.prefs>* {
+                vertical-align: middle;
+            }
+            
             #text-container {
                 width: 100%;
                 overflow: scroll;
@@ -27,10 +37,14 @@
                 line-height: 2rem;
                 writing-mode: vertical-rl;
                 white-space: nowrap;
+                margin-top: 8px;
+                padding-top: 16px;
+                border-top: 2px solid black;
             }
             
             ol {
-                list-style-type: cjk-ideographic;
+                list-style-type: none;
+                padding: 0;
             }
             
             span.block {
@@ -82,10 +96,15 @@
         
         <p>行頭の漢数字はデジタルコレクション上でのコマ番号であり、また半丁ずつ区切り線を入れています。本文中「？」で措いているのは、翻刻できなかった部分です。</p>
         
-        <button id="rubySwitch" type="button" onclick=switchRubyVisibility()>ルビ非表示</button>
-        <button id="brSwitch" type="button" onclick=switchBrVisibility()>改行非表示</button>
-        <button id="IDCSwitch" type="button" onclick=switchIDCVisibility()>異体字記述非表示</button>
-        <button id="wmSwitch" type="button" onclick=switchWritingMode()>横書きで読む</button>
+        <div class="prefs">
+            <button id="rubySwitch" type="button" onclick=switchRubyVisibility()>ルビ非表示</button>
+            <button id="brSwitch" type="button" onclick=switchBrVisibility()>改行非表示</button>
+            <button id="IDCSwitch" type="button" onclick=switchIDCVisibility()>異体字記述非表示</button>
+            <button id="wmSwitch" type="button" onclick=switchWritingMode()>横書きで読む</button>
+            <input id="pageId" type="number" min="1" max="11" style="margin-left: 3rem; width: 2.5rem;">
+            <span>頁</span>
+            <button id="jumpButton" type="button" onclick=jump() style="margin-left: 0.5rem;">ジャンプ</button>
+        </div>
         
         <div id="text-container"></div>
         
@@ -148,7 +167,71 @@
                 document.getElementById("wmSwitch").textContent = showsVertically ? "横書きで読む" : "縦書きで読む";
             }
             
-            inserted = "<ol><li>";
+            function limitRange(e) {
+                if (Number(e.target.value) < Number(e.target.min)) {
+                    e.target.textContent = e.target.value + 1;
+                } else if (Number(e.target.value) > Number(e.target.max)) {
+                    e.target.textContent = e.target.value - 1;
+                }
+            }
+            
+            document.getElementById("pageId").addEventListener("change", limitRange);
+            
+            function getXinContainer(id) {
+                container = document.getElementById("text-container");
+                targetPage = document.getElementById(id);
+                
+                let containerRightToFrameRight = container.scrollLeft;
+                let frameRightToframeLeft = -container.clientWidth;
+                let screenLeftToTargetRight = targetPage.getBoundingClientRect().right;
+                let screenLeftToFrameLeft = container.getBoundingClientRect().left;
+                
+                return containerRightToFrameRight
+                       + frameRightToframeLeft
+                       + (screenLeftToTargetRight - screenLeftToFrameLeft);
+            }
+            
+            function jump() {
+                if (showsVertically) {
+                    document.getElementById("text-container").scrollLeft = getXinContainer(`p${document.getElementById("pageId").value}`);
+                } else {
+                    location.href = `#p${document.getElementById("pageId").value}`;
+                }
+            }
+            
+            function showLocation(e) {
+                let currentPage = Number(document.getElementById("pageId").value);
+                
+                if ((FIRSTRIGHT) < e.target.scrollLeft) {
+                    // 先頭頁の右端に到達した
+                    currentPage = 1;
+                    document.getElementById("pageId").value = currentPage;
+                } else if (e.target.scrollLeft <= (LASTRIGHT)) {
+                    // 末尾頁の右端に到達した
+                    currentPage = document.getElementById("text-container").children[0].childElementCount;
+                    document.getElementById("pageId").value = currentPage;
+                } else if (getXinContainer(`p${currentPage}`) < e.target.scrollLeft) {
+                    // フレーム右端が前の頁に入った
+                    currentPage--;
+                    document.getElementById("pageId").value = currentPage;
+                    
+                    showLocation(e); // 一気に複数のページを移動していた場合のために再実行
+                } else if (e.target.scrollLeft <= getXinContainer(`p${currentPage+1}`)) {
+                    // フレーム右端が後の頁に入った
+                    currentPage++;
+                    document.getElementById("pageId").value = currentPage;
+                    
+                    showLocation(e);
+                }
+            }
+            
+            document.getElementById("text-container").addEventListener("scroll", showLocation);
+            
+            
+            // テキストを生成
+            i = 1;
+            
+            inserted = `<ol><li id=\"p${i}\">`;
             
             for (let line of TEXT.split("\n")) {
                 switch (line) {
@@ -156,7 +239,8 @@
                         inserted += "</li></ol>";
                         break;
                     case "":
-                        inserted += "<hr></li><li>";
+                        i++;
+                        inserted += `<hr></li><li id=\"p${i}\">`;
                         break;
                     case "sep":
                         inserted += "<hr>";
@@ -210,6 +294,21 @@
             
             document.getElementById("text-container").innerHTML = inserted;
             
+            // スクロールを0にする
+            document.getElementById("text-container").scrollLeft = 0;
+            
+            // 先頭頁のrightを記録
+            const FIRSTRIGHT = document.getElementById("text-container").children[0].firstElementChild.getBoundingClientRect().right
+                              - document.getElementById("text-container").getBoundingClientRect().right;
+            
+            // 末尾頁のrightを記録
+            const LASTRIGHT = document.getElementById("text-container").children[0].lastElementChild.getBoundingClientRect().right
+                              - document.getElementById("text-container").getBoundingClientRect().right;
+            
+            // コマ番号inputのmaxを設定
+            document.getElementById("pageId").max = document.getElementById("text-container").children[0].childElementCount;
+            
+            // デフォルトで異体字記述を非表示
             switchIDCVisibility();
         </script>
     </body>
