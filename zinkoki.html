@@ -11,13 +11,13 @@
             @font-face {
                 font-family: 'Shippori';
                 font-weight: 400;
-                src: url(fonts/Shippori/ShipporiMincho-OTF-Regular-subset20240203.otf);
+                src: url(fonts/Shippori/ShipporiMincho-OTF-Regular-subset20240203^2.otf);
             }
             
             @font-face {
                 font-family: 'SourceHanSerif';
                 font-weight: 400;
-                src: url(fonts/SourceHanSerif/SourceHanSerif-Regular-subset20240203.otf);
+                src: url(fonts/SourceHanSerif/SourceHanSerif-Regular-subset20240203^2.otf);
             }
             
             #text-container {
@@ -33,11 +33,27 @@
                 list-style-type: cjk-ideographic;
             }
             
-            div.block {
+            span.block {
                 display: inline-block;
                 vertical-align: middle;
                 line-height: 1.25rem;
                 padding-block: 0.25rem;
+            }
+            
+            span.diamond {
+                display: inline;
+            }
+            
+            span.diamond>span {
+                padding-inline: 0.125rem;
+            }
+            
+            span.diamond>span:nth-child(2) {
+                display: inline-block;
+                vertical-align: middle;
+                line-height: 1.25rem;
+                padding-block: 0.25rem;
+                text-align: center;
             }
             
             div.flexbox {
@@ -68,7 +84,7 @@
         
         <button id="rubySwitch" type="button" onclick=switchRubyVisibility()>ルビ非表示</button>
         <button id="brSwitch" type="button" onclick=switchBrVisibility()>改行非表示</button>
-        <button id="IDCSwitch" type="button" onclick=switchIDCVisibility()>IDC非表示</button>
+        <button id="IDCSwitch" type="button" onclick=switchIDCVisibility()>異体字記述非表示</button>
         <button id="wmSwitch" type="button" onclick=switchWritingMode()>横書きで読む</button>
         
         <div id="text-container"></div>
@@ -81,7 +97,7 @@
                 <summary>随時更新</summary>
                 <ul>
                     <li>2024-02-02: 〜コマ番号4</li>
-                    <li>2024-02-03: 〜コマ番号5</li>
+                    <li>2024-02-03: 〜コマ番号6</li>
                 </ul>
             </details>
         </footer>
@@ -121,7 +137,7 @@
                     e.hidden = !IDCIsVisible;
                 }
                 
-                document.getElementById("IDCSwitch").textContent = IDCIsVisible ? "IDC非表示" : "IDC表示";
+                document.getElementById("IDCSwitch").textContent = IDCIsVisible ? "異体字記述非表示" : "異体字記述表示";
             }
             
             function switchWritingMode() {
@@ -140,15 +156,15 @@
                         inserted += "</li></ol>";
                         break;
                     case "":
-                        inserted += "</li><li>";
+                        inserted += "<hr></li><li>";
                         break;
-                    case "hr":
+                    case "sep":
                         inserted += "<hr>";
                         break;
                     case "flex":
                         inserted += "<div class=\"flexbox\"><div>";
                         break;
-                    case "flex:annotation":
+                    case "flex:annot":
                         inserted += "<div class=\"flexbox annot\"><div>";
                         break;
                     case "/":
@@ -176,9 +192,16 @@
                                    .replace(/＿(.)/g, "<sub>$1</sub>")
                                    .replace(/［[^］]*］/g, "<span class=\"IDC\">$&</span>")
                                    .replace(/＜([^＞]*)＞/g, (match, p1) =>
-                                       "<div class=\"block\">" +
+                                       "<span class=\"block\">" +
                                        p1.replaceAll("・", "<br>") +
-                                       "</div>"
+                                       "</span>"
+                                   )
+                                   .replace(/「([^・]*)・([^・]*)・([^・]*)・([^・]*)・([^」]*)」/g,
+                                            "<span class=\"diamond\">" +
+                                                "<span>$1</span>" +
+                                                "<span>$2<br>$5<br>$4</span>" +
+                                                "<span>$3</span>" +
+                                            "</span>"
                                    );
                         
                         inserted += line + suffix;
@@ -187,7 +210,7 @@
             
             document.getElementById("text-container").innerHTML = inserted;
             
-            switchBrVisibility();
+            switchIDCVisibility();
         </script>
     </body>
 </html>
