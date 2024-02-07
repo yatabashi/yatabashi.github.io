@@ -71,7 +71,6 @@
             <p>このサイトでは、特記のない場合、見出し・本文に「Koruri」を、コード部分に「Noto Sans Mono」を使用しています。</p>
             <ul>
                 <li><a href="https://koruri.github.io/">Koruri</a></li>
-                <li><a href="https://fonts.google.com/noto/specimen/Noto+Sans+JP">Noto Sans JP</a></li>
                 <li><a href="https://fonts.google.com/noto/specimen/Noto+Sans+Mono">Noto Sans Mono</a></li>
             </ul>
         </section>
@@ -111,7 +110,7 @@
                 
                 return w;
             }
-
+            
             function getLibDatStr(n) {
                 console.log(`startgetdat: ${(new Date()).getTime()} ms`);
                 
@@ -137,7 +136,7 @@
                 
                 return [rISIL].concat(ISILTABLE[rISIL]);
             }
-
+            
             function getInsertion(dat) {
                 if (dat.length == 3) { // 欠番・廃館
                     if (dat[2]) {
@@ -164,7 +163,7 @@
                     }
                 }
             }
-
+            
             let data = getLibDatStr(getTodaysNumber());
             document.getElementById('lib').innerHTML = getInsertion(data);
         </script>
