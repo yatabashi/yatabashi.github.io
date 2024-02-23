@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>修得単位一覧 - yatabashi</title>
+        <link rel="icon" href="./res/favicon.ico">
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <header>
+            <h1>修得単位一覧</h1>
+            <div class="home"><a href="index.html">ホームへ</a></div>
+        </header>
+        <p>卒業判定基準単位</p>
+        
+        <ul>
+            <li class="unfulfilled"><span class="c32">主専攻科目（認知情報学系）</span><ul>
+                <!-- https://www.h.kyoto-u.ac.jp/wp-content/uploads/2023/03/2023gakububinran.pdf -->
+                <li>プログラミング演習（Lisp）</li>
+                <li>言語構造機能論</li>
+                <li>言語構造機能論演習</li>
+                <li>言語認知論</li>
+                <li>言語認知論演習</li>
+                <li>言語科学ゼミナールI</li>
+                <li>言語科学I</li>
+            </ul></li>
+            <li class="unfulfilled"><span class="c4">副専攻科目（⑫文化総合研究）</span><ul>
+                <!-- https://www.h.kyoto-u.ac.jp/wp-content/uploads/2023/03/2023gakububinran.pdf -->
+                <li>論理学I</li>
+                <li>論理学II</li>
+                <li>法学</li>
+                <li>国際政治論I</li>
+                <li>日本語学・日本文学IVB</li>
+                <li>書論・書写演習A</li>
+                <li>西欧近現代表象文化論IIIB</li>
+                <li>ディアスポラ思想文化論演習B</li>
+            </ul></li>
+            <li class="fulfilled">学系入門科目<ul>
+                <li>国際文明学系入門A</li>
+                <li>文化環境学系入門</li>
+            </ul></li>
+            <li class="fulfilled">外国語科目<ul>
+                <li>フランス語IA（文法）</li>
+                <li>フランス語IA（演習）</li>
+                <li>フランス語IB（文法）</li>
+                <li>フランス語IB（演習）</li>
+                <li>ロシア語IA（文法）</li>
+                <li>ロシア語IA（演習）</li>
+                <li>ロシア語IB（文法）</li>
+                <li>ロシア語IB（演習）</li>
+                <li>ロシア語IIA</li>
+                <li>ロシア語IIA</li>
+                <li>アラビア語IA（文法）</li>
+                <li>アラビア語IA（演習）</li>
+            </ul></li>
+            <li class="fulfilled">自由科目<ul>
+                <!-- https://www.z.k.kyoto-u.ac.jp/pdf/link/link0824.pdf?1678352760 -->
+                <li>Introduction to Japanese Linguistics I-E2</li>
+                <li>言学II</li>
+                <li>偏見・差別・人権</li>
+                <li>線形代数学（講義・演義）A</li>
+                <li>数理・データ科学のための数学入門II</li>
+                <li>フランス語IIA</li>
+                <li>フランス語IIB</li>
+                <li>ロシア語IIB</li>
+                <li>アラビア語IB（文法）</li>
+                <li>アラビア語IB（演習）</li>
+                <li>プログラミング演習（Python）</li>
+                <li>放射線概論</li>
+                <li>スポーツ実習IB：フィットネス・サイクリング</li>
+                <li>ILASセミナー：Scripts and Written Artefacts（文字と書かれた遺物）</li>
+                <li>書論・書写演習B</li>
+                <li>［工］プログラミング言語</li>
+            </ul></li>
+        </ul>
+        
+        <!-- <p>増加単位</p>
+        <ul>
+        </ul> -->
+        
+        <p>司書科目</p>
+        <ul>
+            <!-- https://www.bun.kyoto-u.ac.jp/wp-content/uploads/074f5e3183015c2d50ccaf255e6a8d44-3.pdf#page=6 -->
+            <li class="unfulfilled">甲群（必修）<ul>
+                <li class="unfulfilled">生涯学習概論（「I」）</li>
+                <li class="fulfilled">図書館概論</li>
+                <li class="unfulfilled">図書館制度・経営論</li>
+                <li class="fulfilled">図書館情報技術論</li>
+                <li class="fulfilled">図書館サービス概論</li>
+                <li class="unfulfilled">情報サービス論</li>
+                <li class="unfulfilled">児童サービス論</li>
+                <li class="unfulfilled">情報サービス演習（「I」「II」）</li>
+                <li class="unfulfilled">図書館情報資源概論</li>
+                <li class="fulfilled">情報資源組織論</li>
+                <li class="unfulfilled">情報資源組織演習（「I」「II」）</li>
+            </ul></li>
+            <li class="unfulfilled">乙群（2科目選択）<ul>
+                <li class="unfulfilled">図書館基礎特論（「図書館情報学特講I」）</li>
+                <li class="unfulfilled">図書館サービス特論（「図書館情報学特講II」）</li>
+                <li class="unfulfilled">図書館情報資源特論（「図書館情報学特講II」）</li>
+                <li class="unfulfilled">図書・図書館史（「図書館情報学特講I」）</li>
+            </ul></li>
+        </ul>
+        
+        <footer>
+            公開：2024-02-24
+        </footer>
+        
+        <style>
+            span::after {
+                margin-left: 1rem;
+            }
+            
+            li.fulfilled {
+                list-style-type: '✔ ';
+            }
+            
+            li.unfulfilled {
+                list-style-type: '✘ ';
+            }
+        </style>
+        
+        <script>
+            for (let e of document.getElementsByTagName('span')) {
+                let n = e.className;
+                if (n !== undefined) {
+                    style = document.getElementsByTagName("style")[0]
+                    style.innerHTML = style.innerHTML + `.${n}::after { content: 'あと${n.slice(1, n.length)}単位'; }\n`
+                }
+            }
+        </script>
+    </body>
+</html>
