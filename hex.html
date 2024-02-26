@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>16進計算機 - yatabashi</title>
+        <link rel="icon" href="res/favicon.ico">
+        <link rel="stylesheet" href="style.css">
+        <script src="hex.js"></script>
+        
+        <style>
+            textarea {
+                font-family: 'NotoSansMono', monospace;
+                width: 25rem;
+                max-width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>16進計算機</h1>
+            <div class="home"><a href="index.html">ホームへ</a></div>
+        </header>
+        
+        <br>
+        
+        <textarea id="exp" placeholder="Expression in hexadecimal" oninput="resize();calc()"></textarea>
+        <p id="val"></p>
+        
+        <span class="headline">細かい話</span>
+        
+        <style>
+            .headline {
+                display: flex;
+                align-items: center;
+            }
+            
+            .headline::before, .headline::after {
+                content: "";
+                height: 1px;
+                background-color: black;
+                flex-grow: 1;
+            }
+            
+            .headline::before {
+                margin-right: 1rem;
+            }
+            
+            .headline::after {
+                margin-left: 1rem;
+            }
+        </style>
+        
+        <p>式の文法をBNF記法擬きで記述すると次の通りです（式全体が<code>&lt;expr&gt;</code>から生成できる必要があります）：</p>
+        
+        <!-- 
+            <digit>  ::= '0' | ... | '9' | 'a' | ... | 'f' | 'A' | ... | 'F'
+            <number> ::= <digit>+ ['.' [<digit>+]]
+            <factor> ::= <number> | '(' <expr> ')' | '-' <factor>
+            <term>   ::= <factor> ( ('*' | '/') <factor> )*
+            <expr>   ::= <term> ( ('+' | '-') <term> )*
+         -->
+        <p class="indent" style="font-family: 'NotoSansMono'; white-space: pre-wrap;">&lt;digit&gt;  ::= '0' | ... | '9' | 'a' | ... | 'f' | 'A' | ... | 'F'
+&lt;number&gt; ::= &lt;digit&gt;+ ['.' [&lt;digit&gt;+]]
+&lt;factor&gt; ::= &lt;number&gt; | '(' &lt;expr&gt; ')' | '-' &lt;factor&gt;
+&lt;term&gt;   ::= &lt;factor&gt; ( ('*' | '/') &lt;factor&gt; )*
+&lt;expr&gt;   ::= &lt;term&gt; ( ('+' | '-') &lt;term&gt; )*</p>
+        
+        <details>
+            <summary>反復記号の定義</summary>
+            <ul>
+                <li><code>[S]</code>: 0個または1個の<code>S</code></li>
+                <li><code>S*</code>: <code>S</code>の0回以上の繰り返し</li>
+                <li><code>S+</code>: <code>S</code>の1回以上の繰り返し</li>
+            </ul>
+        </details>
+        
+        <p>正確には、空文字列も受理されます。また、空白（U+0020）と改行（U+000A）も許容されますが、無視されます。</p>
+        
+        <p>参考：<br><a href="https://dai1741.github.io/maximum-algo-2012/docs/parsing/">構文解析 - アルゴリズム講習会</a></p>
+        
+        <footer>
+            公開：2024-02-26
+        </footer>
+    </body>
+</html>
+
