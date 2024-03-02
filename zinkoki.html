@@ -11,13 +11,13 @@
             @font-face {
                 font-family: 'Shippori';
                 font-weight: 400;
-                src: url(fonts/Shippori/spr-20240205.woff);
+                src: url(fonts/Shippori/spr-20240302.woff);
             }
             
             @font-face {
                 font-family: 'SourceHanSerif';
                 font-weight: 400;
-                src: url(fonts/SourceHanSerif/shs-20240205.woff);
+                src: url(fonts/SourceHanSerif/shs-20240302.woff);
             }
             
             div.prefs {
@@ -126,6 +126,7 @@
                 <ul>
                     <li>2024-02-02: 〜コマ番号4</li>
                     <li>2024-02-03: 〜コマ番号6</li>
+                    <li>2024-03-02: 〜コマ番号7</li>
                 </ul>
             </details>
         </footer>
@@ -178,9 +179,9 @@
             
             function limitRange(e) {
                 if (Number(e.target.value) < Number(e.target.min)) {
-                    e.target.textContent = e.target.value + 1;
+                    e.target.value = e.target.min;
                 } else if (Number(e.target.value) > Number(e.target.max)) {
-                    e.target.textContent = e.target.value - 1;
+                    e.target.value = e.target.max;
                 }
             }
             
