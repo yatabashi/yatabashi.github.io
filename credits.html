@@ -11,10 +11,11 @@
             <h1>修得単位一覧</h1>
             <div class="home"><a href="index.html">ホームへ</a></div>
         </header>
+        
         <p>卒業判定基準単位</p>
         
         <ul>
-            <li class="unfulfilled"><span class="c32">主専攻科目（認知情報学系）</span><ul>
+            <li class="unfulfilled"><span class="unffld c32">主専攻科目（認知情報学系）</span><ul>
                 <!-- https://www.h.kyoto-u.ac.jp/wp-content/uploads/2023/03/2023gakububinran.pdf -->
                 <li>プログラミング演習（Lisp）</li>
                 <li>言語構造機能論</li>
@@ -24,7 +25,7 @@
                 <li>言語科学ゼミナールI</li>
                 <li>言語科学I</li>
             </ul></li>
-            <li class="unfulfilled"><span class="c4">副専攻科目（⑫文化総合研究）</span><ul>
+            <li class="unfulfilled"><span class="unffld c4">副専攻科目（⑫文化総合研究）</span><ul>
                 <!-- https://www.h.kyoto-u.ac.jp/wp-content/uploads/2023/03/2023gakububinran.pdf -->
                 <li>論理学I</li>
                 <li>論理学II</li>
@@ -121,8 +122,8 @@
         </style>
         
         <script>
-            for (let e of document.getElementsByTagName('span')) {
-                let n = e.className;
+            for (let e of document.getElementsByClassName("unffld")) {
+                let n = e.classList[1];
                 if (n !== undefined) {
                     style = document.getElementsByTagName("style")[0]
                     style.innerHTML = style.innerHTML + `.${n}::after { content: 'あと${n.slice(1, n.length)}単位'; }\n`
