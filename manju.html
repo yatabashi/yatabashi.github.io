@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>満洲語キーボード - yatabashi</title>
+        <link rel="icon" href="res/favicon.ico">
+        <link rel="stylesheet" href="style.css">
+        
+        <style>
+            /* @font-face {
+                font-family: 'YaBai';
+                src: url('../_fonts/XM_YaBai.ttf');
+            } */
+
+            textarea {
+                /* font-family: 'YaBai', serif; */
+                font-family: serif;
+                font-size: 2rem;
+                width: 100%;
+                box-sizing: border-box;
+                margin-top: 20px;
+            }
+
+            .review {
+                /* font-family: 'YaBai', serif; */
+                font-family: serif;
+                font-size: 2rem;
+                margin: 1rem 0;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>満洲語キーボード</h1>
+            <div class="home"><a href="index.html">ホームへ</a></div>
+        </header>
+        
+        <textarea placeholder="latin hergen" rows="2"></textarea>
+        <p class="review"><span id="review-cyrl"></span></p>
+        <p><a href="https://www.manchustudiesgroup.org/typing-manchu/">XM_YaBai</a>を使用</p>
+
+        <footer>公開：2024-07-15</footer>
+        
+        <script>
+            let last_input = "";
+            
+            function review() {
+                const text = document.querySelector('textarea').value;
+                
+                const cyrl_table = {"a": "ᠠ", "e": "ᡝ", "i": "ᡳ", "o": "ᠣ", "u": "ᡠ", "v": "ᡡ", "n": "ᠨ", 
+                                    "k": "ᡴ", "g": "ᡤ", "h": "ᡥ", "b": "ᠪ", "s": "ᠰ", "x": "ᡧ", "t": "ᡨ", 
+                                    "d": "ᡩ", "l": "ᠯ", "m": "ᠮ", "c": "ᠴ", "j": "ᠵ", "y": "ᠶ", "r": "ᡵ", "f": "ᡶ", 
+                                    "w": "ᠸ", "I": "ᡳ", ",": "᠈", ".": "᠉", "-": "᠊"};
+                
+                const cyrl_text = (() => {
+                    let tp = "";
+                    
+                    for (let i = 0; i < text.length; i++) {
+                        const table = {"ng": "ᠩ"};
+                        
+                        if (Object.keys(table).includes(text[i-1]+text[i])) {
+                            tp = tp.slice(0, -1) + table[text[i-1]+text[i]];
+                        } else {
+                            tp += cyrl_table[text[i]] ?? text[i];
+                        }
+                    }
+                    
+                    return tp;
+                })();
+                
+                document.getElementById('review-cyrl').innerText = cyrl_text;
+            }
+            
+            const textarea = document.querySelector('textarea');
+            
+            textarea.focus();
+            
+            textarea.addEventListener("input", (e) => {
+                last_input = e.data;
+                
+                review();
+            });
+            
+            review();
+        </script>
+    </body>
+</html>
