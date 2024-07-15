@@ -36,8 +36,8 @@
         </header>
         
         <textarea placeholder="latin hergen" rows="2"></textarea>
-        <p class="review"><span id="review-cyrl"></span></p>
-        <p><a href="https://www.manchustudiesgroup.org/typing-manchu/">XM_YaBai</a>を使用</p>
+        <p class="review"><span id="review-manju"></span></p>
+        <!-- <p><a href="https://www.manchustudiesgroup.org/typing-manchu/">XM_YaBai</a>を使用</p> -->
 
         <footer>公開：2024-07-15</footer>
         
@@ -47,12 +47,12 @@
             function review() {
                 const text = document.querySelector('textarea').value;
                 
-                const cyrl_table = {"a": "ᠠ", "e": "ᡝ", "i": "ᡳ", "o": "ᠣ", "u": "ᡠ", "v": "ᡡ", "n": "ᠨ", 
+                const manju_table = {"a": "ᠠ", "e": "ᡝ", "i": "ᡳ", "o": "ᠣ", "u": "ᡠ", "v": "ᡡ", "n": "ᠨ", 
                                     "k": "ᡴ", "g": "ᡤ", "h": "ᡥ", "b": "ᠪ", "s": "ᠰ", "x": "ᡧ", "t": "ᡨ", 
                                     "d": "ᡩ", "l": "ᠯ", "m": "ᠮ", "c": "ᠴ", "j": "ᠵ", "y": "ᠶ", "r": "ᡵ", "f": "ᡶ", 
                                     "w": "ᠸ", "I": "ᡳ", ",": "᠈", ".": "᠉", "-": "᠊"};
                 
-                const cyrl_text = (() => {
+                const manju_text = (() => {
                     let tp = "";
                     
                     for (let i = 0; i < text.length; i++) {
@@ -61,14 +61,14 @@
                         if (Object.keys(table).includes(text[i-1]+text[i])) {
                             tp = tp.slice(0, -1) + table[text[i-1]+text[i]];
                         } else {
-                            tp += cyrl_table[text[i]] ?? text[i];
+                            tp += manju_table[text[i]] ?? text[i];
                         }
                     }
                     
                     return tp;
                 })();
                 
-                document.getElementById('review-cyrl').innerText = cyrl_text;
+                document.getElementById('review-manju').innerText = manju_text;
             }
             
             const textarea = document.querySelector('textarea');
