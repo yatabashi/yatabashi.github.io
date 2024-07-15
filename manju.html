@@ -7,13 +7,12 @@
         <link rel="stylesheet" href="style.css">
         
         <style>
-            /* @font-face {
-                font-family: 'YaBai';
-                src: url('../_fonts/XM_YaBai.ttf');
-            } */
+            @font-face {
+                font-family: 'NotoSansMongolian';
+                src: url('fonts/Noto_Sans_Mongolian/NotoSansMongolian-Regular.ttf');
+            }
 
             textarea {
-                /* font-family: 'YaBai', serif; */
                 font-family: serif;
                 font-size: 2rem;
                 width: 100%;
@@ -22,8 +21,7 @@
             }
 
             .review {
-                /* font-family: 'YaBai', serif; */
-                font-family: serif;
+                font-family: 'NotoSansMongolian', serif;
                 font-size: 2rem;
                 margin: 1rem 0;
             }
@@ -37,9 +35,19 @@
         
         <textarea placeholder="latin hergen" rows="2"></textarea>
         <p class="review"><span id="review-manju"></span></p>
-        <!-- <p><a href="https://www.manchustudiesgroup.org/typing-manchu/">XM_YaBai</a>を使用</p> -->
 
-        <footer>公開：2024-07-15</footer>
+        <p>原則としてメレンドルフ式の転写に従いますが、 ū は v に、 š は x に置き換えてください。また、属格の<span style="font-family: 'NotoSansMongolian';"> ᡳ </span>は I として、直前の語との間にスペースを入れずに入力してください。なお、漢語を表記する文字には対応していません。</p>
+
+        <p><a href="https://fonts.google.com/noto/specimen/Noto+Sans+Mongolian">Noto Sans Mongolian</a>を使用しています。このフォントは、満州文字（モンゴル文字ブロックに含まれる）をカバーしていますが、満洲語の表示には向いていません。このフォントでの表示と本来の字形が異なる例を示します：</p>
+        <ul>
+            <li>sain ≠ ᠰᠠᡳᠨ → <img src="res/manju/sain.png" style="vertical-align: middle; height: 2rem;">（᠊ᡳ᠊が一本足りない）</li>
+            <li>fi ≠ ᡶᡳ → <img src="res/manju/fi.png" style="vertical-align: middle; height: 2rem;">（語頭は᠊ᠸ᠊様でなければならない）</li>
+            <li>dere ≠ ᡩᡝᡵᡝ → <img src="res/manju/dere.png" style="vertical-align: middle; height: 2rem;">（語頭に線が足りず、また点が多い）</li>
+            <li>sikse ≠ ᠰᡳᡴᠰᡝ → <img src="res/manju/sikse.png" style="vertical-align: middle; height: 2rem;">（᠊ᡴ᠊に点が足りない）</li>
+        </ul>
+        <p>より正確な表示には他のフォントを利用してください。上の画像では<a href="https://www.manchustudiesgroup.org/typing-manchu/">XM_ZhengBai</a>を用いていますが、ライセンスが不明なため画像としての埋め込みに留めています。</p>
+
+        <footer>公開：2024-07-15<br>最終更新：2024-07-16</footer>
         
         <script>
             let last_input = "";
@@ -47,10 +55,11 @@
             function review() {
                 const text = document.querySelector('textarea').value;
                 
-                const manju_table = {"a": "ᠠ", "e": "ᡝ", "i": "ᡳ", "o": "ᠣ", "u": "ᡠ", "v": "ᡡ", "n": "ᠨ", 
-                                    "k": "ᡴ", "g": "ᡤ", "h": "ᡥ", "b": "ᠪ", "s": "ᠰ", "x": "ᡧ", "t": "ᡨ", 
-                                    "d": "ᡩ", "l": "ᠯ", "m": "ᠮ", "c": "ᠴ", "j": "ᠵ", "y": "ᠶ", "r": "ᡵ", "f": "ᡶ", 
-                                    "w": "ᠸ", "I": "ᡳ", ",": "᠈", ".": "᠉", "-": "᠊"};
+                const manju_table = {"a": "ᠠ", "e": "ᡝ", "i": "ᡳ", "o": "ᠣ", "u": "ᡠ", "v": "ᡡ", 
+                                     "n": "ᠨ", "k": "ᡴ", "g": "ᡤ", "h": "ᡥ", "b": "ᠪ", "p": "ᡦ", 
+                                     "s": "ᠰ", "x": "ᡧ", "t": "ᡨ", "d": "ᡩ", "l": "ᠯ", "m": "ᠮ", 
+                                     "c": "ᠴ", "j": "ᠵ", "y": "ᠶ", "r": "ᡵ", "f": "ᡶ", "w": "ᠸ", 
+                                     "I": " ᡳ", ",": "᠈", ".": "᠉", "-": "᠊"};
                 
                 const manju_text = (() => {
                     let tp = "";
