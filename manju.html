@@ -5,7 +5,7 @@
         <title>満洲語キーボード - yatabashi</title>
         <link rel="icon" href="res/favicon.ico">
         <link rel="stylesheet" href="style.css">
-        
+
         <style>
             @font-face {
                 font-family: 'NotoSansMongolian';
@@ -20,10 +20,31 @@
                 margin-top: 20px;
             }
 
+            .before-review {
+                font-family: 'Koruri', sans-serif;
+                padding-bottom: 2px;
+                border-bottom: 1px black solid;
+                margin-bottom: 0px;
+            }
+
+            #copier {
+                font-family: inherit;
+                margin-inline-start: 0.75rem;
+                vertical-align: 0.1rem;
+            }
+
             .review {
                 font-family: 'NotoSansMongolian', serif;
+                margin-top: 0px;
+                border-bottom: 1px black solid;
+            }
+
+            #review-manju {
                 font-size: 2rem;
-                margin: 1rem 0;
+            }
+
+            th, td {
+                text-align: center;
             }
         </style>
     </head>
@@ -32,65 +53,136 @@
             <h1>満洲語キーボード</h1>
             <div class="home"><a href="index.html">ホームへ</a></div>
         </header>
-        
+
         <textarea placeholder="latin hergen" rows="2"></textarea>
+        <p class="before-review">ᠮᠠᠨᠵᡠ ᡥᡝᡵᡤᡝᠨ<button id="copier" onclick="copy()" hidden>出力をコピー</button></p>
         <p class="review"><span id="review-manju"></span></p>
 
-        <p>原則としてメレンドルフ式の転写に従いますが、 ū は v に、 š は x に置き換えてください。また、属格の<span style="font-family: 'NotoSansMongolian';"> ᡳ </span>は I として、直前の語との間にスペースを入れずに入力してください。なお、漢語を表記する文字には対応していません。</p>
+        <p>原則としてメレンドルフ式のラテン文字転写に従いますが、 ū は v や U として、 š は x や S としても入力可能です。また、属格の<span style="font-family: 'NotoSansMongolian';"> ᡳ </span>は I として、直前の語との間にスペースを入れずに入力してください。漢語を表記する文字は次のように入力してください：</p>
+        <table>
+            <tr>
+                <th></th>
+                <td><img src="res/manju/K.png" style="vertical-align: middle; height: 2rem;"></td>
+                <td><img src="res/manju/G.png" style="vertical-align: middle; height: 2rem;"></td>
+                <td><img src="res/manju/H.png" style="vertical-align: middle; height: 2rem;"></td>
+                <td><img src="res/manju/ts.png" style="vertical-align: middle; height: 2rem;"></td>
+                <td><img src="res/manju/tsy.png" style="vertical-align: middle; height: 2rem;"></td>
+                <td><img src="res/manju/dz.png" style="vertical-align: middle; height: 2rem;"></td>
+                <td><img src="res/manju/R.png" style="vertical-align: middle; height: 2rem;"></td>
+                <td><img src="res/manju/sy.png" style="vertical-align: middle; height: 2rem;"></td>
+                <td><img src="res/manju/cy.png" style="vertical-align: middle; height: 2rem;">*</td>
+                <td><img src="res/manju/jy.png" style="vertical-align: middle; height: 2rem;">*</td>
+                <td><img src="res/manju/boundary.png" style="vertical-align: middle; height: 2rem;"></td>
+            </tr>
+            <tr>
+                <th>メレンドルフ式</th>
+                <td>kʽ</td>
+                <td>gʽ</td>
+                <td>hʽ</td>
+                <td>tsʽ</td>
+                <td>ts</td>
+                <td>dz</td>
+                <td>ž</td>
+                <td>sy</td>
+                <td>cʽy</td>
+                <td>jy</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <th>入力文字</th>
+                <td>K</td>
+                <td>G</td>
+                <td>H</td>
+                <td>ts</td>
+                <td>tsy</td>
+                <td>dz</td>
+                <td>z, R</td>
+                <td>sy</td>
+                <td>cy</td>
+                <td>jy</td>
+                <td>'</td>
+            </tr>
+        </table>
+        <p>* それぞれ「C」「J」から子音字を単独で入力できます。</p>
 
-        <p><a href="https://fonts.google.com/noto/specimen/Noto+Sans+Mongolian">Noto Sans Mongolian</a>を使用しています。このフォントは、満州文字（モンゴル文字ブロックに含まれる）をカバーしていますが、満洲語の表示には向いていません。このフォントでの表示と本来の字形が異なる例を示します：</p>
-        <ul>
-            <li>sain ≠ ᠰᠠᡳᠨ → <img src="res/manju/sain.png" style="vertical-align: middle; height: 2rem;">（᠊ᡳ᠊ が一本足りない）</li>
-            <li>fi ≠ ᡶᡳ → <img src="res/manju/fi.png" style="vertical-align: middle; height: 2rem;">（語頭は ᠸ᠊ 様でなければならない）</li>
-            <li>dere ≠ ᡩᡝᡵᡝ → <img src="res/manju/dere.png" style="vertical-align: middle; height: 2rem;">（語頭に線が足りず、また点が多い）</li>
-            <li>sikse ≠ ᠰᡳᡴᠰᡝ → <img src="res/manju/sikse.png" style="vertical-align: middle; height: 2rem;">（᠊ᡴ᠊ に点が足りない）</li>
-        </ul>
-        <p>より正確な表示には他のフォントを利用してください。上の画像では<a href="https://www.manchustudiesgroup.org/typing-manchu/">XM_ZhengBai</a>を用いていますが、ライセンスが不明なため画像としての埋め込みに留めています。</p>
+        <p><a href="https://fonts.google.com/noto/specimen/Noto+Sans+Mongolian">Noto Sans Mongolian</a>を使用しています。また、画像には<a href="https://www.manchustudiesgroup.org/typing-manchu/">XM_ZhengBai（Manchu Studies Group</a>）を用いていますが、ライセンスが不明なため画像としての埋め込みに留めています。</p>
 
-        <footer>公開：2024-07-15<br>最終更新：2024-07-16</footer>
-        
+        <footer>公開：2024-07-15<br>最終更新：2024-07-17</footer>
+
         <script>
             let last_input = "";
-            
+
             function review() {
-                const text = document.querySelector('textarea').value;
-                
+                let text = document.querySelector('textarea').value;
+
+                text = text.replace(/ū/g, "v")
+                           .replace(/U/g, "v")
+                           .replace(/š/g, "x")
+                           .replace(/S/g, "x")
+                           .replace(/R/g, "z")
+
                 const manju_table = {"a": "ᠠ", "e": "ᡝ", "i": "ᡳ", "o": "ᠣ", "u": "ᡠ", "v": "ᡡ", 
                                      "n": "ᠨ", "k": "ᡴ", "g": "ᡤ", "h": "ᡥ", "b": "ᠪ", "p": "ᡦ", 
                                      "s": "ᠰ", "x": "ᡧ", "t": "ᡨ", "d": "ᡩ", "l": "ᠯ", "m": "ᠮ", 
                                      "c": "ᠴ", "j": "ᠵ", "y": "ᠶ", "r": "ᡵ", "f": "ᡶ", "w": "ᠸ", 
-                                     "I": " ᡳ", ",": "᠈", ".": "᠉", "-": "᠊"};
-                
+                                     "K": "ᠺ", "G": "ᡬ", "H": "ᡭ", "z": "ᡰ", "C": "ᡱ", "J": "ᡷ", 
+                                     "I": " ᡳ", ",": "᠈", ".": "᠉", "-": "᠊", 
+                                     "'": "᠇"};
+
                 const manju_text = (() => {
                     let tp = "";
-                    
+
                     for (let i = 0; i < text.length; i++) {
-                        const table = {"ng": "ᠩ"};
-                        
-                        if (Object.keys(table).includes(text[i-1]+text[i])) {
-                            tp = tp.slice(0, -1) + table[text[i-1]+text[i]];
+                        const table_3 = {"tsy": "ᡮᡟ"};
+
+                        if (Object.keys(table_3).includes(text[i-2]+text[i-1]+text[i])) {
+                            tp = tp.slice(0, -1) + table_3[text[i-2]+text[i-1]+text[i]];
                         } else {
-                            tp += manju_table[text[i]] ?? text[i];
+                            const table_2 = {"ng": "ᠩ", "ts": "ᡮ", "dz": "ᡯ", "sy": "ᠰᡟ", "cy": "ᡱᡳ", "jy": "ᡷᡳ"};
+
+                            if (Object.keys(table_2).includes(text[i-1]+text[i])) {
+                                tp = tp.slice(0, -1) + table_2[text[i-1]+text[i]];
+                            } else {
+                                tp += manju_table[text[i]] ?? text[i];
+                            }
                         }
                     }
-                    
+
                     return tp;
                 })();
-                
+
                 document.getElementById('review-manju').innerText = manju_text;
             }
-            
+
+            function showHideCopier() {
+                if (document.querySelector('textarea').value == "") {
+                    document.getElementById("copier").hidden = true;
+                } else {
+                    document.getElementById("copier").hidden = false;
+                }
+            }
+
+            function copy() {
+                navigator.clipboard.writeText(document.getElementById("review-manju").textContent);
+                document.getElementById("copier").textContent = "コピーされました";
+                setTimeout(() => {
+                    document.getElementById("copier").textContent = "出力をコピー"
+                }, 2000);
+            }
+
             const textarea = document.querySelector('textarea');
-            
-            textarea.focus();
-            
+
+            // textarea.focus();
+
             textarea.addEventListener("input", (e) => {
                 last_input = e.data;
-                
+
                 review();
+                showHideCopier();
             });
-            
+
             review();
+            showHideCopier();
         </script>
     </body>
 </html>
