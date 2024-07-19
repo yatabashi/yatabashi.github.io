@@ -14,7 +14,7 @@
 
             textarea {
                 font-family: serif;
-                font-size: 2rem;
+                font-size: 1.5rem;
                 width: 100%;
                 box-sizing: border-box;
                 margin-top: 20px;
@@ -33,14 +33,28 @@
                 vertical-align: 0.1rem;
             }
 
-            .review {
-                font-family: 'NotoSansMongolian', serif;
+            .review-wrapper {
                 margin-top: 0px;
                 border-bottom: 1px black solid;
             }
 
+            .review {
+                margin: 0;
+                font-family: 'NotoSansMongolian', serif;
+                width: 100%;
+                overflow: scroll;
+            }
+
+            .vertical {
+                margin-top: 10px;
+                margin-bottom: 10px;
+                height: fit-content;
+                max-height: 400px;
+                writing-mode: vertical-lr;
+            }
+
             #review-manju {
-                font-size: 2rem;
+                font-size: 1.5rem;
             }
 
             th, td {
@@ -55,8 +69,8 @@
         </header>
 
         <textarea placeholder="latin hergen" rows="2"></textarea>
-        <p class="before-review">ᠮᠠᠨᠵᡠ ᡥᡝᡵᡤᡝᠨ<button id="copier" onclick="copy()" hidden>出力をコピー</button></p>
-        <p class="review"><span id="review-manju"></span></p>
+        <p class="before-review">ᠮᠠᠨᠵᡠ ᡥᡝᡵᡤᡝᠨ<button id="copier" onclick="copy()" hidden>出力をコピー</button><span style="margin-inline-start: 0.75rem;">縦書き</span><input id="direction" type="checkbox" value="false" oninput="changeDirection()"></p>
+        <div class="review-wrapper"><p class="review"><span id="review-manju"></span></p></div>
 
         <p>原則としてメレンドルフ式のラテン文字転写に従いますが、 ū は v や U として、 š は x や S としても入力可能です。また、属格の<span style="font-family: 'NotoSansMongolian';"> ᡳ </span>は I として、直前の語との間にスペースを入れずに入力してください。漢語を表記する文字は次のように入力してください：</p>
         <table>
@@ -170,6 +184,14 @@
                 }, 2000);
             }
 
+            function changeDirection() {
+                if (document.getElementById("direction").checked) {
+                    document.getElementsByClassName("review")[0].classList.add("vertical");
+                } else {
+                    document.getElementsByClassName("review")[0].classList.remove("vertical");
+                }
+            }
+
             const textarea = document.querySelector('textarea');
 
             // textarea.focus();
@@ -183,6 +205,7 @@
 
             review();
             showHideCopier();
+            changeDirection();
         </script>
     </body>
 </html>
