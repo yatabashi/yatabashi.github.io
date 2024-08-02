@@ -13,6 +13,31 @@
                 width: 25rem;
                 max-width: 100%;
             }
+            
+            .headline {
+                display: flex;
+                align-items: center;
+                font-weight: bold;
+            }
+            
+            /* .headline::before,  */.headline::after {
+                content: "";
+                height: 1px;
+                background-color: black;
+                flex-grow: 1;
+            }
+            
+            /* .headline::before {
+                margin-right: 1rem;
+            } */
+            
+            .headline::after {
+                margin-left: 1rem;
+            }
+
+            .mono {
+                font-family: 'NotoSansMono';
+            }
         </style>
     </head>
     <body>
@@ -21,65 +46,36 @@
             <div class="home"><a href="index.html">ホームへ</a></div>
         </header>
         
-        <p>例：<code>12*(3+7)/(-c)</code> → <code>-f</code></p>
+        <p>例：<code>12*(3+7)/(-c)</code> → <code>-f</code><br>※入力に含まれる空白（U+0020）と改行（U+000A）は無視されます。</p>
         
         <textarea id="exp" placeholder="Expression in hexadecimal" oninput="resize();calc()"></textarea>
         <p id="val"></p>
         
-        <span class="headline">細かい話</span>
+        <span class="headline">実装について</span>
         
-        <style>
-            .headline {
-                display: flex;
-                align-items: center;
-            }
-            
-            .headline::before, .headline::after {
-                content: "";
-                height: 1px;
-                background-color: black;
-                flex-grow: 1;
-            }
-            
-            .headline::before {
-                margin-right: 1rem;
-            }
-            
-            .headline::after {
-                margin-left: 1rem;
-            }
-        </style>
-        
-        <p>式の文法をBNF記法擬きで記述すると次の通りです（式全体が<code>&lt;expr&gt;</code>から生成できる必要があります）：</p>
+        <p>入力（<code>&lt;input&gt;</code>）は、次の導出規則を元に解釈されます：</p>
         
         <!-- 
-            <digit>  ::= '0' | ... | '9' | 'a' | ... | 'f' | 'A' | ... | 'F'
-            <number> ::= <digit>+ ['.' [<digit>+]]
+            <input>  ::= ε | <expr>
+            <expr>   ::= <term> (('+' | '-') <term>)*
+            <term>   ::= <factor> (('*' | '/') <factor>)*
             <factor> ::= <number> | '(' <expr> ')' | '-' <factor>
-            <term>   ::= <factor> ( ('*' | '/') <factor> )*
-            <expr>   ::= <term> ( ('+' | '-') <term> )*
+            <number> ::= <digit>+ ('.' (<digit>+)?)?
+            <digit>  ::= '0' | ... | '9' | 'a' | ... | 'f' | 'A' | ... | 'F'
          -->
-        <p class="indent" style="font-family: 'NotoSansMono'; white-space: pre-wrap;">&lt;digit&gt;  ::= '0' | ... | '9' | 'a' | ... | 'f' | 'A' | ... | 'F'
-&lt;number&gt; ::= &lt;digit&gt;+ ['.' [&lt;digit&gt;+]]
+        <p class="indent" style="font-family: 'NotoSansMono'; white-space: pre-wrap;">&lt;input&gt;  ::= ε | &lt;expr&gt;
+&lt;expr&gt;   ::= &lt;term&gt; (('+' | '-') &lt;term&gt;)*
+&lt;term&gt;   ::= &lt;factor&gt; (('*' | '/') &lt;factor&gt;)*
 &lt;factor&gt; ::= &lt;number&gt; | '(' &lt;expr&gt; ')' | '-' &lt;factor&gt;
-&lt;term&gt;   ::= &lt;factor&gt; ( ('*' | '/') &lt;factor&gt; )*
-&lt;expr&gt;   ::= &lt;term&gt; ( ('+' | '-') &lt;term&gt; )*</p>
+&lt;number&gt; ::= &lt;digit&gt;+ ('.' (&lt;digit&gt;+)?)?
+&lt;digit&gt;  ::= '0' | ... | '9' | 'a' | ... | 'f' | 'A' | ... | 'F'</p>
         
-        <details>
-            <summary>反復記号の定義</summary>
-            <ul>
-                <li><code>[S]</code>: 0個または1個の<code>S</code></li>
-                <li><code>S*</code>: <code>S</code>の0回以上の繰り返し</li>
-                <li><code>S+</code>: <code>S</code>の1回以上の繰り返し</li>
-            </ul>
-        </details>
-        
-        <p>正確には、空文字列も受理されます。また、空白（U+0020）と改行（U+000A）も許容されますが、無視されます。</p>
+        <p>ただし、計算上は<span class="mono">&lt;factor&gt;</span>から<span class="mono">&lt;number&gt;</span>を導出する際に先頭の一文字を先読みしています。</p>
         
         <p>参考：<br><a href="https://dai1741.github.io/maximum-algo-2012/docs/parsing/">構文解析 - アルゴリズム講習会</a></p>
         
         <footer>
-            公開：2024-02-26
+            公開：2024-02-26<br>最終更新：2024-08-02
         </footer>
     </body>
 </html>
