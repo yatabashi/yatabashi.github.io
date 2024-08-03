@@ -12,15 +12,25 @@
                 src: url('fonts/Noto_Sans_Mongolian/NotoSansMongolian-Regular.ttf');
             }
 
+            @font-face {
+                font-family: 'GentiumPlus';
+                font-weight: 400;
+                src: url('fonts/GentiumPlus/GentiumPlus-Regular.woff');
+            }
+
+            .manju {
+                font-family: 'Fu_XM_ZhengBai', 'NotoSansMongolian';
+            }
+
             textarea {
-                font-family: serif;
-                font-size: 1.5rem;
+                font-family: 'GentiumPlus', serif;
+                font-size: 2rem;
                 width: 100%;
                 box-sizing: border-box;
                 margin-top: 20px;
             }
 
-            .before-review {
+            #before-review {
                 font-family: 'Koruri', sans-serif;
                 padding-bottom: 2px;
                 border-bottom: 1px black solid;
@@ -33,16 +43,21 @@
                 vertical-align: 0.1rem;
             }
 
-            .review-wrapper {
+            #review-wrapper {
                 margin-top: 0px;
                 border-bottom: 1px black solid;
             }
 
-            .review {
-                margin: 0;
-                font-family: 'NotoSansMongolian', serif;
+            #review {
+                margin-left: 0;
+                margin-right: 0;
                 width: 100%;
                 overflow: scroll;
+            }
+
+            .horizontal {
+                margin-top: 5px;
+                margin-bottom: 5px;
             }
 
             .vertical {
@@ -50,12 +65,15 @@
                 margin-bottom: 10px;
                 height: fit-content;
                 max-height: 400px;
+            }
+
+            .vert {
                 writing-mode: vertical-lr;
                 text-orientation: sideways;
             }
 
             #review-manju {
-                font-size: 1.5rem;
+                font-size: 2rem;
             }
 
             th, td {
@@ -70,10 +88,10 @@
         </header>
 
         <textarea placeholder="latin hergen" rows="2"></textarea>
-        <p class="before-review">ᠮᠠᠨᠵᡠ ᡥᡝᡵᡤᡝᠨ<button id="copier" onclick="copy()" hidden>出力をコピー</button><span style="margin-inline-start: 0.75rem;">縦書き</span><input id="direction" type="checkbox" value="false" oninput="changeDirection()"></p>
-        <div class="review-wrapper"><p class="review"><span id="review-manju"></span></p></div>
+        <p id="before-review">ᠮᠠᠨᠵᡠ ᡥᡝᡵᡤᡝᠨ<button id="copier" onclick="copy()" hidden>出力をコピー</button><span style="margin-inline-start: 0.75rem;">縦書き</span><input id="direction" type="checkbox" value="false" oninput="changeDirection()"></p>
+        <div id="review-wrapper"><p id="review" class="manju horizontal"><span id="review-manju"></span></p></div>
 
-        <p>原則としてメレンドルフ式のラテン文字転写に従いますが、 ū は v や U として、 š は x や S としても入力可能です。また、属格の<span style="font-family: 'NotoSansMongolian';"> ᡳ </span>は I として、直前の語との間にスペースを入れずに入力してください。漢語を表記する文字は次のように入力してください：</p>
+        <p>原則としてメレンドルフ式のラテン文字転写に従いますが、 ū は v や U として、 š は x や S としても入力可能です。また、属格の<span class="manju vert"> ᡳ</span>は I として、直前の語との間にスペースを入れずに入力してください。漢語を表記する文字は次のように入力してください：</p>
         <table>
             <tr>
                 <th></th>
@@ -120,7 +138,7 @@
         </table>
         <p>* それぞれ「C」「J」から子音字を単独で入力できます。</p>
 
-        <p><a href="https://fonts.google.com/noto/specimen/Noto+Sans+Mongolian">Noto Sans Mongolian</a>を使用しています。また、画像には<a href="https://www.manchustudiesgroup.org/typing-manchu/">XM_ZhengBai（Manchu Studies Group</a>）を用いていますが、ライセンスが不明なため画像としての埋め込みに留めています。</p>
+        <p><a href="https://fonts.google.com/noto/specimen/Noto+Sans+Mongolian">Noto Sans Mongolian</a>を使用しています。ただし、端末に<a href="https://www.manchustudiesgroup.org/typing-manchu/">XM_ZhengBai</a>（画像に使用）がダウンロードされている場合はそちらが優先されます。</p>
 
         <footer>公開：2024-07-15<br>最終更新：2024-07-17</footer>
 
@@ -187,10 +205,18 @@
 
             function changeDirection() {
                 if (document.getElementById("direction").checked) {
-                    document.getElementsByClassName("review")[0].classList.add("vertical");
+                    document.getElementById("review").classList.remove("horizontal");
+                    document.getElementById("review").classList.add("vertical");
+                    document.getElementById("review").classList.add("vert");
                 } else {
-                    document.getElementsByClassName("review")[0].classList.remove("vertical");
+                    document.getElementById("review").classList.remove("vertical");
+                    document.getElementById("review").classList.remove("vert");
+                    document.getElementById("review").classList.add("horizontal");
                 }
+            }
+
+            function tryApplyingFont() {
+
             }
 
             const textarea = document.querySelector('textarea');
