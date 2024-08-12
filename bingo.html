@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>n次元ビンゴにおける可能なビンゴ列の本数 - yatabashi</title>
+        <link rel="icon" href="./res/favicon.ico">
+        <link rel="stylesheet" href="./style.css">
+
+        <style>
+            math:not(.block) {
+                margin-inline: 0.2rem;
+            }
+
+            math.block {
+                margin-block: 10px;
+                font-size: 1.2rem;
+            }
+
+            table, td, th {
+                border: none;
+                text-align: center;
+            }
+
+            table, td>* {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            td, th {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            tr:nth-child(1) {
+                border-bottom: 1px solid black;
+            }
+
+            /* 〇次元 */
+            .bingo-5-0 {
+                box-sizing: border-box;
+                width: 26px;
+                height: 26px;
+                border: 2px solid black;
+            }
+
+            /* 一次元：m=5 */
+            .bingo-5-1 {
+                box-sizing: border-box;
+                width: 122px;
+                height: 26px;
+                border: 1px solid black;
+                border-top: 2px solid black;
+                border-bottom: 2px solid black;
+                background-image:
+                    repeating-linear-gradient(
+                        90deg,
+                        #000,
+                        #000 1px,
+                        transparent 1px,
+                        transparent 23px,
+                        #000 23px,
+                        #000 24px
+                    );
+            }
+
+            /* 二次元：m=5 */
+            .bingo-5-2 {
+                box-sizing: border-box;
+                width: 122px;
+                height: 122px;
+                border: 1px solid black;
+                background-image:
+                    repeating-linear-gradient(
+                        90deg,
+                        #000,
+                        #000 1px,
+                        transparent 1px,
+                        transparent 23px,
+                        #000 23px,
+                        #000 24px
+                    ), repeating-linear-gradient(
+                        0deg,
+                        #000,
+                        #000 1px,
+                        #fff 1px,
+                        #fff 23px,
+                        #000 23px,
+                        #000 24px
+                    );
+            }
+
+            /* 三次元 */
+            /* 空間クラス */
+            .canvas {
+                height: 122px;
+                transform-style: preserve-3d;
+                /* perspective: 3000px;
+                perspective-origin: 1500px -1000px; */
+                perspective: 1000px;
+                perspective-origin: 500px -300px;
+                margin: 40px;
+            }
+
+            /* 立方体クラス */
+            .cube {
+                margin: 0 auto;
+                width: 122px;
+                transform-style: preserve-3d;
+            }
+
+            /* 立方体の面クラス */
+            .cube-face {
+                box-sizing: border-box;
+                position: absolute;
+                width: 122px;
+                height: 122px;
+            }
+
+            /* マスクラス */
+            .square {
+                background-color: #99ff66;
+                position: absolute;
+            }
+
+            .square5 {
+                background-color: #99ff66;
+                position: absolute;
+                width: 22px;
+                height: 22px
+            }
+
+            /* 特殊マスクラス */
+            .origin {
+                background-color: #33cc00;
+            }
+
+            .orange {
+                background-color: #ff9966;
+            }
+
+            /* 立方体の各面：m=3 */
+            .cube-face-front {
+                transform: translateZ(61px);
+                border: 1px solid black;
+                background-image:
+                    repeating-linear-gradient(
+                        90deg,
+                        #000,
+                        #000 1px,
+                        transparent 1px,
+                        transparent 39px,
+                        #000 39px,
+                        #000 40px
+                    ), repeating-linear-gradient(
+                        0deg,
+                        #000,
+                        #000 1px,
+                        #fff 1px,
+                        #fff 39px,
+                        #000 39px,
+                        #000 40px
+                    );
+            }
+
+            .cube-face-righthand {
+                transform: rotateY(90deg) translateZ(61px);
+                /* border: 1px solid black; */
+                border-right: 2px solid black;
+                border-bottom: 2px solid black;
+                background-image:
+                    repeating-linear-gradient(
+                        90deg,
+                        #000,
+                        #000 0px,
+                        transparent 0px,
+                        transparent 36px,
+                        #000 36px,
+                        #000 40px
+                    ), repeating-linear-gradient(
+                        0deg,
+                        #000,
+                        #000 1px,
+                        #fff 1px,
+                        #fff 39px,
+                        #000 39px,
+                        #000 40px
+                    );
+            }
+
+            .cube-face-ceiling {
+                transform: rotateX(90deg) translateZ(61px);
+                /* border: 1px solid black; */
+                border-left: 2px solid black;
+                border-top: 2px solid black;
+                background-image:
+                    repeating-linear-gradient(
+                        90deg,
+                        #000,
+                        #000 1px,
+                        transparent 1px,
+                        transparent 39px,
+                        #000 39px,
+                        #000 40px
+                    ), repeating-linear-gradient(
+                        0deg,
+                        #000,
+                        #000 0px,
+                        #fff 0px,
+                        #fff 36px,
+                        #000 36px,
+                        #000 40px
+                    );
+            }
+
+            .front-top-left {
+                width: 38px;
+                height: 38px;
+                translate: 1px 1px;
+            }
+
+            .front-top-center {
+                width: 38px;
+                height: 38px;
+                translate: 41px 1px;
+            }
+
+            .front-top-right {
+                width: 38px;
+                height: 38px;
+                translate: 81px 1px;
+            }
+
+            .front-middle-left {
+                width: 38px;
+                height: 38px;
+                translate: 1px 41px;
+            }
+
+            .front-middle-center {
+                width: 38px;
+                height: 38px;
+                translate: 41px 41px;
+            }
+
+            .front-middle-right {
+                width: 38px;
+                height: 38px;
+                translate: 81px 41px;
+            }
+
+            .front-bottom-left {
+                width: 38px;
+                height: 38px;
+                translate: 1px 81px;
+            }
+
+            .front-bottom-center {
+                width: 38px;
+                height: 38px;
+                translate: 41px 81px;
+            }
+
+            .front-bottom-right {
+                width: 38px;
+                height: 38px;
+                translate: 81px 81px;
+            }
+
+            .righthand-top-left {
+                width: 36px;
+                height: 38px;
+                translate: 0px 1px;
+            }
+
+            .righthand-top-center {
+                width: 36px;
+                height: 38px;
+                translate: 40px 1px;
+            }
+
+            .righthand-top-right {
+                width: 36px;
+                height: 38px;
+                translate: 80px 1px;
+            }
+
+            .righthand-middle-left {
+                width: 36px;
+                height: 38px;
+                translate: 0px 41px;
+            }
+
+            .righthand-middle-center {
+                width: 36px;
+                height: 38px;
+                translate: 40px 41px;
+            }
+
+            .righthand-middle-right {
+                width: 36px;
+                height: 38px;
+                translate: 80px 41px;
+            }
+
+            .righthand-bottom-left {
+                width: 36px;
+                height: 38px;
+                translate: 0px 81px;
+            }
+
+            .righthand-bottom-center {
+                width: 36px;
+                height: 38px;
+                translate: 40px 81px;
+            }
+
+            .righthand-bottom-right {
+                width: 36px;
+                height: 38px;
+                translate: 80px 81px;
+            }
+
+            .ceiling-top-left {
+                width: 38px;
+                height: 36px;
+                translate: 1px 4px;
+            }
+
+            .ceiling-top-center {
+                width: 38px;
+                height: 36px;
+                translate: 41px 4px;
+            }
+
+            .ceiling-top-right {
+                width: 38px;
+                height: 36px;
+                translate: 81px 4px;
+            }
+
+            .ceiling-middle-left {
+                width: 38px;
+                height: 36px;
+                translate: 1px 44px;
+            }
+
+            .ceiling-middle-center {
+                width: 38px;
+                height: 36px;
+                translate: 41px 44px;
+            }
+
+            .ceiling-middle-right {
+                width: 38px;
+                height: 36px;
+                translate: 81px 44px;
+            }
+
+            .ceiling-bottom-left {
+                width: 38px;
+                height: 36px;
+                translate: 1px 84px;
+            }
+
+            .ceiling-bottom-center {
+                width: 38px;
+                height: 36px;
+                translate: 41px 84px;
+            }
+
+            .ceiling-bottom-right {
+                width: 38px;
+                height: 36px;
+                translate: 81px 84px;
+            }
+
+            /* 立方体の各面：m=5 */
+            .bingo-5-3-front {
+                transform: translateZ(61px);
+                border: 1px solid black;
+                background-image:
+                    repeating-linear-gradient(
+                        90deg,
+                        #000,
+                        #000 1px,
+                        transparent 1px,
+                        transparent 23px,
+                        #000 23px,
+                        #000 24px
+                    ), repeating-linear-gradient(
+                        0deg,
+                        #000,
+                        #000 1px,
+                        transparent 1px,
+                        transparent 23px,
+                        #000 23px,
+                        #000 24px
+                    );
+            }
+
+            .bingo-5-3-righthand {
+                transform: rotateY(90deg) translateZ(61px);
+                border-right: 2px solid black;
+                border-bottom: 2px solid black;
+                background-image:
+                    repeating-linear-gradient(
+                        90deg,
+                        #000,
+                        #000 0px,
+                        transparent 0px,
+                        transparent 21px,
+                        #000 21px,
+                        #000 24px
+                    ), repeating-linear-gradient(
+                        0deg,
+                        #000,
+                        #000 1px,
+                        transparent 1px,
+                        transparent 23px,
+                        #000 23px,
+                        #000 24px
+                    );
+            }
+
+            .bingo-5-3-ceiling {
+                transform: rotateX(90deg) translateZ(61px);
+                border-left: 2px solid black;
+                border-top: 2px solid black;
+                background-image:
+                    repeating-linear-gradient(
+                        90deg,
+                        #000,
+                        #000 1px,
+                        transparent 1px,
+                        transparent 23px,
+                        #000 23px,
+                        #000 24px
+                    ), repeating-linear-gradient(
+                        0deg,
+                        #000,
+                        #000 0px,
+                        transparent 0px,
+                        transparent 21px,
+                        #000 21px,
+                        #000 24px
+                    );
+            }
+
+            #numsb td {
+                text-align: right;
+                padding-inline: 10px;
+            }
+
+            /* #numsb, #numsb th, #numsb td {
+                border: 1px solid black;
+            } */
+
+            #numsb tr:nth-child(1) {
+                border-bottom: 1px solid black;
+            }
+            
+            #numsb tr th:nth-child(1) {
+                border-right: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>n次元ビンゴにおける可能なビンゴ列の本数</h1>
+            <div class="home"><a href="index.html">ホームへ</a></div>
+        </header>
+
+        <p>各辺が<math class="f7"></math>マスの<math class="f8"></math>次元ビンゴシートにおいて可能なビンゴ列の本数<math class="f57"></math>は次の式で与えられる：<math class="f56 block"></math></p>
+
+        <!-- <math>
+            <mrow>
+                <msub>
+                    <mi>#</mi>
+                    <mi>b</mi>
+                </msub>
+                <mo stretchy="false">(</mo>
+                <mn>m</mn>
+                <mo lspace="0.2222em" rspace="0.2222em">:</mo>
+                <mn><input type="number" id="m" style="font-size: 1.2rem; width: 3rem; border: 0; border-bottom: 1.5px solid lightgray;" min="1" value="5" max="99" onchange="calcNumBingo()"></mn>
+                <mo>,</mo>
+                <mn>n</mn>
+                <mo lspace="0.2222em" rspace="0.2222em">:</mo>
+                <mn><input type="number" id="n" style="font-size: 1.2rem; width: 3rem; border: 0; border-bottom: 1.5px solid lightgray;" min="0" value="2" max="99" onchange="calcNumBingo()"></mn>
+                <mo stretchy="false">)</mo>
+                <mo>=</mo>
+                <mi><span id="result"></span></mi>
+            </mrow>
+        </math>
+
+        <script>
+            function fact(n) {
+                if (n == 0) {
+                    return 1;
+                } else {
+                    return n * fact(n - 1);
+                }
+            }
+
+            function calcNumBingo() {
+                const mstr = document.getElementById("m").value;
+                const nstr = document.getElementById("n").value;
+                const field = document.getElementById("result");
+
+                if (mstr == "" || nstr == "") {
+                    field.textContent = "";
+                    return;
+                } else {
+                    let m = Number(mstr);
+                    let n = Number(nstr);
+
+                    if (m % 1 != 0 || n % 1 != 0) {
+                        field.textContent = "";
+                        return;
+                    }
+
+                    const mmax = Number(document.getElementById("m").max);
+                    const nmax = Number(document.getElementById("n").max);
+                    m = m > mmax ? mmax : m;
+                    n = n > nmax ? nmax : n;
+
+                    if (m == 1 || n == 0) {
+                        field.textContent = "1";
+                        return;
+                    } else {
+                        let x = 0;
+
+                        for (let i = 0; i <= n-1; i++) {
+                            const a = 2 ** (n - i);
+                            const b = fact(n) / (fact(i) * fact(n - i));
+                            const c = (m - 2) ** i;
+
+                            x += (a - 1) * a * b * c
+                        }
+
+                        x /= 2;
+
+                        field.textContent = String(x);
+                    }
+                }
+            }
+
+            calcNumBingo();
+
+            for (let m = 1; m <= 10; m++) {
+                let s = "";
+
+                for (let n = 0; n <= 9; n++) {
+                    function tf() {
+                        if (m == 1 || n == 0) {
+                            return "1";
+                        } else {
+                            let x = 0;
+
+                            for (let i = 0; i <= n-1; i++) {
+                                const a = 2 ** (n - i);
+                                const b = fact(n) / (fact(i) * fact(n - i));
+                                const c = (m - 2) ** i;
+
+                                x += (a - 1) * a * b * c
+                            }
+
+                            x /= 2;
+
+                            return String(x);
+                        }
+                    }
+
+                    s += `<td>${tf()}</td>`
+                }
+
+                console.log(s)
+            }
+        </script> -->
+
+        <p><math class="f61"></math>における<math class="f57"></math>の値は次の通り：</p>
+        <table id="numsb">
+            <tr>
+                <th>m \ n</th>
+                <th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th>
+            </tr>
+            <tr>
+                <th>1</th>
+                <td><math>1</math></td><td><math>1</math></td><td><math>1</math></td><td><math>1</math></td><td><math>1</math></td><td><math>1</math></td><td><math>1</math></td><td><math>1</math></td><td><math>1</math></td><td><math>1</math></td>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td><math>1</math></td><td><math>1</math></td><td><math>6</math></td><td><math>28</math></td><td><math>120</math></td><td><math>496</math></td><td><math>2016</math></td><td><math>8128</math></td><td><math>32640</math></td><td><math>130816</math></td>
+            </tr>
+            <tr>
+                <th>3</th>
+                <td><math>1</math></td><td><math>1</math></td><td><math>8</math></td><td><math>49</math></td><td><math>272</math></td><td><math>1441</math></td><td><math>7448</math></td><td><math>37969</math></td><td><math>192032</math></td><td><math>966721</math></td>
+            </tr>
+            <tr>
+                <th>4</th>
+                <td><math>1</math></td><td><math>1</math></td><td><math>10</math></td><td><math>76</math></td><td><math>520</math></td><td><math>3376</math></td><td><math>21280</math></td><td><math>131776</math></td><td><math>807040</math></td><td><math>4907776</math></td>
+            </tr>
+            <tr>
+                <th>5</th>
+                <td><math>1</math></td><td><math>1</math></td><td><math>12</math></td><td><math>109</math></td><td><math>888</math></td><td><math>6841</math></td><td><math>51012</math></td><td><math>372709</math></td><td><math>2687088</math></td><td><math>19200241</math></td>
+            </tr>
+            <tr>
+                <th>6</th>
+                <td><math>1</math></td><td><math>1</math></td><td><math>14</math></td><td><math>148</math></td><td><math>1400</math></td><td><math>12496</math></td><td><math>107744</math></td><td><math>908608</math></td><td><math>7548800</math></td><td><math>62070016</math></td>
+            </tr>
+            <tr>
+                <th>7</th>
+                <td><math>1</math></td><td><math>1</math></td><td><math>16</math></td><td><math>193</math></td><td><math>2080</math></td><td><math>21121</math></td><td><math>206896</math></td><td><math>1979713</math></td><td><math>18640960</math></td><td><math>173533441</math></td>
+            </tr>
+            <tr>
+                <th>8</th>
+                <td><math>1</math></td><td><math>1</math></td><td><math>18</math></td><td><math>244</math></td><td><math>2952</math></td><td><math>33616</math></td><td><math>368928</math></td><td><math>3951424</math></td><td><math>41611392</math></td><td><math>432891136</math></td>
+            </tr>
+            <tr>
+                <th>9</th>
+                <td><math>1</math></td><td><math>1</math></td><td><math>20</math></td><td><math>301</math></td><td><math>4040</math></td><td><math>51001</math></td><td><math>620060</math></td><td><math>7352101</math></td><td><math>85656080</math></td><td><math>985263601</math></td>
+            </tr>
+            <tr>
+                <th>10</th>
+                <td><math>1</math></td><td><math>1</math></td><td><math>22</math></td><td><math>364</math></td><td><math>5368</math></td><td><math>74416</math></td><td><math>992992</math></td><td><math>12915904</math></td><td><math>164990848</math></td><td><math>2079890176</math></td>
+            </tr>
+        </table>
+
+        <h2>導出</h2>
+        <p>通常のビンゴシートは、5×5の正方形をしています。これは、各辺を<math class="f58"></math>マスに割った<math class="f59"></math>次元超立方体です。このように、各辺が<math class="f7"></math>マスになっている<math class="f8"></math>次元超立方体を使ったビンゴを考え、これを<math class="f3"></math>ビンゴと呼ぶことにします。例えば、通常のビンゴは「<math class="f2"></math>ビンゴ」です。また<math class="f7"></math>の値に拘らず、<math class="f3"></math>ビンゴを<math class="f8"></math>次元ビンゴと呼びます。<br>ここで、<math class="f3"></math>ビンゴにおいて、ビンゴとして成立しうるマスの並びがいくつあるかということを考えます。例えば、<math class="f2"></math>ビンゴでは縦5本、横5本、斜め2本の合計12本が最大値です。他の次元を例に取ると、<math class="f4"></math>ビンゴでは1本、<math class="f28"></math>ビンゴでは109本です。ただし、以下の議論では<math class="f7"></math>と<math class="f8"></math>は<math class="f51"></math>を満たす整数として（つまり一辺<math class="f59"></math>マス以上、<math class="f24"></math>次元以上の場合を）考えます。</p>
+        
+        <table>
+            <tr>
+                <td><div class="bingo-5-0"></div></td>
+                <td><div class="bingo-5-1"></div></td>
+                <td><div class="bingo-5-2"></div></td>
+                <td>
+                    <div class="canvas">
+                        <div class="cube">
+                            <div class="cube-face bingo-5-3-front"></div>
+                            <div class="cube-face bingo-5-3-righthand"></div>
+                            <div class="cube-face bingo-5-3-ceiling"></div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><math class="f29"></math>ビンゴ</td>
+                <td><math class="f4"></math>ビンゴ</td>
+                <td><math class="f2"></math>ビンゴ</td>
+                <td><math class="f28"></math>ビンゴ</td>
+            </tr>
+        </table>
+
+        <h3>方針</h3>
+        <p>ビンゴ列にはファセット上（<math class="f8"></math>次元超多面体におけるそれを囲む<math class="f9"></math>次元の面を言う。線分に対する（端）点、多角形に対する辺、多面体に対する面。例えば<math class="f4"></math>ビンゴでは2マス、<math class="f2"></math>ビンゴでは16マス、<math class="f28"></math>ビンゴでは98マスがファセットに属する）のマスが必ずちょうど2つ含まれるので、ファセット上のマスから伸びるビンゴ列の数を合計すれば、その半分が求めたい値になっています。</p>
+
+        <table>
+            <tr>
+                <td>
+                    <div class="bingo-5-1">
+                        <div class="square5 orange" style="translate: 1px;"></div>
+                        <div class="square5 orange" style="translate: 97px;"></div>
+                    </div>
+                </td>
+                <td>
+                    <div class="bingo-5-2">
+                        <div class="square5 orange" style="translate: 1px 1px;"></div>
+                        <div class="square5 orange" style="translate: 25px 1px;"></div>
+                        <div class="square5 orange" style="translate: 49px 1px;"></div>
+                        <div class="square5 orange" style="translate: 73px 1px;"></div>
+                        <div class="square5 orange" style="translate: 97px 1px;"></div>
+                        <div class="square5 orange" style="translate: 1px 25px;"></div>
+                        <div class="square5 orange" style="translate: 97px 25px;"></div>
+                        <div class="square5 orange" style="translate: 1px 49px;"></div>
+                        <div class="square5 orange" style="translate: 97px 49px;"></div>
+                        <div class="square5 orange" style="translate: 1px 73px;"></div>
+                        <div class="square5 orange" style="translate: 97px 73px;"></div>
+                        <div class="square5 orange" style="translate: 1px 97px;"></div>
+                        <div class="square5 orange" style="translate: 25px 97px;"></div>
+                        <div class="square5 orange" style="translate: 49px 97px;"></div>
+                        <div class="square5 orange" style="translate: 73px 97px;"></div>
+                        <div class="square5 orange" style="translate: 97px 97px;"></div>
+                    </div>
+                </td>
+                <td>
+                    <div class="canvas">
+                        <div class="cube">
+                            <div class="cube-face bingo-5-3-front orange"></div>
+                            <div class="cube-face bingo-5-3-righthand orange"></div>
+                            <div class="cube-face bingo-5-3-ceiling orange"></div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><math class="f4"></math>ビンゴ</td>
+                <td><math class="f2"></math>ビンゴ</td>
+                <td><math class="f28"></math>ビンゴ</td>
+            </tr>
+        </table>
+
+        <h3>ファセット上のマスから伸びるビンゴ列の数</h3>
+        <p>マスの位置によって、そこから伸びるビンゴ列の数は異なります。<math class="f5"></math>ビンゴを例に取って考えましょう。以降、説明のために手前左上のマスを原点として右方向にx軸、下方向にy軸、奥行方向にz軸を導入します。</p>
+
+        <table>
+            <tr>
+                <td>
+                    <!-- 三次元空間を表す要素 -->
+                    <div class="canvas" style="margin-top: 60px; margin-bottom: 90px;">
+                        <!-- 立方体の全体を表す要素 -->
+                        <div class="cube">
+                            <!-- 立方体の面を表す要素 -->
+                            <div class="cube-face cube-face-front">
+                                <div style="position: absolute; width: 2px; height: 147px; background-color: black; translate: -1px; border-radius: 1px;"></div>
+                                <div style="position: absolute; width: 2px; height: 185px; transform: rotate(-90deg); transform-origin: top left; background-color: black; translate: -1px 1px; border-radius: 1px;"></div>
+                                <div style="position: absolute; width: 2px; height: 90px; transform: rotate(-121deg); transform-origin: top left; background-color: black; translate: 1px 0px; border-radius: 3px;"></div>
+
+                                <div style="position: absolute; translate: 188px -14px;"><math>x</math></div>
+                                <div style="position: absolute; translate: -7px 146px;"><math>y</math></div>
+                                <div style="position: absolute; translate: 80px -68px;"><math>z</math></div>
+
+                                <div style="position: absolute; translate: -18px 8px;"><math class="f6"></math></div>
+                                <div style="position: absolute; translate: -18px 48px;"><math class="f24"></math></div>
+                                <div style="position: absolute; translate: -18px 88px"><math class="f59"></math></div>
+                                <div style="position: absolute; translate: 13px 0px;"><math class="f6"></math></div>
+                                <div style="position: absolute; translate: 53px 0px;"><math class="f24"></math></div>
+                                <div style="position: absolute; translate: 93px 0px;"><math class="f59"></math></div>
+                                <div style="position: absolute; translate: -8px -27px;"><math class="f6"></math></div>
+                                <div style="position: absolute; translate: 12px -39px;"><math class="f24"></math></div>
+                                <div style="position: absolute; translate: 32px -51px"><math class="f59"></math></div>
+                            </div>
+                            <div class="cube-face cube-face-righthand"></div>
+                            <div class="cube-face cube-face-ceiling">
+                                <!-- <div style="position: absolute; width: 5px; height: 162px; transform: rotate(-180deg); transform-origin: top left; background-color: black; translate: 3px 121px; border-radius: 3px;"></div> -->
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>軸の方向</td>
+            </tr>
+        </table>
+            
+        <p>立方体の頂点にあたるマスからは、縦横奥行の3方向、表面上を斜めに3方向、反対側の点にかけての1方向がありますが、これは①<math class="f11"></math>のいずれか1つが変化するもの：<span style="display: inline-block; vertical-align: middle;"><math class="f12"></math><br><math class="f13"></math><br><math class="f14"></math></span>、②<math class="f11"></math>のいずれか2つが変化するもの：<span style="display: inline-block; vertical-align: middle;"><math class="f15"></math><br><math class="f16"></math><br><math class="f17"></math></span>、③<math class="f11"></math>のいずれか3つが変化するもの：<math class="f18"></math>、として解釈できます（座標はマス<math class="f19"></math>からの例）。立方体の辺上（除頂点）にあるマスからは、①：<span style="display: inline-block; vertical-align: middle;"><math class="f20"></math><br><math class="f21"></math></span>と②：<math class="f22"></math>だけが、立方体の面上（除辺上）にあるマスからは、①：<math class="f23"></math>だけがあります。</p>
+
+        <table>
+            <tr>
+                <td>
+                    <!-- 三次元空間を表す要素 -->
+                    <div class="canvas">
+                        <!-- 立方体の全体を表す要素 -->
+                        <div class="cube">
+                            <!-- 立方体の面を表す要素 -->
+                            <div class="cube-face cube-face-front">
+                                <div class="square origin front-top-left"></div>
+                                <div class="square front-top-center"></div>
+                                <div class="square front-top-right"></div>
+                                <div class="square front-middle-left"></div>
+                                <div class="square front-middle-center"></div>
+                                <div class="square front-bottom-left"></div>
+                                <div class="square front-bottom-right"></div>
+                            </div>
+                            <div class="cube-face cube-face-righthand">
+                                <div class="square righthand-top-left"></div>
+                                <div class="square righthand-top-right"></div>
+                                <div class="square righthand-bottom-left"></div>
+                                <div class="square righthand-bottom-right"></div>
+                            </div>
+                            <div class="cube-face cube-face-ceiling">
+                                <div class="square ceiling-top-left"></div>
+                                <div class="square ceiling-top-right"></div>
+                                <div class="square ceiling-middle-left"></div>
+                                <div class="square ceiling-middle-center"></div>
+                                <div class="square origin ceiling-bottom-left"></div>
+                                <div class="square ceiling-bottom-center"></div>
+                                <div class="square ceiling-bottom-right"></div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="canvas">
+                        <div class="cube">
+                            <div class="cube-face cube-face-front">
+                                <div class="square origin front-top-center"></div>
+                                <div class="square front-middle-center"></div>
+                                <div class="square front-bottom-center"></div>
+                            </div>
+                            <div class="cube-face cube-face-righthand"></div>
+                            <div class="cube-face cube-face-ceiling">
+                                <div class="square ceiling-top-center"></div>
+                                <div class="square ceiling-middle-center"></div>
+                                <div class="square origin ceiling-bottom-center"></div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="canvas">
+                        <div class="cube">
+                            <div class="cube-face cube-face-front">
+                                <div class="square origin front-middle-center"></div>
+                            </div>
+                            <div class="cube-face cube-face-righthand"></div>
+                            <div class="cube-face cube-face-ceiling"></div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>頂点から</td>
+                <td>辺上から</td>
+                <td>面上から</td>
+            </tr>
+        </table>
+
+        <p>このように、<math class="f8"></math>次元ビンゴでは、ファセット上のマスには利用可能な成分が<math class="f24"></math>個から<math class="f8"></math>個あります。また、<math class="f60"></math>個の成分が利用可能な場合に、その選択の仕方は<math class="f26"></math>通り、すなわち<math class="f27 block"></math>通りあります。</p>
+
+        <h3>ファセット上のマスの数</h3>
+        <p>さて、前節で、特定のマスから引けるビンゴ列の数は分かりました。次に、それらのマス自体の数を数えます。前述の通り、ファセット上のマスはビンゴ列を伸ばす方向として利用可能な成分の数で<math class="f8"></math>通りに分類できます。ここで、<math class="f60"></math>個の成分が利用可能なマスは、特に余次元<math class="f60"></math>の面上にあります。<math class="f5"></math>ビンゴでは次のようになっています：</p>
+
+        <table>
+            <tr>
+                <th>ビンゴ列に利用可能な成分の数</th>
+                <th>余次元</th>
+                <th>次元</th>
+                <th>名称</th>
+                <th>個数</th>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>3</td>
+                <td>0</td>
+                <td>頂点</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>2</td>
+                <td>1</td>
+                <td>辺</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>2</td>
+                <td>面</td>
+                <td>6</td>
+            </tr>
+        </table>
+
+        <p>ここで、<math class="f8"></math>次元多面体における<math class="f35"></math>次元面の個数（注意：マスの個数ではない）は次の式で与えられます：<math class="f32 block"></math>これは、<math class="f31"></math>次元面を構成する成分の選び方が<math class="f33"></math>通りあり、また面は面を構成しない成分の両側に配置されるので、同じ成分からなる面がそれぞれ<math class="f34"></math>個あるためです。</p>
+
+        <p>さらに、面に属するマスの個数を考えます。ただし、本来求めたいのは<math class="f31"></math>次元面に属するマスの個数というよりも、<math class="f31"></math>次元面に属し、<math class="f31"></math>以下の次元の面に属さないマスの個数です。これは、<math class="f31"></math>次元面に属するマスのうち、<math class="f31"></math>以下の次元の面に<u>属する</u>マスは利用可能な成分が多いことから、そこから引けるビンゴ列の本数は、<math class="f31"></math>以下の次元の面に<u>属さない</u>マスから引けるビンゴ列の本数よりも多くなるためです。よってその面のファセットに属するマスを除いて数える必要がありますが、これは一辺のマス数から両端分を除いた値に面の次元を乗じた<math class="f36"></math>で済みます。問題になりそうなのは「両端」が存在しない<math class="f37"></math>（頂点）の場合ですが、<math class="f7"></math>の値に拘らず常に<math class="f24"></math>を返すため都合よく行きます。</p>
+
+        <p>したがって、<math class="f8"></math>個の成分が利用可能なマスの個数は、<math class="f35"></math>を用いて<math class="f38 block"></math>で与えられます。</p>
+
+        <h3>可能なビンゴ列の本数</h3>
+        <p>前二節での議論から、<math class="f8"></math>個の成分が利用可能なマスから引かれるビンゴ列の本数は、ビンゴシート全体で<math class="f39 block"></math>として得られます（<math class="f27"></math>を<math class="f40"></math>で置換している）。よってこれの<math class="f42"></math>での総和を取った値がファセット上の全てのマスから引けるビンゴ列の本数の合計です。ただし、<math class="f40"></math>から<math class="f42"></math>での総和は<math class="f43"></math>での総和に等しいので、次の式で得られます：<math class="f41 block"></math>これは各ビンゴ列を2回ずつ数えているので、この半分が求めるべきものです。</p>
+        <p>以上のことから、<math class="f3"></math>ビンゴにおいて可能なビンゴ列の本数は<math class="f52 block"></math>によって求まります。</p>
+
+        <h3>ちょっとした拡張</h3>
+        <p>今求めた式には、<math class="f51"></math>という制約が付いています。しかし、<math class="f53"></math>と<math class="f54"></math>の場合もビンゴシートとして想定可能です。すなわち次元に拘らず<math class="f24"></math>マスしかない場合と、一辺のマス数に拘らず<math class="f6"></math>次元すなわち<math class="f24"></math>マスである場合です。いずれの場合も、ビンゴが成立するのはそのマスが開いた時であり、かつその時に限ると考えてよいでしょう。つまりビンゴ列の数は常に<math class="f24"></math>です。したがって、<math class="f3"></math>ビンゴにおいて可能なビンゴ列の本数<math class="f57"></math>は<math class="f56 block"></math>で与えられます。</p>
+
+        <footer>
+            公開：2024-08-12
+        </footer>
+
+        <script>
+            let formulae = {
+                f2: '<math><msup><mn>5</mn><mn>2</mn></msup></math>',
+                f3: '<math><msup><mi>m</mi><mi>n</mi></msup></math>',
+                f4: '<math><msup><mn>5</mn><mn>1</mn></msup></math>',
+                f5: '<math><msup><mn>3</mn><mn>3</mn></msup></math>',
+                f6: '<math><mn>0</mn></math>',
+                f7: '<math><mi>m</mi></math>',
+                f8: '<math><mi>n</mi></math>',
+                f9: '<math><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></math>',
+                f11: '<math><mrow><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi></mrow></math>',
+                f12: '<math><mrow><mo stretchy="false">[</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow></math>',
+                f13: '<math><mrow><mo stretchy="false">[</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow></math>',
+                f14: '<math><mrow><mo stretchy="false">[</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow></math>',
+                f15: '<math><mrow><mo stretchy="false">[</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow></math>',
+                f16: '<math><mrow><mo stretchy="false">[</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow></math>',
+                f17: '<math><mrow><mo stretchy="false">[</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow></math>',
+                f18: '<math><mrow><mo stretchy="false">[</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow></math>',
+                f19: '<math><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></math>',
+                f20: '<math><mrow><mo stretchy="false">[</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow></math>',
+                f21: '<math><mrow><mo stretchy="false">[</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow></math>',
+                f22: '<math><mrow><mo stretchy="false">[</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow></math>',
+                f23: '<math><mrow><mo stretchy="false">[</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow></math>',
+                f24: '<math><mn>1</mn></math>',
+                f26: '<math><mrow><mrow><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></munderover></mrow><msub><mrow></mrow><mi>N</mi></msub><msub><mi>C</mi><mi>k</mi></msub></mrow></math>',
+                f27: '<math><mrow><msup><mn>2</mn><mi>N</mi></msup><mo>−</mo><mn>1</mn></mrow></math>',
+                f28: '<math><msup><mn>5</mn><mn>3</mn></msup></math>',
+                f29: '<math><msup><mn>5</mn><mn>0</mn></msup></math>',
+                f31: '<math><msup><mi>N</mi><mo>′</mo></msup></math>',
+                f32: '<math><mrow><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><msup><mi>N</mi><mo>′</mo></msup></mrow></msup><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><msup><mi>N</mi><mo>′</mo></msup></msub></mrow></math>',
+                f33: '<math><mrow><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><msup><mi>N</mi><mo>′</mo></msup></msub></mrow></math>',
+                f34: '<math><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><msup><mi>N</mi><mo>′</mo></msup></mrow></msup></math>',
+                f35: '<math><mrow><msup><mi>N</mi><mo>′</mo></msup><mo>=</mo><mi>n</mi><mo>−</mo><mi>N</mi></mrow></math>',
+                f36: '<math><mrow><mo>(</mo><mi>m</mi><mo>−</mo><mn>2</mn><msup><mo>)</mo><msup><mi>N</mi><mo>′</mo></msup></msup></mrow></math>',
+                f37: '<math><mrow><msup><mi>N</mi><mo>′</mo></msup><mo>=</mo><mn>0</mn></mrow></math>',
+                f38: '<math><mrow><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><msup><mi>N</mi><mo>′</mo></msup></mrow></msup><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><msup><mi>N</mi><mo>′</mo></msup></msub><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><msup><mi>N</mi><mo>′</mo></msup></msup></mrow></math>',
+                f39: '<math><mrow><mo stretchy="false">(</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><msup><mi>N</mi><mo>′</mo></msup></mrow></msup><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><msup><mi>N</mi><mo>′</mo></msup></mrow></msup><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><msup><mi>N</mi><mo>′</mo></msup></msub><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><msup><mi>N</mi><mo>′</mo></msup></msup></mrow></math>',
+                f40: '<math><mrow><mi>N</mi><mo>=</mo><mi>n</mi><mo>−</mo><msup><mi>N</mi><mo>′</mo></msup></mrow></math>',
+                f41: '<math><mrow><mrow><munderover><mo>∑</mo><mrow><msup><mi>N</mi><mo>′</mo></msup><mo>=</mo><mn>0</mn></mrow><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></munderover></mrow><mo stretchy="false">(</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><msup><mi>N</mi><mo>′</mo></msup></mrow></msup><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><msup><mi>N</mi><mo>′</mo></msup></mrow></msup><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><msup><mi>N</mi><mo>′</mo></msup></msub><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><msup><mi>N</mi><mo>′</mo></msup></msup></mrow></math>',
+                f42: '<math><mrow><mi>N</mi><mo>=</mo><mn>1</mn><mo>,</mo><mo>…</mo><mo>,</mo><mi>n</mi></mrow></math>',
+                f43: '<math><mrow><msup><mi>N</mi><mo>′</mo></msup><mo>=</mo><mn>0</mn><mo>,</mo><mo>…</mo><mo>,</mo><mi>n</mi><mo>−</mo><mn>1</mn></mrow></math>',
+                f51: '<math><mrow><mi>m</mi><mo>≥</mo><mn>2</mn><mo>,</mo><mi>n</mi><mo>≥</mo><mn>1</mn></mrow></math>',
+                f52: '<math><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mrow><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></munderover></mrow><mo stretchy="false">(</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>i</mi></mrow></msup><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>i</mi></mrow></msup><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mi>i</mi></msup></mrow></math>',
+                f53: '<math><mrow><mi>m</mi><mo>=</mo><mn>1</mn></mrow></math>',
+                f54: '<math><mrow><mi>n</mi><mo>=</mo><mn>0</mn></mrow></math>',
+                f56: '<math><mrow><msub><mi>#</mi><mi>b</mi></msub><mo stretchy="false">(</mo><mi>m</mi><mo>,</mo><mi>n</mi><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix">{</mo><mtable columnalign="left left"><mtr><mtd style="padding:0.5ex 5.9776pt 0.5ex 0pt;"><mn>1</mn></mtd><mtd style="padding:0.5ex 0pt 0.5ex 5.9776pt;"><mrow><mo stretchy="false">(</mo><mi>m</mi><mo>=</mo><mn>1</mn><mo>∨</mo><mi>n</mi><mo>=</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mtd></mtr><mtr><mtd style="padding:0.5ex 5.9776pt 0.5ex 0pt;"><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msubsup><mo stretchy="false">(</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>i</mi></mrow></msup><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>i</mi></mrow></msup><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mi>i</mi></msup></mrow></mtd><mtd style="padding:0.5ex 0pt 0.5ex 5.9776pt;"><mrow><mo stretchy="false">(</mo><mi>m</mi><mo>></mo><mn>1</mn><mo>∧</mo><mi>n</mi><mo>></mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mtd></mtr></mtable><mo></mo></mrow></mrow></math>',
+                f57: '<math><mrow><msub><mi>#</mi><mi>b</mi></msub><mo stretchy="false">(</mo><mi>m</mi><mo>,</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></math>',
+                f58: '<math><mn>5</mn></math>',
+                f59: '<math><mn>2</mn></math>',
+                f60: '<math><mi>N</mi></math>',
+                f61: '<math><mrow><mn>1</mn><mo>≤</mo><mi>m</mi><mo>≤</mo><mn>10</mn><mo>,</mo><mn>0</mn><mo>≤</mo><mi>n</mi><mo>≤</mo><mn>9</mn></mrow></math>',
+            }
+            /*
+                f2 : 5^2
+                f3 : m^n
+                f4 : 5^1
+                f5 : 3^3
+                f6 : 0
+                f7 : m
+                f8 : n
+                f9 : n-1
+                f11: x,y,z
+                f12: [(0,0,0),(1,0,0),(2,0,0)]
+                f13: [(0,0,0),(0,1,0),(0,2,0)]
+                f14: [(0,0,0),(0,0,1),(0,0,2)]
+                f15: [(0,0,0),(1,1,0),(2,2,0)]
+                f16: [(0,0,0),(0,1,1),(0,2,2)]
+                f17: [(0,0,0),(1,0,1),(2,0,2)]
+                f18: [(0,0,0),(1,1,1),(2,2,2)]
+                f19: (0,0,0)
+                f20: [(1,0,0),(1,1,0),(1,2,0)]
+                f21: [(1,0,0),(1,0,1),(1,0,2)]
+                f22: [(1,0,0),(1,1,1),(1,2,2)]
+                f23: [(1,1,0),(1,1,1),(1,1,2)]
+                f24: 1
+                f26: \sum_{k=1}^N {}_N C_k
+                f27: 2^N - 1
+                f28: 5^3
+                f29: 5^0
+                f31: N'
+                f32: 2^{n-N'} {}_n C_{N'}
+                f33: {}_n C_{N'}
+                f34: 2^{n-N'}
+                f35: N' = n - N
+                f36: (m-2)^{N'}
+                f37: N'=0
+                f38: 2^{n-N'} {}_n C_{N'} (m-2)^{N'}
+                f39: (2^{n-N'} - 1) 2^{n-N'} {}_n C_{N'} (m-2)^{N'}
+                f40: N = n - N'
+                f41: \sum_{N'=0}^{n-1} (2^{n-N'} - 1) 2^{n-N'} {}_n C_{N'} (m-2)^{N'}
+                f42: N = 1,\ldots,n
+                f43: N' = 0,\ldots,n-1
+                f51: m \geq 2, n \geq 1
+                f52: \frac{1}{2} \sum_{i=0}^{n-1} (2^{n-i} - 1) 2^{n-i} {}_n C_i (m-2)^i
+                f53: m=1
+                f54: n=0
+                f56: \#_b(m,n) = \left\{ \begin{array}{ll} 1 & (m=1 \lor n=0)\\ \frac{1}{2} \sum_{i=1}^{n-1} (2^{n-i} - 1) 2^{n-i} {}_n C_i (m-2)^i & (m > 1 \land n > 0) \end{array} \right.
+                f57: \#_b(m,n)
+                f58: 5
+                f59: 2
+                f60: N
+            */
+
+            function insertFormulae() {
+                for (elm of document.getElementsByTagName("math")) {
+                    if (elm.className.split(" ")[0] in formulae) {
+                        elm.outerHTML = elm.classList.contains("block") ? 
+                                        formulae[elm.className.split(" ")[0]].replace("<math>", '<math class="block" display="block">') : 
+                                        formulae[elm.className.split(" ")[0]]
+                    }
+                }
+            }
+
+            insertFormulae();
+
+            for (let m = 1; m <= 10; m++) {
+                let s = "";
+                for (let n = 0; n <= 9; n++) {
+                    s += "<td>"
+                    s += calcNumBingo(m, n)
+                    s += "</td>" 
+                }
+                console.log(s)
+            }
+        </script>
+    </body>
+</html>
