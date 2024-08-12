@@ -472,111 +472,6 @@
 
         <p>各辺が<math class="f7"></math>マスの<math class="f8"></math>次元ビンゴシートにおいて可能なビンゴ列の本数<math class="f57"></math>は次の式で与えられる：<math class="f56 block"></math></p>
 
-        <!-- <math>
-            <mrow>
-                <msub>
-                    <mi>#</mi>
-                    <mi>b</mi>
-                </msub>
-                <mo stretchy="false">(</mo>
-                <mn>m</mn>
-                <mo lspace="0.2222em" rspace="0.2222em">:</mo>
-                <mn><input type="number" id="m" style="font-size: 1.2rem; width: 3rem; border: 0; border-bottom: 1.5px solid lightgray;" min="1" value="5" max="99" onchange="calcNumBingo()"></mn>
-                <mo>,</mo>
-                <mn>n</mn>
-                <mo lspace="0.2222em" rspace="0.2222em">:</mo>
-                <mn><input type="number" id="n" style="font-size: 1.2rem; width: 3rem; border: 0; border-bottom: 1.5px solid lightgray;" min="0" value="2" max="99" onchange="calcNumBingo()"></mn>
-                <mo stretchy="false">)</mo>
-                <mo>=</mo>
-                <mi><span id="result"></span></mi>
-            </mrow>
-        </math>
-
-        <script>
-            function fact(n) {
-                if (n == 0) {
-                    return 1;
-                } else {
-                    return n * fact(n - 1);
-                }
-            }
-
-            function calcNumBingo() {
-                const mstr = document.getElementById("m").value;
-                const nstr = document.getElementById("n").value;
-                const field = document.getElementById("result");
-
-                if (mstr == "" || nstr == "") {
-                    field.textContent = "";
-                    return;
-                } else {
-                    let m = Number(mstr);
-                    let n = Number(nstr);
-
-                    if (m % 1 != 0 || n % 1 != 0) {
-                        field.textContent = "";
-                        return;
-                    }
-
-                    const mmax = Number(document.getElementById("m").max);
-                    const nmax = Number(document.getElementById("n").max);
-                    m = m > mmax ? mmax : m;
-                    n = n > nmax ? nmax : n;
-
-                    if (m == 1 || n == 0) {
-                        field.textContent = "1";
-                        return;
-                    } else {
-                        let x = 0;
-
-                        for (let i = 0; i <= n-1; i++) {
-                            const a = 2 ** (n - i);
-                            const b = fact(n) / (fact(i) * fact(n - i));
-                            const c = (m - 2) ** i;
-
-                            x += (a - 1) * a * b * c
-                        }
-
-                        x /= 2;
-
-                        field.textContent = String(x);
-                    }
-                }
-            }
-
-            calcNumBingo();
-
-            for (let m = 1; m <= 10; m++) {
-                let s = "";
-
-                for (let n = 0; n <= 9; n++) {
-                    function tf() {
-                        if (m == 1 || n == 0) {
-                            return "1";
-                        } else {
-                            let x = 0;
-
-                            for (let i = 0; i <= n-1; i++) {
-                                const a = 2 ** (n - i);
-                                const b = fact(n) / (fact(i) * fact(n - i));
-                                const c = (m - 2) ** i;
-
-                                x += (a - 1) * a * b * c
-                            }
-
-                            x /= 2;
-
-                            return String(x);
-                        }
-                    }
-
-                    s += `<td>${tf()}</td>`
-                }
-
-                console.log(s)
-            }
-        </script> -->
-
         <p><math class="f61"></math>における<math class="f57"></math>の値は次の通り：</p>
         <table id="numsb">
             <tr>
@@ -982,16 +877,6 @@
             }
 
             insertFormulae();
-
-            for (let m = 1; m <= 10; m++) {
-                let s = "";
-                for (let n = 0; n <= 9; n++) {
-                    s += "<td>"
-                    s += calcNumBingo(m, n)
-                    s += "</td>" 
-                }
-                console.log(s)
-            }
         </script>
     </body>
 </html>
