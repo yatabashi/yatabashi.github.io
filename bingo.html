@@ -21,6 +21,14 @@
                 font-size: 1.2rem;
             }
 
+            small {
+                font-size: 0.85rem;
+            }
+
+            small math {
+                font-size: 0.935rem;
+            }
+
             table, td, th {
                 border: none;
                 text-align: center;
@@ -453,7 +461,7 @@
 
             #numsb td {
                 text-align: right;
-                padding-inline: 10px;
+                padding-inline: 8px;
             }
 
             /* #numsb, #numsb th, #numsb td {
@@ -463,7 +471,7 @@
             #numsb tr:nth-child(1) {
                 border-bottom: 1px solid black;
             }
-            
+
             #numsb tr th:nth-child(1) {
                 border-right: 1px solid black;
             }
@@ -475,59 +483,51 @@
             <div class="home"><a href="index.html">ホームへ</a></div>
         </header>
 
-        <p>各辺が<math class="f7"></math>マスの<math class="f8"></math>次元ビンゴシートにおいて可能なビンゴ列の本数<math class="f57"></math>は次の式で与えられる：<math class="f56 block"></math></p>
+        <p>複数マスから成るビンゴシート（各辺<math class="f7"></math>マス、<math class="f8"></math>次元）において可能なビンゴ列の本数<math class="f57"></math>は、次の式で与えられる：<math class="f65 block"></math></p>
 
         <p><math class="f61"></math>における<math class="f57"></math>の値は次の通り：</p>
         <table id="numsb">
             <tr>
                 <th>m \ n</th>
-                <th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th>
-            </tr>
-            <tr>
-                <th>1</th>
-                <td><math><mn>1</mn></math></td><td><math><mn>1</mn></math></td><td><math><mn>1</mn></math></td><td><math><mn>1</mn></math></td><td><math><mn>1</mn></math></td><td><math><mn>1</mn></math></td><td><math><mn>1</mn></math></td><td><math><mn>1</mn></math></td><td><math><mn>1</mn></math></td><td><math><mn>1</mn></math></td>
+                <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th>
             </tr>
             <tr>
                 <th>2</th>
-                <td><math><mn>1</mn></math></td><td><math><mn>1</mn></math></td><td><math><mn>6</mn></math></td><td><math><mn>28</mn></math></td><td><math><mn>120</mn></math></td><td><math><mn>496</mn></math></td><td><math><mn>2016</mn></math></td><td><math><mn>8128</mn></math></td><td><math><mn>32640</mn></math></td><td><math><mn>130816</mn></math></td>
+                <td><math><mn>1</mn></math></td><td><math><mn>6</mn></math></td><td><math><mn>28</mn></math></td><td><math><mn>120</mn></math></td><td><math><mn>496</mn></math></td><td><math><mn>2016</mn></math></td><td><math><mn>8128</mn></math></td><td><math><mn>32640</mn></math></td>
             </tr>
             <tr>
                 <th>3</th>
-                <td><math><mn>1</mn></math></td><td><math><mn>1</mn></math></td><td><math><mn>8</mn></math></td><td><math><mn>49</mn></math></td><td><math><mn>272</mn></math></td><td><math><mn>1441</mn></math></td><td><math><mn>7448</mn></math></td><td><math><mn>37969</mn></math></td><td><math><mn>192032</mn></math></td><td><math><mn>966721</mn></math></td>
+                <td><math><mn>1</mn></math></td><td><math><mn>8</mn></math></td><td><math><mn>49</mn></math></td><td><math><mn>272</mn></math></td><td><math><mn>1441</mn></math></td><td><math><mn>7448</mn></math></td><td><math><mn>37969</mn></math></td><td><math><mn>192032</mn></math></td>
             </tr>
             <tr>
                 <th>4</th>
-                <td><math><mn>1</mn></math></td><td><math><mn>1</mn></math></td><td><math><mn>10</mn></math></td><td><math><mn>76</mn></math></td><td><math><mn>520</mn></math></td><td><math><mn>3376</mn></math></td><td><math><mn>21280</mn></math></td><td><math><mn>131776</mn></math></td><td><math><mn>807040</mn></math></td><td><math><mn>4907776</mn></math></td>
+                <td><math><mn>1</mn></math></td><td><math><mn>10</mn></math></td><td><math><mn>76</mn></math></td><td><math><mn>520</mn></math></td><td><math><mn>3376</mn></math></td><td><math><mn>21280</mn></math></td><td><math><mn>131776</mn></math></td><td><math><mn>807040</mn></math></td>
             </tr>
             <tr>
                 <th>5</th>
-                <td><math><mn>1</mn></math></td><td><math><mn>1</mn></math></td><td><math><mn>12</mn></math></td><td><math><mn>109</mn></math></td><td><math><mn>888</mn></math></td><td><math><mn>6841</mn></math></td><td><math><mn>51012</mn></math></td><td><math><mn>372709</mn></math></td><td><math><mn>2687088</mn></math></td><td><math><mn>19200241</mn></math></td>
+                <td><math><mn>1</mn></math></td><td><math><mn>12</mn></math></td><td><math><mn>109</mn></math></td><td><math><mn>888</mn></math></td><td><math><mn>6841</mn></math></td><td><math><mn>51012</mn></math></td><td><math><mn>372709</mn></math></td><td><math><mn>2687088</mn></math></td>
             </tr>
             <tr>
                 <th>6</th>
-                <td><math><mn>1</mn></math></td><td><math><mn>1</mn></math></td><td><math><mn>14</mn></math></td><td><math><mn>148</mn></math></td><td><math><mn>1400</mn></math></td><td><math><mn>12496</mn></math></td><td><math><mn>107744</mn></math></td><td><math><mn>908608</mn></math></td><td><math><mn>7548800</mn></math></td><td><math><mn>62070016</mn></math></td>
+                <td><math><mn>1</mn></math></td><td><math><mn>14</mn></math></td><td><math><mn>148</mn></math></td><td><math><mn>1400</mn></math></td><td><math><mn>12496</mn></math></td><td><math><mn>107744</mn></math></td><td><math><mn>908608</mn></math></td><td><math><mn>7548800</mn></math></td>
             </tr>
             <tr>
                 <th>7</th>
-                <td><math><mn>1</mn></math></td><td><math><mn>1</mn></math></td><td><math><mn>16</mn></math></td><td><math><mn>193</mn></math></td><td><math><mn>2080</mn></math></td><td><math><mn>21121</mn></math></td><td><math><mn>206896</mn></math></td><td><math><mn>1979713</mn></math></td><td><math><mn>18640960</mn></math></td><td><math><mn>173533441</mn></math></td>
+                <td><math><mn>1</mn></math></td><td><math><mn>16</mn></math></td><td><math><mn>193</mn></math></td><td><math><mn>2080</mn></math></td><td><math><mn>21121</mn></math></td><td><math><mn>206896</mn></math></td><td><math><mn>1979713</mn></math></td><td><math><mn>18640960</mn></math></td>
             </tr>
             <tr>
                 <th>8</th>
-                <td><math><mn>1</mn></math></td><td><math><mn>1</mn></math></td><td><math><mn>18</mn></math></td><td><math><mn>244</mn></math></td><td><math><mn>2952</mn></math></td><td><math><mn>33616</mn></math></td><td><math><mn>368928</mn></math></td><td><math><mn>3951424</mn></math></td><td><math><mn>41611392</mn></math></td><td><math><mn>432891136</mn></math></td>
+                <td><math><mn>1</mn></math></td><td><math><mn>18</mn></math></td><td><math><mn>244</mn></math></td><td><math><mn>2952</mn></math></td><td><math><mn>33616</mn></math></td><td><math><mn>368928</mn></math></td><td><math><mn>3951424</mn></math></td><td><math><mn>41611392</mn></math></td>
             </tr>
             <tr>
                 <th>9</th>
-                <td><math><mn>1</mn></math></td><td><math><mn>1</mn></math></td><td><math><mn>20</mn></math></td><td><math><mn>301</mn></math></td><td><math><mn>4040</mn></math></td><td><math><mn>51001</mn></math></td><td><math><mn>620060</mn></math></td><td><math><mn>7352101</mn></math></td><td><math><mn>85656080</mn></math></td><td><math><mn>985263601</mn></math></td>
-            </tr>
-            <tr>
-                <th>10</th>
-                <td><math><mn>1</mn></math></td><td><math><mn>1</mn></math></td><td><math><mn>22</mn></math></td><td><math><mn>364</mn></math></td><td><math><mn>5368</mn></math></td><td><math><mn>74416</mn></math></td><td><math><mn>992992</mn></math></td><td><math><mn>12915904</mn></math></td><td><math><mn>164990848</mn></math></td><td><math><mn>2079890176</mn></math></td>
+                <td><math><mn>1</mn></math></td><td><math><mn>20</mn></math></td><td><math><mn>301</mn></math></td><td><math><mn>4040</mn></math></td><td><math><mn>51001</mn></math></td><td><math><mn>620060</mn></math></td><td><math><mn>7352101</mn></math></td><td><math><mn>85656080</mn></math></td>
             </tr>
         </table>
 
         <h2>導出</h2>
-        <p>通常のビンゴシートは、5×5の正方形をしています。これは、各辺を<math class="f58"></math>マスに割った<math class="f59"></math>次元超立方体です。このように、各辺が<math class="f7"></math>マスになっている<math class="f8"></math>次元超立方体を使ったビンゴを考え、これを<math class="f3"></math>ビンゴと呼ぶことにします。例えば、通常のビンゴは「<math class="f2"></math>ビンゴ」です。また<math class="f7"></math>の値に拘らず、<math class="f3"></math>ビンゴを<math class="f8"></math>次元ビンゴと呼びます。<br>ここで、<math class="f3"></math>ビンゴにおいて、ビンゴとして成立しうるマスの並びがいくつあるかということを考えます。例えば、<math class="f2"></math>ビンゴでは縦5本、横5本、斜め2本の合計12本が最大値です。他の次元を例に取ると、<math class="f4"></math>ビンゴでは1本、<math class="f28"></math>ビンゴでは109本です。ただし、以下の議論では<math class="f7"></math>と<math class="f8"></math>は<math class="f51"></math>を満たす整数として（つまり一辺<math class="f59"></math>マス以上、<math class="f24"></math>次元以上の場合を）考えます。</p>
-        
+        <p>通常のビンゴシートは、5×5の正方形をしています。これは、各辺を<math class="f58"></math>マスに割った<math class="f59"></math>次元超立方体です。このように、各辺が<math class="f7"></math>マスになっている<math class="f8"></math>次元超立方体を使ったビンゴを考え、これを<math class="f3"></math>ビンゴと呼ぶことにします。例えば、通常のビンゴは「<math class="f2"></math>ビンゴ」を用いています。また<math class="f7"></math>の値に拘らず、<math class="f3"></math>ビンゴを<math class="f8"></math>次元ビンゴと呼ぶことにします。<br>ここで、<math class="f3"></math>ビンゴにおいて、ビンゴとして成立しうるマスの並びがいくつあるかということを考えます。例えば、<math class="f2"></math>ビンゴでは縦5本、横5本、斜め2本の合計12本が最大値です。他の次元を例に取ると、<math class="f4"></math>ビンゴでは1本、<math class="f28"></math>ビンゴでは109本です。</p>
+
         <table>
             <tr>
                 <td><div class="bingo-5-0"></div></td>
@@ -552,7 +552,8 @@
         </table>
 
         <h3>方針</h3>
-        <p>ビンゴ列にはファセット上（<math class="f8"></math>次元超多面体におけるそれを囲む<math class="f9"></math>次元の面を言う。線分に対する（端）点、多角形に対する辺、多面体に対する面。例えば<math class="f4"></math>ビンゴでは2マス、<math class="f2"></math>ビンゴでは16マス、<math class="f28"></math>ビンゴでは98マスがファセットに属する）のマスが必ずちょうど2つ含まれるので、ファセット上のマスから伸びるビンゴ列の数を合計すれば、その半分が求めたい値になっています。</p>
+        <p>ビンゴ列にはファセット*上のマスが必ずちょうど2つ含まれるので、ファセット上のマスから伸びるビンゴ列の数を合計すれば、その半分が求めたい値になっています。<br><small>*<math class="f8"></math>次元超多面体におけるそれを囲む<math class="f9"></math>次元の面を言う。線分に対する（端）点、多角形に対する辺、多面体に対する面。例えば<math class="f4"></math>ビンゴでは2マス、<math class="f2"></math>ビンゴでは16マス、<math class="f28"></math>ビンゴでは98マスがファセットに属する（下図で橙色に塗った部分）。</small><br><br>ところで、<math class="f53"></math>と<math class="f54"></math>のときは、もう一方の変数の値に拘らず、ビンゴシートが<math class="f24"></math>マスのみから成ることになります。<math class="f53"></math>の場合、「ビンゴ列にはファセット上のマスが必ずちょうど2つ含まれる」が成り立ちません。また<math class="f54"></math>の場合は、<math class="f24"></math>次元以上のビンゴシートにあるような通常の意味でのビンゴ「列」が存在しません。よって、以下これらの場合は除外して、ビンゴシートが複数マスからなる、一辺<math class="f59"></math>マス以上、<math class="f24"></math>次元以上の場合（<math class="f51"></math>）を考えることとします。</p>
+        <p></p>
 
         <table>
             <tr>
@@ -599,8 +600,8 @@
             </tr>
         </table>
 
-        <h3>ファセット上のマスから伸びるビンゴ列の数</h3>
-        <p>マスの位置によって、そこから伸びるビンゴ列の数は異なります。<math class="f5"></math>ビンゴを例に取って考えましょう。以降、説明のために手前左上のマスを原点として右方向にx軸、下方向にy軸、奥行方向にz軸を導入します。</p>
+        <h3>ファセット上の一マスから伸びるビンゴ列の数</h3>
+        <p>マスの位置によって、そこから伸びるビンゴ列の数は異なります。<math class="f5"></math>ビンゴを例に取って考えましょう。以降、説明のために手前左上のマスを原点として左右方向にx軸、上下方向にy軸、前後方向にz軸を導入します。</p>
 
         <table>
             <tr>
@@ -641,8 +642,8 @@
                 <td>軸の方向</td>
             </tr>
         </table>
-            
-        <p>立方体の頂点にあたるマスからは、縦横奥行の3方向、表面上を斜めに3方向、反対側の点にかけての1方向がありますが、これは①<math class="f11"></math>のいずれか1つが変化するもの：<span style="display: inline-block; vertical-align: middle;"><math class="f12"></math><br><math class="f13"></math><br><math class="f14"></math></span>、②<math class="f11"></math>のいずれか2つが変化するもの：<span style="display: inline-block; vertical-align: middle;"><math class="f15"></math><br><math class="f16"></math><br><math class="f17"></math></span>、③<math class="f11"></math>のいずれか3つが変化するもの：<math class="f18"></math>、として解釈できます（座標はマス<math class="f19"></math>からの例）。立方体の辺上（除頂点）にあるマスからは、①：<span style="display: inline-block; vertical-align: middle;"><math class="f20"></math><br><math class="f21"></math></span>と②：<math class="f22"></math>だけが、立方体の面上（除辺上）にあるマスからは、①：<math class="f23"></math>だけがあります。</p>
+
+        <p>立方体の頂点にあたるマスからは、縦横奥行の3方向、表面上を斜めに3方向、反対側の点にかけての1方向がありますが、これは①<math class="f11"></math>のいずれか1つが変化するもの：<span style="display: inline-block; vertical-align: middle;"><math class="f12"></math><br><math class="f13"></math><br><math class="f14"></math></span>、②<math class="f11"></math>のいずれか2つが変化するもの：<span style="display: inline-block; vertical-align: middle;"><math class="f15"></math><br><math class="f16"></math><br><math class="f17"></math></span>、③<math class="f11"></math>のいずれか3つ（＝全て）が変化するもの：<math class="f18"></math>、として解釈できます（座標はマス<math class="f19"></math>からの例）。立方体の辺上（除頂点）にあるマスからは、①：<span style="display: inline-block; vertical-align: middle;"><math class="f20"></math><br><math class="f21"></math></span>と②：<math class="f22"></math>だけが、立方体の面上（除辺上）にあるマスからは、①：<math class="f23"></math>だけがあります。</p>
 
         <table>
             <tr>
@@ -715,10 +716,10 @@
             </tr>
         </table>
 
-        <p>このように、<math class="f8"></math>次元ビンゴでは、ファセット上のマスには利用可能な成分が<math class="f24"></math>個から<math class="f8"></math>個あります。また、<math class="f60"></math>個の成分が利用可能な場合に、その選択の仕方は<math class="f26"></math>通り、すなわち<math class="f27 block"></math>通りあります。</p>
+        <p>このように、<math class="f8"></math>次元ビンゴにおけるファセット上のマスには、その位置に応じて、利用可能な成分が<math class="f24"></math>個から<math class="f8"></math>個あります。また、特に<math class="f60"></math>個の成分が利用可能な場合に、そこから（ビンゴ列を伸ばす方向を指定するために）実際に利用する成分を選ぶ方法は<math class="f26"></math>通り、すなわち<math class="f27 block"></math>通りあります。</p>
 
         <h3>ファセット上のマスの数</h3>
-        <p>さて、前節で、特定のマスから引けるビンゴ列の数は分かりました。次に、それらのマス自体の数を数えます。前述の通り、ファセット上のマスはビンゴ列を伸ばす方向として利用可能な成分の数で<math class="f8"></math>通りに分類できます。ここで、<math class="f60"></math>個の成分が利用可能なマスは、特に余次元<math class="f60"></math>の面上にあります。<math class="f5"></math>ビンゴでは次のようになっています：</p>
+        <p>さて、前節で、特定のマスから引けるビンゴ列の数は分かりました。次は、それらのマス自体の数を数えます。前述の通り、ファセット上のマスはビンゴ列を伸ばす方向として利用可能な成分の数で<math class="f8"></math>通りに分類できます。ここで、<math class="f60"></math>個の成分が利用可能なマスは、特に余次元<math class="f60"></math>の面上にあります。<math class="f5"></math>ビンゴでは次のようになっています：</p>
 
         <table>
             <tr>
@@ -751,21 +752,22 @@
             </tr>
         </table>
 
-        <p>ここで、<math class="f8"></math>次元多面体における<math class="f35"></math>次元面の個数（注意：マスの個数ではない）は次の式で与えられます：<math class="f32 block"></math>これは、<math class="f31"></math>次元面を構成する成分の選び方が<math class="f33"></math>通りあり、また面は面を構成しない成分の両側に配置されるので、同じ成分からなる面がそれぞれ<math class="f34"></math>個あるためです。</p>
+        <p>ここで、<math class="f8"></math>次元多面体における余次元<math class="f60"></math>の面、<math class="f35"></math>として<math class="f31"></math>次元面の個数は次の式で与えられます：<math class="f32 block"></math>これは、<math class="f31"></math>次元面を構成する成分の選び方が<math class="f33"></math>通りあり、また面は面を構成しない成分のそれぞれ両側に配置される*ので、同じ成分からなる面がそれぞれ<math class="f34"></math>個あるためです。<br><small>* 3次元の立体を例に取ると、xyからなる面は前後の2箇所（z軸の両側）にあり、xからなる辺は上下と前後の組み合わせによる4箇所（y軸とz軸の両側）にあり、頂点は左右・上下・前後の組み合わせによる8箇所（x軸とy軸とz軸の両側）にある。</small></p>
+        <!-- ここ以降確認 -->
 
-        <p>さらに、面に属するマスの個数を考えます。ただし、本来求めたいのは<math class="f31"></math>次元面に属するマスの個数というよりも、<math class="f31"></math>次元面に属し、<math class="f31"></math>以下の次元の面に属さないマスの個数です。これは、<math class="f31"></math>次元面に属するマスのうち、<math class="f31"></math>以下の次元の面に<u>属する</u>マスは利用可能な成分が多いことから、そこから引けるビンゴ列の本数は、<math class="f31"></math>以下の次元の面に<u>属さない</u>マスから引けるビンゴ列の本数よりも多くなるためです。よってその面のファセットに属するマスを除いて数える必要がありますが、これは一辺のマス数から両端分を除いた値に面の次元を乗じた<math class="f36"></math>で済みます。問題になりそうなのは「両端」が存在しない<math class="f37"></math>（頂点）の場合ですが、<math class="f7"></math>の値に拘らず常に<math class="f24"></math>を返すため都合よく行きます。</p>
+        <p>次に、ある一つの面に属するマスの個数を考えます。ただし、本来求めたいのは<math class="f31"></math>次元面に属するマスの個数というよりも、<math class="f31"></math>次元面に属し、<math class="f31"></math>以下の次元の面に属さないマスの個数です。同じ<math class="f31"></math>次元面に属していても、<math class="f31"></math>以下の次元の面に<u>属する</u>マスから引けるビンゴ列の本数は、<math class="f31"></math>以下の次元の面に<u>属さない</u>マスから引けるビンゴ列の本数よりも多くなるためです。よってその面のファセットに属するマスを除いて数える必要がありますが、これは一辺のマス数から両端分を除いた値に面の次元を乗じた<math class="f36 block"></math>で済みます（<math class="f63"></math>であることを確認してください）。問題になりそうなのは「両端」が存在しない<math class="f37"></math>（頂点）の場合ですが、「<math class="f31"></math>以下の次元」が存在しないため<math class="f31"></math>次元面に属するマスの個数である<math class="f24"></math>を得られればよく、実際常に<math class="f24"></math>を返すため都合よく行きます。</p>
 
         <p>したがって、<math class="f8"></math>個の成分が利用可能なマスの個数は、<math class="f35"></math>を用いて<math class="f38 block"></math>で与えられます。</p>
 
         <h3>可能なビンゴ列の本数</h3>
-        <p>前二節での議論から、<math class="f8"></math>個の成分が利用可能なマスから引かれるビンゴ列の本数は、ビンゴシート全体で<math class="f39 block"></math>として得られます（<math class="f27"></math>を<math class="f40"></math>で置換している）。よってこれの<math class="f42"></math>での総和を取った値がファセット上の全てのマスから引けるビンゴ列の本数の合計です。ただし、<math class="f40"></math>から<math class="f42"></math>での総和は<math class="f43"></math>での総和に等しいので、次の式で得られます：<math class="f41 block"></math>これは各ビンゴ列を2回ずつ数えているので、この半分が求めるべきものです。</p>
+        <p>前二節での議論から、<math class="f8"></math>個の成分が利用可能なマスから引かれるビンゴ列の本数は、ビンゴシート全体で<math class="f39 block"></math>として得られます（<math class="f27"></math>を<math class="f40"></math>で置換しています）。よってこれのビンゴ列に利用可能な成分の数（＝余次元）<math class="f42"></math>での総和、すなわち面の次元<math class="f43"></math>での総和を取った値がファセット上の全てのマスから引けるビンゴ列の本数の合計です：<math class="f41 block"></math>これは各ビンゴ列を2回ずつ数えているので、この半分が求めるべきものです。</p>
         <p>以上のことから、<math class="f3"></math>ビンゴにおいて可能なビンゴ列の本数は<math class="f52 block"></math>によって求まります。</p>
 
-        <h3>ちょっとした拡張</h3>
-        <p>今求めた式には、<math class="f51"></math>という制約が付いています。しかし、<math class="f53"></math>と<math class="f54"></math>の場合もビンゴシートとして想定可能です。すなわち次元に拘らず<math class="f24"></math>マスしかない場合と、一辺のマス数に拘らず<math class="f6"></math>次元すなわち<math class="f24"></math>マスである場合です。いずれの場合も、ビンゴが成立するのはそのマスが開いた時であり、かつその時に限ると考えてよいでしょう。つまりビンゴ列の数は常に<math class="f24"></math>です。したがって、<math class="f3"></math>ビンゴにおいて可能なビンゴ列の本数<math class="f57"></math>は<math class="f56 block"></math>で与えられます。</p>
+        <h3>除外したケースについて</h3>
+        <p>冒頭で「<math class="f24"></math>マスビンゴ」になってしまう<math class="f53"></math>と<math class="f54"></math>の場合を除外しました。これらにおけるビンゴ列（？）の本数を考えるならば、唯一のマスが開いた<math class="f24"></math>本であるということになるでしょう。しかし、上で得た式に<math class="f53"></math>を代入すると<math class="f64"></math>となり、<math class="f54"></math>を代入すると常に<math class="f6"></math>が得られます。これらの場合にも対応させるならば、<math class="f56 block"></math>としてもいいかもしれません。</p>
 
         <footer>
-            公開：2024-08-12<br>最終更新：2024-08-13
+            公開：2024-08-12<br>最終更新：2024-09-21
         </footer>
 
         <script>
@@ -796,21 +798,21 @@
                 f27: '<math><mrow><msup><mn>2</mn><mi>N</mi></msup><mo>−</mo><mn>1</mn></mrow></math>',
                 f28: '<math><msup><mn>5</mn><mn>3</mn></msup></math>',
                 f29: '<math><msup><mn>5</mn><mn>0</mn></msup></math>',
-                f31: '<math><msup><mi>N</mi><mo>′</mo></msup></math>',
-                f32: '<math><mrow><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><msup><mi>N</mi><mo>′</mo></msup></mrow></msup><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><msup><mi>N</mi><mo>′</mo></msup></msub></mrow></math>',
-                f33: '<math><mrow><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><msup><mi>N</mi><mo>′</mo></msup></msub></mrow></math>',
-                f34: '<math><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><msup><mi>N</mi><mo>′</mo></msup></mrow></msup></math>',
-                f35: '<math><mrow><msup><mi>N</mi><mo>′</mo></msup><mo>=</mo><mi>n</mi><mo>−</mo><mi>N</mi></mrow></math>',
-                f36: '<math><mrow><mo>(</mo><mi>m</mi><mo>−</mo><mn>2</mn><msup><mo>)</mo><msup><mi>N</mi><mo>′</mo></msup></msup></mrow></math>',
-                f37: '<math><mrow><msup><mi>N</mi><mo>′</mo></msup><mo>=</mo><mn>0</mn></mrow></math>',
-                f38: '<math><mrow><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><msup><mi>N</mi><mo>′</mo></msup></mrow></msup><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><msup><mi>N</mi><mo>′</mo></msup></msub><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><msup><mi>N</mi><mo>′</mo></msup></msup></mrow></math>',
-                f39: '<math><mrow><mo stretchy="false">(</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><msup><mi>N</mi><mo>′</mo></msup></mrow></msup><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><msup><mi>N</mi><mo>′</mo></msup></mrow></msup><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><msup><mi>N</mi><mo>′</mo></msup></msub><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><msup><mi>N</mi><mo>′</mo></msup></msup></mrow></math>',
-                f40: '<math><mrow><mi>N</mi><mo>=</mo><mi>n</mi><mo>−</mo><msup><mi>N</mi><mo>′</mo></msup></mrow></math>',
-                f41: '<math><mrow><mrow><munderover><mo>∑</mo><mrow><msup><mi>N</mi><mo>′</mo></msup><mo>=</mo><mn>0</mn></mrow><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></munderover></mrow><mo stretchy="false">(</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><msup><mi>N</mi><mo>′</mo></msup></mrow></msup><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><msup><mi>N</mi><mo>′</mo></msup></mrow></msup><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><msup><mi>N</mi><mo>′</mo></msup></msub><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><msup><mi>N</mi><mo>′</mo></msup></msup></mrow></math>',
+                f31: '<math><mi>ν</mi></math>',
+                f32: '<math><mrow><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>ν</mi></mrow></msup><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><mi>ν</mi></msub></mrow></math>',
+                f33: '<math><mrow><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><mi>ν</mi></msub></mrow></math>',
+                f34: '<math><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>ν</mi></mrow></msup></math>',
+                f35: '<math><mrow><mi>ν</mi><mo>=</mo><mi>n</mi><mo>−</mo><mi>N</mi></mrow></math>',
+                f36: '<math><mrow><mo>(</mo><mi>m</mi><mo>−</mo><mn>2</mn><msup><mo>)</mo><mi>ν</mi></msup></mrow></math>',
+                f37: '<math><mrow><mi>ν</mi><mo>=</mo><mn>0</mn></mrow></math>',
+                f38: '<math><mrow><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>ν</mi></mrow></msup><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><mi>ν</mi></msub><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mi>ν</mi></msup></mrow></math>',
+                f39: '<math><mrow><mo stretchy="false">(</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>ν</mi></mrow></msup><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>ν</mi></mrow></msup><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><mi>ν</mi></msub><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mi>ν</mi></msup></mrow></math>',
+                f40: '<math><mrow><mi>N</mi><mo>=</mo><mi>n</mi><mo>−</mo><mi>ν</mi></mrow></math>',
+                f41: '<math><mrow><mrow><munderover><mo stretchy="true">∑</mo><mrow><mi>ν</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></munderover></mrow><mo stretchy="false">(</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>ν</mi></mrow></msup><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>ν</mi></mrow></msup><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><mi>ν</mi></msub><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mi>ν</mi></msup></mrow></math>',
                 f42: '<math><mrow><mi>N</mi><mo>=</mo><mn>1</mn><mo>,</mo><mo>…</mo><mo>,</mo><mi>n</mi></mrow></math>',
-                f43: '<math><mrow><msup><mi>N</mi><mo>′</mo></msup><mo>=</mo><mn>0</mn><mo>,</mo><mo>…</mo><mo>,</mo><mi>n</mi><mo>−</mo><mn>1</mn></mrow></math>',
+                f43: '<math><mrow><mi>ν</mi><mo>=</mo><mn>0</mn><mo>,</mo><mo>…</mo><mo>,</mo><mi>n</mi><mo>−</mo><mn>1</mn></mrow></math>',
                 f51: '<math><mrow><mi>m</mi><mo>≥</mo><mn>2</mn><mo>,</mo><mi>n</mi><mo>≥</mo><mn>1</mn></mrow></math>',
-                f52: '<math><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mrow><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></munderover></mrow><mo stretchy="false">(</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>i</mi></mrow></msup><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>i</mi></mrow></msup><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mi>i</mi></msup></mrow></math>',
+                f52: '<math><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mrow><munderover><mo stretchy="true">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></munderover></mrow><mo stretchy="false">(</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>i</mi></mrow></msup><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>i</mi></mrow></msup><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mi>i</mi></msup></mrow></math>',
                 f53: '<math><mrow><mi>m</mi><mo>=</mo><mn>1</mn></mrow></math>',
                 f54: '<math><mrow><mi>n</mi><mo>=</mo><mn>0</mn></mrow></math>',
                 f56: '<math><mrow><msub><mi>#</mi><mi>b</mi></msub><mo stretchy="false">(</mo><mi>m</mi><mo>,</mo><mi>n</mi><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix">{</mo><mtable columnalign="left left"><mtr><mtd style="padding:0.5ex 5.9776pt 0.5ex 0pt;"><mn>1</mn></mtd><mtd style="padding:0.5ex 0pt 0.5ex 5.9776pt;"><mrow><mo stretchy="false">(</mo><mi>m</mi><mo>=</mo><mn>1</mn><mo>∨</mo><mi>n</mi><mo>=</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mtd></mtr><mtr><mtd style="padding:0.5ex 5.9776pt 0.5ex 0pt;"><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msubsup><mo stretchy="false">(</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>i</mi></mrow></msup><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>i</mi></mrow></msup><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mi>i</mi></msup></mrow></mtd><mtd style="padding:0.5ex 0pt 0.5ex 5.9776pt;"><mrow><mo stretchy="false">(</mo><mi>m</mi><mo>></mo><mn>1</mn><mo>∧</mo><mi>n</mi><mo>></mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mtd></mtr></mtable><mo></mo></mrow></mrow></math>',
@@ -818,7 +820,10 @@
                 f58: '<math><mn>5</mn></math>',
                 f59: '<math><mn>2</mn></math>',
                 f60: '<math><mi>N</mi></math>',
-                f61: '<math><mrow><mn>1</mn><mo>≤</mo><mi>m</mi><mo>≤</mo><mn>10</mn><mo>,</mo><mn>0</mn><mo>≤</mo><mi>n</mi><mo>≤</mo><mn>9</mn></mrow></math>',
+                f61: '<math><mrow><mn>2</mn><mo>≤</mo><mi>m</mi><mo>≤</mo><mn>9</mn><mo>,</mo><mn>1</mn><mo>≤</mo><mi>n</mi><mo>≤</mo><mn>8</mn></mrow></math>',
+                f63: '<math><mrow><mi>m</mi><mo>≥</mo><mn>2</mn></mrow></math>',
+                f64: '<math><mrow><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>13</mn><mo>,</mo><mn>40</mn><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo stretchy="false">(</mo><mi>n</mi><mo>≥</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></math>',
+                f65: '<math><mrow><msub><mi>#</mi><mi>b</mi></msub><mo stretchy="false">(</mo><mi>m</mi><mo separator="true">,</mo><mi>n</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mrow><munderover><mo stretchy="true">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></munderover></mrow><mo stretchy="false">(</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>i</mi></mrow></msup><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>i</mi></mrow></msup><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mi>i</mi></msup></mrow></math>',
             }
             /*
                 f2 : 5^2
@@ -873,10 +878,15 @@
 
             function insertFormulae() {
                 for (elm of document.getElementsByTagName("math")) {
-                    if (elm.className.split(" ")[0] in formulae) {
+                    const cn = elm.className.split(" ")[0];
+                    if (cn in formulae) {
                         elm.outerHTML = elm.classList.contains("block") ? 
                                         formulae[elm.className.split(" ")[0]].replace("<math>", '<math class="block" display="block">') : 
-                                        formulae[elm.className.split(" ")[0]]
+                                        formulae[elm.className.split(" ")[0]];
+                    } else {
+                        if (cn) {
+                            console.log(cn);
+                        }
                     }
                 }
             }
