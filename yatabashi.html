@@ -55,7 +55,8 @@
                     <li>所在地：東京都北区田端一丁目・田端二丁目</li>
                     <!-- 〒114-0014 -->
                     <li>リンク：<a href="https://maps.gsi.go.jp/#16/35.733681/139.758971">地理院地図</a>、<a href="https://www.mapion.co.jp/m2/35.733681,139.758971,16">Mapion</a>、<a href="https://www.google.com/maps/place/35.733681,139.758971">Google マップ</a></li>
-                    <li>ハンドルネームの由来。かつての谷田川は染井霊園付近に発して谷根千を抜け不忍池に注いでいたが、既に暗渠化され、橋は現存しない。現在の谷田橋交差点は、谷田川通り（特別区道北豊6号<a href="https://www.city.kita.tokyo.jp/d-shisetu/jutaku/doro-tochi/doro/shinse/hakko.html">*</a>）と田端駅前通り（都道458号<a href="https://www.kensetsu.metro.tokyo.lg.jp/jimusho/rokken/index.html">*</a>）との交差点である。</li>
+                    <li>ハンドルネームの由来。かつての谷田川は染井霊園付近に発して谷根千を抜け不忍池に注いでいたが、既に暗渠化され、橋は現存しない。現在の谷田橋交差点は、谷田川通り（特別区道北豊6号<a href="https://www.city.kita.tokyo.jp/d-shisetu/jutaku/doro-tochi/doro/shinse/hakko.html">*</a>）と田端駅前通り（都道458号<a href="https://www.kensetsu.metro.tokyo.lg.jp/jimusho/rokken/kanri/syousai-kannaizu">*</a>）との交差点である。</li>
+                    <li>2024年3月21日撮影：<br><img src="res/yatabashi/kitaku1.JPG" width="300px" style="margin-inline-end: 1rem;"><img src="res/yatabashi/kitaku2.JPG" width="300px"></li>
                 </ul>
             </section>
             
@@ -66,6 +67,7 @@
                     <!-- 〒356-0014, 20, 34 -->
                     <li>リンク：<a href="https://maps.gsi.go.jp/#16/35.871608/139.540140">地理院地図</a>、<a href="https://www.mapion.co.jp/m2/35.871608,139.540140,16">Mapion</a>、<a href="https://www.google.com/maps/place/35.871608,139.540140">Google マップ</a></li>
                     <li>「年報」「データベース」に掲載。</li>
+                    <li>2024年3月19日撮影：<br><img src="res/yatabashi/huziminosi1.JPG" width="300px" style="margin-inline-end: 1rem;"><img src="res/yatabashi/huziminosi2.JPG" width="300px"></li>
                 </ul>
             </section>
             
@@ -75,10 +77,8 @@
                     <li>所在地：埼玉県行田市須加</li>
                     <!-- 〒361-0004 -->
                     <li>リンク：<a href="https://maps.gsi.go.jp/#16/36.183153/139.496961">地理院地図</a>、<a href="https://www.mapion.co.jp/m2/36.183153,139.496961,16">Mapion</a>、<a href="https://www.google.com/maps/place/36.183153,139.496961">Google マップ</a></li>
-                    <li>
-                        「年報」と「データベース」では「2-10号橋」として掲載されているが、日本語版ウィキペディア「<a href="https://ja.wikipedia.org/wiki/%E5%9F%BC%E7%8E%89%E7%94%A8%E6%B0%B4%E8%B7%AF">埼玉用水路</a>」、また原生生物情報サーバ内「<a href="http://protist.i.hosei.ac.jp/PDB/Sampling/2009/0222/index-7.html">採集の記録：埼玉用水路沿い</a>」では「谷田橋」として言及されており（Google
-                        ストリートビューでも漢字の橋名板が確認できる。<a href="https://maps.app.goo.gl/QGbVpNJuw1A9d8z2A">2023年5月撮影分</a>）、同「採集の記録」は平仮名表記の橋名板の写真とともに読みを「やたばし」と明記している。
-                    </li>
+                    <li>「年報」と「データベース」では「2-10号橋」として掲載されているが、日本語版ウィキペディア「<a href="https://ja.wikipedia.org/wiki/%E5%9F%BC%E7%8E%89%E7%94%A8%E6%B0%B4%E8%B7%AF">埼玉用水路</a>」、また原生生物情報サーバ内「<a href="http://protist.i.hosei.ac.jp/PDB/Sampling/2009/0222/index-7.html">採集の記録：埼玉用水路沿い</a>」では「谷田橋」として言及されており（Google ストリートビューでも漢字の橋名板が確認できる。<a href="https://maps.app.goo.gl/QGbVpNJuw1A9d8z2A">2023年5月撮影分</a>）、同「採集の記録」は平仮名表記の橋名板の写真とともに読みを「やたばし」と明記している。</li>
+                    <li>2024年3月19日撮影：<br><img src="res/yatabashi/gyodasi1.JPG" width="300px" style="margin-inline-end: 1rem;"><img src="res/yatabashi/gyodasi2.JPG" width="300px"></li>
                 </ul>
             </section>
             
@@ -109,7 +109,7 @@
         
             <details>
                 <summary>リスト</summary>
-                <p>「データベース」から引いてきたデータにリンクを加えています。</p>
+                <p>「データベース」から引いてきたデータを加工し、リンクを加えています。</p>
                 
                 <table class="bridges" id="gtq"></table>
             </details>
@@ -241,28 +241,28 @@
                         const lon = row.cells[6].firstChild.data.slice(0, -1);
                         
                         let gsi = row.insertCell(-1);
-                        gsi.innerHTML = `<a href="https://maps.gsi.go.jp/#16/${lat}/${lon}">地理院地図</a>`;
+                        gsi.innerHTML = `<a href="https://maps.gsi.go.jp/#16/${lat}/${lon}">地理院</a>`;
                         
                         let mapion = row.insertCell(-1);
                         mapion.innerHTML = `<a href="https://www.mapion.co.jp/m2/${lat},${lon},16">Mapion</a>`;
                         
                         let google = row.insertCell(-1);
-                        google.innerHTML = `<a href="https://www.google.com/maps/place/${lat},${lon}">Google マップ</a>`;
+                        google.innerHTML = `<a href="https://www.google.com/maps/place/${lat},${lon}">Google</a>`;
                     }
                     
                     if (i == 0) {
                         continue;
                     }
                     
-                    if (row.cells[1].innerText.includes('ﾀﾆﾀﾞ')) {
+                    if (row.cells[1].innerHTML.includes('ﾀﾆﾀﾞ')) {
                         row.bgColor = '#F5E6A9';
-                    } else if (row.cells[1].innerText.includes('ﾀﾆﾀ')) {
+                    } else if (row.cells[1].innerHTML.includes('ﾀﾆﾀ')) {
                         row.bgColor = '#FFDAD5';
-                    } else if (row.cells[1].innerText.includes('ﾀﾝﾀﾞ')) {
+                    } else if (row.cells[1].innerHTML.includes('ﾀﾝﾀﾞ')) {
                         row.bgColor = '#B8F3D2';
-                    } else if (row.cells[1].innerText.includes('ﾔﾀﾞ')) {
+                    } else if (row.cells[1].innerHTML.includes('ﾔﾀﾞ')) {
                         row.bgColor = '#EEE0FD';
-                    } else if (row.cells[1].innerText.includes('ﾔﾀ')) {
+                    } else if (row.cells[1].innerHTML.includes('ﾔﾀ')) {
                         row.bgColor = '#B4EFFD';
                     } else {
                         row.bgColor = '#E5E5E5';
