@@ -2,19 +2,19 @@
 @font-face {
     font-family: 'Koruri';
     font-weight: 300;
-    src: url('fonts/Koruri/Koruri-Light.ttf');
+    src: url('../fonts/Koruri/Koruri-Light.ttf');
 }
 
 @font-face {
     font-family: 'Koruri';
     font-weight: 400;
-    src: url('fonts/Koruri/Koruri-Regular.ttf');
+    src: url('../fonts/Koruri/Koruri-Regular.ttf');
 }
 
 @font-face {
     font-family: 'Koruri';
     font-weight: 700;
-    src: url('fonts/Koruri/Koruri-Bold.ttf');
+    src: url('../fonts/Koruri/Koruri-Bold.ttf');
 }
 
 body {
