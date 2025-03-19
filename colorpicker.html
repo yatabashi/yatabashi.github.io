@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>カラーピッカー - yatabashi</title>
+        <link rel="icon" href="res/favicon.ico">
+        <link rel="stylesheet" href="res/style.css">
+
+        <style>
+            body {
+                mix-blend-mode: difference;
+                filter: invert(100%);
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>カラーピッカー</h1>
+            <div class="home"><a href="index.html">ホームへ</a></div>
+        </header>
+
+        <p id="output"></p>
+        
+        <input type="range" id="input" min="0" max="4095" value="4095" style="width: 100%;">
+
+        <fieldset>
+            <legend>基数を選択</legend>
+          
+            <div>
+              <input type="radio" name="radix" id="dec" value="10" checked>
+              <label for="dec">10進</label>
+            </div>
+          
+            <div>
+              <input type="radio" name="radix" id="hex" value="16">
+              <label for="hex">16進</label>
+            </div>
+        </fieldset>
+        
+        <footer>
+            公開：2025-03-19
+        </footer>
+
+        <script>
+            const input = document.getElementById("input");
+            const output = document.getElementById("output");
+            const radixSetters = document.getElementsByName("radix");
+
+            function getRadix() {
+                for (let setter of radixSetters) {
+                    if (setter.checked) {
+                        return Number(setter.value)
+                    }
+                }
+            }
+
+            function render(input) {
+                const val = Number(input.value);
+                const xval = val.toString(16).padStart(3, "0").toUpperCase();
+
+                output.textContent = val.toString(getRadix());
+                document.body.style.backgroundColor = "#".concat(xval)
+            }
+
+            input.addEventListener('input', e => {
+                render(e.target)
+            })
+
+            for (let setter of radixSetters) {
+                setter.addEventListener('change', e => {
+                    render(input)
+                })
+            }
+
+            render(input)
+        </script>
+    </body>
+</html>
