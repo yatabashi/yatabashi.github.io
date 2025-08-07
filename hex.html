@@ -63,12 +63,12 @@
             <number> ::= <digit>+ ('.' (<digit>+)?)?
             <digit>  ::= '0' | ... | '9' | 'a' | ... | 'f' | 'A' | ... | 'F'
          -->
-        <p class="indent" style="font-family: 'NotoSansMono'; white-space: pre-wrap;">&lt;input&gt;  ::= ε | &lt;expr&gt;
+        <blockquote style="font-family: 'NotoSansMono'; white-space: pre-wrap;">&lt;input&gt;  ::= ε | &lt;expr&gt;
 &lt;expr&gt;   ::= &lt;term&gt; (('+' | '-') &lt;term&gt;)*
 &lt;term&gt;   ::= &lt;factor&gt; (('*' | '/') &lt;factor&gt;)*
 &lt;factor&gt; ::= &lt;number&gt; | '(' &lt;expr&gt; ')' | '-' &lt;factor&gt;
 &lt;number&gt; ::= &lt;digit&gt;+ ('.' (&lt;digit&gt;+)?)?
-&lt;digit&gt;  ::= '0' | ... | '9' | 'a' | ... | 'f' | 'A' | ... | 'F'</p>
+&lt;digit&gt;  ::= '0' | ... | '9' | 'a' | ... | 'f' | 'A' | ... | 'F'</blockquote>
         
         <p>ただし、計算上は<span class="mono">&lt;factor&gt;</span>から<span class="mono">&lt;number&gt;</span>を導出する際に先頭の一文字を先読みしています。</p>
         

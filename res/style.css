@@ -1,3 +1,4 @@
+/* フォント定義 */
 /* https://koruri.github.io/ */
 @font-face {
     font-family: 'Koruri';
@@ -24,7 +25,6 @@
 }
 
 body {
-    padding: 20px 40px;
     font-family: 'Koruri', sans-serif;
 }
 
@@ -33,6 +33,12 @@ code {
     font-size: 0.9rem;
 }
 
+/* 配置 */
+body {
+    padding: 20px 40px;
+}
+
+/* header内 */
 header {
     padding: 0px 4px 4px 0px;
     border-bottom: 4px solid black;
@@ -60,6 +66,7 @@ h1 {
     aspect-ratio: 1;
 }
 
+/* body要素 */
 .notice {
     position: relative;
     padding-left: 2em;
@@ -92,18 +99,10 @@ p.advent-calendar {
     padding: 6px 0px;
 }
 
-.indent {
-    margin-left: 40px;
-}
-
-span.roman-quote {
-    margin-inline: 0.25rem;
-    font-style: italic;
-}
-
-blockquote.text {
+/* 引用要素 */
+blockquote.shaded {
     background-color: #f4f4f4;
-    padding: 8px 16px;
+    padding: 0.75rem 1rem;
 }
 
 code {
@@ -116,7 +115,7 @@ code {
 pre code {
     /* 上書き */
     background-color: #f4f4f4;
-    padding: 1rem;
+    padding: 0.75rem 1rem;
     border-radius: 0;
     margin-inline: 0;
 
@@ -125,11 +124,7 @@ pre code {
     /* white-space: pre-line; */
 }
 
-img.inline {
-    height: 1.6rem;
-    vertical-align: top;
-}
-
+/* 順序付き見出し */
 body {
     counter-reset: h2_c;
 }
@@ -140,9 +135,15 @@ h2.ordered::before {
     margin-inline-end: 0.2em;
 }
 
-span.del {
-    text-decoration: line-through;
+/* footer内 */
+
+footer {
+    border-top: 1px solid black;
+    margin-top: 32px;
+    padding-top: 4px;
 }
+
+/* リンク */
 
 a:link {
     text-decoration: none;
@@ -156,12 +157,6 @@ a:visited {
 
 a:hover {
     text-decoration: underline;
-}
-
-footer {
-    border-top: 1px solid black;
-    margin-top: 32px;
-    padding-top: 4px;
 }
 
 header a:link {

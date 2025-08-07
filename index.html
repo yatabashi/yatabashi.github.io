@@ -150,14 +150,14 @@
                 if (dat.length == 3) { // 欠番・廃館
                     if (dat[2]) {
                         let postDat = [dat[2]].concat(ISILTABLE[dat[2]]);
-                        return `${dat[0]} <span class="del">${dat[1]}</span>`
+                        return `${dat[0]} <del>${dat[1]}</del>`
                             + `<br>→`
                             + ` ${getInsertion(postDat)}`;
                     } else {
                         if (dat[1] == "[欠番]") {
                             return `${dat[0]} ${dat[1]}`;
                         } else {
-                            return `${dat[0]} <span class="del">${dat[1]}</span>（廃館）`;
+                            return `${dat[0]} <del>${dat[1]}</del>（廃館）`;
                         }
                     }
                 } else {
