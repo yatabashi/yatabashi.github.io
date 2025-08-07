@@ -33,8 +33,8 @@
         <section>
             <h2 class="ordered">gitを設定する</h2>
             <p>リポジトリが作成されると、gitを設定するためのいくつかの方法が表示された。今回は2番目の「...or create a new repository on the command line」を使用した。この欄には、コマンドラインから（gitを設定したいディレクトリで）実行する以下のコマンドが表示されている。</p>
-            <pre class="codeblock">
-<code class="block">echo "# yatabashi.github.io" >> README.md
+            <pre>
+<code>echo "# yatabashi.github.io" >> README.md
 git init
 git add README.md
 git commit -m "first commit"
@@ -44,14 +44,14 @@ git push -u origin main</code></pre>
             <p>これらのコマンドによってgitが設定され、README.mdが追加された状態でリモートリポジトリがローカルリポジトリに同期する（ディレクトリが空だった場合）。</p>
             <p><b>以下はgit一般の設定であって、ホームページ作成に直接関わるものではない。</b></p>
             <p>gitの設定が記載されている.gitconfigを確認したところ、現ユーザーがgitを利用する際に使われるユーザー名とメールアドレスが本名に結びついたもののままであったため、修正した。.gitconfigは以下のコマンドで確認した：</p>
-            <pre class="codeblock"><code class="block">cat ~/.gitconfig</code></pre>
+            <pre><code>cat ~/.gitconfig</code></pre>
             <p>設定は以下のコマンドで行った（設定値は伏せた）：</p>
-            <pre class="codeblock">
-<code class="block">git config --global user.name 'xxx'
+            <pre>
+<code>git config --global user.name 'xxx'
 git config --global user.email 'yyy'</code></pre>
             <p>また、.DS_Storeが追跡対象となることを（あらゆるプロジェクトで）避けるため、gitが.DS_Storeを常に無視するように<code>~/.config/git/ignore</code>に設定した。このファイルに書き込まれたファイルは、すべてのプロジェクトで無視される：</p>
-            <pre class="codeblock">
-<code class="block">mkdir ~/.config/git
+            <pre>
+<code>mkdir ~/.config/git
 echo '.DS_Store' >> ~/.config/git/ignore</code></pre>
             <p><b>以上</b></p>
         </section>
@@ -65,14 +65,14 @@ echo '.DS_Store' >> ~/.config/git/ignore</code></pre>
         <section>
             <h2 class="ordered">変更と反映</h2>
             <p>README.mdを編集したのち、ワークツリーの状態をリモートリポジトリに反映させるために、以下のコマンドを実行した：</p>
-            <pre class="codeblock">
-<code class="block">git add README.md
+            <pre>
+<code>git add README.md
 git commit -m "added links"
 git push origin master</code></pre>
             <p>これ以降もワークツリーでの変更を保存したいときは、addするファイルとコミットメッセージを必要に応じて変更しつつこのコマンドを実行していった。
             ところで、実際の最初の数度の手続きにおいてはcommitとpushの間に以下のコマンドを挟んで毎回実行してしまっており、毎度fatalではないエラーを吐いていた：</p>
-            <pre class="codeblock">
-<code class="block">git remote add origin https://github.com/yatabashi/yatabashi.github.io.git</code></pre>
+            <pre>
+<code>git remote add origin https://github.com/yatabashi/yatabashi.github.io.git</code></pre>
             <p>これは参考にした記事にこれを含めた4行のコマンドが掲載されていたためだが、このコマンドはローカルリポジトリに対応するリモートリポジトリを登録するためのものなので、 4. でこれを既に実行していたこのプロジェクト内では再度実行する必要はなかった。</p>
         </section>
         

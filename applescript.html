@@ -41,8 +41,8 @@
             <h2>解説</h2>
             <p>AppleScriptはそのまま比較的自然な英語として解釈できるように作られている（例：無意味語として<code>the</code>を挿入できる）。</p>
             
-            <pre class="codeblock">
-<code class="block">-- dialogのdefault answerを定義
+            <pre>
+<code>-- dialogのdefault answerを定義
 set def to ""</code></pre>
             <p>すぐ次に出てくるダイアログのプレースホルダーを定義している。ここでは空。</p>
             <ul>
@@ -50,15 +50,15 @@ set def to ""</code></pre>
                 <li><code>set A to B</code>は、<code>B</code>を代入する形で、変数<code>A</code>を定義する（なんと<b>代入に等号を使わない</b>）。</li>
             </ul>
             
-            <pre class="codeblock">
-<code class="block">repeat</code></pre>
+            <pre>
+<code>repeat</code></pre>
             <p>後述。</p>
             <ul>
                 <li>ループは<code>repeat</code>で始まり<code>end repeat</code>で終わる。</li>
             </ul>
             
-            <pre class="codeblock">
-<code class="block">-- URLを入力
+            <pre>
+<code>-- URLを入力
 display dialog "Tu veux aller où (dans docs.google.com) ?" default answer def with icon note
 --> result = {button returned:"OK", text returned:"docs.google.com"}
 
@@ -69,8 +69,8 @@ set input to text returned of result</code></pre>
                 <li>Record型の変数からの取り出しには<code>of</code>を用いる。</li>
             </ul>
             
-            <pre class="codeblock">
-<code class="block">-- 末尾の改行文字を削除
+            <pre>
+<code>-- 末尾の改行文字を削除
 if characters -2 thru -1 of input is "\r\n" then
     set input to characters 1 thru -3 of input as text
 else if last character of input is "\n" or last character of input is "\r" then
@@ -84,8 +84,8 @@ end if</code></pre>
                 <li>条件式は<code>and</code>や<code>or</code>で並べることができる。</li>
             </ul>
             
-            <pre class="codeblock">
-<code class="block">-- スキームを含まなければhttps://を前置
+            <pre>
+<code>-- スキームを含まなければhttps://を前置
 if "://" is not in input then
     set link to "https://" & input
 else
@@ -98,8 +98,8 @@ end if</code></pre>
                 <li>if文で条件式が偽であった場合の処理は、<code>else</code>で書けばよい。</li>
             </ul>
             
-            <pre class="codeblock">
-<code class="block">-- 既にクエリがあれば削除
+            <pre>
+<code>-- 既にクエリがあれば削除
 if "?" is in link then
     set lastIndex to (offset of "?" in link) - 1
     set link to characters 1 thru lastIndex of link as text
@@ -111,13 +111,13 @@ end if</code></pre>
                 <li><code>offset of [文字列A] in [文字列B]</code>によって、Bの中でA（の先頭の文字）のある位置を求めることができる。AがBに含まれていなければ0が返される。</li>
             </ul>
             
-            <pre class="codeblock">
-<code class="block">-- クエリを付与
+            <pre>
+<code>-- クエリを付与
 set linkWithQuery to link & "?authuser=2"</code></pre>
             <p>正規化されたURLにクエリを付与する。<br>google.com内ではログインした順にアカウントに0以上の整数が割り当てられており、クエリとして「authuser」でその値を指定してやることで、特定のアカウントにログインした状態でアクセスすることができる。</p>
             
-            <pre class="codeblock">
-<code class="block">-- docs.google.comでない場合の註記を生成
+            <pre>
+<code>-- docs.google.comでない場合の註記を生成
 if "docs.google.com" is not in linkWithQuery then
     set annotation to "* This is not a URL of docs.google.com ."
 else
@@ -125,8 +125,8 @@ else
 end if</code></pre>
             <p>開くURLに「docs.google.com」が含まれていない場合に表示する警告を生成する。</p>
             
-            <pre class="codeblock">
-<code class="block">-- 開くURLを提示
+            <pre>
+<code>-- 開くURLを提示
 display dialog linkWithQuery & "\n\n" & annotation buttons {"キャンセル", "修正", "OK"} default button 3 with icon note
 
 -- 「OK」ならrepeat終了、「修正」なら入力を保存してrepeat、「キャンセル」は自動で終了
@@ -135,16 +135,16 @@ if button returned of result is "OK" then
 else if button returned of result is "修正" then
     set def to input
 end if</code></pre>
-    <pre class="codeblock">
-<code class="block">end repeat</code></pre>
+    <pre>
+<code>end repeat</code></pre>
             <p>生成されたURLを提示し、それを開くか、修正するか（、キャンセルするか）を選択させる。開く場合はループを抜けさせ、修正する場合は<code>input</code>を表示させるために保存し、ループの末尾に到達させる（→ループの先頭に戻す）。</p>
             <ul>
                 <li>「キャンセル」と名付けられたボタンは、クリック時にエラー-128を吐いて終了する（デフォルトのキャンセルボタンと同じ）ように自動的に設定される。</li>
                 <li>ループは<code>exit repeat</code>で抜けられる。</li>
             </ul>
             
-            <pre class="codeblock">
-<code class="block">-- URLを開く
+            <pre>
+<code>-- URLを開く
 open location linkWithQuery</code></pre>
             <p>クエリ付きで生成されたURLを開く。</p>
             <ul>

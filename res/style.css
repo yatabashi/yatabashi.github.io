@@ -30,7 +30,7 @@ body {
 
 code {
     font-family: 'NotoSansMono', monospace;
-    font-size: 0.9rem;
+    font-size: 0.9em;
 }
 
 /* 配置 */
@@ -169,4 +169,18 @@ header a:visited {
 
 header a:hover {
     text-decoration: none;
+}
+
+/* math関連 */
+math {
+    font-size: 1.1em;
+}
+
+.mathblock {
+    padding-left: 40px;
+    margin-block: 16px;
+}
+
+.inlinemath {
+    margin-inline: 0.2em;
 }
