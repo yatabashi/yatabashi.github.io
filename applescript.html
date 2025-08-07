@@ -5,6 +5,24 @@
         <title>はじめてのAppleScript - yatabashi</title>
         <link rel="icon" href="res/favicon.ico">
         <link rel="stylesheet" href="res/style.css">
+        <link rel="stylesheet" href="res/highlight_js/highlight-theme.css">
+        <link rel="stylesheet" href="res/highlight_js/precode.css">
+        <script src="res/highlight_js/highlight.js"></script>
+        <script>
+            hljs.addPlugin({
+                'after:highlightElement': ({ el, result, _ }) => {
+                    let classes = el.outerHTML.match(/<code[^>]*>/)[0].match(/(?<=class=")[^"]*/)[0].split(" ");
+
+                    if (classes.includes("code-ln")) {
+                        el.innerHTML = result.value.replace(/^/gm, '<span class="ln"></span>');
+                    } else if (classes.includes("code-bgn")) {
+                        el.innerHTML = result.value.replace(/^/gm, '<span class="bgn"></span>');
+                    }
+                }
+            });
+
+            hljs.highlightAll();
+        </script>
     </head>
     <body>
         <header>
@@ -42,7 +60,7 @@
             <p>AppleScriptはそのまま比較的自然な英語として解釈できるように作られている（例：無意味語として<code>the</code>を挿入できる）。</p>
             
             <pre>
-<code>-- dialogのdefault answerを定義
+<code class="code-ln" style="counter-set: ln 0;">-- dialogのdefault answerを定義
 set def to ""</code></pre>
             <p>すぐ次に出てくるダイアログのプレースホルダーを定義している。ここでは空。</p>
             <ul>
@@ -51,18 +69,19 @@ set def to ""</code></pre>
             </ul>
             
             <pre>
-<code>repeat</code></pre>
+<code class="code-ln" style="counter-set: ln 3;">-- 開くURLを確定させるまでrepeat
+repeat</code></pre>
             <p>後述。</p>
             <ul>
                 <li>ループは<code>repeat</code>で始まり<code>end repeat</code>で終わる。</li>
             </ul>
             
             <pre>
-<code>-- URLを入力
-display dialog "Tu veux aller où (dans docs.google.com) ?" default answer def with icon note
---> result = {button returned:"OK", text returned:"docs.google.com"}
-
-set input to text returned of result</code></pre>
+<code class="code-ln" style="counter-set: ln 5;">    -- URLを入力
+    display dialog "Tu veux aller où (dans docs.google.com) ?" default answer def with icon note
+    --> result = {button returned:"OK", text returned:"docs.google.com"}
+    
+    set input to text returned of result</code></pre>
             <p>入力欄付きのダイアログを表示し、入力を変数<code>input</code>に代入する。</p>
             <ul>
                 <li><code>display dialog</code>は、デフォルトで「OK」「キャンセル」のボタンを表示する。ここではオプションとして<code>default answer</code>と<code>with icon</code>を指定していて、前者は指定した文字列をデフォルト値とする入力欄を設け、後者はアイコンを表示する。ここで入力された値と押されたボタンの情報は、デフォルトでRecord型（辞書型に相当）の変数<code>result</code>に格納される。</li>
@@ -70,12 +89,12 @@ set input to text returned of result</code></pre>
             </ul>
             
             <pre>
-<code>-- 末尾の改行文字を削除
-if characters -2 thru -1 of input is "\r\n" then
-    set input to characters 1 thru -3 of input as text
-else if last character of input is "\n" or last character of input is "\r" then
-    set input to characters 1 thru -2 of input as text
-end if</code></pre>
+<code class="code-ln" style="counter-set: ln 11;">    -- 末尾の改行文字を削除
+    if characters -2 thru -1 of input is "\r\n" then
+        set input to characters 1 thru -3 of input as text
+    else if last character of input is "\n" or last character of input is "\r" then
+        set input to characters 1 thru -2 of input as text
+    end if</code></pre>
             <p>入力の末尾が改行文字（「\r\n」「\n」「\r」のいずれか）である場合は、それを削除する。コピーの仕方によってはそうなっていることが時時あるので、雑に扱えるようにするために挿入している。</p>
             <ul>
                 <li>if文は、<code>if [条件式] then</code>で始まり<code>end if</code>で閉じられる（BASICみたい）。<code>else if</code>で二つ以上の分岐を並べることができる。</li>
@@ -85,12 +104,12 @@ end if</code></pre>
             </ul>
             
             <pre>
-<code>-- スキームを含まなければhttps://を前置
-if "://" is not in input then
-    set link to "https://" & input
-else
-    set link to input
-end if</code></pre>
+<code class="code-ln" style="counter-set: ln 18;">    -- スキームを含まなければhttps://を前置
+    if "://" is not in input then
+        set link to "https://" & input
+    else
+        set link to input
+    end if</code></pre>
             <p>AppleScriptからURLにアクセスするにはスキームが必須なようなので、必要に応じて付与する。</p>
             <ul>
                 <li>値が等しくないことは<code>is not</code>演算子で比較できる。<code>≠</code>や<code>is not equal to</code>でも可能。</li>
@@ -99,11 +118,11 @@ end if</code></pre>
             </ul>
             
             <pre>
-<code>-- 既にクエリがあれば削除
-if "?" is in link then
-    set lastIndex to (offset of "?" in link) - 1
-    set link to characters 1 thru lastIndex of link as text
-end if</code></pre>
+<code class="code-ln" style="counter-set: ln 25;">    -- 既にクエリがあれば削除
+    if "?" is in link then
+        set lastIndex to (offset of "?" in link) - 1
+        set link to characters 1 thru lastIndex of link as text
+    end if</code></pre>
             <p>Googleドキュメントのページでクエリを複数指定する方法がわからないことと、クエリが重要であることはない気がする（スプレッドシートでシートを指定するために使われることはあるが）ので、すでにある場合は全て削除する。</p>
             <ul>
                 <li>値が等しくないことは<code>is not</code>演算子で比較できる。<code>≠</code>や<code>is not equal to</code>でも可能。</li>
@@ -112,31 +131,30 @@ end if</code></pre>
             </ul>
             
             <pre>
-<code>-- クエリを付与
-set linkWithQuery to link & "?authuser=2"</code></pre>
+<code class="code-ln" style="counter-set: ln 31;">    -- クエリを付与
+    set linkWithQuery to link & "?authuser=2"</code></pre>
             <p>正規化されたURLにクエリを付与する。<br>google.com内ではログインした順にアカウントに0以上の整数が割り当てられており、クエリとして「authuser」でその値を指定してやることで、特定のアカウントにログインした状態でアクセスすることができる。</p>
             
             <pre>
-<code>-- docs.google.comでない場合の註記を生成
-if "docs.google.com" is not in linkWithQuery then
-    set annotation to "* This is not a URL of docs.google.com ."
-else
-    set annotation to ""
-end if</code></pre>
+<code class="code-ln" style="counter-set: ln 34;">    -- docs.google.comでない場合の註記を生成
+    if "docs.google.com" is not in linkWithQuery then
+        set annotation to "* This is not a URL of docs.google.com ."
+    else
+        set annotation to ""
+    end if</code></pre>
             <p>開くURLに「docs.google.com」が含まれていない場合に表示する警告を生成する。</p>
             
             <pre>
-<code>-- 開くURLを提示
-display dialog linkWithQuery & "\n\n" & annotation buttons {"キャンセル", "修正", "OK"} default button 3 with icon note
-
--- 「OK」ならrepeat終了、「修正」なら入力を保存してrepeat、「キャンセル」は自動で終了
-if button returned of result is "OK" then
-    exit repeat
-else if button returned of result is "修正" then
-    set def to input
-end if</code></pre>
-    <pre>
-<code>end repeat</code></pre>
+<code class="code-ln" style="counter-set: ln 41;">    -- 開くURLを提示
+    display dialog linkWithQuery & "\n\n" & annotation buttons {"キャンセル", "修正", "OK"} default button 3 with icon note
+    
+    -- 「OK」ならrepeat終了、「修正」なら入力を保存してrepeat、「キャンセル」は自動で終了
+    if button returned of result is "OK" then
+        exit repeat
+    else if button returned of result is "修正" then
+        set def to input
+    end if
+end repeat</code></pre>
             <p>生成されたURLを提示し、それを開くか、修正するか（、キャンセルするか）を選択させる。開く場合はループを抜けさせ、修正する場合は<code>input</code>を表示させるために保存し、ループの末尾に到達させる（→ループの先頭に戻す）。</p>
             <ul>
                 <li>「キャンセル」と名付けられたボタンは、クリック時にエラー-128を吐いて終了する（デフォルトのキャンセルボタンと同じ）ように自動的に設定される。</li>
@@ -144,7 +162,7 @@ end if</code></pre>
             </ul>
             
             <pre>
-<code>-- URLを開く
+<code class="code-ln" style="counter-set: ln 52;">-- URLを開く
 open location linkWithQuery</code></pre>
             <p>クエリ付きで生成されたURLを開く。</p>
             <ul>
