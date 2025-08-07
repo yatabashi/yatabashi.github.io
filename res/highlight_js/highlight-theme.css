@@ -1,0 +1,58 @@
+.hljs {  /* 本文 */
+  display: block;
+  overflow-x: auto;
+  /* padding: 0.5em; */
+  padding: 1rem;
+
+  color: #383a42;
+}
+
+.hljs-keyword {  /* 予約語 */
+	color: #a626a4;
+}
+
+.hljs-number {  /* 数字 */
+	color: #4078f2;
+}
+
+.hljs-built_in {  /* 組み込み関数 */
+  color: #c18401;
+}
+
+.hljs-comment {  /* コメントアウト */
+  color: #a0a1a7;
+}
+
+.hljs-meta,  /* メタ */
+.hljs-title,  /* 関数 */
+.hljs-bullet {  /* Markup: 箇条書き */
+  color: #0184bc;
+}
+
+.hljs-params {  /* 引数 */
+  color: inherit;
+}
+
+.hljs-string {  /* 文字列 */
+  color: #50a14f;
+}
+
+.hljs-literal,  /* リテラル */
+.hljs-attr,  /* キー, HTML: 属性 */
+.hljs-property,  /* プロパティ */
+.hljs-attribute,  /* CSS: 属性 */
+.hljs-section {  /* markup: 見出し */
+  color: #e45649;
+}
+
+.hljs-variable,  /* 変数 */
+.hljs-tag,  /* タグ */
+.hljs-name,  /* タグ名 */
+.hljs-selector-tag,  /* CSS: タグ名 */
+.hljs-selector-id,  /* CSS: ID */
+.hljs-selector-class,  /* CSS: クラス */
+.hljs-selector-attr,  /* CSS: 属性セレクタ */
+.hljs-selector-pseudo,  /* CSS: 擬似…… */
+.hljs-link {  /* Markup: リンク */
+  color: #ca1243;
+}
