@@ -102,24 +102,27 @@ span.roman-quote {
 }
 
 blockquote.text {
-    background-color: rgb(240, 240, 240);
+    background-color: #f4f4f4;
     padding: 8px 16px;
 }
 
-code:not(.block) {
-    background-color: rgb(240, 240, 240);
+code {
+    background-color: #f0f0f0;
     padding: 0.1rem 0.2rem;
     border-radius: 0.2rem;
     margin-inline: 0.2rem;
 }
 
-pre.codeblock {
-    background-color: rgb(240, 240, 240);
+pre code {
+    /* 上書き */
+    background-color: #f4f4f4;
+    padding: 1rem;
+    border-radius: 0;
+    margin-inline: 0;
+
+    display: block;
+    overflow-x: auto;
     /* white-space: pre-line; */
-    
-    /* 以下はhighlight.js採用時に削除 */
-    padding: 0.75rem 1rem;  
-    overflow: scroll;
 }
 
 img.inline {
