@@ -1,0 +1,38 @@
+pre {
+    counter-reset: ln;
+    position:relative;
+}
+
+pre code.code-ln {
+    padding-left: 3rem !important;
+}
+
+pre code.code-bgn {
+    padding-left: 1.75rem !important;
+}
+
+.ln::before {
+    counter-increment: ln;
+    content: counter(ln);
+    width: 1rem;
+    display: inline-block;
+    color: #aaa;
+    border-right: 1px solid #aaa;
+    padding-right: 0.5rem;
+    padding-left: 0.75rem;
+    text-align: right;
+    background: #f4f4f4;
+
+    position:absolute;
+    left:0; 
+}
+
+.bgn::before {
+    content: "$ ";
+    color: #aaa;
+
+    padding-left: 0.75rem;
+    background: #f4f4f4;
+    position:absolute;
+    left:0; 
+}
