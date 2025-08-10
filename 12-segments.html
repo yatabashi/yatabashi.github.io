@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>12セグメントで文字を作る - yatabashi</title>
+        <link rel="icon" href="res/favicon.ico">
+        <link rel="stylesheet" href="res/style.css">
+        <link rel="stylesheet" href="res/highlight_js/highlight-theme.css">
+        <link rel="stylesheet" href="res/highlight_js/precode.css">
+        <script src="res/highlight_js/highlight.js"></script>
+        <script>
+            hljs.addPlugin({
+                'after:highlightElement': ({ el, result, _ }) => {
+                    let classes = el.outerHTML.match(/<code[^>]*>/)[0].match(/(?<=class=")[^"]*/)[0].split(" ");
+
+                    if (classes.includes("code-ln")) {
+                        el.innerHTML = result.value.replace(/^/gm, '<span class="ln"></span>');
+                    } else if (classes.includes("code-bgn")) {
+                        el.innerHTML = result.value.replace(/^/gm, '<span class="bgn"></span>');
+                    }
+                }
+            });
+
+            hljs.highlightAll();
+        </script>
+
+        <style>
+            figure {
+                text-align: center;
+            }
+
+            figcaption {
+                font-size: small;
+            }
+            
+            table, td, th {
+                border: none;
+                text-align: center;
+            }
+
+            table, td>* {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            td, th {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            tr:nth-child(1) {
+                border-bottom: 1px solid black;
+            }
+
+            #numsb td {
+                text-align: right;
+                padding-inline: 8px;
+            }
+
+            #numsb tr:nth-child(1) {
+                border-bottom: 1px solid black;
+            }
+
+            #numsb tr th:nth-child(1) {
+                border-right: 1px solid black;
+            }
+
+            mtd {
+                padding-left: 0em;
+                padding-right: 0em;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>12セグメントで文字を作る</h1>
+            <div class="home"><a href="index.html">ホームへ</a></div>
+        </header>
+
+        <p>7セグメントディスプレイってありますよね。<img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/7-segment_abdeg.svg" height="24" style="vertical-align: bottom;">←こういうやつです。デジタル数字と言うと大抵これのことを指し、横線3本・縦線4本からなる7つのセグメントを点けたり消したりすることで数字（文字）を表示することができます。ただ7セグメントというのはなかなか小さくて、表現できる形には限りがあります。論理的にも128 (2<sup>7</sup>) 通りしかなく、ラテン文字を例に取っても K と X を H と区別して表示するのは無理ですね。これを解消するためにセグメントを増やしたディスプレイにはいくつかの種類があるようです。</p>
+
+        <figure>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Common_segment_displays.svg" width="300px">
+            <figcaption>Common segment displays (<a href="https://commons.wikimedia.org/wiki/File:Common_segment_displays.svg">Wikimedia</a>)</figcaption>
+        </figure>
+
+        <p>ただ、斜線を使うと、表せるものが増えはする一方で雰囲気が結構変わってしまうんですよね。斜線を含むnセグメントディスプレイの例として、ロシアの郵便番号の表記を載せました。ロシアでは、郵便番号は図下部のような数字を図上部のように与えられる記入欄に書き込むようです。これらの字体は、7セグメントディスプレイに斜線を2本付け足した「9セグメント」に基づいていると言えます。</p>
+
+        <figure>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Russian_postal_codes.svg" width="300px">
+            <figcaption>Russian postal codes (<a href="https://commons.wikimedia.org/wiki/File:Russian_postal_codes.svg">Wikimedia</a>)</figcaption>
+        </figure>
+
+        <p>そこで、斜線を使わずに表せる図形を増やすために、田の字型に12本のセグメントを配置したディスプレイを考えます。セグメントが5本増えると32倍の図形が区別できるようになるので、かなり表現力が広がりそうです。この「12セグメントディスプレイ」では、何種類の図形が区別できるのでしょうか？</p>
+
+        <p style="margin-top: 60px;">ということで、次の条件を満たす図形の数を数えてみましょう。</p>
+        <ol>
+            <li>12セグメントのディスプレイに表示される。以降、次の図のようにセグメントに番号を付ける。<blockquote style="width: fit-content;">
+        <figure style="margin-left: 0;">
+            <img src="./res/12-segments/display.svg" width="200px">
+            <figcaption>12セグメントディスプレイ</figcaption>
+        </figure></blockquote></li>
+            <li>横幅・縦幅ともに<b>0または2</b>のもの。ただし、横幅と縦幅の少なくとも一方は2とする。
+            <li><b>連結なもの。</b></li>
+        </ol>
+
+        <p>条件1は良いでしょう。条件2は、幅1のものは、適当に延長して幅2のものと同一視してしまうということです。例えば {3, 6, 7} <span id="s1"></span> と {8, 11, 12} <span id="s4"></span> は {3, 8, 11, 12} <span id="s2"></span> と同じと見ます。特定の方向に伸縮させれば一致する形ですから、これも良いでしょう。後半は、縦横ともに幅0の「図形」を除くためです。条件3については、二つの理由があります。一つは、非連結なもの（{1, 3, 8, 9, 10, 12} <span id="s3"></span> など）は一文字として認識しにくいためです。もちろん自然の文字体系にはギリシャ文字の「Ξ」（ξ の大文字）やヘブライ文字の「<span style="font-family: Noto Sans;">ה</span>」、片仮名の「ハ」のような例があるので、理由としては少し弱いですね。もう一つの理由は、それらを許容する場合、条件2から縦幅と横幅のどちらかが1である 2×2×2<sup>7</sup> = 2<sup>9</sup> 個以下（7セグメントで表せる図形を縦向き2箇所・横向き2箇所に配置することを考える）の図形が除かれるとはいえ、論理的に可能な 2<sup>12</sup> 個のうち半数以上の図形が許容されてしまうためです。そうなるとわざわざ調べるには面白みに欠けますね。そこで、今回は連結という制約を課してみることにしましょう。</p>
+
+        <p>さて、条件2について考えると、縦幅が0のものは、横幅が2の3つ（ {1, 2} <span id="s5"></span>, {6, 7} <span id="s6"></span>, {11, 12} <span id="s7"></span>）しかありません。これらは同一視してしまいましょう。横幅が0のものについても同様です。すると、幅の一方が0の図形は2種類のみということになります。では、幅が縦横ともに2であるものを考えていきましょう。条件3の連結性制約を合わせて考えると、横幅を2にするためには</p>
+        <ul>
+            <li>左側の横線： {1, 6, 11}</li>
+            <li>右側の横線： {2, 7, 12}</li>
+        </ul>
+        <p>からそれぞれ少なくとも1つ以上取る必要があり、縦幅を2にするためには</p>
+        <ul>
+            <li>上側の縦線： {3, 4, 5}</li>
+            <li>下側の縦線： {8, 9, 10}</li>
+        </ul>
+        <p>からそれぞれ少なくとも1つ以上取る必要があります（例えば {1, 6, 12} <span id="s8"></span> も縦幅2ですが、連結ではありません。連結であるためには {1, <b>3</b>, 6, <b>9</b>, 12} <span id="s9"></span> のように縦線を足してやる必要があります）。従って、条件を満たす図形は (2<sup>3</sup> - 1)<sup>4</sup> = 2401 から、最大で2401通りあるみたいですね。</p>
+        <p>さて、これら2401個の図形について考えていくのですが、条件3にある通り連結でないものを除外したいところです。ただ、実際にプログラムを走らせる以外の方法がどうも思いつきません。仕方がないのでコンピュータに投げましょう。連結かどうかは、セグメントの隣接関係が分かれば判定できます。隣接関係は次のグラフのように整理できますね。頂点がセグメント、辺がセグメントの隣接関係です。（セグメント上に描かれる図形はこのグラフの部分グラフと見做せます。特にセグメント間の隣接関係はディスプレイ上の配置に従うものなので、誘導部分グラフであると言えます。）</p>
+
+        <figure>
+            <img src="./res/12-segments/graph.svg" width="300px">
+            <figcaption>12セグメントディスプレイ上のセグメントの隣接関係</figcaption>
+        </figure>
+
+        <p>あとはプログラムをぶん回すだけです。</p>
+
+        <details>
+            <summary>ソースコード</summary>
+            <pre><code class="code-ln language-python">from itertools import chain, combinations, product
+
+# セグメントとその隣接関係
+vertices = [[1, 6, 11], [2, 7, 12], [3, 4, 5], [8, 9, 10]]
+edges = {
+    1: [2, 3, 4], 
+    2: [1, 4, 5], 
+    3: [1, 6, 8], 
+    4: [1, 2, 6, 7, 9], 
+    5: [2, 7, 10], 
+    6: [3, 4, 7, 8, 9], 
+    7: [4, 5, 6, 9, 10], 
+    8: [3, 6, 11], 
+    9: [4, 6, 7, 11, 12], 
+    10: [5, 7, 12], 
+    11: [8, 9, 12], 
+    12: [9, 10, 11], 
+}
+
+# 空集合でない冪集合を得る関数
+def powerset(l):
+    return chain.from_iterable(combinations(l, r) for r in range(1, len(l)+1))
+
+# 誘導部分グラフが連結であるかを調べる関数
+def is_connected(vertices, edges):
+    # ある頂点 vertex から先を探索する関数
+    def search(vertex, visited):
+        visited.add(vertex)
+
+        for paired in [paired for paired in edges[vertex] if paired in vertices]:
+            if paired not in visited:
+                visited = search(paired, visited)
+
+        return visited
+
+    # 適当な頂点から探索を行い、全ての頂点を訪問できれば連結
+    component = search(vertices[0], set())
+    connected = set(vertices) == component
+
+    return connected
+
+# 計算
+counter = [0, 0]  # [非連結の個数, 連結の個数]
+
+with open("data.txt", "w") as o:
+    powersets = map(powerset, vertices)
+
+    for i in product(*powersets):
+        subset_vertices = list(chain.from_iterable(i))
+        connected = is_connected(subset_vertices, edges)
+
+        if connected:
+            print(sorted(subset_vertices), file=o)
+        
+        counter[connected] += 1
+
+print(f"Connected: {counter[1]}, Disconnected: {counter[0]}")</code></pre>
+        </details>
+
+        <pre><code class="code-bgn">Connected: 1493, Disconnected: 908</code></pre>
+
+        <p>ということで、1493個の連結な図形が得られました。具体的な図形のリストは .txt ファイルとして書き出しています。これらは幅が縦横ともに2のものです。いずれかの幅が0であるもの2種類を足し合わせて1495個の図形が12セグメントのディスプレイで表示可能な「文字」だということになりました。思ったよりありますね。</p>
+
+        <p style="margin-top: 60px;"><b>余談</b>　先のプログラムでは、冒頭で二つの変数<code>vertices</code>, <code>edges</code>を定義しています。<code>vertices</code>にはセグメントの集合の適切な分割（前述の通り）を与えています。また<code>edges</code>にはディスプレイをグラフとして表したものの隣接リストを与えています。これらを目的のkセグメントディスプレイに合わせて設定すれば、（十分に小さいものなら）どのようなディスプレイにも対応できるわけです。ということで m &le; 4, n &le; 4 の範囲で調べてみました。ついでに、<code>vertices</code>と<code>edges</code>をいちいち考えるのが面倒だったので自動で生成してくれる関数<code>graphgen</code>を作って利用したので載せておきます。</p>
+        <details>
+            <summary><code>graphgen</code>のコード</summary>
+            <pre><code class="code-ln">def graphgen(m, n):
+    # セグメントディスプレイを生成
+    segments = []
+    k = 1
+
+    for i in range(n+n+1):
+        width = m if i % 2 == 0 else m+1
+        segments.append(list(range(k, k + width)))
+        k += width
+
+    # それぞれのブロックから少なくとも1つ以上選ぶべきセグメント集合の分割を生成
+    vertices = []
+    for j in range(m):
+        vertices.append([segments[i][j] for i in range(0, len(segments), 2)])
+    for i in range(1, len(segments), 2):
+        vertices.append(segments[i])
+
+    # セグメントの隣接関係を生成
+    edges = {}
+
+    def append_if_exists(ll, i, j, target):
+        if 0 <= i and i < len(ll) and 0 <= j and j < len(ll[i]):
+            target.append(ll[i][j])
+
+    for i in range(len(segments)):
+        row = segments[i]
+        for j in range(len(segments[i])):
+            paired = []
+
+            if i % 2 == 0:
+                # 左端の左: segments[i] の1つ前
+                append_if_exists(segments, i, j-1, paired)
+
+                # 右端の右: segments[i] の1つ後
+                append_if_exists(segments, i, j+1, paired)
+
+                # 左端の上: segments の1つ前のリストの同じ位置
+                append_if_exists(segments, i-1, j, paired)
+
+                # 右端の上: segments の1つ前のリストの1つ後
+                append_if_exists(segments, i-1, j+1, paired)
+
+                # 左端の下: segments の1つ後のリストの同じ位置
+                append_if_exists(segments, i+1, j, paired)
+
+                # 右端の下: segments の1つ後のリストの1つ後
+                append_if_exists(segments, i+1, j+1, paired)
+            else:
+                # 上端の左: segments の1つ前のリストの1つ前
+                append_if_exists(segments, i-1, j-1, paired)
+
+                # 上端の右: segments の1つ前のリストの同じ位置
+                append_if_exists(segments, i-1, j, paired)
+
+                # 上端の上: segments の2つ前のリストの同じ位置
+                append_if_exists(segments, i-2, j, paired)
+
+                # 下端の左: segments の1つ後のリストの1つ前
+                append_if_exists(segments, i+1, j-1, paired)
+
+                # 下端の右: segments の1つ後のリストの同じ位置
+                append_if_exists(segments, i+1, j, paired)
+
+                # 下端の上: segments の2つ後のリストの同じ位置
+                append_if_exists(segments, i+2, j, paired)
+
+            edges[row[j]] = paired
+
+    return [vertices, edges]</code></pre>
+        </details>
+
+        <figure>
+            <figcaption>上段：表示可能な「文字」（幅が 0 または m,n の空でない連結な図形）の種類<br>中段：分割に基づく「文字」の種類の上限 (2<sup>m+1</sup> - 1)<sup>n</sup>(2<sup>n+1</sup> - 1)<sup>m</sup><br>下段：論理的な図形の種類 2<sup>s</sup> (セグメントの数 s = (m+1)n + m(n+1))</figcaption>
+            <table id="numsb">
+                <tr>
+                    <th>m \ n</th>
+                    <th>1</th><th>2</th><th>3</th><th>4</th>
+                </tr>
+                <tr>
+                    <th>1</th>
+                    <td><math><mn>9</mn></math><br><math><mn>9</mn></math><br><math><mn>16</mn></math></td>
+                    <td><math><mn>53</mn></math><br><math><mn>63</mn></math><br><math><mn>128</mn></math></td>
+                    <td><math><mn>279</mn></math><br><math><mn>405</mn></math><br><math><mn>1024</mn></math></td>
+                    <td><math><mn>1431</mn></math><br><math><mn>2511</mn></math><br><math><mn>8192</mn></math></td>
+                </tr>
+                <tr>
+                    <th>2</th>
+                    <td><math><mn>53</mn></math><br><math><mn>63</mn></math><br><math><mn>128</mn></math></td>
+                    <td><math><mn>1493</mn></math><br><math><mn>2401</mn></math><br><math><mn>4096</mn></math></td>
+                    <td><math><mn>34911</mn></math><br><math><mn>77175</mn></math><br><math><mn>131072</mn></math></td>
+                    <td><math><mn>776689</mn></math><br><math><mn>2307361</mn></math><br><math><mn>4194304</mn></math></td>
+                </tr>
+                <tr>
+                    <th>3</th>
+                    <td><math><mn>279</mn></math><br><math><mn>405</mn></math><br><math><mn>1024</mn></math></td>
+                    <td><math><mn>34911</mn></math><br><math><mn>77175</mn></math><br><math><mn>131072</mn></math></td>
+                    <td><math><mn>3417353</mn></math><br><math><mn>11390625</mn></math><br><math><mn>16777216</mn></math></td>
+                    <td><math><mn>311995809</mn></math><br><math><mn>1508169375</mn></math><br><math><mn>2147483648</mn></math></td>
+                </tr>
+                <tr>
+                    <th>4</th>
+                    <td><math><mn>1431</mn></math><br><math><mn>2511</mn></math><br><math><mn>8192</mn></math></td>
+                    <td><math><mn>776689</mn></math><br><math><mn>2307361</mn></math><br><math><mn>4194304</mn></math></td>
+                    <td><math><mn>311995809</mn></math><br><math><mn>1508169375</mn><br><math><mn>2147483648</mn></math></td>
+                    <td><math><mn>?</mn></math><br><math><mn>852891037441</mn></math><br><math><mn>1099511627776</mn></math></td>
+                </tr>
+            </table>
+        </figure>
+
+        <p>(m, n) = (3, 4) の時点で計算に90分以上掛かったので、 (m, n) = (4, 4) のときの計算は諦めました。真面目に求めていませんが、先のプログラムでは (2<sup>m+1</sup> - 1)<sup>n</sup>(2<sup>n+1</sup> - 1)<sup>m</sup> 回のループを回していて、かつその中で頂点と辺の数が mn のオーダーのグラフ（頂点はセグメントの数なので (m+1)n + m(n+1) 個、辺はセグメントは最大6つとしか隣り合えないので高々その6倍）に対して深さ優先探索をしているので、計算量は下から Ω(2<sup>mn</sup>mn) と押さえられます（<a href="https://qiita.com/drken/items/4a7869c5e304883f539b#3-5-dfs-%E3%81%AE%E8%A8%88%E7%AE%97%E9%87%8F">深さ優先探索の計算量についての参考</a>）。でっか。改善できないのかな……</p>
+
+        <p style="margin-top: 60px;"><b>おまけ</b>　12セグメントディスプレイに表示できる「文字」を一覧にしてみました。</p>
+
+        <div id="svgs"></div>
+
+        <footer>
+            公開：2025-08-10
+        </footer>
+
+        <script src="./12-segments-data.js"></script>
+        <script>
+            function createSquare(segments) {
+                let svgTag = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                svgTag.setAttribute("version", "1.1");
+                svgTag.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+                svgTag.setAttribute("width", "80px");
+                svgTag.setAttribute("height", "80px");
+                svgTag.setAttribute("viewBox", "0 0 120 120");
+
+                let gTag = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                gTag.setAttribute("stroke-width", "4");
+                svgTag.appendChild(gTag);
+
+                coords = [
+                    {x1: "20", y1: "20", x2: "60", y2: "20"}, 
+                    {x1: "60", y1: "20", x2: "100", y2: "20"}, 
+                    {x1: "20", y1: "20", x2: "20", y2: "60"}, 
+                    {x1: "60", y1: "20", x2: "60", y2: "60"}, 
+                    {x1: "100", y1: "20", x2: "100", y2: "60"}, 
+                    {x1: "20", y1: "60", x2: "60", y2: "60"}, 
+                    {x1: "60", y1: "60", x2: "100", y2: "60"}, 
+                    {x1: "20", y1: "60", x2: "20", y2: "100"}, 
+                    {x1: "60", y1: "60", x2: "60", y2: "100"}, 
+                    {x1: "100", y1: "60", x2: "100", y2: "100"}, 
+                    {x1: "20", y1: "100", x2: "60", y2: "100"}, 
+                    {x1: "60", y1: "100", x2: "100", y2: "100"}
+                ]
+
+                for (let i = 0; i < coords.length; i++) {
+                    let lineTag = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                    lineTag.setAttribute("x1", coords[i].x1);
+                    lineTag.setAttribute("y1", coords[i].y1);
+                    lineTag.setAttribute("x2", coords[i].x2);
+                    lineTag.setAttribute("y2", coords[i].y2);
+                    lineTag.setAttribute("stroke", segments.includes(i + 1) ? "black" : "none");
+                    lineTag.setAttribute("stroke-linecap", "round");
+                    gTag.appendChild(lineTag);
+                }
+
+                return svgTag;
+            }
+
+            let ss = {
+                s1: createSquare([3, 6, 7]), 
+                s2: createSquare([3, 8, 11, 12]), 
+                s3: createSquare([1, 3, 8, 9, 10, 12]), 
+                s4: createSquare([8, 11, 12]), 
+                s5: createSquare([1, 2]), 
+                s6: createSquare([6, 7]), 
+                s7: createSquare([11, 12]), 
+                s8: createSquare([1, 6, 12]), 
+                s9: createSquare([1, 3, 6, 9, 12]), 
+            };
+
+            Object.keys(ss).forEach(key => {
+                ss[key].setAttribute("width", "1.8rem");
+                ss[key].setAttribute("height", "1.8rem");
+                ss[key].firstChild.setAttribute("stroke-width", "8");
+                ss[key].setAttribute("style", "vertical-align: bottom;");
+
+                ss[key].setAttribute("width", "1.8rem");
+            });
+
+            for (let [key, value] of Object.entries(ss)) {
+                document.getElementById(key).appendChild(value);
+            }
+
+            for (let segments of segmentList) {
+                let square = createSquare(segments);
+                document.getElementById("svgs").appendChild(square);
+            }
+        </script>
+    </body>
+</html>

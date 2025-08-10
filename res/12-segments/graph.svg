@@ -1,0 +1,96 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+    <defs>
+        <circle id="circle1" cx="0" cy="0" r="40" fill="white" stroke="black" />
+    </defs>
+    
+    <g stroke-width="3">
+	    <line x1="200" y1="59" x2="400" y2="59" stroke="black" />
+	    <line x1="400" y1="59" x2="541" y2="200" stroke="black" />
+	    <line x1="541" y1="200" x2="541" y2="400" stroke="black" />
+	    <line x1="541" y1="400" x2="400" y2="541" stroke="black" />
+	    <line x1="400" y1="541" x2="200" y2="541" stroke="black" />
+	    <line x1="200" y1="541" x2="59" y2="400" stroke="black" />
+	    <line x1="59" y1="400" x2="59" y2="200" stroke="black" />
+	    <line x1="59" y1="200" x2="200" y2="59" stroke="black" />
+	    
+	    <line x1="300" y1="200" x2="400" y2="300" stroke="black" />
+	    <line x1="400" y1="300" x2="300" y2="400" stroke="black" />
+	    <line x1="300" y1="400" x2="200" y2="300" stroke="black" />
+	    <line x1="200" y1="300" x2="300" y2="200" stroke="black" />
+	    <line x1="300" y1="200" x2="300" y2="400" stroke="black" />
+	    <line x1="200" y1="300" x2="400" y2="300" stroke="black" />
+	    
+	    <line x1="300" y1="200" x2="200" y2="59" stroke="black" />
+	    <line x1="300" y1="200" x2="400" y2="59" stroke="black" />
+	    <line x1="400" y1="300" x2="541" y2="200" stroke="black" />
+	    <line x1="400" y1="300" x2="541" y2="400" stroke="black" />
+	    <line x1="300" y1="400" x2="400" y2="541" stroke="black" />
+	    <line x1="300" y1="400" x2="200" y2="541" stroke="black" />
+	    <line x1="200" y1="300" x2="59" y2="400" stroke="black" />
+	    <line x1="200" y1="300" x2="59" y2="200" stroke="black" />
+	    
+	    <use href="#circle1" x="200" y="59" />
+	    <use href="#circle1" x="400" y="59" />
+	    <use href="#circle1" x="541" y="200" />
+	    <use href="#circle1" x="541" y="400" />
+	    <use href="#circle1" x="400" y="541" />
+	    <use href="#circle1" x="200" y="541" />
+	    <use href="#circle1" x="59" y="400" />
+	    <use href="#circle1" x="59" y="200" />
+	    
+	    <use href="#circle1" x="300" y="200" />
+	    <use href="#circle1" x="400" y="300" />
+	    <use href="#circle1" x="300" y="400" />
+	    <use href="#circle1" x="200" y="300" />
+
+	    <text x="200" y="59" dy="3" 
+	    	font-size="40" font-family="monospace" 
+	    	dominant-baseline="middle" text-anchor="middle" 
+	    	fill="black">1</text>
+	    <text x="400" y="59" dy="3" 
+	    	font-size="40" font-family="monospace" 
+	    	dominant-baseline="middle" text-anchor="middle" 
+	    	fill="black">2</text>
+	    <text x="541" y="200" dy="3" 
+	    	font-size="40" font-family="monospace" 
+	    	dominant-baseline="middle" text-anchor="middle" 
+	    	fill="black">5</text>
+	    <text x="541" y="400" dy="3" 
+	    	font-size="40" font-family="monospace" 
+	    	dominant-baseline="middle" text-anchor="middle" 
+	    	fill="black">10</text>
+	    <text x="400" y="541" dy="3" 
+	    	font-size="40" font-family="monospace" 
+	    	dominant-baseline="middle" text-anchor="middle" 
+	    	fill="black">12</text>
+	    <text x="200" y="541" dy="3" 
+	    	font-size="40" font-family="monospace" 
+	    	dominant-baseline="middle" text-anchor="middle" 
+	    	fill="black">11</text>
+	    <text x="59" y="400" dy="3" 
+	    	font-size="40" font-family="monospace" 
+	    	dominant-baseline="middle" text-anchor="middle" 
+	    	fill="black">8</text>
+	    <text x="59" y="200" dy="3" 
+	    	font-size="40" font-family="monospace" 
+	    	dominant-baseline="middle" text-anchor="middle" 
+	    	fill="black">3</text>
+	    
+	    <text x="300" y="200" dy="3" 
+	    	font-size="40" font-family="monospace" 
+	    	dominant-baseline="middle" text-anchor="middle" 
+	    	fill="black">4</text>
+	    <text x="400" y="300" dy="3" 
+	    	font-size="40" font-family="monospace" 
+	    	dominant-baseline="middle" text-anchor="middle" 
+	    	fill="black">7</text>
+	    <text x="300" y="400" dy="3" 
+	    	font-size="40" font-family="monospace" 
+	    	dominant-baseline="middle" text-anchor="middle" 
+	    	fill="black">9</text>
+	    <text x="200" y="300" dy="3" 
+	    	font-size="40" font-family="monospace" 
+	    	dominant-baseline="middle" text-anchor="middle" 
+	    	fill="black">6</text>
+    </g>
+</svg>
