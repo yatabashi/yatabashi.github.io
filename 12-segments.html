@@ -97,7 +97,7 @@
         <ol>
             <li>12セグメントのディスプレイに表示される。以降、次の図のようにセグメントに番号を付ける。<blockquote style="width: fit-content;">
         <figure style="margin-left: 0;">
-            <img src="./res/12-segments/display.svg" width="200px">
+            <img src="res/12-segments/display.svg" width="200px">
             <figcaption>12セグメントディスプレイ</figcaption>
         </figure></blockquote></li>
             <li>横幅・縦幅ともに<b>0または2</b>のもの。ただし、横幅と縦幅の少なくとも一方は2とする。
@@ -120,7 +120,7 @@
         <p>さて、これら2401個の図形について考えていくのですが、条件3にある通り連結でないものを除外したいところです。ただ、実際にプログラムを走らせる以外の方法がどうも思いつきません。仕方がないのでコンピュータに投げましょう。連結かどうかは、セグメントの隣接関係が分かれば判定できます。隣接関係は次のグラフのように整理できますね。頂点がセグメント、辺がセグメントの隣接関係です。（セグメント上に描かれる図形はこのグラフの部分グラフと見做せます。特にセグメント間の隣接関係はディスプレイ上の配置に従うものなので、誘導部分グラフであると言えます。）</p>
 
         <figure>
-            <img src="./res/12-segments/graph.svg" width="300px">
+            <img src="res/12-segments/graph.svg" width="300px">
             <figcaption>12セグメントディスプレイ上のセグメントの隣接関係</figcaption>
         </figure>
 
@@ -313,7 +313,7 @@ print(f"Connected: {counter[1]}, Disconnected: {counter[0]}")</code></pre>
             公開：2025-08-10
         </footer>
 
-        <script src="./12-segments-data.js"></script>
+        <script src="res/12-segments/12-segments-data.js"></script>
         <script>
             function createSquare(segments) {
                 let svgTag = document.createElementNS("http://www.w3.org/2000/svg", "svg");
