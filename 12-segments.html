@@ -191,7 +191,7 @@ print(f"Connected: {counter[1]}, Disconnected: {counter[0]}")</code></pre>
 
         <p>ということで、1493個の連結な図形が得られました。具体的な図形のリストは .txt ファイルとして書き出しています。これらは幅が縦横ともに2のものです。いずれかの幅が0であるもの2種類を足し合わせて1495個の図形が12セグメントのディスプレイで表示可能な「文字」だということになりました。思ったよりありますね。</p>
 
-        <p style="margin-top: 60px;"><b>余談</b>　先のプログラムでは、冒頭で二つの変数<code>vertices</code>, <code>edges</code>を定義しています。<code>vertices</code>にはセグメントの集合の適切な分割（前述の通り）を与えています。また<code>edges</code>にはディスプレイをグラフとして表したものの隣接リストを与えています。これらを目的のkセグメントディスプレイに合わせて設定すれば、（十分に小さいものなら）どのようなディスプレイにも対応できるわけです。ということで m &le; 4, n &le; 4 の範囲で調べてみました。ついでに、<code>vertices</code>と<code>edges</code>をいちいち考えるのが面倒だったので自動で生成してくれる関数<code>graphgen</code>を作って利用したので載せておきます。</p>
+        <p style="margin-top: 60px;"><b>余談</b>　先のプログラムでは、冒頭で二つの変数<code>vertices</code>, <code>edges</code>を定義しています。<code>vertices</code>にはセグメントの集合の適切な分割（前述の通り）を与えています。また<code>edges</code>にはディスプレイをグラフとして表したものの隣接リストを与えています。これらを目的のkセグメントディスプレイに合わせて設定すれば、（十分に小さいものなら）どのようなディスプレイにも対応できるわけです。ということで m &le; 4, n &le; 4 の範囲で調べてみました。ついでに、<code>vertices</code>と<code>edges</code>を自動で計算してくれる関数<code>graphgen</code>を作って利用したので載せておきます。</p>
         <details>
             <summary><code>graphgen</code>のコード</summary>
             <pre><code class="code-ln">def graphgen(m, n):
@@ -303,14 +303,14 @@ print(f"Connected: {counter[1]}, Disconnected: {counter[0]}")</code></pre>
             </table>
         </figure>
 
-        <p>(m, n) = (3, 4) の時点で計算に90分以上掛かったので、 (m, n) = (4, 4) のときの計算は諦めました。真面目に求めていませんが、先のプログラムでは (2<sup>m+1</sup> - 1)<sup>n</sup>(2<sup>n+1</sup> - 1)<sup>m</sup> 回のループを回していて、かつその中で頂点と辺の数が mn のオーダーのグラフ（頂点はセグメントの数なので (m+1)n + m(n+1) 個、辺はセグメントは最大6つとしか隣り合えないので高々その6倍）に対して深さ優先探索をしているので、計算量は下から Ω(2<sup>mn</sup>mn) と押さえられます（<a href="https://qiita.com/drken/items/4a7869c5e304883f539b#3-5-dfs-%E3%81%AE%E8%A8%88%E7%AE%97%E9%87%8F">深さ優先探索の計算量についての参考</a>）。でっか。改善できないのかな……</p>
+        <p>(m, n) = (3, 4) の時点で（multiprocessingによる数倍の高速化をした上で）計算に90分以上掛かったので、 (m, n) = (4, 4) のときの計算は諦めました。真面目に求めていませんが、先のプログラムでは (2<sup>m+1</sup> - 1)<sup>n</sup>(2<sup>n+1</sup> - 1)<sup>m</sup> 回のループを回していて、かつその中で頂点と辺の数が mn のオーダーのグラフ（頂点はセグメントの数なので (m+1)n + m(n+1) 個、辺はセグメントは最大6つとしか隣り合えないので高々その6倍）に対して深さ優先探索をしているので、計算量は下から Ω(2<sup>mn</sup>mn) と押さえられます（<a href="https://qiita.com/drken/items/4a7869c5e304883f539b#3-5-dfs-%E3%81%AE%E8%A8%88%E7%AE%97%E9%87%8F">深さ優先探索の計算量についての参考</a>）。でっか。改善できないのかな……</p>
 
         <p style="margin-top: 60px;"><b>おまけ</b>　12セグメントディスプレイに表示できる「文字」を一覧にしてみました。</p>
 
         <div id="svgs"></div>
 
         <footer>
-            公開：2025-08-10
+            公開：2025-08-10<br>最終更新：2024-08-20
         </footer>
 
         <script src="res/12-segments/12-segments-data.js"></script>
