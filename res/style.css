@@ -18,6 +18,25 @@
     src: url('../fonts/Koruri/Koruri-Bold.ttf');
 }
 
+/* http://jikasei.me/font/mgenplus/ */
+@font-face {
+    font-family: 'MgenPlus';
+    font-weight: 300;
+    src: url('../fonts/Mgen/mgenplus-1p-light.ttf');
+}
+
+@font-face {
+    font-family: 'MgenPlus';
+    font-weight: 400;
+    src: url('../fonts/Mgen/mgenplus-1p-regular.ttf');
+}
+
+@font-face {
+    font-family: 'MgenPlus';
+    font-weight: 700;
+    src: url('../fonts/Mgen/mgenplus-1p-bold.ttf');
+}
+
 /* https://fonts.google.com/noto/specimen/Noto+Sans+Mono */
 @font-face {
     font-family: 'NotoSansMono';
@@ -25,7 +44,7 @@
 }
 
 body {
-    font-family: 'Koruri', sans-serif;
+    font-family: 'Koruri', 'MgenPlus', sans-serif;
 }
 
 code {
