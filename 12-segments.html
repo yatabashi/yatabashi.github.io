@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="res/style.css">
         <link rel="stylesheet" href="res/highlight_js/highlight-theme.css">
         <link rel="stylesheet" href="res/highlight_js/precode.css">
-        <script src="res/highlight_js/highlight.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
         <script>
             hljs.addPlugin({
                 'after:highlightElement': ({ el, result, _ }) => {
@@ -21,6 +21,7 @@
                 }
             });
 
+            hljs.configure({languages: []});
             hljs.highlightAll();
         </script>
 
@@ -199,7 +200,7 @@ print(f"Connected: {counter[1]}, Disconnected: {counter[0]}")</code></pre>
         <p style="margin-top: 60px;"><b>余談</b>　先のプログラムでは、冒頭で二つの変数<code>vertices</code>, <code>edges</code>を定義しています。<code>vertices</code>にはセグメントの集合の適切な分割（前述の通り）を与えています。また<code>edges</code>にはディスプレイをグラフとして表したものの隣接リストを与えています。これらを目的のkセグメントディスプレイに合わせて設定すれば、（十分に小さいものなら）どのようなディスプレイにも対応できるわけです。ということで m &le; 4, n &le; 4 の範囲で調べてみました。ついでに、<code>vertices</code>と<code>edges</code>を自動で計算してくれる関数<code>graphgen</code>を作って利用したので載せておきます。</p>
         <details>
             <summary><code>graphgen</code>のコード</summary>
-            <pre><code class="code-ln">def graphgen(m, n):
+            <pre><code class="code-ln language-python">def graphgen(m, n):
     # セグメントディスプレイを生成
     segments = []
     k = 1
