@@ -190,17 +190,3 @@ header a:visited {
 header a:hover {
     text-decoration: none;
 }
-
-/* math関連 */
-math {
-    font-size: 1.1em;
-}
-
-.mathblock {
-    padding-left: 40px;
-    margin-block: 16px;
-}
-
-.inlinemath {
-    margin-inline: 0.2em;
-}
