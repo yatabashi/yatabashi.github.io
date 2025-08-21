@@ -7,6 +7,11 @@
         <link rel="icon" href="res/favicon.ico">
         <link rel="stylesheet" href="res/style.css">
 
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+        <link rel="stylesheet" href="res/katex-adjust.css">
+
         <style>
             table, td, th {
                 border: none;
@@ -463,9 +468,11 @@
             <div class="home"><a href="index.html">ホームへ</a></div>
         </header>
 
-        <p>複数マスから成るビンゴシート（各辺<math class="f7"></math>マス、<math class="f8"></math>次元）において可能なビンゴ列の本数<math class="f57"></math>は、次の式で与えられる：<math class="f65 mathblock"></math></p>
-
-        <p><math class="f61"></math>における<math class="f57"></math>の値は次の通り：</p>
+        <p>複数マスから成るビンゴシート（各辺\(m\)マス、\(n\)次元）において可能なビンゴ列の本数\(\#_b(m,n)\)は、次の式で与えられる（2025-08-22加筆）：$$
+            \sout{\#_b(m, n) = \frac{1}{2} \sum_{i=0}^{n-1} (2^{n-i} - 1) 2^{n-i} {}_n C_i (m-2)^i}
+        $$$$
+            \#_b(m, n) = \frac{1}{2} ((m+2)^n - m^n)
+        $$\(2 \le m \le 9, 1 \le n \le 8\)における\(\#_b(m,n)\)の値は次の通り：</p>
         <table id="numsb">
             <tr>
                 <th>m \ n</th>
@@ -473,40 +480,40 @@
             </tr>
             <tr>
                 <th>2</th>
-                <td><math><mn>1</mn></math></td><td><math><mn>6</mn></math></td><td><math><mn>28</mn></math></td><td><math><mn>120</mn></math></td><td><math><mn>496</mn></math></td><td><math><mn>2016</mn></math></td><td><math><mn>8128</mn></math></td><td><math><mn>32640</mn></math></td>
+                <td>\(1\)</td><td>\(6\)</td><td>\(28\)</td><td>\(120\)</td><td>\(496\)</td><td>\(2016\)</td><td>\(8128\)</td><td>\(32640\)</td>
             </tr>
             <tr>
                 <th>3</th>
-                <td><math><mn>1</mn></math></td><td><math><mn>8</mn></math></td><td><math><mn>49</mn></math></td><td><math><mn>272</mn></math></td><td><math><mn>1441</mn></math></td><td><math><mn>7448</mn></math></td><td><math><mn>37969</mn></math></td><td><math><mn>192032</mn></math></td>
+                <td>\(1\)</td><td>\(8\)</td><td>\(49\)</td><td>\(272\)</td><td>\(1441\)</td><td>\(7448\)</td><td>\(37969\)</td><td>\(192032\)</td>
             </tr>
             <tr>
                 <th>4</th>
-                <td><math><mn>1</mn></math></td><td><math><mn>10</mn></math></td><td><math><mn>76</mn></math></td><td><math><mn>520</mn></math></td><td><math><mn>3376</mn></math></td><td><math><mn>21280</mn></math></td><td><math><mn>131776</mn></math></td><td><math><mn>807040</mn></math></td>
+                <td>\(1\)</td><td>\(10\)</td><td>\(76\)</td><td>\(520\)</td><td>\(3376\)</td><td>\(21280\)</td><td>\(131776\)</td><td>\(807040\)</td>
             </tr>
             <tr>
                 <th>5</th>
-                <td><math><mn>1</mn></math></td><td><math><mn>12</mn></math></td><td><math><mn>109</mn></math></td><td><math><mn>888</mn></math></td><td><math><mn>6841</mn></math></td><td><math><mn>51012</mn></math></td><td><math><mn>372709</mn></math></td><td><math><mn>2687088</mn></math></td>
+                <td>\(1\)</td><td>\(12\)</td><td>\(109\)</td><td>\(888\)</td><td>\(6841\)</td><td>\(51012\)</td><td>\(372709\)</td><td>\(2687088\)</td>
             </tr>
             <tr>
                 <th>6</th>
-                <td><math><mn>1</mn></math></td><td><math><mn>14</mn></math></td><td><math><mn>148</mn></math></td><td><math><mn>1400</mn></math></td><td><math><mn>12496</mn></math></td><td><math><mn>107744</mn></math></td><td><math><mn>908608</mn></math></td><td><math><mn>7548800</mn></math></td>
+                <td>\(1\)</td><td>\(14\)</td><td>\(148\)</td><td>\(1400\)</td><td>\(12496\)</td><td>\(107744\)</td><td>\(908608\)</td><td>\(7548800\)</td>
             </tr>
             <tr>
                 <th>7</th>
-                <td><math><mn>1</mn></math></td><td><math><mn>16</mn></math></td><td><math><mn>193</mn></math></td><td><math><mn>2080</mn></math></td><td><math><mn>21121</mn></math></td><td><math><mn>206896</mn></math></td><td><math><mn>1979713</mn></math></td><td><math><mn>18640960</mn></math></td>
+                <td>\(1\)</td><td>\(16\)</td><td>\(193\)</td><td>\(2080\)</td><td>\(21121\)</td><td>\(206896\)</td><td>\(1979713\)</td><td>\(18640960\)</td>
             </tr>
             <tr>
                 <th>8</th>
-                <td><math><mn>1</mn></math></td><td><math><mn>18</mn></math></td><td><math><mn>244</mn></math></td><td><math><mn>2952</mn></math></td><td><math><mn>33616</mn></math></td><td><math><mn>368928</mn></math></td><td><math><mn>3951424</mn></math></td><td><math><mn>41611392</mn></math></td>
+                <td>\(1\)</td><td>\(18\)</td><td>\(244\)</td><td>\(2952\)</td><td>\(33616\)</td><td>\(368928\)</td><td>\(3951424\)</td><td>\(41611392\)</td>
             </tr>
             <tr>
                 <th>9</th>
-                <td><math><mn>1</mn></math></td><td><math><mn>20</mn></math></td><td><math><mn>301</mn></math></td><td><math><mn>4040</mn></math></td><td><math><mn>51001</mn></math></td><td><math><mn>620060</mn></math></td><td><math><mn>7352101</mn></math></td><td><math><mn>85656080</mn></math></td>
+                <td>\(1\)</td><td>\(20\)</td><td>\(301\)</td><td>\(4040\)</td><td>\(51001\)</td><td>\(620060\)</td><td>\(7352101\)</td><td>\(85656080\)</td>
             </tr>
         </table>
 
         <h2>導出</h2>
-        <p>通常のビンゴシートは、5×5の正方形をしています。これは、各辺を<math class="f58"></math>マスに割った<math class="f59"></math>次元超立方体です。このように、各辺が<math class="f7"></math>マスになっている<math class="f8"></math>次元超立方体を使ったビンゴを考え、これを<math class="f3"></math>ビンゴと呼ぶことにします。例えば、通常のビンゴは「<math class="f2"></math>ビンゴ」を用いています。また<math class="f7"></math>の値に拘らず、<math class="f3"></math>ビンゴを<math class="f8"></math>次元ビンゴと呼ぶことにします。<br>ここで、<math class="f3"></math>ビンゴにおいて、ビンゴとして成立しうるマスの並びがいくつあるかということを考えます。例えば、<math class="f2"></math>ビンゴでは縦5本、横5本、斜め2本の合計12本が最大値です。他の次元を例に取ると、<math class="f4"></math>ビンゴでは1本、<math class="f28"></math>ビンゴでは109本です。</p>
+        <p>通常のビンゴシートは、5×5の正方形をしています。これは、各辺を 5 マスに割った 2 次元超立方体です。このように、各辺が\(m\)マスになっている\(n\)次元超立方体を使ったビンゴを考え、これを\(m^n\)ビンゴと呼ぶことにします。例えば、通常のビンゴは「 5<sup>2</sup> ビンゴ」を用いています。また\(m\)の値に拘らず、\(m^n\)ビンゴを\(n\)次元ビンゴと呼ぶことにします。<br>ここで、\(m^n\)ビンゴにおいて、ビンゴとして成立しうるマスの並びがいくつあるかということを考えます。例えば、 5<sup>2</sup> ビンゴでは縦5本、横5本、斜め2本の合計12本が最大値です。他の次元を例に取ると、 5<sup>1</sup> ビンゴでは1本、 5<sup>3</sup> ビンゴでは109本です。</p>
 
         <table>
             <tr>
@@ -524,15 +531,15 @@
                 </td>
             </tr>
             <tr>
-                <td><math class="f29"></math>ビンゴ</td>
-                <td><math class="f4"></math>ビンゴ</td>
-                <td><math class="f2"></math>ビンゴ</td>
-                <td><math class="f28"></math>ビンゴ</td>
+                <td> 5<sup>0</sup> ビンゴ</td>
+                <td> 5<sup>1</sup> ビンゴ</td>
+                <td> 5<sup>2</sup> ビンゴ</td>
+                <td> 5<sup>3</sup> ビンゴ</td>
             </tr>
         </table>
 
         <h3>方針</h3>
-        <p>ビンゴ列にはファセット*上のマスが必ずちょうど2つ含まれるので、ファセット上のマスから伸びるビンゴ列の数を合計すれば、その半分が求めたい値になっています。<br><small>*<math class="f8"></math>次元超多面体におけるそれを囲む<math class="f9"></math>次元の面を言う。線分に対する（端）点、多角形に対する辺、多面体に対する面。例えば<math class="f4"></math>ビンゴでは2マス、<math class="f2"></math>ビンゴでは16マス、<math class="f28"></math>ビンゴでは98マスがファセットに属する（下図で橙色に塗った部分）。</small><br><br>ところで、<math class="f53"></math>と<math class="f54"></math>のときは、もう一方の変数の値に拘らず、ビンゴシートが<math class="f24"></math>マスのみから成ることになります。<math class="f53"></math>の場合、「ビンゴ列にはファセット上のマスが必ずちょうど2つ含まれる」が成り立ちません。また<math class="f54"></math>の場合は、<math class="f24"></math>次元以上のビンゴシートにあるような通常の意味でのビンゴ「列」が存在しません。よって、以下これらの場合は除外して、ビンゴシートが複数マスからなる、一辺<math class="f59"></math>マス以上、<math class="f24"></math>次元以上の場合（<math class="f51"></math>）を考えることとします。</p>
+        <p>ビンゴ列にはファセット*上のマスが必ずちょうど2つ含まれるので、ファセット上のマスから伸びるビンゴ列の数を合計すれば、その半分が求めたい値になっています。<br><small>*\(n\)次元超多面体におけるそれを囲む\(n-1\)次元の面を言う。線分に対する（端）点、多角形に対する辺、多面体に対する面。例えば 5<sup>1</sup> ビンゴでは2マス、 5<sup>2</sup> ビンゴでは16マス、 5<sup>3</sup> ビンゴでは98マスがファセットに属する（下図で橙色に塗った部分）。</small><br><br>ところで、\(m=1\)と\(n=0\)のときは、もう一方の変数の値に拘らず、ビンゴシートが 1 マスのみから成ることになります。\(m=1\)の場合、「ビンゴ列にはファセット上のマスが必ずちょうど2つ含まれる」が成り立ちません。また\(n=0\)の場合は、 1 次元以上のビンゴシートにあるような通常の意味でのビンゴ「列」が存在しません。よって、以下これらの場合は除外して、ビンゴシートが複数マスからなる、一辺 2 マス以上、 1 次元以上の場合（\(m \geq 2, n \geq 1\)）を考えることとします。</p>
         <p></p>
 
         <table>
@@ -574,14 +581,14 @@
                 </td>
             </tr>
             <tr>
-                <td><math class="f4"></math>ビンゴ</td>
-                <td><math class="f2"></math>ビンゴ</td>
-                <td><math class="f28"></math>ビンゴ</td>
+                <td> 5<sup>1</sup> ビンゴ</td>
+                <td> 5<sup>2</sup> ビンゴ</td>
+                <td> 5<sup>3</sup> ビンゴ</td>
             </tr>
         </table>
 
         <h3>ファセット上の一マスから伸びるビンゴ列の数</h3>
-        <p>マスの位置によって、そこから伸びるビンゴ列の数は異なります。<math class="f5"></math>ビンゴを例に取って考えましょう。以降、説明のために手前左上のマスを原点として左右方向にx軸、上下方向にy軸、前後方向にz軸を導入します。</p>
+        <p>マスの位置によって、そこから伸びるビンゴ列の数は異なります。 3<sup>3</sup> ビンゴを例に取って考えましょう。以降、説明のために手前左上のマスを原点として左右方向にx軸、上下方向にy軸、前後方向にz軸を導入します。</p>
 
         <table>
             <tr>
@@ -596,19 +603,19 @@
                                 <div style="position: absolute; width: 2px; height: 185px; transform: rotate(-90deg); transform-origin: top left; background-color: black; translate: -1px 1px; border-radius: 1px;"></div>
                                 <div style="position: absolute; width: 2px; height: 90px; transform: rotate(-121deg); transform-origin: top left; background-color: black; translate: 1px 0px; border-radius: 3px;"></div>
 
-                                <div style="position: absolute; translate: 188px -14px;"><math><mi>x</mi></math></div>
-                                <div style="position: absolute; translate: -7px 146px;"><math><mi>y</mi></math></div>
-                                <div style="position: absolute; translate: 80px -68px;"><math><mi>z</mi></math></div>
+                                <div style="position: absolute; translate: 188px -14px;">\(x\)</div>
+                                <div style="position: absolute; translate: -7px 146px;">\(y\)</div>
+                                <div style="position: absolute; translate: 80px -68px;">\(z\)</div>
 
-                                <div style="position: absolute; translate: -18px 8px;"><math class="f6"></math></div>
-                                <div style="position: absolute; translate: -18px 48px;"><math class="f24"></math></div>
-                                <div style="position: absolute; translate: -18px 88px"><math class="f59"></math></div>
-                                <div style="position: absolute; translate: 13px 0px;"><math class="f6"></math></div>
-                                <div style="position: absolute; translate: 53px 0px;"><math class="f24"></math></div>
-                                <div style="position: absolute; translate: 93px 0px;"><math class="f59"></math></div>
-                                <div style="position: absolute; translate: -8px -27px;"><math class="f6"></math></div>
-                                <div style="position: absolute; translate: 12px -39px;"><math class="f24"></math></div>
-                                <div style="position: absolute; translate: 32px -51px"><math class="f59"></math></div>
+                                <div style="position: absolute; translate: -18px 8px;">\(0\)</div>
+                                <div style="position: absolute; translate: -18px 48px;">\(1\)</div>
+                                <div style="position: absolute; translate: -18px 88px">\(2\)</div>
+                                <div style="position: absolute; translate: 16px 0px;">\(0\)</div>
+                                <div style="position: absolute; translate: 56px 0px;">\(1\)</div>
+                                <div style="position: absolute; translate: 96px 0px;">\(2\)</div>
+                                <div style="position: absolute; translate: -8px -27px;">\(0\)</div>
+                                <div style="position: absolute; translate: 12px -39px;">\(1\)</div>
+                                <div style="position: absolute; translate: 32px -51px">\(2\)</div>
                             </div>
                             <div class="cube-face cube-face-righthand"></div>
                             <div class="cube-face cube-face-ceiling">
@@ -623,7 +630,7 @@
             </tr>
         </table>
 
-        <p>立方体の頂点にあたるマスからは、縦横奥行の3方向、表面上を斜めに3方向、反対側の点にかけての1方向がありますが、これは①<math class="f11"></math>のいずれか1つが変化するもの：<span class="stack"><math class="f12"></math><br><math class="f13"></math><br><math class="f14"></math></span>、②<math class="f11"></math>のいずれか2つが変化するもの：<span class="stack"><math class="f15"></math><br><math class="f16"></math><br><math class="f17"></math></span>、③<math class="f11"></math>のいずれか3つ（＝全て）が変化するもの：<math class="f18"></math>、として解釈できます（座標はマス<math class="f19"></math>からの例）。立方体の辺上（除頂点）にあるマスからは、①：<span class="stack"><math class="f20"></math><br><math class="f21"></math></span>と②：<math class="f22"></math>だけが、立方体の面上（除辺上）にあるマスからは、①：<math class="f23"></math>だけがあります。</p>
+        <p>立方体の頂点にあたるマスからは、縦横奥行の3方向、表面上を斜めに3方向、反対側の点にかけての1方向がありますが、これは①\(x,y,z\)のいずれか1つが変化するもの：<span class="stack">\([(0,0,0),(1,0,0),(2,0,0)]\)<br>\([(0,0,0),(0,1,0),(0,2,0)]\)<br>\([(0,0,0),(0,0,1),(0,0,2)]\)</span>、②\(x,y,z\)のいずれか2つが変化するもの：<span class="stack">\([(0,0,0),(1,1,0),(2,2,0)]\)<br>\([(0,0,0),(0,1,1),(0,2,2)]\)<br>\([(0,0,0),(1,0,1),(2,0,2)]\)</span>、③\(x,y,z\)のいずれか3つ（＝全て）が変化するもの：\([(0,0,0),(1,1,1),(2,2,2)]\)、として解釈できます（座標はマス\((0,0,0)\)からの例）。立方体の辺上（除頂点）にあるマスからは、①：<span class="stack">\([(1,0,0),(1,1,0),(1,2,0)]\)<br>\([(1,0,0),(1,0,1),(1,0,2)]\)</span>と②：\([(1,0,0),(1,1,1),(1,2,2)]\)だけが、立方体の面上（除辺上）にあるマスからは、①：\([(1,1,0),(1,1,1),(1,1,2)]\)だけがあります。</p>
 
         <table>
             <tr>
@@ -696,10 +703,12 @@
             </tr>
         </table>
 
-        <p>このように、<math class="f8"></math>次元ビンゴにおけるファセット上のマスには、その位置に応じて、利用可能な成分が<math class="f24"></math>個から<math class="f8"></math>個あります。また、特に<math class="f60"></math>個の成分が利用可能な場合に、そこから（ビンゴ列を伸ばす方向を指定するために）実際に利用する成分を選ぶ方法は<math class="f26"></math>通り、すなわち<math class="f27 mathblock"></math>通りあります。</p>
+        <p>このように、\(n\)次元ビンゴにおけるファセット上のマスには、その位置に応じて、利用可能な成分が 1 個から\(n\)個あります。また、特に\(N\)個の成分が利用可能な場合に、そこから（ビンゴ列を伸ばす方向を指定するために）実際に利用する成分を選ぶ方法は\(\sum_{k=1}^N {}_N C_k\)通り、すなわち$$
+            2^N - 1
+        $$通りあります。</p>
 
         <h3>ファセット上のマスの数</h3>
-        <p>さて、前節で、特定のマスから引けるビンゴ列の数は分かりました。次は、それらのマス自体の数を数えます。前述の通り、ファセット上のマスはビンゴ列を伸ばす方向として利用可能な成分の数で<math class="f8"></math>通りに分類できます。ここで、<math class="f60"></math>個の成分が利用可能なマスは、特に余次元<math class="f60"></math>の面上にあります。<math class="f5"></math>ビンゴでは次のようになっています：</p>
+        <p>さて、前節で、特定のマスから引けるビンゴ列の数は分かりました。次は、それらのマス自体の数を数えます。前述の通り、ファセット上のマスはビンゴ列を伸ばす方向として利用可能な成分の数で\(n\)通りに分類できます。ここで、\(N\)個の成分が利用可能なマスは、特に余次元\(N\)の面上にあります。 3<sup>3</sup> ビンゴでは次のようになっています：</p>
 
         <table>
             <tr>
@@ -732,142 +741,67 @@
             </tr>
         </table>
 
-        <p>ここで、<math class="f8"></math>次元多面体における余次元<math class="f60"></math>の面、<math class="f35"></math>として<math class="f31"></math>次元面の個数は次の式で与えられます：<math class="f32 mathblock"></math>これは、<math class="f31"></math>次元面を構成する成分の選び方が<math class="f33"></math>通りあり、また面は面を構成しない成分のそれぞれ両側に配置される*ので、同じ成分からなる面がそれぞれ<math class="f34"></math>個あるためです。<br><small>* 3次元の立体を例に取ると、xyからなる面は前後の2箇所（z軸の両側）にあり、xからなる辺は上下と前後の組み合わせによる4箇所（y軸とz軸の両側）にあり、頂点は左右・上下・前後の組み合わせによる8箇所（x軸とy軸とz軸の両側）にある。</small></p>
-        <!-- ここ以降確認 -->
+        <p>ここで、\(n\)次元多面体における余次元\(N\)の面、\(ν = n - N\)として\(ν\)次元面の個数は次の式で与えられます：$$
+            2^{n-ν} {}_n C_{ν}
+        $$これは、\(ν\)次元面を構成する成分の選び方が\({}_n C_{ν}\)通りあり、また面は面を構成しない成分のそれぞれ両側に配置される*ので、同じ成分からなる面がそれぞれ\(2^{n-ν}\)個あるためです。<br><small>* 3次元の立体を例に取ると、xyからなる面は前後の2箇所（z軸の両側）にあり、xからなる辺は上下と前後の組み合わせによる4箇所（y軸とz軸の両側）にあり、頂点は左右・上下・前後の組み合わせによる8箇所（x軸とy軸とz軸の両側）にある。</small></p>
 
-        <p>次に、ある一つの面に属するマスの個数を考えます。ただし、本来求めたいのは<math class="f31"></math>次元面に属するマスの個数というよりも、<math class="f31"></math>次元面に属し、<math class="f31"></math>以下の次元の面に属さないマスの個数です。同じ<math class="f31"></math>次元面に属していても、<math class="f31"></math>以下の次元の面に<u>属する</u>マスから引けるビンゴ列の本数は、<math class="f31"></math>以下の次元の面に<u>属さない</u>マスから引けるビンゴ列の本数よりも多くなるためです。よってその面のファセットに属するマスを除いて数える必要がありますが、これは一辺のマス数から両端分を除いた値に面の次元を乗じた<math class="f36 mathblock"></math>で済みます（<math class="f63"></math>であることを確認してください）。問題になりそうなのは「両端」が存在しない<math class="f37"></math>（頂点）の場合ですが、「<math class="f31"></math>以下の次元」が存在しないため<math class="f31"></math>次元面に属するマスの個数である<math class="f24"></math>を得られればよく、実際常に<math class="f24"></math>を返すため都合よく行きます。</p>
+        <p>次に、ある一つの面に属するマスの個数を考えます。ただし、本来求めたいのは\(ν\)次元面に属するマスの個数というよりも、\(ν\)次元面に属し、\(ν\)以下の次元の面に属さないマスの個数です。同じ\(ν\)次元面に属していても、\(ν\)以下の次元の面に<u>属する</u>マスから引けるビンゴ列の本数は、\(ν\)以下の次元の面に<u>属さない</u>マスから引けるビンゴ列の本数よりも多くなるためです。よってその面のファセットに属するマスを除いて数える必要がありますが、これは一辺のマス数から両端分を除いた値に面の次元を乗じた$$
+            (m-2)^{ν}
+        $$で済みます（\(m \ge 2\)であることを確認してください）。問題になりそうなのは「両端」が存在しない\(ν=0\)（頂点）の場合ですが、「\(ν\)以下の次元」が存在しないため\(ν\)次元面に属するマスの個数である 1 を得られればよく、実際常に 1 を返すため都合よく行きます。</p>
 
-        <p>したがって、<math class="f8"></math>個の成分が利用可能なマスの個数は、<math class="f35"></math>を用いて<math class="f38 mathblock"></math>で与えられます。</p>
+        <p>したがって、\(n\)個の成分が利用可能なマスの個数は、\(ν = n - N\)を用いて$$
+            2^{n-ν} {}_n C_{ν} (m-2)^{ν}
+        $$で与えられます。</p>
 
         <h3>可能なビンゴ列の本数</h3>
-        <p>前二節での議論から、<math class="f8"></math>個の成分が利用可能なマスから引かれるビンゴ列の本数は、ビンゴシート全体で<math class="f39 mathblock"></math>として得られます（<math class="f27"></math>を<math class="f40"></math>で置換しています）。よってこれのビンゴ列に利用可能な成分の数（＝余次元）<math class="f42"></math>での総和、すなわち面の次元<math class="f43"></math>での総和を取った値がファセット上の全てのマスから引けるビンゴ列の本数の合計です：<math class="f41 mathblock"></math>これは各ビンゴ列を2回ずつ数えているので、この半分が求めるべきものです。</p>
-        <p>以上のことから、<math class="f3"></math>ビンゴにおいて可能なビンゴ列の本数は<math class="f52 mathblock"></math>によって求まります。</p>
+        <p>前二節での議論から、\(n\)個の成分が利用可能なマスから引かれるビンゴ列の本数は、ビンゴシート全体で$$
+            (2^{n-ν} - 1) 2^{n-ν} {}_n C_{ν} (m-2)^{ν}
+        $$として得られます（\(2^N - 1\)を\(N = n - ν\)で置換しています）。よってこれのビンゴ列に利用可能な成分の数（＝余次元）\(N = 1,\ldots,n\)での総和、すなわち面の次元\(ν = 0,\ldots,n-1\)での総和を取った値がファセット上の全てのマスから引けるビンゴ列の本数の合計です：$$
+            \sum_{ν=0}^{n-1} (2^{n-ν} - 1) 2^{n-ν} {}_n C_{ν} (m-2)^{ν}
+        $$これは各ビンゴ列を2回ずつ数えているので、この半分が求めるべきものです。</p>
+        <p>以上のことから、\(m^n\)ビンゴにおいて可能なビンゴ列の本数は$$
+            \frac{1}{2} \sum_{i=0}^{n-1} (2^{n-i} - 1) 2^{n-i} {}_n C_i (m-2)^i
+        $$によって求まります。</p>
 
         <h3>除外したケースについて</h3>
-        <p>冒頭で「<math class="f24"></math>マスビンゴ」になってしまう<math class="f53"></math>と<math class="f54"></math>の場合を除外しました。これらにおけるビンゴ列（？）の本数を考えるならば、唯一のマスが開いた<math class="f24"></math>本であるということになるでしょう。しかし、上で得た式に<math class="f53"></math>を代入すると<math class="f64"></math>となり、<math class="f54"></math>を代入すると常に<math class="f6"></math>が得られます。これらの場合にも対応させるならば、<math class="f56 mathblock"></math>としてもいいかもしれません。</p>
+        <p>冒頭で「 1 マスビンゴ」になってしまう\(m=1\)と\(n=0\)の場合を除外しました。これらにおけるビンゴ列（？）の本数を考えるならば、唯一のマスが開いた 1 本であるということになるでしょう。しかし、上で得た式に\(m=1\)を代入すると\(0,1,4,13,40, \cdots (n \ge 0)\)となり、\(n=0\)を代入すると常に 0 が得られます。これらの場合にも対応させるならば、$$
+            \#_b(m,n) = \left\{ \begin{array}{ll}
+                1 & (m=1 \lor n=0)\\
+                \frac{1}{2} \sum_{i=1}^{n-1} (2^{n-i} - 1) 2^{n-i} {}_n C_i (m-2)^i & (m > 1 \land n > 0) 
+            \end{array} \right.
+        $$としてもいいかもしれません。</p>
+
+        <h3>式を簡単にする（2025-08-22追記）</h3>
+        <p>この記事を書いたあと、私は<a href="https://yatabashi.github.io/zorome.html">別の記事</a>でLLMの助けを借りて式を簡単にする経験をしました。いま前掲の式を見てみたときに、より簡単な表現ができそうな気配を感じたので、実行してみました。</p>
+        <p>まず、式を二つの項に分解します。$$
+            \begin{align*}
+                \#_b(m, n)
+                &= \frac{1}{2} \sum_{i=0}^{n-1} (2^{n-i} - 1) 2^{n-i} \binom{n}{i} (m-2)^i \\
+                &= \frac{1}{2} \sum_{i=0}^{n-1} ((2^{n-i})^2 - 2^{n-i}) \binom{n}{i} (m-2)^i \\
+                &= \frac{1}{2} (\sum_{i=0}^{n-1} 4^{n-i} \binom{n}{i} (m-2)^i - \sum_{i=0}^{n-1} 2^{n-i} \binom{n}{i} (m-2)^i) \\
+            \end{align*}
+        $$ここで\(S_1 = \sum_{i=0}^{n-1} 4^{n-i} \binom{n}{i} (m-2)^i, S_2 = \sum_{i=0}^{n-1} 2^{n-i} \binom{n}{i} (m-2)^i\)と置くと、二項定理から$$
+            \begin{align*}
+                S_1 &= \sum_{i=0}^{n} \binom{n}{i} 4^{n-i} (m-2)^i - \binom{n}{n} 4^{n-n} (m-2)^n \\
+                    &= (4+(m-2))^n - (m-2)^i \\
+                    &= (m+2)^n - (m-2)^i \\
+            \end{align*}
+        $$$$
+            \begin{align*}
+                S_2 &= \sum_{i=0}^{n} \binom{n}{i} 2^{n-i} (m-2)^i - \binom{n}{n} 2^{n-n} (m-2)^n\\
+                    &= (2+(m-2))^n - (m-2)^i \\
+                    &= m^n - (m-2)^i
+            \end{align*}
+        $$と簡単にできます。従って$$
+            \begin{align*}
+                \#_b(m, n)
+                &= \frac{1}{2} (S_1 - S_2) \\
+                &= \frac{1}{2} ((m+2)^n - m^n) \\
+            \end{align*}
+        $$ということになります。実際この式に基づいて計算した結果は最初に載せた表と一致しました。なるほど言われてみれば二項定理っぽい香りが漂ってますね。ありがとう Gemini 2.5 Pro。</p>
 
         <footer>
-            公開：2024-08-12<br>最終更新：2024-09-21
+            公開：2024-08-12<br>最終更新：2025-08-22
         </footer>
-
-        <script>
-            let formulae = {
-                f2: '<msup><mn>5</mn><mn>2</mn></msup>',
-                f3: '<msup><mi>m</mi><mi>n</mi></msup>',
-                f4: '<msup><mn>5</mn><mn>1</mn></msup>',
-                f5: '<msup><mn>3</mn><mn>3</mn></msup>',
-                f6: '<mn>0</mn>',
-                f7: '<mi>m</mi>',
-                f8: '<mi>n</mi>',
-                f9: '<mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow>',
-                f11: '<mrow><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi></mrow>',
-                f12: '<mrow><mo stretchy="false">[</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow>',
-                f13: '<mrow><mo stretchy="false">[</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow>',
-                f14: '<mrow><mo stretchy="false">[</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow>',
-                f15: '<mrow><mo stretchy="false">[</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow>',
-                f16: '<mrow><mo stretchy="false">[</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow>',
-                f17: '<mrow><mo stretchy="false">[</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow>',
-                f18: '<mrow><mo stretchy="false">[</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow>',
-                f19: '<mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow>',
-                f20: '<mrow><mo stretchy="false">[</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow>',
-                f21: '<mrow><mo stretchy="false">[</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow>',
-                f22: '<mrow><mo stretchy="false">[</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow>',
-                f23: '<mrow><mo stretchy="false">[</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo><mo>,</mo><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow>',
-                f24: '<mn>1</mn>',
-                f26: '<mrow><mrow><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></munderover></mrow><msub><mrow></mrow><mi>N</mi></msub><msub><mi>C</mi><mi>k</mi></msub></mrow>',
-                f27: '<mrow><msup><mn>2</mn><mi>N</mi></msup><mo>−</mo><mn>1</mn></mrow>',
-                f28: '<msup><mn>5</mn><mn>3</mn></msup>',
-                f29: '<msup><mn>5</mn><mn>0</mn></msup>',
-                f31: '<mi>ν</mi>',
-                f32: '<mrow><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>ν</mi></mrow></msup><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><mi>ν</mi></msub></mrow>',
-                f33: '<mrow><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><mi>ν</mi></msub></mrow>',
-                f34: '<msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>ν</mi></mrow></msup>',
-                f35: '<mrow><mi>ν</mi><mo>=</mo><mi>n</mi><mo>−</mo><mi>N</mi></mrow>',
-                f36: '<mrow><mo>(</mo><mi>m</mi><mo>−</mo><mn>2</mn><msup><mo>)</mo><mi>ν</mi></msup></mrow>',
-                f37: '<mrow><mi>ν</mi><mo>=</mo><mn>0</mn></mrow>',
-                f38: '<mrow><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>ν</mi></mrow></msup><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><mi>ν</mi></msub><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mi>ν</mi></msup></mrow>',
-                f39: '<mrow><mo stretchy="false">(</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>ν</mi></mrow></msup><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>ν</mi></mrow></msup><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><mi>ν</mi></msub><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mi>ν</mi></msup></mrow>',
-                f40: '<mrow><mi>N</mi><mo>=</mo><mi>n</mi><mo>−</mo><mi>ν</mi></mrow>',
-                f41: '<mrow><mrow><munderover><mo stretchy="true">∑</mo><mrow><mi>ν</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></munderover></mrow><mo stretchy="false">(</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>ν</mi></mrow></msup><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>ν</mi></mrow></msup><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><mi>ν</mi></msub><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mi>ν</mi></msup></mrow>',
-                f42: '<mrow><mi>N</mi><mo>=</mo><mn>1</mn><mo>,</mo><mo>…</mo><mo>,</mo><mi>n</mi></mrow>',
-                f43: '<mrow><mi>ν</mi><mo>=</mo><mn>0</mn><mo>,</mo><mo>…</mo><mo>,</mo><mi>n</mi><mo>−</mo><mn>1</mn></mrow>',
-                f51: '<mrow><mi>m</mi><mo>≥</mo><mn>2</mn><mo>,</mo><mi>n</mi><mo>≥</mo><mn>1</mn></mrow>',
-                f52: '<mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mrow><munderover><mo stretchy="true">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></munderover></mrow><mo stretchy="false">(</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>i</mi></mrow></msup><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>i</mi></mrow></msup><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mi>i</mi></msup></mrow>',
-                f53: '<mrow><mi>m</mi><mo>=</mo><mn>1</mn></mrow>',
-                f54: '<mrow><mi>n</mi><mo>=</mo><mn>0</mn></mrow>',
-                f56: '<mrow><msub><mi>#</mi><mi>b</mi></msub><mo stretchy="false">(</mo><mi>m</mi><mo>,</mo><mi>n</mi><mo stretchy="false">)</mo><mo>=</mo><mo form="prefix">{</mo><mtable columnalign="left left"><mtr><mtd style="padding:0.5ex 5.9776pt 0.5ex 0pt;"><mn>1</mn></mtd><mtd style="padding:0.5ex 0pt 0.5ex 5.9776pt;"><mrow><mo stretchy="false">(</mo><mi>m</mi><mo>=</mo><mn>1</mn><mo>∨</mo><mi>n</mi><mo>=</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mtd></mtr><mtr><mtd style="padding:0.5ex 5.9776pt 0.5ex 0pt;"><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msubsup><mo stretchy="false">(</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>i</mi></mrow></msup><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>i</mi></mrow></msup><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mi>i</mi></msup></mrow></mtd><mtd style="padding:0.5ex 0pt 0.5ex 5.9776pt;"><mrow><mo stretchy="false">(</mo><mi>m</mi><mo>></mo><mn>1</mn><mo>∧</mo><mi>n</mi><mo>></mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mtd></mtr></mtable><mo></mo></mrow></mrow>',
-                f57: '<mrow><msub><mi>#</mi><mi>b</mi></msub><mo stretchy="false">(</mo><mi>m</mi><mo>,</mo><mi>n</mi><mo stretchy="false">)</mo></mrow>',
-                f58: '<mn>5</mn>',
-                f59: '<mn>2</mn>',
-                f60: '<mi>N</mi>',
-                f61: '<mrow><mn>2</mn><mo>≤</mo><mi>m</mi><mo>≤</mo><mn>9</mn><mo>,</mo><mn>1</mn><mo>≤</mo><mi>n</mi><mo>≤</mo><mn>8</mn></mrow>',
-                f63: '<mrow><mi>m</mi><mo>≥</mo><mn>2</mn></mrow>',
-                f64: '<mrow><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>13</mn><mo>,</mo><mn>40</mn><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo stretchy="false">(</mo><mi>n</mi><mo>≥</mo><mn>0</mn><mo stretchy="false">)</mo></mrow>',
-                f65: '<mrow><msub><mi>#</mi><mi>b</mi></msub><mo stretchy="false">(</mo><mi>m</mi><mo separator="true">,</mo><mi>n</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mrow><munderover><mo stretchy="true">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></munderover></mrow><mo stretchy="false">(</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>i</mi></mrow></msup><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><msup><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mi>i</mi></mrow></msup><msub><mrow></mrow><mi>n</mi></msub><msub><mi>C</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mi>i</mi></msup></mrow>',
-            }
-            /*
-                f2 : 5^2
-                f3 : m^n
-                f4 : 5^1
-                f5 : 3^3
-                f6 : 0
-                f7 : m
-                f8 : n
-                f9 : n-1
-                f11: x,y,z
-                f12: [(0,0,0),(1,0,0),(2,0,0)]
-                f13: [(0,0,0),(0,1,0),(0,2,0)]
-                f14: [(0,0,0),(0,0,1),(0,0,2)]
-                f15: [(0,0,0),(1,1,0),(2,2,0)]
-                f16: [(0,0,0),(0,1,1),(0,2,2)]
-                f17: [(0,0,0),(1,0,1),(2,0,2)]
-                f18: [(0,0,0),(1,1,1),(2,2,2)]
-                f19: (0,0,0)
-                f20: [(1,0,0),(1,1,0),(1,2,0)]
-                f21: [(1,0,0),(1,0,1),(1,0,2)]
-                f22: [(1,0,0),(1,1,1),(1,2,2)]
-                f23: [(1,1,0),(1,1,1),(1,1,2)]
-                f24: 1
-                f26: \sum_{k=1}^N {}_N C_k
-                f27: 2^N - 1
-                f28: 5^3
-                f29: 5^0
-                f31: N'
-                f32: 2^{n-N'} {}_n C_{N'}
-                f33: {}_n C_{N'}
-                f34: 2^{n-N'}
-                f35: N' = n - N
-                f36: (m-2)^{N'}
-                f37: N'=0
-                f38: 2^{n-N'} {}_n C_{N'} (m-2)^{N'}
-                f39: (2^{n-N'} - 1) 2^{n-N'} {}_n C_{N'} (m-2)^{N'}
-                f40: N = n - N'
-                f41: \sum_{N'=0}^{n-1} (2^{n-N'} - 1) 2^{n-N'} {}_n C_{N'} (m-2)^{N'}
-                f42: N = 1,\ldots,n
-                f43: N' = 0,\ldots,n-1
-                f51: m \geq 2, n \geq 1
-                f52: \frac{1}{2} \sum_{i=0}^{n-1} (2^{n-i} - 1) 2^{n-i} {}_n C_i (m-2)^i
-                f53: m=1
-                f54: n=0
-                f56: \#_b(m,n) = \left\{ \begin{array}{ll} 1 & (m=1 \lor n=0)\\ \frac{1}{2} \sum_{i=1}^{n-1} (2^{n-i} - 1) 2^{n-i} {}_n C_i (m-2)^i & (m > 1 \land n > 0) \end{array} \right.
-                f57: \#_b(m,n)
-                f58: 5
-                f59: 2
-                f60: N
-            */
-
-            for (elm of document.getElementsByTagName("math")) {
-                const cn = elm.classList[0];
-                if (cn in formulae) {
-                    if (elm.classList[1] == "mathblock") {
-                        elm.outerHTML = `<div class="mathblock"><math style="math-style: normal;">${formulae[elm.classList[0]]}</math></div>`;
-                    } else {
-                        elm.outerHTML = `<math class="inlinemath">${formulae[elm.classList[0]]}</math>`;
-                    }
-                } else {
-                    console.log(cn);
-                }
-            }
-        </script>
     </body>
 </html>
