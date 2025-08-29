@@ -37,18 +37,15 @@
     src: url('../fonts/Mgen/mgenplus-1p-bold.ttf');
 }
 
-/* https://fonts.google.com/noto/specimen/Noto+Sans+Mono */
-@font-face {
-    font-family: 'NotoSansMono';
-    src: url('../fonts/Noto_Sans_Mono/NotoSansMono_SemiCondensed-Regular.ttf');
-}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wdth@87.5&display=swap');
+
 
 body {
     font-family: 'Koruri', 'MgenPlus', sans-serif;
 }
 
 code {
-    font-family: 'NotoSansMono', monospace;
+    font-family: 'Noto Sans Mono', monospace;
     font-size: 0.9em;
 }
 
