@@ -119,6 +119,11 @@ p.advent-calendar {
     padding: 6px 0px;
 }
 
+.centerized {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* 引用要素 */
 blockquote.shaded {
     background-color: #f4f4f4;
