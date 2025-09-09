@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>自己紹介 - yatabashi</title>
+        <link rel="icon" href="res/favicon.ico">
+        <link rel="stylesheet" href="res/style.css">
+
+        <style>
+            @font-face {
+                font-family: 'Gentium';
+                font-weight: 400;
+                src: url('./fonts/Gentium/Gentium-Regular.woff2');
+            }
+
+            .icon {
+                width: 3em;
+                aspect-ratio: 1;
+            }
+
+            .has-middle-placed-img > * {
+                vertical-align: middle
+            }
+
+            .book {
+                width: 100%;
+                padding: 0.5rem 0.75rem;
+                box-sizing: border-box;
+                background-color: #D5EEFC;
+
+                font-family: "Noto Serif JP", serif;
+                /* font-weight: 300; */
+
+                margin-bottom: 0.5em;
+            }
+
+            .title, .comment {
+                margin: 0;
+            }
+
+            .title {
+                padding-bottom: 0.3em;
+                margin-bottom: 0.3em;
+                border-bottom: 1px solid black;
+            }
+
+            .comment {
+                font-size: 0.9em;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>自己紹介</h1>
+        </header>
+
+        <h2>Profile</h2>
+        <ul>
+            <li>名前 → 谷田橋<ul>
+                <li>読み → やたばし</li>
+                <li>読み（IPA） → <span style="font-family: 'Gentium';">[yatabaɕi̥]</span></li>
+                <li>ラテン文字転写 → yatabashi</li>
+            </ul></li>
+            <li><span style="display: inline-flex; align-items: center; white-space: pre;">アイコン → <img class="icon" src="res/icon.svg"></span></li>
+            <li>出身地 → JP-13</li>
+            <li>所在地 → JP-26</li>
+        </ul>
+
+        <p class="has-middle-placed-img"><span>谷田橋という名前の、ほとんど Twitter 上のいきものです。このサイトを作ってからはインターネット存在としての冗長性が増しました。</p>
+        
+        <h2>Interests</h2>
+        <p>本棚は人の関心事を透けて見せることに定評があります。家に並んだ本から何冊か抜き出してきてみました。</p>
+        <div id="shelf-interests"></div>
+
+        <h2>Contact</h2>
+        <ul>
+            <li>Twitter: <a href="https://twitter.com/yatabashi">@yatabashi</a></li>
+            <li>GitHub: <a href="https://github.com/yatabashi">yatabashi</a></li>
+            <li>休眠中<ul>
+                    <li>Mastodon: <a href="https://fedibird.com/@yatabashi">@yatabashi@fedibird.com</a></li>
+                    <li>Misskey: <a href="https://misskey.io/@yatabashi">@yatabashi@misskey.io</a></li>
+                    <li>Bluesky: <a href="https://bsky.app/profile/yatabashi.bsky.social">@yatabashi.bsky.social</a></li>
+                    <li>Mixi2: <a href="https://mixi.social/@yatabashi">@yatabashi</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <footer>
+            <nav>
+                <a href="index.html">&lt; ホームへ</a>
+            </nav>
+            公開：****-**-**
+        </footer>
+
+        <script src="bookshelf-data.js"></script>
+        <script>
+            let shelf = "shelf-interests";
+
+            let numbers = [...Array(interests.length)].map((_, i) => i);
+
+            for (let i of numbers) {
+                let book = interests[i];
+
+                let elmBook = document.createElement("div");
+                elmBook.className = "book";
+                elmBook.open = "true";
+
+                let elmTitle = document.createElement("p");
+                elmTitle.className = "title";
+                let titles = book[0].reduce((acc, val) => {
+                    if (acc) {
+                        return acc.concat(`<br>${val[0]} / ${val[1]}`);
+                    } else {
+                        return acc.concat(`${val[0]} / ${val[1]}`);
+                    }
+                }, "")
+                elmTitle.innerHTML = titles;
+                elmBook.appendChild(elmTitle);
+
+                let elmComment = document.createElement("p");
+                elmComment.className = "comment";
+                elmComment.innerHTML = book[1];
+                elmBook.appendChild(elmComment);
+
+                document.getElementById(shelf).appendChild(elmBook);
+            }
+        </script>
+    </body>
+</html>

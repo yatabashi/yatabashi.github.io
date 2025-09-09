@@ -68,20 +68,6 @@ h1 {
     margin: 0px;
 }
 
-.card {
-    margin: 0px;
-}
-
-.icon, .name {
-    display: inline;
-    vertical-align: middle;
-}
-
-.icon {
-    width: 48px;
-    aspect-ratio: 1;
-}
-
 /* body要素 */
 .notice {
     position: relative;
@@ -161,8 +147,14 @@ h2.ordered::before {
 
 footer {
     border-top: 1px solid black;
-    margin-top: 32px;
-    padding-top: 4px;
+    margin-top: 2rem;
+    padding-top: 0.25rem;
+
+    nav {
+        border-bottom: 1px solid black;
+        padding-bottom: 0.25rem;
+        margin-bottom: 0.25rem;
+    }
 }
 
 /* リンク */
@@ -181,14 +173,10 @@ a:hover {
     text-decoration: underline;
 }
 
-header a:link {
+:where(header, footer, nav) a:link {
     color: black;
 }
 
-header a:visited {
+:where(header, footer, nav) a:visited {
     color: black;
-}
-
-.card a:hover {
-    text-decoration: none;
 }
