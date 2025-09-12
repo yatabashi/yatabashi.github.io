@@ -75,8 +75,10 @@
     </head>
     <body>
         <header>
-            <h1>12セグメントで文字を作る</h1>
+            <a href="index.html">yatabashi.github.io</a>
         </header>
+
+        <h1>12セグメントで文字を作る</h1>
 
         <p>7セグメントディスプレイってありますよね。<img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/7-segment_abdeg.svg" style="vertical-align: bottom; height: 1.5em;">←こういうやつです。デジタル数字と言うと大抵これのことを指し、横線3本・縦線4本からなる7つのセグメントを点けたり消したりすることで数字（文字）を表示することができます。ただ7セグメントというのはなかなか小さくて、表現できる形には限りがあります。論理的にも128 (2<sup>7</sup>) 通りしかなく、ラテン文字を例に取っても K と X を H と区別して表示するのは無理ですね。これを解消するためにセグメントを増やしたディスプレイにはいくつかの種類があるようです。</p>
 
@@ -308,12 +310,9 @@ print(f"Connected: {counter[1]}, Disconnected: {counter[0]}")</code></pre>
 
         <div id="svgs"></div>
 
-        <footer>
-            <nav>
-                <a href="index.html">&lt; ホームへ</a>
-            </nav>
+        <div class="foot-info">
             公開：2025-08-10<br>最終更新：2025-08-20
-        </footer>
+        </div>
 
         <script src="res/12-segments/12-segments-data.js"></script>
         <script>

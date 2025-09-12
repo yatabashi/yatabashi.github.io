@@ -55,20 +55,29 @@ code {
 
 /* 配置 */
 body {
-    padding: 20px 20px;
-}
-
-/* header内 */
-header {
-    padding: 0px 4px 4px 0px;
-    border-bottom: 4px solid black;
-}
-
-h1 {
-    margin: 0px;
+    padding: 10px 20px 20px;
 }
 
 /* body要素 */
+header {
+    font-weight: 700;
+    width: fit-content;
+    margin: 0 0 0.75rem;
+    border-bottom: 2px solid black;
+}
+
+h1 {
+    padding: 0px 4px 4px 0px;
+    border-bottom: 4px solid black;
+    margin: 0;
+}
+
+.foot-info {
+    border-top: 1px solid black;
+    margin-top: 2rem;
+    padding-top: 0.25rem;
+}
+
 .notice {
     position: relative;
     padding-left: 2em;
@@ -143,22 +152,7 @@ h2.ordered::before {
     margin-inline-end: 0.2em;
 }
 
-/* footer内 */
-
-footer {
-    border-top: 1px solid black;
-    margin-top: 2rem;
-    padding-top: 0.25rem;
-
-    nav {
-        border-bottom: 1px solid black;
-        padding-bottom: 0.25rem;
-        margin-bottom: 0.25rem;
-    }
-}
-
 /* リンク */
-
 a:link {
     text-decoration: none;
     color: #00C;
@@ -173,10 +167,14 @@ a:hover {
     text-decoration: underline;
 }
 
-:where(header, footer, nav) a:link {
+header a:link {
     color: black;
 }
 
-:where(header, footer, nav) a:visited {
+header a:visited {
     color: black;
+}
+
+header a:hover {
+    text-decoration: none;
 }

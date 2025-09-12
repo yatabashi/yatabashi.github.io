@@ -81,8 +81,10 @@
     </head>
     <body>
         <header>
-            <h1>満洲語キーボード</h1>
+            <a href="index.html">yatabashi.github.io</a>
         </header>
+
+        <h1>満洲語キーボード</h1>
 
         <textarea placeholder="latin hergen" rows="2"></textarea>
         <p id="before-review">ᠮᠠᠨᠵᡠ ᡥᡝᡵᡤᡝᠨ<button id="copier" onclick="copy()" hidden>出力をコピー</button><span style="margin-inline-start: 0.75rem;">縦書き</span><input id="direction" type="checkbox" value="false" oninput="changeDirection()"></p>
@@ -137,12 +139,9 @@
 
         <p><a href="https://fonts.google.com/noto/specimen/Noto+Sans+Mongolian">Noto Sans Mongolian</a>を使用しています。ただし、端末に<a href="https://www.manchustudiesgroup.org/typing-manchu/">XM_ZhengBai</a>（画像に使用）がダウンロードされている場合はそちらが優先されます。</p>
 
-        <footer>
-            <nav>
-                <a href="index.html">&lt; ホームへ</a>
-            </nav>
+        <div class="foot-info">
             公開：2024-07-15<br>最終更新：2024-07-17
-        </footer>
+        </div>
 
         <script>
             let last_input = "";
