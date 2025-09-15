@@ -1,54 +1,19 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
+        <!-- Common settings -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>自己紹介 - yatabashi</title>
         <link rel="icon" href="res/favicon.ico">
         <link rel="stylesheet" href="res/style.css">
 
-        <style>
-            @font-face {
-                font-family: 'Gentium';
-                font-weight: 400;
-                src: url('./fonts/Gentium/Gentium-Regular.woff2');
-            }
+        <!-- Title -->
+        <title>自己紹介 - yatabashi</title>
 
-            .icon {
-                width: 3em;
-                aspect-ratio: 1;
-            }
-
-            .has-middle-placed-img > * {
-                vertical-align: middle
-            }
-
-            .book {
-                width: 100%;
-                padding: 0.5rem 0.75rem;
-                box-sizing: border-box;
-                background-color: #D5EEFC;
-
-                font-family: "Noto Serif JP", serif;
-                /* font-weight: 300; */
-
-                margin-bottom: 0.5em;
-            }
-
-            .title, .comment {
-                margin: 0;
-            }
-
-            .title {
-                padding-bottom: 0.3em;
-                margin-bottom: 0.3em;
-                border-bottom: 1px solid black;
-            }
-
-            .comment {
-                font-size: 0.9em;
-            }
-        </style>
+        <!-- External files -->
+        <link rel="stylesheet" href="res/about/style.css">
+        <script src="res/about/data.js"></script>
+        <script src="res/about/script.js" defer></script>
     </head>
     <body>
         <header>
@@ -91,39 +56,5 @@
         <div class="foot-info">
             公開：2025-09-09
         </div>
-
-        <script src="res/about/bookshelf-data.js"></script>
-        <script>
-            let shelf = "shelf-interests";
-
-            let numbers = [...Array(interests.length)].map((_, i) => i);
-
-            for (let i of numbers) {
-                let book = interests[i];
-
-                let elmBook = document.createElement("div");
-                elmBook.className = "book";
-                elmBook.open = "true";
-
-                let elmTitle = document.createElement("p");
-                elmTitle.className = "title";
-                let titles = book[0].reduce((acc, val) => {
-                    if (acc) {
-                        return acc.concat(`<br>${val[0]} / ${val[1]}`);
-                    } else {
-                        return acc.concat(`${val[0]} / ${val[1]}`);
-                    }
-                }, "")
-                elmTitle.innerHTML = titles;
-                elmBook.appendChild(elmTitle);
-
-                let elmComment = document.createElement("p");
-                elmComment.className = "comment";
-                elmComment.innerHTML = book[1];
-                elmBook.appendChild(elmComment);
-
-                document.getElementById(shelf).appendChild(elmBook);
-            }
-        </script>
     </body>
 </html>

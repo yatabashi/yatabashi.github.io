@@ -1,0 +1,69 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Mongolian&display=swap");
+
+@font-face {
+    font-family: 'Gentium';
+    font-weight: 400;
+    src: url('./fonts/Gentium/Gentium-Regular.woff2');
+}
+
+.manju {
+    font-family: 'Fu_XM_ZhengBai', 'Noto Sans Mongolian';
+}
+
+textarea {
+    font-family: 'Gentium', serif;
+    font-size: 2rem;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+
+#before-review {
+    font-family: 'Koruri', sans-serif;
+    padding-bottom: 2px;
+    border-bottom: 1px black solid;
+    margin-bottom: 0px;
+}
+
+#copier {
+    font-family: inherit;
+    margin-inline-start: 0.75rem;
+    vertical-align: 0.1rem;
+}
+
+#review-wrapper {
+    margin-top: 0px;
+    border-bottom: 1px black solid;
+}
+
+#review {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    overflow: scroll;
+}
+
+.horizontal {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.vertical {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: fit-content;
+    max-height: 400px;
+}
+
+.vert {
+    writing-mode: vertical-lr;
+    text-orientation: sideways;
+}
+
+#review-manju {
+    font-size: 2rem;
+}
+
+th, td {
+    text-align: center;
+}

@@ -1,0 +1,38 @@
+table.numerals tr:first-child th {
+    width: 3rem;
+}
+
+table.v th, td {
+    text-align: center;
+    width: 32px;
+}
+
+table.v td.lengthening {
+    background-color: #CCF;
+}
+
+table.v td.diphthongization {
+    background-color: #CFC;
+}
+
+table.v td.elision {
+    background-color: #FCC;
+}
+
+p.q {
+    counter-increment: qm;
+    position: relative;
+    padding-left: 1.3em;
+}
+
+p.q::before {
+    content: counter(qm, lower-alpha) ") ";
+    font-weight: 700;
+    position: absolute;
+    left: 0;
+}
+
+span.roman-quote {
+    margin-inline: 0.25rem;
+    font-style: italic;
+}

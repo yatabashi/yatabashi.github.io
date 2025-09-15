@@ -1,0 +1,17 @@
+body {
+    background-color: #eee;
+    text-align: center;
+}
+
+p {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
+.message {
+    font-weight: 700;
+}
+
+.note {
+    font-weight: 300;
+}

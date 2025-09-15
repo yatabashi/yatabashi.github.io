@@ -1,0 +1,24 @@
+#lib-container {
+    padding: 4px 0;
+    border-top: 2px solid lightgray;
+    border-bottom: 2px solid lightgray;
+}
+
+.card {
+    margin-left: 1rem;
+    margin-block: 1rem;
+    width: fit-content;
+
+    display: flex;
+    align-items: center;
+    gap: 0.25em;
+
+    .icon {
+        width: 3em;
+        aspect-ratio: 1;
+    }
+
+    .name {
+        text-underline-offset: 0.25em;
+    }
+}

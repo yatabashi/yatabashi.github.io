@@ -1,0 +1,40 @@
+@font-face {
+    font-family: 'Gentium';
+    font-weight: 400;
+    src: url('./fonts/Gentium/Gentium-Regular.woff2');
+}
+
+.icon {
+    width: 3em;
+    aspect-ratio: 1;
+}
+
+.has-middle-placed-img > * {
+    vertical-align: middle
+}
+
+.book {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    box-sizing: border-box;
+    background-color: #D5EEFC;
+
+    font-family: "Noto Serif JP", serif;
+    /* font-weight: 300; */
+
+    margin-bottom: 0.5em;
+}
+
+.title, .comment {
+    margin: 0;
+}
+
+.title {
+    padding-bottom: 0.3em;
+    margin-bottom: 0.3em;
+    border-bottom: 1px solid black;
+}
+
+.comment {
+    font-size: 0.9em;
+}

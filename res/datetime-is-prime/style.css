@@ -1,0 +1,26 @@
+.bg {
+    position: fixed;
+    bottom: 0;
+    background-color: #ddf;
+}
+
+.main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+p {
+    font-size: 2rem;
+}
+
+#clock {
+    font-size: 6rem;
+    margin: 1rem;
+}
+
+sup {
+    line-height: 1;
+}

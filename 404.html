@@ -1,31 +1,18 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
+        <!-- Common settings -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>404 Not Found - yatabashi</title>
         <link rel="icon" href="res/favicon.ico">
         <link rel="stylesheet" href="res/style-fontonly.css">
+
+        <!-- Title -->
+        <title>404 Not Found - yatabashi</title>
         
-        <style>
-            body {
-                background-color: #eee;
-                text-align: center;
-            }
-            
-            p {
-                word-break: keep-all;
-                overflow-wrap: break-word;
-            }
-            
-            .message {
-                font-weight: 700;
-            }
-            
-            .note {
-                font-weight: 300;
-            }
-        </style>
+        <!-- External files -->
+        <link rel="stylesheet" href="res/404/style.css">
+        <script src="res/404/script.js" defer></script>
     </head>
     <body>
         <h1>404 Not Found</h1>
@@ -33,12 +20,5 @@
         <p class="note">このページが表示される原因として、意図しないURLを指定したこと、当該リソースが移動または削除されていること、存在しないファイルを意図的にリクエストしたことなどが考えられます。</p>
         <p class="note">他のファイルを参照してみましょう。ランダムに生成されたURLが偶然有効なこともあるかもしれません：<wbr><a id="url"></a></p>
         <a href="index.html">ホームへ</a>
-        
-        <script>
-            const CHRS = "abcdefghijklmnopqrstuvwxyz0123456789-";
-            const randname = Array(Math.ceil(Math.random() * 20)).fill(undefined).map(() => CHRS[Math.floor(Math.random() * CHRS.length)]).join('');
-            document.getElementById('url').href = `${randname}.html`;
-            document.getElementById('url').textContent = `${randname}.html`;
-        </script>
     </body>
 </html>

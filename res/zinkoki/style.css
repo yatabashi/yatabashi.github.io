@@ -1,0 +1,76 @@
+@font-face {
+    font-family: 'Shippori';
+    font-weight: 400;
+    src: url(../../fonts/Shippori/spr-20240302.woff);
+}
+
+@font-face {
+    font-family: 'SourceHanSerif';
+    font-weight: 400;
+    src: url(../../fonts/SourceHanSerif/shs-20240302.woff);
+}
+
+div.prefs {
+    display: inline;
+    font-family: initial;
+    line-height: 1.2rem;
+}
+
+div.prefs>* {
+    vertical-align: middle;
+}
+
+#text-container {
+    width: 100%;
+    overflow: scroll;
+    font-family: 'Shippori', 'SourceHanSerif';
+    line-height: 2rem;
+    writing-mode: vertical-rl;
+    white-space: nowrap;
+    margin-top: 8px;
+    padding-top: 16px;
+    border-top: 2px solid black;
+}
+
+ol {
+    list-style-type: none;
+    padding: 0;
+}
+
+span.block {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1.25rem;
+    padding-block: 0.25rem;
+}
+
+span.diamond {
+    display: inline;
+}
+
+span.diamond>span {
+    padding-inline: 0.125rem;
+}
+
+span.diamond>span:nth-child(2) {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1.25rem;
+    padding-block: 0.25rem;
+    text-align: center;
+}
+
+div.flexbox {
+    display: flex;
+}
+
+div.flexbox > div:first-child {
+    padding-inline-end: 8px;
+    border-inline-end: 1px solid black;
+    margin-inline-end: 8px;
+}
+
+div.flexbox.annot > div:first-child {
+    line-height: 1.25rem;
+    font-size: 0.9rem;
+}

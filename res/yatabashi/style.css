@@ -1,0 +1,27 @@
+.stat tr:first-child th {
+    width: 3.6rem;
+}
+
+.stat tr:first-child th:nth-child(2) {
+    background-color: #FFDAD5 /* 5R 9/4 */ ;
+}
+
+.stat tr:first-child th:nth-child(3) {
+    background-color: #F5E6A9 /* 5Y 9/4 */ ;
+}
+
+.stat tr:first-child th:nth-child(4) {
+    background-color: #B8F3D2 /* 5G 9/4 */ ;
+}
+
+.stat tr:first-child th:nth-child(5) {
+    background-color: #B4EFFD /* 5B 9/4 */ ;
+}
+
+.stat tr:first-child th:nth-child(6) {
+    background-color: #EEE0FD /* 5P 9/4 */ ;
+}
+
+.stat tr:first-child th:nth-child(7) {
+    background-color: #E5E5E5; /* N 9 */ ;
+}

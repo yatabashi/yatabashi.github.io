@@ -1,0 +1,8 @@
+body {
+    mix-blend-mode: difference;
+    filter: invert(100%);
+}
+
+#output {
+    font-variant-ligatures: none;
+}

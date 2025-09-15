@@ -1,22 +1,18 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
+        <!-- Common settings -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>カラーピッカー - yatabashi</title>
         <link rel="icon" href="res/favicon.ico">
         <link rel="stylesheet" href="res/style.css">
 
-        <style>
-            body {
-                mix-blend-mode: difference;
-                filter: invert(100%);
-            }
+        <!-- Title -->
+        <title>カラーピッカー - yatabashi</title>
 
-            #output {
-                font-variant-ligatures: none;
-            }
-        </style>
+        <!-- External files -->
+        <link rel="stylesheet" href="res/colorpicker/style.css">
+        <script src="res/colorpicker/script.js" defer></script>
     </head>
     <body>
         <header>
@@ -46,39 +42,5 @@
         <div class="foot-info">
             公開：2025-03-19
         </div>
-
-        <script>
-            const input = document.getElementById("input");
-            const output = document.getElementById("output");
-            const radixSetters = document.getElementsByName("radix");
-
-            function getRadix() {
-                for (let setter of radixSetters) {
-                    if (setter.checked) {
-                        return Number(setter.value)
-                    }
-                }
-            }
-
-            function render(input) {
-                const val = Number(input.value);
-                const xval = val.toString(16).padStart(3, "0").toUpperCase();
-
-                output.textContent = val.toString(getRadix());
-                document.body.style.backgroundColor = "#".concat(xval)
-            }
-
-            input.addEventListener('input', e => {
-                render(e.target)
-            })
-
-            for (let setter of radixSetters) {
-                setter.addEventListener('change', e => {
-                    render(input)
-                })
-            }
-
-            render(input)
-        </script>
     </body>
 </html>

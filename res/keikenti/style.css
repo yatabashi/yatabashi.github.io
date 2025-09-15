@@ -1,0 +1,35 @@
+ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+li {
+    flex: 0 7rem;
+}
+
+li.hokkaido {
+    flex: 1 7rem;
+}
+
+li.break {
+    flex: 1 100%;
+    list-style: none;
+}
+
+#table2.borderControlled tr:not(.borderTop, .borderBottom, .borderTopBottom) :is(th, td) {
+    border-top: none;
+    border-bottom: none;
+}
+
+#table2.borderControlled tr:not(.borderBottom, .borderTopBottom) :is(th, td) {
+    border-bottom: none;
+}
+
+#table2.borderControlled tr:not(.borderTop, .borderTopBottom) :is(th, td) {
+    border-top: none;
+}
+
+img.sorter {
+    height: 1rem;
+    vertical-align: middle;
+}

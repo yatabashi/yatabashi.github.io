@@ -1,39 +1,19 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
+        <!-- Common settings -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>yatabashi</title>
         <link rel="icon" href="res/favicon.ico">
         <link rel="stylesheet" href="res/style.css">
-        <script src="res/isil/isildat.js"></script>
         
-        <style>
-            #lib-container {
-                padding: 4px 0;
-                border-top: 2px solid lightgray;
-                border-bottom: 2px solid lightgray;
-            }
+        <!-- Title -->
+        <title>yatabashi</title>
 
-            .card {
-                margin-left: 1rem;
-                margin-block: 1rem;
-                width: fit-content;
-
-                display: flex;
-                align-items: center;
-                gap: 0.25em;
-
-                .icon {
-                    width: 3em;
-                    aspect-ratio: 1;
-                }
-
-                .name {
-                    text-underline-offset: 0.25em;
-                }
-            }
-        </style>
+        <!-- External files -->
+        <link rel="stylesheet" href="res/index/style.css">
+        <script src="res/isil/data.js"></script>
+        <script src="res/index/script.js" defer></script>
     </head>
     <body>
         <h1>yatabashi.github.io</h1>
@@ -88,98 +68,5 @@
         <div class="foot-info">
             <a href="https://twitter.com/yatabashi">@yatabashi</a>
         </div>
-        
-        <script>
-            function getTodaysNumber() {
-                function now() {
-                    let now = new Date();
-                    let year = now.getFullYear().toString();
-                    let month = (now.getMonth() + 1).toString().padStart(2, '0');
-                    let day = now.getDate().toString().padStart(2, '0');
-                    
-                    return Number(year+month+day);
-                    
-                    // let hour = now.getHours().toString().padStart(2, '0');
-                    // let minute = now.getMinutes().toString().padStart(2, '0');
-                    // let second = now.getSeconds().toString().padStart(2, '0');
-                    // let milli = now.getMilliseconds().toString();
-                    // console.log(year+month+day+hour+minute+second+milli);
-                    // return Number(year+month+day+hour+minute+second+milli);
-                }
-                
-                let x = 123456789;
-                let y = 362436069;
-                let z = 521288629;
-                let w = now();
-                
-                function xorshift() {
-                    const t = x ^ (x << 11);
-                    x = y; y = z; z = w;
-                    w = (w^(w>>19))^(t^(t>>8));
-                };
-                
-                for (let i = 0; i < 32; i++) {
-                    xorshift();
-                }
-                
-                return w;
-            }
-            
-            function getLibDatStr(n) {
-                console.log(`startgetdat: ${(new Date()).getTime()} ms`);
-                
-                const LIB = 7936;
-                const MUS = 4372;
-                const ARC = 102;
-                
-                const r = (n % (LIB + MUS + ARC)) + 1;
-                let rISIL;
-                if (r < LIB) {
-                    rISIL = `JP-1${r.toString().padStart(6, '0')}`;
-                } else if (r == LIB) {
-                    rISIL = `JP-1${r.toString().padStart(6, '0')}`;
-                } else if (r < LIB + MUS) {
-                    rISIL = `JP-2${(r - LIB).toString().padStart(6, '0')}`;
-                } else if (r == LIB + MUS) {
-                    rISIL = `JP-2${(r - LIB).toString().padStart(6, '0')}`;
-                } else if (r < LIB + MUS + ARC) {
-                    rISIL = `JP-3${(r - LIB - MUS).toString().padStart(6, '0')}`;
-                } else { // r = LIB + MUS + ARC
-                    rISIL = `JP-3${(r - LIB - MUS).toString().padStart(6, '0')}`;
-                }
-                
-                return [rISIL].concat(ISILTABLE[rISIL]);
-            }
-            
-            function getInsertion(dat) {
-                if (dat.length == 3) { // 欠番・廃館
-                    if (dat[2]) {
-                        let postDat = [dat[2]].concat(ISILTABLE[dat[2]]);
-                        return `${dat[0]} <del>${dat[1]}</del>`
-                            + `<br>→`
-                            + ` ${getInsertion(postDat)}`;
-                    } else {
-                        if (dat[1] == "[欠番]") {
-                            return `${dat[0]} ${dat[1]}`;
-                        } else {
-                            return `${dat[0]} <del>${dat[1]}</del>（廃館）`;
-                        }
-                    }
-                } else {
-                    if (!dat[2] && !dat[5]) { // 住所なし、リンクなし
-                        return `${dat[0]} ${dat[1]}（住所不明）`
-                    } else if (!dat[2] && dat[5]) { // 住所なし、リンクあり
-                        return `${dat[0]} <a href="${dat[5]}">${dat[1]}</a>（住所不明）`
-                    } else if (!dat[5]) { // 住所あり、リンクなし
-                        return `${dat[0]} ${dat[1]}（${dat[2]+dat[3]+dat[4]}）`
-                    } else { // 住所あり、リンクあり
-                        return `${dat[0]} <a href="${dat[5]}">${dat[1]}</a>（${dat[2]+dat[3]+dat[4]}）`
-                    }
-                }
-            }
-            
-            let data = getLibDatStr(getTodaysNumber());
-            document.getElementById('lib').innerHTML = getInsertion(data);
-        </script>
     </body>
 </html>

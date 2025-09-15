@@ -1,77 +1,31 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
+        <!-- Common settings -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>12セグメントで文字を作る - yatabashi</title>
         <link rel="icon" href="res/favicon.ico">
         <link rel="stylesheet" href="res/style.css">
+
+        <!-- Title -->
+        <title>12セグメントで文字を作る - yatabashi</title>
+
+        <!-- External files -->
+        <link rel="stylesheet" href="res/12-segments/style.css">
+        <script src="res/12-segments/data.js"></script>
+        <script src="res/12-segments/script.js" defer></script>
+
+        <!-- highlight.js -->
         <link rel="stylesheet" href="res/highlight_js/highlight-theme.css">
         <link rel="stylesheet" href="res/highlight_js/precode.css">
         <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
-        <script>
-            hljs.addPlugin({
-                'after:highlightElement': ({ el, result, _ }) => {
-                    let classes = el.outerHTML.match(/<code[^>]*>/)[0].match(/(?<=class=")[^"]*/)[0].split(" ");
+        <script src="res/highlight_js/plugin.js"></script>
 
-                    if (classes.includes("code-ln")) {
-                        el.innerHTML = result.value.replace(/^/gm, '<span class="ln"></span>');
-                    } else if (classes.includes("code-bgn")) {
-                        el.innerHTML = result.value.replace(/^/gm, '<span class="bgn"></span>');
-                    }
-                }
-            });
-
-            hljs.configure({languages: []});
-            hljs.highlightAll();
-        </script>
-
+        <!-- KaTeX -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
         <link rel="stylesheet" href="res/katex-adjust.css">
-
-        <style>
-            figure {
-                text-align: center;
-            }
-
-            figcaption {
-                font-size: small;
-            }
-            
-            table, td, th {
-                border: none;
-                text-align: center;
-            }
-
-            table, td>* {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            td, th {
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-
-            tr:nth-child(1) {
-                border-bottom: 1px solid black;
-            }
-
-            #numsb td {
-                text-align: right;
-                padding-inline: 8px;
-            }
-
-            #numsb tr:nth-child(1) {
-                border-bottom: 1px solid black;
-            }
-
-            #numsb tr th:nth-child(1) {
-                border-right: 1px solid black;
-            }
-        </style>
     </head>
     <body>
         <header>
@@ -313,79 +267,5 @@ print(f"Connected: {counter[1]}, Disconnected: {counter[0]}")</code></pre>
         <div class="foot-info">
             公開：2025-08-10<br>最終更新：2025-08-20
         </div>
-
-        <script src="res/12-segments/12-segments-data.js"></script>
-        <script>
-            function createSquare(segments) {
-                let svgTag = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-                svgTag.setAttribute("version", "1.1");
-                svgTag.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-                svgTag.setAttribute("width", "80px");
-                svgTag.setAttribute("height", "80px");
-                svgTag.setAttribute("viewBox", "0 0 120 120");
-
-                let gTag = document.createElementNS("http://www.w3.org/2000/svg", "g");
-                gTag.setAttribute("stroke-width", "4");
-                svgTag.appendChild(gTag);
-
-                coords = [
-                    {x1: "20", y1: "20", x2: "60", y2: "20"}, 
-                    {x1: "60", y1: "20", x2: "100", y2: "20"}, 
-                    {x1: "20", y1: "20", x2: "20", y2: "60"}, 
-                    {x1: "60", y1: "20", x2: "60", y2: "60"}, 
-                    {x1: "100", y1: "20", x2: "100", y2: "60"}, 
-                    {x1: "20", y1: "60", x2: "60", y2: "60"}, 
-                    {x1: "60", y1: "60", x2: "100", y2: "60"}, 
-                    {x1: "20", y1: "60", x2: "20", y2: "100"}, 
-                    {x1: "60", y1: "60", x2: "60", y2: "100"}, 
-                    {x1: "100", y1: "60", x2: "100", y2: "100"}, 
-                    {x1: "20", y1: "100", x2: "60", y2: "100"}, 
-                    {x1: "60", y1: "100", x2: "100", y2: "100"}
-                ]
-
-                for (let i = 0; i < coords.length; i++) {
-                    let lineTag = document.createElementNS("http://www.w3.org/2000/svg", "line");
-                    lineTag.setAttribute("x1", coords[i].x1);
-                    lineTag.setAttribute("y1", coords[i].y1);
-                    lineTag.setAttribute("x2", coords[i].x2);
-                    lineTag.setAttribute("y2", coords[i].y2);
-                    lineTag.setAttribute("stroke", segments.includes(i + 1) ? "black" : "none");
-                    lineTag.setAttribute("stroke-linecap", "round");
-                    gTag.appendChild(lineTag);
-                }
-
-                return svgTag;
-            }
-
-            let ss = {
-                s1: createSquare([3, 6, 7]), 
-                s2: createSquare([3, 8, 11, 12]), 
-                s3: createSquare([1, 3, 8, 9, 10, 12]), 
-                s4: createSquare([8, 11, 12]), 
-                s5: createSquare([1, 2]), 
-                s6: createSquare([6, 7]), 
-                s7: createSquare([11, 12]), 
-                s8: createSquare([1, 6, 12]), 
-                s9: createSquare([1, 3, 6, 9, 12]), 
-            };
-
-            Object.keys(ss).forEach(key => {
-                ss[key].setAttribute("width", "1.8rem");
-                ss[key].setAttribute("height", "1.8rem");
-                ss[key].firstChild.setAttribute("stroke-width", "8");
-                ss[key].setAttribute("style", "vertical-align: bottom;");
-
-                ss[key].setAttribute("width", "1.8rem");
-            });
-
-            for (let [key, value] of Object.entries(ss)) {
-                document.getElementById(key).appendChild(value);
-            }
-
-            for (let segments of segmentList) {
-                let square = createSquare(segments);
-                document.getElementById("svgs").appendChild(square);
-            }
-        </script>
     </body>
 </html>
