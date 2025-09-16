@@ -8,15 +8,15 @@ table.v th, td {
 }
 
 table.v td.lengthening {
-    background-color: #CCF;
+    background-color: #D6D1FF;
 }
 
 table.v td.diphthongization {
-    background-color: #CFC;
+    background-color: #D1FFD6;
 }
 
 table.v td.elision {
-    background-color: #FCC;
+    background-color: #FFDAD5;
 }
 
 p.q {

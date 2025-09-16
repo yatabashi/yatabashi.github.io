@@ -16,12 +16,12 @@ pre code.code-bgn {
     content: counter(ln);
     width: 1rem;
     display: inline-block;
-    color: #aaa;
-    border-right: 1px solid #aaa;
+    color: #A0A1A7;
+    border-right: 1px solid #A0A1A7;
     padding-right: 0.5rem;
     padding-left: 0.75rem;
     text-align: right;
-    background: #f4f4f4;
+    background: #F0F0F0;
 
     position:absolute;
     left:0; 
@@ -29,10 +29,10 @@ pre code.code-bgn {
 
 .bgn::before {
     content: "$ ";
-    color: #aaa;
+    color: #A0A1A7;
 
     padding-left: 0.75rem;
-    background: #f4f4f4;
+    background: #F0F0F0;
     position:absolute;
     left:0; 
 }

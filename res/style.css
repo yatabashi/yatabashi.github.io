@@ -63,7 +63,7 @@ header {
     font-weight: 700;
     width: fit-content;
     margin: 0 0 0.75rem;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #3648D5;
 }
 
 h1 {
@@ -117,12 +117,12 @@ p.advent-calendar {
 
 /* 引用要素 */
 blockquote.shaded {
-    background-color: #f4f4f4;
+    background-color: #F0F0F0;
     padding: 0.75rem 1rem;
 }
 
 code {
-    background-color: #f0f0f0;
+    background-color: #F0F0F0;
     padding: 0.1rem 0.2rem;
     border-radius: 0.2rem;
     margin-inline: 0.2rem;
@@ -130,7 +130,7 @@ code {
 
 pre code {
     /* 上書き */
-    background-color: #f4f4f4;
+    background-color: #F0F0F0;
     padding: 0.75rem 1rem;
     border-radius: 0;
     margin-inline: 0;
@@ -155,25 +155,26 @@ h2.ordered::before {
 /* リンク */
 a:link {
     text-decoration: none;
-    color: #00C;
+    color: #3648D5;
 }
 
 a:visited {
     text-decoration: none;
-    color: #609;
+    /* color: #6231AE; */
+    color: #3648D5;
 }
 
 a:hover {
     text-decoration: underline;
 }
 
-header a:link {
+/* header a:link {
     color: black;
 }
 
 header a:visited {
     color: black;
-}
+} */
 
 header a:hover {
     text-decoration: none;
