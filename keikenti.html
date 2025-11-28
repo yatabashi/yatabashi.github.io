@@ -14,6 +14,23 @@
         <link rel="stylesheet" href="res/keikenti/style.css">
         <script src="res/keikenti/data.js"></script>
         <script src="res/keikenti/script.js" defer></script>
+
+        <svg aria-hidden="true" style="display: none;">
+            <defs>
+                <symbol id="arrow_drop_updown" viewBox="0 -96 96 96">
+                    <path d="m 56,-52 20,-20 20,20 z" />
+                    <path d="M 76,-24 56,-44 h 40 z" />
+                </symbol>
+
+                <symbol id="arrow_drop_up" viewBox="0 -96 96 96">
+                    <path d="m 56,-52 20,-20 20,20 z" />
+                </symbol>
+
+                <symbol id="arrow_drop_down" viewBox="0 -96 96 96">
+                    <path d="M 76,-24 56,-44 h 40 z" />
+                </symbol>
+            </defs>
+        </svg>
     </head>
     <body>
         <header>
@@ -112,12 +129,12 @@
             <tr class="borderTopBottom">
                 <th hidden>-1</th>
                 <th>区分</th>
-                <th>点数<img class="sorter" id="col2" src="res/keikenti/arrow_drop_updown.svg"></th>
-                <th>通過数<img class="sorter" id="col3" src="res/keikenti/arrow_drop_updown.svg"></th>
-                <th>訪問数<img class="sorter" id="col4" src="res/keikenti/arrow_drop_updown.svg"></th>
-                <th>（自治体数）<img class="sorter" id="col5" src="res/keikenti/arrow_drop_updown.svg"></th>
-                <th>通過率<img class="sorter" id="col6" src="res/keikenti/arrow_drop_updown.svg"></th>
-                <th>訪問率<img class="sorter" id="col7" src="res/keikenti/arrow_drop_updown.svg"></th>
+                <th>点数<svg class="sorter" id="col2" width="24" height="24"><use href="#arrow_drop_updown" /></svg></th>
+                <th>通過数<svg class="sorter" id="col3" width="24" height="24"><use href="#arrow_drop_updown" /></svg></th>
+                <th>訪問数<svg class="sorter" id="col4" width="24" height="24"><use href="#arrow_drop_updown" /></svg></th>
+                <th>（自治体数）<svg class="sorter" id="col5" width="24" height="24"><use href="#arrow_drop_updown" /></svg></th>
+                <th>通過率<svg class="sorter" id="col6" width="24" height="24"><use href="#arrow_drop_updown" /></svg></th>
+                <th>訪問率<svg class="sorter" id="col7" width="24" height="24"><use href="#arrow_drop_updown" /></svg></th>
             </tr>
             <tr class="borderTopBottom">
                 <th hidden>0</th>

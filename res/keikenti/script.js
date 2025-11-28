@@ -146,22 +146,22 @@ for (let sorter of document.getElementsByClassName("sorter")) {
 
         switch (sortType) {
             case 0:
-                sorter.src = "res/keikenti/arrow_drop_updown.svg";
+                sorter.innerHTML = `<use href="#arrow_drop_updown">`
                 document.getElementById("table2").className = "borderControlled";
                 break;
             case 1:
-                sorter.src = "res/keikenti/arrow_drop_up.svg";
+                sorter.innerHTML = `<use href="#arrow_drop_up">`
                 document.getElementById("table2").className = "";
                 break;
             case 2:
-                sorter.src = "res/keikenti/arrow_drop_down.svg";
+                sorter.innerHTML = `<use href="#arrow_drop_down">`
                 document.getElementById("table2").className = "";
                 break;
         }
 
         for (let e of document.getElementsByClassName("sorter")) {
             if (selectedCol != Number(e.id[3])) {
-                e.src = "res/keikenti/arrow_drop_updown.svg";
+                e.innerHTML = `<use href="#arrow_drop_updown">`
             }
         }
 

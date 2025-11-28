@@ -29,7 +29,7 @@ li.break {
     border-top: none;
 }
 
-img.sorter {
+svg.sorter {
     height: 1rem;
     vertical-align: middle;
 }
