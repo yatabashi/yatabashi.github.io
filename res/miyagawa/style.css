@@ -1,0 +1,66 @@
+div.container {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+}
+
+img:is(.map, .yoko, .tate) {
+    max-width: 100%;
+    margin-right: 0.75em;
+}
+
+img.map {
+    width: 400px;
+    max-height: 95vh;
+    object-fit: contain;
+    object-position: left;
+}
+
+img.yoko {
+    width: 400px;
+}
+
+div.yoko {
+    width: 400px;
+}
+
+img.tate {
+    height: 400px;
+}
+
+.wider-margin-top {
+    margin-top: 3em;
+}
+
+@media (min-width: 768px) {
+    div.container {
+        flex-direction: row;
+
+        p {
+            margin-top: 0;
+        }
+    }
+}
+
+span.address {
+    font-weight: 700;
+}
+
+div.scroll-wrapper {
+    overflow-x: scroll;
+
+    table {
+        th, td {
+            white-space: nowrap;
+        }
+    }
+}
+
+th {
+    text-align: right;
+}
+
+td {
+    text-align: left;
+}
