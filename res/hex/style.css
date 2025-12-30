@@ -4,23 +4,6 @@ textarea {
     max-width: 100%;
 }
 
-.headline {
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-}
-
-.headline::after {
-    content: "";
-    height: 1px;
-    background-color: black;
-    flex-grow: 1;
-}
-
-.headline::after {
-    margin-left: 1rem;
-}
-
 .mono {
     font-family: 'Noto Sans Mono';
 }

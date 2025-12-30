@@ -78,9 +78,29 @@ h1 {
     margin: 0;
 }
 
+h2 {
+    width: fit-content;
+    border-bottom: 1.5px solid black;
+}
+
 h3 {
     font-size: 1.15em;
     font-weight: 600;
+
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+h3::after {
+    content: "";
+    height: 1px;
+    background-color: black;
+    flex-grow: 1;
+}
+
+h3::after {
+    margin-left: 1em;
 }
 
 .foot-info {
@@ -201,9 +221,4 @@ header a:visited {
 
 header a:hover {
     text-decoration: none;
-}
-
-h2 {
-    width: fit-content;
-    border-bottom: 1.5px solid black;
 }
