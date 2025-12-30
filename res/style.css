@@ -97,9 +97,6 @@ h3::after {
     height: 1px;
     background-color: black;
     flex-grow: 1;
-}
-
-h3::after {
     margin-left: 1em;
 }
 
