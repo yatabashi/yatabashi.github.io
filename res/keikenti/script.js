@@ -37,6 +37,7 @@ for (let subpref of subprefs) {
 for (let pref of Object.keys(urls)) {
     // 振興局ごとのリンクに対応するためには short_urls ではなく urls を使わなければならない
     document.getElementById(pref).href = urls[pref];
+    document.getElementById(pref).setAttribute("target", "_blank");
 }
 
 // 達成率等を計算

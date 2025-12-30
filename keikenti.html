@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="icon" href="res/favicon.ico">
         <link rel="stylesheet" href="res/style.css">
+        <script src="res/script.js"></script>
 
         <!-- Title -->
         <title>経県値まとめ - yatabashi</title>
@@ -41,7 +42,7 @@
 
         <h2>都道府県レベル</h2>
         <ul>
-            <li><a id="zenkoku" target="_blank">全国</a></li>
+            <li><a id="zenkoku">全国</a></li>
         </ul>
 
         <table id="table1">
@@ -67,60 +68,60 @@
         <label for="showsSubpref">北海道の振興局別データを表示</label>
 
         <ul>
-            <li class="hokkaido"><a id="hokkaido" target="_blank">北海道</a><span id="subprefs">（<a id="isikari" target="_blank">石狩</a>、<a id="osima" target="_blank">渡島</a>、<a id="hiyama" target="_blank">檜山</a>、<a id="siribesi" target="_blank">後志</a>、<a id="sorati" target="_blank">空知</a>、<a id="kamikawa" target="_blank">上川</a>、<a id="rumoi" target="_blank">留萌</a>、<a id="soya" target="_blank">宗谷</a>、<a id="okhotsk" target="_blank">オホーツク</a>、<a id="iburi" target="_blank">胆振</a>、<a id="hidaka" target="_blank">日高</a>、<a id="tokati" target="_blank">十勝</a>、<a id="kusiro" target="_blank">釧路</a>、<a id="nemuro" target="_blank">根室</a>）</span></li>
+            <li class="hokkaido"><a id="hokkaido">北海道</a><span id="subprefs">（<a id="isikari">石狩</a>、<a id="osima">渡島</a>、<a id="hiyama">檜山</a>、<a id="siribesi">後志</a>、<a id="sorati">空知</a>、<a id="kamikawa">上川</a>、<a id="rumoi">留萌</a>、<a id="soya">宗谷</a>、<a id="okhotsk">オホーツク</a>、<a id="iburi">胆振</a>、<a id="hidaka">日高</a>、<a id="tokati">十勝</a>、<a id="kusiro">釧路</a>、<a id="nemuro">根室</a>）</span></li>
             <li class="break"></li>
-            <li><a id="aomori" target="_blank">青森県</a></li>
-            <li><a id="iwate" target="_blank">岩手県</a></li>
-            <li><a id="miyagi" target="_blank">宮城県</a></li>
-            <li><a id="akita" target="_blank">秋田県</a></li>
-            <li><a id="yamagata" target="_blank">山形県</a></li>
-            <li><a id="hukusima" target="_blank">福島県</a></li>
+            <li><a id="aomori">青森県</a></li>
+            <li><a id="iwate">岩手県</a></li>
+            <li><a id="miyagi">宮城県</a></li>
+            <li><a id="akita">秋田県</a></li>
+            <li><a id="yamagata">山形県</a></li>
+            <li><a id="hukusima">福島県</a></li>
             <li class="break"></li>
-            <li><a id="ibaraki" target="_blank">茨城県</a></li>
-            <li><a id="totigi" target="_blank">栃木県</a></li>
-            <li><a id="gunma" target="_blank">群馬県</a></li>
-            <li><a id="saitama" target="_blank">埼玉県</a></li>
-            <li><a id="tiba" target="_blank">千葉県</a></li>
-            <li><a id="tokyo" target="_blank">東京都</a>**</li>
-            <li><a id="kanagawa" target="_blank">神奈川県</a></li>
+            <li><a id="ibaraki">茨城県</a></li>
+            <li><a id="totigi">栃木県</a></li>
+            <li><a id="gunma">群馬県</a></li>
+            <li><a id="saitama">埼玉県</a></li>
+            <li><a id="tiba">千葉県</a></li>
+            <li><a id="tokyo">東京都</a>**</li>
+            <li><a id="kanagawa">神奈川県</a></li>
             <li class="break"></li>
-            <li><a id="niigata" target="_blank">新潟県</a></li>
-            <li><a id="toyama" target="_blank">富山県</a></li>
-            <li><a id="isikawa" target="_blank">石川県</a></li>
-            <li><a id="hukui" target="_blank">福井県</a></li>
-            <li><a id="yamanasi" target="_blank">山梨県</a></li>
-            <li><a id="nagano" target="_blank">長野県</a></li>
-            <li><a id="gihu" target="_blank">岐阜県</a></li>
-            <li><a id="sizuoka" target="_blank">静岡県</a></li>
-            <li><a id="aiti" target="_blank">愛知県</a></li>
+            <li><a id="niigata">新潟県</a></li>
+            <li><a id="toyama">富山県</a></li>
+            <li><a id="isikawa">石川県</a></li>
+            <li><a id="hukui">福井県</a></li>
+            <li><a id="yamanasi">山梨県</a></li>
+            <li><a id="nagano">長野県</a></li>
+            <li><a id="gihu">岐阜県</a></li>
+            <li><a id="sizuoka">静岡県</a></li>
+            <li><a id="aiti">愛知県</a></li>
             <li class="break"></li>
-            <li><a id="mie" target="_blank">三重県</a></li>
-            <li><a id="siga" target="_blank">滋賀県</a></li>
-            <li><a id="kyoto" target="_blank">京都府</a></li>
-            <li><a id="osaka" target="_blank">大阪府</a></li>
-            <li><a id="hyogo" target="_blank">兵庫県</a></li>
-            <li><a id="nara" target="_blank">奈良県</a></li>
-            <li><a id="wakayama" target="_blank">和歌山県</a></li>
+            <li><a id="mie">三重県</a></li>
+            <li><a id="siga">滋賀県</a></li>
+            <li><a id="kyoto">京都府</a></li>
+            <li><a id="osaka">大阪府</a></li>
+            <li><a id="hyogo">兵庫県</a></li>
+            <li><a id="nara">奈良県</a></li>
+            <li><a id="wakayama">和歌山県</a></li>
             <li class="break"></li>
-            <li><a id="tottori" target="_blank">鳥取県</a></li>
-            <li><a id="simane" target="_blank">島根県</a></li>
-            <li><a id="okayama" target="_blank">岡山県</a></li>
-            <li><a id="hirosima" target="_blank">広島県</a></li>
-            <li><a id="yamaguti" target="_blank">山口県</a></li>
+            <li><a id="tottori">鳥取県</a></li>
+            <li><a id="simane">島根県</a></li>
+            <li><a id="okayama">岡山県</a></li>
+            <li><a id="hirosima">広島県</a></li>
+            <li><a id="yamaguti">山口県</a></li>
             <li class="break"></li>
-            <li><a id="tokusima" target="_blank">徳島県</a></li>
-            <li><a id="kagawa" target="_blank">香川県</a></li>
-            <li><a id="ehime" target="_blank">愛媛県</a></li>
-            <li><a id="koti" target="_blank">高知県</a></li>
+            <li><a id="tokusima">徳島県</a></li>
+            <li><a id="kagawa">香川県</a></li>
+            <li><a id="ehime">愛媛県</a></li>
+            <li><a id="koti">高知県</a></li>
             <li class="break"></li>
-            <li><a id="hukuoka" target="_blank">福岡県</a></li>
-            <li><a id="saga" target="_blank">佐賀県</a></li>
-            <li><a id="nagasaki" target="_blank">長崎県</a></li>
-            <li><a id="kumamoto" target="_blank">熊本県</a></li>
-            <li><a id="oita" target="_blank">大分県</a></li>
-            <li><a id="miyazaki" target="_blank">宮崎県</a></li>
-            <li><a id="kagosima" target="_blank">鹿児島県</a></li>
-            <li><a id="okinawa" target="_blank">沖縄県</a></li>
+            <li><a id="hukuoka">福岡県</a></li>
+            <li><a id="saga">佐賀県</a></li>
+            <li><a id="nagasaki">長崎県</a></li>
+            <li><a id="kumamoto">熊本県</a></li>
+            <li><a id="oita">大分県</a></li>
+            <li><a id="miyazaki">宮崎県</a></li>
+            <li><a id="kagosima">鹿児島県</a></li>
+            <li><a id="okinawa">沖縄県</a></li>
         </ul>
 
         <p>** 東京都内の居住自治体は仮に千代田区としています。</p>

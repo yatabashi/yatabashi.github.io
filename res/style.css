@@ -179,6 +179,18 @@ a:hover {
     text-decoration: underline;
 }
 
+a[target="_blank"]::after {
+    content: '';
+    background-image:  url(newtab.svg);
+    width: 0.7em;
+    height: 0.7em;
+    margin-inline: 0.25em;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    vertical-align: super;
+}
+
 /* header a:link {
     color: black;
 }

@@ -33,3 +33,7 @@ svg.sorter {
     height: 1rem;
     vertical-align: middle;
 }
+
+a[target="_blank"]::after {
+    content: none;
+}
