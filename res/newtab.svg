@@ -1,0 +1,13 @@
+<svg
+   width="27"
+   height="27"
+   viewBox="0 0 13.5 13.5"
+   version="1.1"
+   xmlns="http://www.w3.org/2000/svg">
+  <path
+     style="fill:#3648D5"
+     d="M 0,0 V 13.5 H 13.5 V 7.5 H 12 V 12 H 1.5 V 1.5 H 6 V 0 Z" />
+  <path
+     style="fill:#3648D5"
+     d="M 7.75,0 V 1.5 H 10.94 L 5.5,6.94 6.56,8 12.1,2.46 V 5.75 H 13.5 V 0 Z" />
+</svg>

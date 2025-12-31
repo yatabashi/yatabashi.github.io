@@ -1,0 +1,108 @@
+div.container {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+/* div.grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(auto-fit, 280px);
+} */
+
+div.grid {
+    display: grid;
+    justify-items: center;
+    gap: 1em;
+    grid-template-columns: 1fr 1fr;
+}
+
+@media (min-width: 768px) {
+    div.grid {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+div.grid-content {
+    width: fit-content;
+    text-align: center;
+    margin-right: 0;
+
+    img {
+        margin: 0;
+    }
+
+    p {
+        margin: 0;
+    }
+}
+
+img:is(.yoko, .yoko-grid, .tate, .map) {
+    max-width: 100%;
+    margin-right: 0.75em;
+}
+
+img.yoko {
+    width: 400px;
+}
+
+img.yoko-grid {
+    width: 280px;
+}
+
+img.map {
+    max-height: 400px;
+    object-fit: contain;
+    object-position: top left;
+}
+
+img.tate {
+    height: 400px;
+}
+
+@media (min-width: 768px) {
+    div.container {
+        flex-direction: row;
+
+        p {
+            margin-top: 0;
+        }
+    }
+}
+
+span.address {
+    font-weight: 700;
+}
+
+div.scroll-wrapper {
+    overflow-x: scroll;
+
+    table {
+        th, td {
+            white-space: nowrap;
+        }
+    }
+}
+
+th {
+    text-align: right;
+}
+
+td {
+    text-align: left;
+}
+
+a[target="_blank"][href^="https://maps.app.goo.gl"]::after {
+    background-image:  url(GM_icon.svg);
+    width: 0.6em;
+    height: 0.8em;
+    margin-inline: 0.2em;
+    position: relative;
+    top: 0.1em;
+}
+
+h2 {
+    margin-top: 1.5em;
+}
