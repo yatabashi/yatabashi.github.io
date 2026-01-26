@@ -39,8 +39,9 @@ div.grid-content {
     }
 }
 
-img:is(.yoko, .yoko-grid, .tate, .map) {
+img:is(.yoko, .yoko-grid, .tate, .indef) {
     max-width: 100%;
+    max-height: 95vh;
     margin-right: 0.75em;
 }
 
@@ -52,8 +53,7 @@ img.yoko-grid {
     width: 280px;
 }
 
-img.map {
-    max-height: 400px;
+img.indef {
     object-fit: contain;
     object-position: top left;
 }
