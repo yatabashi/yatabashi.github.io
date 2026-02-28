@@ -1,0 +1,67 @@
+div.container {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+img:is(.yoko, .tate, .indef) {
+    max-width: 100%;
+    max-height: 95vh;
+    margin-right: 0.75em;
+}
+
+img.yoko {
+    width: 400px;
+}
+
+img.tate {
+    height: 400px;
+}
+
+img.indef {
+    object-fit: contain;
+    object-position: top left;
+}
+
+@media (min-width: 768px) {
+    div.container {
+        flex-direction: row;
+
+        p {
+            margin-top: 0;
+        }
+    }
+}
+
+span.address {
+    font-weight: bold;
+}
+
+div.scroll-wrapper {
+    overflow-x: scroll;
+
+    table {
+        th, td {
+            white-space: nowrap;
+        }
+    }
+}
+
+th {
+    text-align: right;
+}
+
+td {
+    text-align: left;
+}
+
+/* a[target="_blank"][href^="https://maps.app.goo.gl"]::after {
+    background-image:  url(pin.svg);
+    width: 0.6em;
+    height: 0.8em;
+    margin-inline: 0.2em;
+    position: relative;
+    top: 0.1em;
+} */
