@@ -1,17 +1,29 @@
 body {
-    background-color: #F0F0F0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     text-align: center;
 }
 
+main {
+    width: fit-content;
+    padding: 1.5em;
+    background-color: rgba(255, 252, 249, 0.5);
+    border-radius: 1.5em;
+}
+
 p {
+    margin-bottom: 0;
+
     word-break: keep-all;
     overflow-wrap: break-word;
 }
 
-.message {
-    font-weight: 700;
+.bold {
+    font-weight: bold;
 }
 
-.note {
+.light {
     font-weight: 300;
 }

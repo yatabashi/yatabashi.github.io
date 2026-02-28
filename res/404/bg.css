@@ -1,0 +1,31 @@
+/* 背景画像 */
+body {
+    min-height: 100vh;
+    box-sizing: border-box;
+    position: relative;
+}
+
+#bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+
+    background-image: url("kamisaga-180.jpg");
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: bottom;
+
+    z-index: -2;
+}
+
+#bg-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(255, 252, 249, 0.75);
+
+    z-index: -1;
+}
