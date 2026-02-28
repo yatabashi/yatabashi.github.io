@@ -5,95 +5,107 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="icon" href="res/favicon.ico">
+        <link rel="stylesheet" href="res/font.css">
+        <link rel="stylesheet" href="res/color.css">
         <link rel="stylesheet" href="res/style.css">
         <script src="res/script.js"></script>
 
         <!-- Title -->
         <title>ゾロ目のときだけアホになるナベアツ - yatabashi</title>
 
+        <!-- External files -->
+        <link rel="stylesheet" href="res/zorome/style.css">
+
         <!-- KaTeX -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-        <link rel="stylesheet" href="res/katex-adjust.css">
+        <link rel="stylesheet" href="res/zorome/katex-adjust.css">
     </head>
     <body>
-        <header>
-            <a href="index.html">yatabashi.github.io</a>
-        </header>
+        <header><a href="index.html">yatabashi.github.io</a><span id="arrow"></span></header>
 
-        <h1>ゾロ目のときだけアホになるナベアツ</h1>
-        
-        <p>かつて世界のナベアツは、3の倍数と3の付く数字のときだけアホになったといいます。世界のナベアツがひたすらに数を数え続けるとアホになる割合が1に近づいていくというのは有名な話（？）ですが、もしナベアツの生態が「<b>ゾロ目のときだけアホになる</b>」というものだったなら、ナベアツはどのくらいアホになっていたのでしょうか？</p>
+        <main>
 
-        <p>本物の世界のナベアツが\(k\)桁まで数えたときにアホになる割合は、次の式で与えられます（参考：<a href="https://dreamscience.iml.menhera.org/wiki/%E3%83%8A%E3%83%99%E3%82%A2%E3%83%84%E6%96%B9%E7%A8%8B%E5%BC%8F" id="ref_foot">ナベアツ方程式</a>）：$$
-            1 - \frac{2 \cdot 3^{2k-1} - 1}{10^k}
-        $$この式の値は\(k\)を無限大に飛ばすと\(1\)に収束するので、「アホになる割合が1に近づいていく」のだと言える訳です（実際には<a href="https://x.com/yatabashi/status/1912918412604686535">もっと簡単に言えます</a>）。ではゾロ目のナベアツはどうでしょう。</p>
+            <h1>ゾロ目のときだけアホになるナベアツ</h1>
 
-        <p>ゾロ目のときだけアホになるゾロ目ナベアツが、\(k\)桁の数を数えているときを考えます。\(k\)桁の数は\(9 \cdot 10^{k-1}\)個あります（先頭の桁は\(0\)でありえないため）が、そのうちゾロ目の数は\(9\)個です。実際には\(1\)桁から\(k\)桁まで数え上げる訳ですから、総和を取って\(\sum^{k}_{i=1} 9 \cdot 10^{k-1}\)個の数のうち\(9k\)個がゾロ目であるということになります。前者は$$
-            \begin{align*}
-                \sum^{k}_{i=1} 9 \cdot 10^{k-1}
-                &= 9 \cdot \frac{10^0 (10^k - 1)}{10 - 1} \\
-                &= 10^k - 1 \\
-            \end{align*}
-        $$となって、ゾロ目ナベアツがアホになる割合は$$
-            \frac{9k}{10^k - 1}
-        $$だということになりました。順当に少ないですね。\(k\)を無限大に飛ばすと\(0\)に収束します。各桁での「アホ率」も\(\frac{1}{10^{k-1}}\)で与えられるので、どんどん正気を取り戻していくみたいですね。良かったです。</p>
+            <p>かつて世界のナベアツは、3の倍数と3の付く数字のときだけアホになったといいます。世界のナベアツがひたすらに数を数え続けるとアホになる割合が1に近づいていくというのは有名な話（？）ですが、もしナベアツの生態が「<b>ゾロ目のときだけアホになる</b>」というものだったなら、ナベアツはどのくらいアホになっていたのでしょうか？</p>
 
-        <p>……ところで、このゾロ目ナベアツは10進法の世界に生きています。しかし、並行世界のゾロ目ナベアツは必ずしもそうではありません。正確に言うと、並行世界は可算無限個あり、またゾロ目ナベアツは各世界に一人ずつしかいません。さらに全てのゾロ目ナベアツは相異なる位取りを用いているので、\(n\)進法を使うゾロ目ナベアツを\(X_n\)として数え上げることができます。今まで見てきた10進法ゾロ目ナベアツは\(X_{10}\)さんだったんですね。ほとんどの並行ゾロ目ナベアツは、\(k\)桁まで数えたときに各桁$$
-            \frac{1}{n^{k-1}}
-        $$の割合でアホになり、累積$$
-            \frac{k(n-1)}{n^k - 1}
-        $$の割合でアホになることが、先程と同様の計算でわかります。やはり正気になっていってくれるようで嬉しいです。</p>
+            <p>本物の世界のナベアツが\(k\)桁まで数えたときにアホになる割合は、次の式で与えられます（参考：<a href="https://dreamscience.iml.menhera.org/wiki/%E3%83%8A%E3%83%99%E3%82%A2%E3%83%84%E6%96%B9%E7%A8%8B%E5%BC%8F" id="ref_foot">ナベアツ方程式</a>）：$$
+                1 - \frac{2 \cdot 3^{2k-1} - 1}{10^k}
+            $$この式の値は\(k\)を無限大に飛ばすと\(1\)に収束するので、「アホになる割合が1に近づいていく」のだと言える訳です（実際には<a href="https://x.com/yatabashi/status/1912918412604686535">もっと簡単に言えます</a>）。ではゾロ目のナベアツはどうでしょう。</p>
 
-        <div class="centerized" style="width: 500px;"><img src="res/zorome/figure_n.png" style="width: 100%; "></div>
+            <p>ゾロ目のときだけアホになるゾロ目ナベアツが、\(k\)桁の数を数えているときを考えます。\(k\)桁の数は\(9 \cdot 10^{k-1}\)個あります（先頭の桁は\(0\)でありえないため）が、そのうちゾロ目の数は\(9\)個です。実際には\(1\)桁から\(k\)桁まで数え上げる訳ですから、総和を取って\(\sum^{k}_{i=1} 9 \cdot 10^{k-1}\)個の数のうち\(9k\)個がゾロ目であるということになります。前者は$$
+                \begin{align*}
+                    \sum^{k}_{i=1} 9 \cdot 10^{k-1}
+                    &= 9 \cdot \frac{10^0 (10^k - 1)}{10 - 1} \\
+                    &= 10^k - 1 \\
+                \end{align*}
+            $$となって、ゾロ目ナベアツがアホになる割合は$$
+                \frac{9k}{10^k - 1}
+            $$だということになりました。順当に少ないですね。\(k\)を無限大に飛ばすと\(0\)に収束します。各桁での「アホ率」も\(\frac{1}{10^{k-1}}\)で与えられるので、どんどん正気を取り戻していくみたいですね。良かったです。</p>
 
-        <p>ここで「ほとんどの並行ゾロ目ナベアツ」といったのは、具体的には\(n > 1\)の範囲の\(X_n\)です。つまり、\(X_1\)だけはこの限りでないということです。1進法が何者かということは考える必要がありますが、ここでは1をN個並べることでNを表す記数法のことだとしておきます。定義されないとすると\(X_1\)さんが消滅してしまって悲しいので……　\(X_1\)は、1つの数字しか使えない以上、発する数は常にゾロ目になることになります。つまり、常にアホであり続けるということです。それもまた一興ですね。</p>
+            <p>……ところで、このゾロ目ナベアツは10進法の世界に生きています。しかし、並行世界のゾロ目ナベアツは必ずしもそうではありません。正確に言うと、並行世界は可算無限個あり、またゾロ目ナベアツは各世界に一人ずつしかいません。さらに全てのゾロ目ナベアツは相異なる位取りを用いているので、\(n\)進法を使うゾロ目ナベアツを\(X_n\)として数え上げることができます。今まで見てきた10進法ゾロ目ナベアツは\(X_{10}\)さんだったんですね。ほとんどの並行ゾロ目ナベアツは、\(k\)桁まで数えたときに各桁$$
+                \frac{1}{n^{k-1}}
+            $$の割合でアホになり、累積$$
+                \frac{k(n-1)}{n^k - 1}
+            $$の割合でアホになることが、先程と同様の計算でわかります。やはり正気になっていってくれるようで嬉しいです。</p>
 
-        <p>1進法の定義はともかく、\(X_n (n>1)\)からの推測として、\(X_1\)が割合\(1\)でアホになる存在なのは妥当なことに思えます。\(X_n\)がアホになる割合は\(n\)が大きくなればなるほど速く0に近づいていき、逆に\(n\)が小さくなるほど収束は遅くなります。その極限が「限りなく収束の遅い」＝いつまでもアホであり続ける\(X_1\)なのではないでしょうか？</p>
+            <figure>
+                <img src="res/zorome/figure_n.png" width="500">
+            </figure>
 
-        <div class="centerized" style="width: 500px;"><img src="res/zorome/figure_k.png" style="width: 100%;"></div>
-        
-        <p>確かめてみましょう。\(\frac{k(n-1)}{n^k - 1}\)は\(n=1\)で不定形となり、定義されません。そこで\( \lim_{n \to 1} \frac{k(n-1)}{n^k - 1} \)を考える訳ですが、数学から離れて久しい私には計算方法がさっぱり思いつきませんでした。そこでGeminiに訊いてみると、次のような証明を与えてくれました：</p>
+            <p>ここで「ほとんどの並行ゾロ目ナベアツ」といったのは、具体的には\(n > 1\)の範囲の\(X_n\)です。つまり、\(X_1\)だけはこの限りでないということです。1進法が何者かということは考える必要がありますが、ここでは1をN個並べることでNを表す記数法のことだとしておきます。定義されないとすると\(X_1\)さんが消滅してしまって悲しいので……　\(X_1\)は、1つの数字しか使えない以上、発する数は常にゾロ目になることになります。つまり、常にアホであり続けるということです。それもまた一興ですね。</p>
 
-        <blockquote>
-            <ol>
-                <li>\(f(x) = x^k\)とする。</li>
-                <li>このとき$$
-                        \begin{align*}
-                            f'(1) &= \lim_{n \to 1} \frac{f(n) - f(1)}{n-1} \\
-                            &= \lim_{n \to 1} \frac{n^k - 1}{n-1}
-                        \end{align*}
-                    $$である。</li>
-                <li>ところで\(f'(x) = kx^{k-1}\)から$$
-                        f'(1) = k
-                    $$である。</li>
-                <li>従って$$
-                        \begin{align*}
-                            k &= \lim_{n \to 1} \frac{n^k - 1}{n-1} \\
-                            \frac{1}{k} &= \lim_{n \to 1} \frac{n-1}{n^k - 1} \\
-                            1 &= \lim_{n \to 1} \frac{k(n-1)}{n^k - 1} \\
-                        \end{align*}
-                    $$となり解が得られる。</li>
-            </ol>
-        </blockquote>
+            <p>1進法の定義はともかく、\(X_n (n>1)\)からの推測として、\(X_1\)が割合\(1\)でアホになる存在なのは妥当なことに思えます。\(X_n\)がアホになる割合は\(n\)が大きくなればなるほど速く0に近づいていき、逆に\(n\)が小さくなるほど収束は遅くなります。その極限が「限りなく収束の遅い」＝いつまでもアホであり続ける\(X_1\)なのではないでしょうか？</p>
 
-        <p>かしこ〜。美しいですね。思いつける気がしません。ところでGeminiに訊く前に、友人にもメッセージを投げていました。友人が返してくれた証明は次のようなものでした：$$
-            \begin{align*}
-                \lim_{n \to 1} \frac{k(n-1)}{n^k - 1}
-                &= \lim_{n \to 1} \frac{k(n-1)}{(n-1)(n^{k-1} + n^{k-2} + \cdots + n^0)} \\
-                &= \lim_{n \to 1} \frac{k}{n^{k-1} + n^{k-2} + \cdots + n^0} \\
-                &= \frac{k}{k} \\
-                &= 1 \\
-            \end{align*}
-        $$かしこ〜。美しいですね。こっちは高三の頃の私だったら思いつけていた気もします。</p>
+            <figure>
+                <img src="res/zorome/figure_k.png" width="500">
+            </figure>
 
-        <p>いずれにせよ、$$
-            \lim_{n \to 1} \frac{k(n-1)}{n^k - 1} = 1
-        $$であることがわかりました。従って、1進法ゾロ目ナベアツ\(X_1\)は\(k\)の値に関わらず割合\(1\)でアホになると考えるべきでしょう。やはり\(X_1\)さんだけは、アホになり続ける運命から逃れられないようですね……</p>
+            <p>確かめてみましょう。\(\frac{k(n-1)}{n^k - 1}\)は\(n=1\)で不定形となり、定義されません。そこで\( \lim_{n \to 1} \frac{k(n-1)}{n^k - 1} \)を考える訳ですが、数学から離れて久しい私には計算方法がさっぱり思いつきませんでした。そこでGeminiに訊いてみると、次のような証明を与えてくれました：</p>
 
-        <div class="foot-info">
-            公開：2025-07-17<br>最終更新：2025-07-31
-        </div>
+            <blockquote style="width: fit-content; padding-right: 40px;">
+                <ol>
+                    <li>\(f(x) = x^k\)とする。</li>
+                    <li>このとき$$
+                            \begin{align*}
+                                f'(1) &= \lim_{n \to 1} \frac{f(n) - f(1)}{n-1} \\
+                                &= \lim_{n \to 1} \frac{n^k - 1}{n-1}
+                            \end{align*}
+                        $$である。</li>
+                    <li>ところで\(f'(x) = kx^{k-1}\)から$$
+                            f'(1) = k
+                        $$である。</li>
+                    <li>従って$$
+                            \begin{align*}
+                                k &= \lim_{n \to 1} \frac{n^k - 1}{n-1} \\
+                                \frac{1}{k} &= \lim_{n \to 1} \frac{n-1}{n^k - 1} \\
+                                1 &= \lim_{n \to 1} \frac{k(n-1)}{n^k - 1} \\
+                            \end{align*}
+                        $$となり解が得られる。</li>
+                </ol>
+            </blockquote>
+
+            <p>かしこ〜。美しいですね。思いつける気がしません。ところでGeminiに訊く前に、友人にもメッセージを投げていました。友人が返してくれた証明は次のようなものでした：</p>
+
+            <blockquote class="remove-katex-margin-left" style="width: fit-content;">$$
+                \begin{align*}
+                    \lim_{n \to 1} \frac{k(n-1)}{n^k - 1}
+                    &= \lim_{n \to 1} \frac{k(n-1)}{(n-1)(n^{k-1} + n^{k-2} + \cdots + n^0)} \\
+                    &= \lim_{n \to 1} \frac{k}{n^{k-1} + n^{k-2} + \cdots + n^0} \\
+                    &= \frac{k}{k} \\
+                    &= 1 \\
+                \end{align*}
+            $$</blockquote>
+
+            <p>かしこ〜。美しいですね。こっちは高三の頃の私だったら思いつけていた気もします。</p>
+
+            <p>いずれにせよ、$$
+                \lim_{n \to 1} \frac{k(n-1)}{n^k - 1} = 1
+            $$であることがわかりました。従って、1進法ゾロ目ナベアツ\(X_1\)は\(k\)の値に関わらず割合\(1\)でアホになると考えるべきでしょう。やはり\(X_1\)さんだけは、アホになり続ける運命から逃れられないようですね……</p>
+        </main>
+
+        <div class="foot-info">公開：2025-07-17<br>最終更新：2025-07-31</div>
     </body>
 </html>

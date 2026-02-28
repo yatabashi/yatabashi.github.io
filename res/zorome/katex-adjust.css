@@ -1,7 +1,10 @@
 .katex-display .katex {
-    /* font-size: 1.1rem; */
     text-align: left;
-    padding-left: 40px;
+    margin-left: 40px;
+
+    .remove-katex-margin-left & {
+        margin-left: 0;
+    }
 }
 
 span:not(.katex-display):has(.katex):not(:has(.katex-display)) {
