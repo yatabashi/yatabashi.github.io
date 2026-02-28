@@ -1,156 +1,78 @@
-/* フォント定義 */
-/* https://koruri.github.io/ */
-@font-face {
-    font-family: 'Koruri';
-    font-weight: 300;
-    src: url('../fonts/Koruri/Koruri-Light.ttf');
-}
-
-@font-face {
-    font-family: 'Koruri';
-    font-weight: 400;
-    src: url('../fonts/Koruri/Koruri-Regular.ttf');
-}
-
-@font-face {
-    font-family: 'Koruri';
-    font-weight: 600;
-    src: url('../fonts/Koruri/Koruri-Semibold.ttf');
-}
-
-@font-face {
-    font-family: 'Koruri';
-    font-weight: 700;
-    src: url('../fonts/Koruri/Koruri-Bold.ttf');
-}
-
-/* http://jikasei.me/font/mgenplus/ */
-@font-face {
-    font-family: 'MgenPlus';
-    font-weight: 300;
-    src: url('../fonts/Mgen/mgenplus-1p-light.ttf');
-}
-
-@font-face {
-    font-family: 'MgenPlus';
-    font-weight: 400;
-    src: url('../fonts/Mgen/mgenplus-1p-regular.ttf');
-}
-
-@font-face {
-    font-family: 'MgenPlus';
-    font-weight: 700;
-    src: url('../fonts/Mgen/mgenplus-1p-bold.ttf');
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wdth@87.5&display=swap');
-
-
+/* body */
 body {
-    font-family: 'Koruri', 'MgenPlus', sans-serif;
+    color: var(--text-black);
+    background-color: var(--bg-gray1);
 
-    text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-    -moz-text-size-adjust: 100%;
-}
-
-code {
-    font-family: 'Noto Sans Mono', monospace;
-    font-size: 0.9em;
-}
-
-/* 配置 */
-body {
-    padding: 10px 20px 20px;
-}
-
-/* body要素 */
-header {
-    font-weight: 700;
-    width: fit-content;
-    margin: 0 0 0.75rem;
-    border-bottom: 2px solid #3648D5;
-}
-
-h1 {
-    padding: 0px 4px 4px 0px;
-    border-bottom: 4px solid black;
+    display: flow-root;
     margin: 0;
+    padding: 2rem 7.5%;
+}
+
+
+/* 見出し */
+h1 {
+    margin-top: 0;
+    margin-bottom: 1.8rem;
+    hgroup > & {
+        margin-bottom: 0;
+    }
+
+    font-size: 2rem;
 }
 
 h2 {
+    margin-top: 0;
+    margin-bottom: 1.35rem;
+
+    font-size: 1.5rem;
+
     width: fit-content;
-    border-bottom: 1.5px solid black;
+    padding-inline: 0.1em;
+    border-bottom: 2px solid var(--text-black);
 }
 
 h3 {
-    font-size: 1.15em;
-    font-weight: 600;
-
-    display: flex;
-    align-items: center;
-    font-weight: bold;
+    font-size: 1.2rem;
 }
 
-h3::after {
-    content: "";
-    height: 1px;
-    background-color: black;
-    flex-grow: 1;
-    margin-left: 1em;
+hgroup {
+    margin-bottom: 1.8rem;
+
+    p.subtitle {
+        color: var(--text-gray);
+
+        margin-block: 0;
+        margin-left: 1.8rem;
+        font-size: 1.2rem;
+    }
 }
 
-.foot-info {
-    border-top: 1px solid black;
-    margin-top: 2rem;
-    padding-top: 0.25rem;
+
+/* 区分 */
+section {
+    margin-block: 1.5rem;
 }
 
-.notice {
-    position: relative;
-    padding-left: 2em;
-    padding-right: 0.5rem;
-    width: fit-content;
-    border-left: 4px solid gray;
-    border-bottom: 2px solid gray;
-    padding-top: 4px;
-    padding-bottom: 4px;
+
+/* その他ブロック要素 */
+header {
+    #arrow::after {
+        content: ">";
+        margin-inline-start: 0.3em;
+    }
 }
 
-.notice::before {
-    content: '⚠︎';
-    position: absolute;
-    left: 0.5em;
-}
+blockquote {
+    background-color: var(--bg-gray2);
 
-.mokuzi {
-    border: 1px solid black;
-    background-color: #F0F0F0;
-    width: fit-content;
-    padding: 0.5em 1em;
-}
+    padding: 0.75em 1em;
+    border-radius: 0.5em;
 
-.mokuzi-header::before {
-    content: '';
-    background-image:  url(list.svg);
-    width: 1em;
-    height: 1em;
-    margin-inline-start: 0.15em;
-    margin-inline-end: 0.35em;
-    display: inline-block;
-    background-repeat: no-repeat;
-    background-size: contain;
-    vertical-align: middle;
-    position: relative;
-    top: -0.09em;
-}
-
-.mokuzi-list {
-    margin-block: 0.25em;
-}
-
-ul.notopmargin, ol.notopmargin {
-    margin-block: 0.25em;
+    .quote-footer {
+        margin-top: 0.5em;
+        padding-top: 0.25em;
+        border-top: 1px solid var(--gray);
+    }
 }
 
 table {
@@ -158,94 +80,88 @@ table {
 }
 
 th, td {
-    padding: 4px 6px;
-    border: 1px solid;
+    padding: 0.25em 0.375em;
+    border: 1px solid var(--text-black);
 }
 
-p.advent-calendar {
-    border-top: 2px solid lightgray;
-    border-bottom: 2px solid lightgray;
-    padding: 6px 0px;
+div.foot-info {
+    padding: 0.125em 0.25em 0 0.125em;
+    margin-top: 2rem;
+    border-top: 1px solid var(--text-black);
+    width: fit-content;
 }
 
-.centerized {
-    margin-left: auto;
-    margin-right: auto;
+.notice {
+    background-color: var(--bg-gray3);
+
+    width: fit-content;
+    padding: 0.375em 0.75em 0.375em 2em;
+    border-radius: 0.5em;
+
+    position: relative;
+
+    &::before {
+        content: '⚠︎';
+        position: absolute;
+        left: 0.75em;
+    }
 }
 
-/* 引用要素 */
-blockquote.shaded {
-    background-color: #F0F0F0;
-    padding: 0.75rem 1rem;
+
+/* その他インライン要素 */
+a {
+    color: var(--text-blue);
+    text-decoration: none;
+
+    &:visited {
+        color: var(--text-blue);
+        text-decoration: none;
+    }
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    &[target="_blank"]:not(.nonewtabicon)::after {
+        content: '';
+        background-image:  url(newtab.svg);
+        width: 0.7em;
+        height: 0.7em;
+        margin-inline: 0.25em;
+        display: inline-block;
+        background-repeat: no-repeat;
+        background-size: contain;
+        vertical-align: super;
+    }
 }
 
 code {
-    background-color: #F0F0F0;
+    background-color: var(--bg-gray3);
+
+    blockquote & {
+        background-color: var(--bg-gray4);
+    }
+
     padding: 0.1rem 0.2rem;
-    border-radius: 0.2rem;
     margin-inline: 0.2rem;
+    border-radius: 0.2rem;
+
+    pre & {
+        display: block;
+
+        padding: 0.75rem 1rem;
+        margin-inline: 0;
+        border-radius: 0.5em;
+
+        overflow-x: auto;
+    }
+
+    /* pre:has(&) {
+        width: fit-content;
+    } */
 }
 
-pre code {
-    /* 上書き */
-    background-color: #F0F0F0;
-    padding: 0.75rem 1rem;
-    border-radius: 0;
-    margin-inline: 0;
-
-    color: #383a42;
-    display: block;
-    overflow-x: auto;
-    /* white-space: pre-line; */
-}
-
-/* 順序付き見出し */
-body {
-    counter-reset: h2_c;
-}
-
-h2.ordered::before {
-    content: counter(h2_c) ".";
-    counter-increment: h2_c;
-    margin-inline-end: 0.2em;
-}
-
-/* リンク */
-a:link {
-    text-decoration: none;
-    color: #3648D5;
-}
-
-a:visited {
-    text-decoration: none;
-    /* color: #6231AE; */
-    color: #3648D5;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-a[target="_blank"]::after {
-    content: '';
-    background-image:  url(newtab.svg);
-    width: 0.7em;
-    height: 0.7em;
-    margin-inline: 0.25em;
-    display: inline-block;
-    background-repeat: no-repeat;
-    background-size: contain;
-    vertical-align: super;
-}
-
-/* header a:link {
-    color: black;
-}
-
-header a:visited {
-    color: black;
-} */
-
-header a:hover {
-    text-decoration: none;
+span.with-img {
+    display: inline-flex;
+    align-items: center;
 }

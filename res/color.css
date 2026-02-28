@@ -1,0 +1,17 @@
+:root {
+    --text-black: #222222;
+    --text-gray: #888888;
+    --text-blue: #085cd8;
+    --text-lightblue: #4a8ef3;
+    --gray: #aaaaaa;
+    --bg-gray1: #f8f8f8;
+    --bg-gray2: #eaeaea;
+    --bg-gray3: #e8e8e8;
+    --bg-gray4: #dadada;
+    /* --border-lightgray: lightgray;
+    --border-gray: gray;
+    --bg-lightgray: #F0F0F0;
+    --bg-lightblue: #D5EEFC;
+    --text-gray: #A0A1A7;
+    --code-black: #383a42; */
+}
