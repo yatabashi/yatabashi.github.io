@@ -4,9 +4,9 @@ function getTodaysNumber() {
         let year = now.getFullYear().toString();
         let month = (now.getMonth() + 1).toString().padStart(2, '0');
         let day = now.getDate().toString().padStart(2, '0');
-        
+
         return Number(year+month+day);
-        
+
         // let hour = now.getHours().toString().padStart(2, '0');
         // let minute = now.getMinutes().toString().padStart(2, '0');
         // let second = now.getSeconds().toString().padStart(2, '0');
@@ -14,32 +14,32 @@ function getTodaysNumber() {
         // console.log(year+month+day+hour+minute+second+milli);
         // return Number(year+month+day+hour+minute+second+milli);
     }
-    
+
     let x = 123456789;
     let y = 362436069;
     let z = 521288629;
     let w = now();
-    
+
     function xorshift() {
         const t = x ^ (x << 11);
         x = y; y = z; z = w;
         w = (w^(w>>19))^(t^(t>>8));
     };
-    
+
     for (let i = 0; i < 32; i++) {
         xorshift();
     }
-    
+
     return w;
 }
 
 function getLibDatStr(n) {
-    console.log(`startgetdat: ${(new Date()).getTime()} ms`);
-    
+    // console.log(`startgetdat: ${(new Date()).getTime()} ms`);
+
     const LIB = 7936;
     const MUS = 4372;
     const ARC = 102;
-    
+
     const r = (n % (LIB + MUS + ARC)) + 1;
     let rISIL;
     if (r < LIB) {
@@ -55,7 +55,7 @@ function getLibDatStr(n) {
     } else { // r = LIB + MUS + ARC
         rISIL = `JP-3${(r - LIB - MUS).toString().padStart(6, '0')}`;
     }
-    
+
     return [rISIL].concat(ISILTABLE[rISIL]);
 }
 
@@ -75,13 +75,13 @@ function getInsertion(dat) {
         }
     } else {
         if (!dat[2] && !dat[5]) { // 住所なし、リンクなし
-            return `${dat[0]} ${dat[1]}（住所不明）`
+            return `<span>${dat[0]}</span> <span>${dat[1]}</span>`
         } else if (!dat[2] && dat[5]) { // 住所なし、リンクあり
-            return `${dat[0]} <a href="${dat[5]}">${dat[1]}</a>（住所不明）`
+            return `<span>${dat[0]}</span> <span><a href="${dat[5]}">${dat[1]}</a></span>`
         } else if (!dat[5]) { // 住所あり、リンクなし
-            return `${dat[0]} ${dat[1]}（${dat[2]+dat[3]+dat[4]}）`
+            return `<span>${dat[0]}</span> <span>${dat[1]}</span> <span>（${dat[2]+dat[3]+dat[4]}）</span>`
         } else { // 住所あり、リンクあり
-            return `${dat[0]} <a href="${dat[5]}">${dat[1]}</a>（${dat[2]+dat[3]+dat[4]}）`
+            return `<span>${dat[0]}</span> <span><a href="${dat[5]}">${dat[1]}</a></span> <span>（${dat[2]+dat[3]+dat[4]}）</span>`
         }
     }
 }

@@ -1,24 +1,13 @@
-#lib-container {
-    padding: 4px 0;
-    border-top: 2px solid lightgray;
-    border-bottom: 2px solid lightgray;
+#todays-library {
+    text-align: center;
+    padding-block: 0.5rem;
+    border-block: 2px solid var(--gray);
+
+    & span {
+        display: inline-block;
+    }
 }
 
-.card {
-    margin-left: 1rem;
-    margin-block: 1rem;
-    width: fit-content;
-
-    display: flex;
-    align-items: center;
-    gap: 0.25em;
-
-    .icon {
-        width: 3em;
-        aspect-ratio: 1;
-    }
-
-    .name {
-        text-underline-offset: 0.25em;
-    }
+section > h2 {
+    margin-bottom: 0;
 }
