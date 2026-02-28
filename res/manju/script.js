@@ -60,13 +60,13 @@ function copy() {
 
 function changeDirection() {
     if (document.getElementById("direction").checked) {
-        document.getElementById("review").classList.remove("horizontal");
+        document.getElementById("review").classList.remove("horizontal-line");
+        document.getElementById("review").classList.add("vertical-line");
         document.getElementById("review").classList.add("vertical");
-        document.getElementById("review").classList.add("vert");
     } else {
+        document.getElementById("review").classList.remove("vertical-line");
         document.getElementById("review").classList.remove("vertical");
-        document.getElementById("review").classList.remove("vert");
-        document.getElementById("review").classList.add("horizontal");
+        document.getElementById("review").classList.add("horizontal-line");
     }
 }
 

@@ -1,10 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Mongolian&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mongolian&family=Open+Sans&display=swap');
 
 @font-face {
     font-family: 'Gentium';
     font-weight: 400;
     src: url('../../fonts/Gentium/Gentium-Regular.woff2');
 }
+
 
 .manju {
     font-family: 'Fu_XM_ZhengBai', 'Noto Sans Mongolian';
@@ -43,19 +44,19 @@ textarea {
     overflow: scroll;
 }
 
-.horizontal {
+.horizontal-line {
     margin-top: 5px;
     margin-bottom: 5px;
 }
 
-.vertical {
+.vertical-line {
     margin-top: 10px;
     margin-bottom: 10px;
     height: fit-content;
     max-height: 400px;
 }
 
-.vert {
+.vertical {
     writing-mode: vertical-lr;
     text-orientation: sideways;
 }
@@ -66,4 +67,8 @@ textarea {
 
 th, td {
     text-align: center;
+
+    img {
+        vertical-align: middle; height: 2rem;
+    }
 }

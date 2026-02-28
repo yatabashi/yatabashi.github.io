@@ -5,6 +5,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="icon" href="res/favicon.ico">
+        <link rel="stylesheet" href="res/font.css">
+        <link rel="stylesheet" href="res/color.css">
         <link rel="stylesheet" href="res/style.css">
         <script src="res/script.js"></script>
 
@@ -16,67 +18,70 @@
         <script src="res/manju/script.js" defer></script>
     </head>
     <body>
-        <header>
-            <a href="index.html">yatabashi.github.io</a>
-        </header>
+        <header><a href="index.html">yatabashi.github.io</a><span id="arrow"></span></header>
 
-        <h1>満洲語キーボード</h1>
+        <main>
+            <h1>満洲語キーボード</h1>
 
-        <textarea placeholder="latin hergen" rows="2"></textarea>
-        <p id="before-review">ᠮᠠᠨᠵᡠ ᡥᡝᡵᡤᡝᠨ<button id="copier" onclick="copy()" hidden>出力をコピー</button><span style="margin-inline-start: 0.75rem;">縦書き</span><input id="direction" type="checkbox" value="false" oninput="changeDirection()"></p>
-        <div id="review-wrapper"><p id="review" class="manju horizontal"><span id="review-manju"></span></p></div>
+            <section>
+                <textarea placeholder="latin hergen" rows="2"></textarea>
+                <p id="before-review">ᠮᠠᠨᠵᡠ ᡥᡝᡵᡤᡝᠨ<button id="copier" onclick="copy()" hidden>出力をコピー</button><span style="margin-inline-start: 0.75rem;">縦書き</span><input id="direction" type="checkbox" value="false" oninput="changeDirection()"></p>
+                <div id="review-wrapper"><p id="review" class="manju horizontal"><span id="review-manju"></span></p></div>
+            </section>
 
-        <p>原則としてメレンドルフ式のラテン文字転写に従いますが、 ū は v や U として、 š は x や S としても入力可能です。また、属格の<span class="manju vert"> ᡳ</span>は I として、直前の語との間にスペースを入れずに入力してください。漢語を表記する文字は次のように入力してください：</p>
-        <table>
-            <tr>
-                <th></th>
-                <td><img src="res/manju/K.png" style="vertical-align: middle; height: 2rem;"></td>
-                <td><img src="res/manju/G.png" style="vertical-align: middle; height: 2rem;"></td>
-                <td><img src="res/manju/H.png" style="vertical-align: middle; height: 2rem;"></td>
-                <td><img src="res/manju/ts.png" style="vertical-align: middle; height: 2rem;"></td>
-                <td><img src="res/manju/tsy.png" style="vertical-align: middle; height: 2rem;"></td>
-                <td><img src="res/manju/dz.png" style="vertical-align: middle; height: 2rem;"></td>
-                <td><img src="res/manju/R.png" style="vertical-align: middle; height: 2rem;"></td>
-                <td><img src="res/manju/sy.png" style="vertical-align: middle; height: 2rem;"></td>
-                <td><img src="res/manju/cy.png" style="vertical-align: middle; height: 2rem;">*</td>
-                <td><img src="res/manju/jy.png" style="vertical-align: middle; height: 2rem;">*</td>
-                <td><img src="res/manju/boundary.png" style="vertical-align: middle; height: 2rem;"></td>
-            </tr>
-            <tr>
-                <th>メレンドルフ式</th>
-                <td>kʽ</td>
-                <td>gʽ</td>
-                <td>hʽ</td>
-                <td>tsʽ</td>
-                <td>ts</td>
-                <td>dz</td>
-                <td>ž</td>
-                <td>sy</td>
-                <td>cʽy</td>
-                <td>jy</td>
-                <td>（音節境界）</td>
-            </tr>
-            <tr>
-                <th>入力文字</th>
-                <td>K</td>
-                <td>G</td>
-                <td>H</td>
-                <td>ts</td>
-                <td>tsy</td>
-                <td>dz</td>
-                <td>z, R</td>
-                <td>sy</td>
-                <td>cy</td>
-                <td>jy</td>
-                <td>'</td>
-            </tr>
-        </table>
-        <p>* それぞれ「C」「J」から子音字を単独で入力できます。</p>
+            <section>
+                <p>原則としてメレンドルフ式のラテン文字転写に従いますが、 <span style="font-family: 'Open Sans';">ū</span> は v や U として、 š は x や S としても入力可能です。また、属格の<span class="manju vertical"> ᡳ</span>は I （大文字の i）として、直前の語との間に続けて入力してください。漢語を表記する文字は次のように入力してください：</p>
 
-        <p><a href="https://fonts.google.com/noto/specimen/Noto+Sans+Mongolian">Noto Sans Mongolian</a>を使用しています。ただし、端末に<a href="https://www.manchustudiesgroup.org/typing-manchu/">XM_ZhengBai</a>（画像に使用）がダウンロードされている場合はそちらが優先されます。</p>
+                <table>
+                    <tr>
+                        <th></th>
+                        <td><img src="res/manju/K.png"></td>
+                        <td><img src="res/manju/G.png"></td>
+                        <td><img src="res/manju/H.png"></td>
+                        <td><img src="res/manju/ts.png"></td>
+                        <td><img src="res/manju/tsy.png"></td>
+                        <td><img src="res/manju/dz.png"></td>
+                        <td><img src="res/manju/R.png"></td>
+                        <td><img src="res/manju/sy.png"></td>
+                        <td><img src="res/manju/cy.png">*</td>
+                        <td><img src="res/manju/jy.png">*</td>
+                        <td><img src="res/manju/boundary.png"></td>
+                    </tr>
+                    <tr>
+                        <th>メレンドルフ式</th>
+                        <td>kʽ</td>
+                        <td>gʽ</td>
+                        <td>hʽ</td>
+                        <td>tsʽ</td>
+                        <td>ts</td>
+                        <td>dz</td>
+                        <td>ž</td>
+                        <td>sy</td>
+                        <td>cʽy</td>
+                        <td>jy</td>
+                        <td>（音節境界）</td>
+                    </tr>
+                    <tr>
+                        <th>入力文字</th>
+                        <td>K</td>
+                        <td>G</td>
+                        <td>H</td>
+                        <td>ts</td>
+                        <td>tsy</td>
+                        <td>dz</td>
+                        <td>z, R</td>
+                        <td>sy</td>
+                        <td>cy</td>
+                        <td>jy</td>
+                        <td>'</td>
+                    </tr>
+                </table>
+                <p>* それぞれ「C」「J」から子音字を単独で入力できます。</p>
 
-        <div class="foot-info">
-            公開：2024-07-15<br>最終更新：2024-07-17
-        </div>
+                <p><a href="https://fonts.google.com/noto/specimen/Noto+Sans+Mongolian">Noto Sans Mongolian</a>を使用しています。ただし、<a href="https://www.manchustudiesgroup.org/typing-manchu/">XM_ZhengBai</a>（画像に使用）が適用できる場合はそちらが優先されます。</p>
+            </section>
+        </main>
+
+        <div class="foot-info">公開：2024-07-15<br>最終更新：2026-02-22</div>
     </body>
 </html>
