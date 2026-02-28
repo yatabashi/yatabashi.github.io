@@ -5,6 +5,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="icon" href="res/favicon.ico">
+        <link rel="stylesheet" href="res/font.css">
+        <link rel="stylesheet" href="res/color.css">
         <link rel="stylesheet" href="res/style.css">
         <script src="res/script.js"></script>
 
@@ -34,361 +36,363 @@
         </svg>
     </head>
     <body>
-        <header>
-            <a href="index.html">yatabashi.github.io</a>
-        </header>
+        <header><a href="index.html">yatabashi.github.io</a><span id="arrow"></span></header>
 
-        <h1>経県値まとめ</h1>
+        <main>
+            <h1>経県値まとめ</h1>
 
-        <h2>都道府県レベル</h2>
-        <ul>
-            <li><a id="zenkoku">全国</a></li>
-        </ul>
+            <section>
+                <h2>都道府県レベル</h2>
+                <ul>
+                    <li><a id="zenkoku">全国</a></li>
+                </ul>
 
-        <table id="table1">
-            <tr class="borderTopBottom">
-                <th>区分</th>
-                <th>点数</th>
-                <th>通過数*</th>
-                <th>訪問数</th>
-                <th>（自治体数）</th>
-                <th>通過率</th>
-                <th>訪問率</th>
-            </tr>
-            <tr class="borderTopBottom">
-                <th>全国</th>
-            </tr>
-        </table>
+                <table id="table1">
+                    <tr class="borderTopBottom">
+                        <th>区分</th>
+                        <th>点数</th>
+                        <th>通過数*</th>
+                        <th>訪問数</th>
+                        <th>（自治体数）</th>
+                        <th>通過率</th>
+                        <th>訪問率</th>
+                    </tr>
+                    <tr class="borderTopBottom">
+                        <th>全国</th>
+                    </tr>
+                </table>
 
-        <p>* 通過以上の経験がある自治体の数。以降同様</p>
+                <p>* 通過以上の経験がある自治体の数。以降同様</p>
+            </section>
 
-        <h2>市区町村レベル</h2>
+            <section>
+                <h2>市区町村レベル</h2>
 
-        <input type="checkbox" id="showsSubpref" name="showsSubpref" checked>
-        <label for="showsSubpref">北海道の振興局別データを表示</label>
+                <input type="checkbox" id="showsSubpref" name="showsSubpref" checked>
+                <label for="showsSubpref">北海道の振興局別データを表示</label>
 
-        <ul>
-            <li class="hokkaido"><a id="hokkaido">北海道</a><span id="subprefs">（<a id="isikari">石狩</a>、<a id="osima">渡島</a>、<a id="hiyama">檜山</a>、<a id="siribesi">後志</a>、<a id="sorati">空知</a>、<a id="kamikawa">上川</a>、<a id="rumoi">留萌</a>、<a id="soya">宗谷</a>、<a id="okhotsk">オホーツク</a>、<a id="iburi">胆振</a>、<a id="hidaka">日高</a>、<a id="tokati">十勝</a>、<a id="kusiro">釧路</a>、<a id="nemuro">根室</a>）</span></li>
-            <li class="break"></li>
-            <li><a id="aomori">青森県</a></li>
-            <li><a id="iwate">岩手県</a></li>
-            <li><a id="miyagi">宮城県</a></li>
-            <li><a id="akita">秋田県</a></li>
-            <li><a id="yamagata">山形県</a></li>
-            <li><a id="hukusima">福島県</a></li>
-            <li class="break"></li>
-            <li><a id="ibaraki">茨城県</a></li>
-            <li><a id="totigi">栃木県</a></li>
-            <li><a id="gunma">群馬県</a></li>
-            <li><a id="saitama">埼玉県</a></li>
-            <li><a id="tiba">千葉県</a></li>
-            <li><a id="tokyo">東京都</a>**</li>
-            <li><a id="kanagawa">神奈川県</a></li>
-            <li class="break"></li>
-            <li><a id="niigata">新潟県</a></li>
-            <li><a id="toyama">富山県</a></li>
-            <li><a id="isikawa">石川県</a></li>
-            <li><a id="hukui">福井県</a></li>
-            <li><a id="yamanasi">山梨県</a></li>
-            <li><a id="nagano">長野県</a></li>
-            <li><a id="gihu">岐阜県</a></li>
-            <li><a id="sizuoka">静岡県</a></li>
-            <li><a id="aiti">愛知県</a></li>
-            <li class="break"></li>
-            <li><a id="mie">三重県</a></li>
-            <li><a id="siga">滋賀県</a></li>
-            <li><a id="kyoto">京都府</a></li>
-            <li><a id="osaka">大阪府</a></li>
-            <li><a id="hyogo">兵庫県</a></li>
-            <li><a id="nara">奈良県</a></li>
-            <li><a id="wakayama">和歌山県</a></li>
-            <li class="break"></li>
-            <li><a id="tottori">鳥取県</a></li>
-            <li><a id="simane">島根県</a></li>
-            <li><a id="okayama">岡山県</a></li>
-            <li><a id="hirosima">広島県</a></li>
-            <li><a id="yamaguti">山口県</a></li>
-            <li class="break"></li>
-            <li><a id="tokusima">徳島県</a></li>
-            <li><a id="kagawa">香川県</a></li>
-            <li><a id="ehime">愛媛県</a></li>
-            <li><a id="koti">高知県</a></li>
-            <li class="break"></li>
-            <li><a id="hukuoka">福岡県</a></li>
-            <li><a id="saga">佐賀県</a></li>
-            <li><a id="nagasaki">長崎県</a></li>
-            <li><a id="kumamoto">熊本県</a></li>
-            <li><a id="oita">大分県</a></li>
-            <li><a id="miyazaki">宮崎県</a></li>
-            <li><a id="kagosima">鹿児島県</a></li>
-            <li><a id="okinawa">沖縄県</a></li>
-        </ul>
+                <ul>
+                    <li class="hokkaido"><a id="hokkaido">北海道</a><span id="subprefs">（<a id="isikari">石狩</a>、<a id="osima">渡島</a>、<a id="hiyama">檜山</a>、<a id="siribesi">後志</a>、<a id="sorati">空知</a>、<a id="kamikawa">上川</a>、<a id="rumoi">留萌</a>、<a id="soya">宗谷</a>、<a id="okhotsk">オホーツク</a>、<a id="iburi">胆振</a>、<a id="hidaka">日高</a>、<a id="tokati">十勝</a>、<a id="kusiro">釧路</a>、<a id="nemuro">根室</a>）</span></li>
+                    <li class="break"></li>
+                    <li><a id="aomori">青森県</a></li>
+                    <li><a id="iwate">岩手県</a></li>
+                    <li><a id="miyagi">宮城県</a></li>
+                    <li><a id="akita">秋田県</a></li>
+                    <li><a id="yamagata">山形県</a></li>
+                    <li><a id="hukusima">福島県</a></li>
+                    <li class="break"></li>
+                    <li><a id="ibaraki">茨城県</a></li>
+                    <li><a id="totigi">栃木県</a></li>
+                    <li><a id="gunma">群馬県</a></li>
+                    <li><a id="saitama">埼玉県</a></li>
+                    <li><a id="tiba">千葉県</a></li>
+                    <li><a id="tokyo">東京都</a>**</li>
+                    <li><a id="kanagawa">神奈川県</a></li>
+                    <li class="break"></li>
+                    <li><a id="niigata">新潟県</a></li>
+                    <li><a id="toyama">富山県</a></li>
+                    <li><a id="isikawa">石川県</a></li>
+                    <li><a id="hukui">福井県</a></li>
+                    <li><a id="yamanasi">山梨県</a></li>
+                    <li><a id="nagano">長野県</a></li>
+                    <li><a id="gihu">岐阜県</a></li>
+                    <li><a id="sizuoka">静岡県</a></li>
+                    <li><a id="aiti">愛知県</a></li>
+                    <li class="break"></li>
+                    <li><a id="mie">三重県</a></li>
+                    <li><a id="siga">滋賀県</a></li>
+                    <li><a id="kyoto">京都府</a></li>
+                    <li><a id="osaka">大阪府</a></li>
+                    <li><a id="hyogo">兵庫県</a></li>
+                    <li><a id="nara">奈良県</a></li>
+                    <li><a id="wakayama">和歌山県</a></li>
+                    <li class="break"></li>
+                    <li><a id="tottori">鳥取県</a></li>
+                    <li><a id="simane">島根県</a></li>
+                    <li><a id="okayama">岡山県</a></li>
+                    <li><a id="hirosima">広島県</a></li>
+                    <li><a id="yamaguti">山口県</a></li>
+                    <li class="break"></li>
+                    <li><a id="tokusima">徳島県</a></li>
+                    <li><a id="kagawa">香川県</a></li>
+                    <li><a id="ehime">愛媛県</a></li>
+                    <li><a id="koti">高知県</a></li>
+                    <li class="break"></li>
+                    <li><a id="hukuoka">福岡県</a></li>
+                    <li><a id="saga">佐賀県</a></li>
+                    <li><a id="nagasaki">長崎県</a></li>
+                    <li><a id="kumamoto">熊本県</a></li>
+                    <li><a id="oita">大分県</a></li>
+                    <li><a id="miyazaki">宮崎県</a></li>
+                    <li><a id="kagosima">鹿児島県</a></li>
+                    <li><a id="okinawa">沖縄県</a></li>
+                </ul>
 
-        <p>** 東京都内の居住自治体は仮に千代田区としています。</p>
+                <p>** 東京都内の居住自治体は仮に千代田区としています。</p>
 
-        <table id="table2" class="borderControlled">
-            <tr class="borderTopBottom">
-                <th hidden>-1</th>
-                <th>区分</th>
-                <th>点数<svg class="sorter" id="col2" width="24" height="24"><use href="#arrow_drop_updown" /></svg></th>
-                <th>通過数<svg class="sorter" id="col3" width="24" height="24"><use href="#arrow_drop_updown" /></svg></th>
-                <th>訪問数<svg class="sorter" id="col4" width="24" height="24"><use href="#arrow_drop_updown" /></svg></th>
-                <th>（自治体数）<svg class="sorter" id="col5" width="24" height="24"><use href="#arrow_drop_updown" /></svg></th>
-                <th>通過率<svg class="sorter" id="col6" width="24" height="24"><use href="#arrow_drop_updown" /></svg></th>
-                <th>訪問率<svg class="sorter" id="col7" width="24" height="24"><use href="#arrow_drop_updown" /></svg></th>
-            </tr>
-            <tr class="borderTopBottom">
-                <th hidden>0</th>
-                <th>全都道府県合計</th>
-            </tr>
-            <tr id="hokkaidoTr" class="borderTop">
-                <th hidden>1</th>
-                <th>北海道</th>
-            </tr>
-            <tr id="isikariTr">
-                <th hidden>2</th>
-                <th>（石狩振興局）</th>
-            </tr>
-            <tr id="osimaTr">
-                <th hidden>3</th>
-                <th>（渡島総合振興局）</th>
-            </tr>
-            <tr id="hiyamaTr">
-                <th hidden>4</th>
-                <th>（檜山振興局）</th>
-            </tr>
-            <tr id="siribesiTr">
-                <th hidden>5</th>
-                <th>（後志総合振興局）</th>
-            </tr>
-            <tr id="soratiTr">
-                <th hidden>6</th>
-                <th>（空知総合振興局）</th>
-            </tr>
-            <tr id="kamikawaTr">
-                <th hidden>7</th>
-                <th>（上川総合振興局）</th>
-            </tr>
-            <tr id="rumoiTr">
-                <th hidden>8</th>
-                <th>（留萌振興局）</th>
-            </tr>
-            <tr id="soyaTr">
-                <th hidden>9</th>
-                <th>（宗谷総合振興局）</th>
-            </tr>
-            <tr id="okhotskTr">
-                <th hidden>10</th>
-                <th>（オホーツク総合振興局）</th>
-            </tr>
-            <tr id="iburiTr">
-                <th hidden>11</th>
-                <th>（胆振総合振興局）</th>
-            </tr>
-            <tr id="hidakaTr">
-                <th hidden>12</th>
-                <th>（日高振興局）</th>
-            </tr>
-            <tr id="tokatiTr">
-                <th hidden>13</th>
-                <th>（十勝総合振興局）</th>
-            </tr>
-            <tr id="kusiroTr">
-                <th hidden>14</th>
-                <th>（釧路総合振興局）</th>
-            </tr>
-            <tr id="nemuroTr">
-                <th hidden>15</th>
-                <th>（根室振興局）</th>
-            </tr>
-            <tr class="borderTop" id="aomoriTr">
-                <th hidden>16</th>
-                <th>青森県</th>
-            </tr>
-            <tr>
-                <th hidden>17</th>
-                <th>岩手県</th>
-            </tr>
-            <tr>
-                <th hidden>18</th>
-                <th>宮城県</th>
-            </tr>
-            <tr>
-                <th hidden>19</th>
-                <th>秋田県</th>
-            </tr>
-            <tr>
-                <th hidden>20</th>
-                <th>山形県</th>
-            </tr>
-            <tr>
-                <th hidden>21</th>
-                <th>福島県</th>
-            </tr>
-            <tr class="borderTop">
-                <th hidden>22</th>
-                <th>茨城県</th>
-            </tr>
-            <tr>
-                <th hidden>23</th>
-                <th>栃木県</th>
-            </tr>
-            <tr>
-                <th hidden>24</th>
-                <th>群馬県</th>
-            </tr>
-            <tr>
-                <th hidden>25</th>
-                <th>埼玉県</th>
-            </tr>
-            <tr>
-                <th hidden>26</th>
-                <th>千葉県</th>
-            </tr>
-            <tr>
-                <th hidden>27</th>
-                <th>東京都</th>
-            </tr>
-            <tr>
-                <th hidden>28</th>
-                <th>神奈川県</th>
-            </tr>
-            <tr class="borderTop">
-                <th hidden>29</th>
-                <th>新潟県</th>
-            </tr>
-            <tr>
-                <th hidden>30</th>
-                <th>富山県</th>
-            </tr>
-            <tr>
-                <th hidden>31</th>
-                <th>石川県</th>
-            </tr>
-            <tr>
-                <th hidden>32</th>
-                <th>福井県</th>
-            </tr>
-            <tr>
-                <th hidden>33</th>
-                <th>山梨県</th>
-            </tr>
-            <tr>
-                <th hidden>34</th>
-                <th>長野県</th>
-            </tr>
-            <tr>
-                <th hidden>35</th>
-                <th>岐阜県</th>
-            </tr>
-            <tr>
-                <th hidden>36</th>
-                <th>静岡県</th>
-            </tr>
-            <tr>
-                <th hidden>37</th>
-                <th>愛知県</th>
-            </tr>
-            <tr class="borderTop">
-                <th hidden>38</th>
-                <th>三重県</th>
-            </tr>
-            <tr>
-                <th hidden>39</th>
-                <th>滋賀県</th>
-            </tr>
-            <tr>
-                <th hidden>40</th>
-                <th>京都府</th>
-            </tr>
-            <tr>
-                <th hidden>41</th>
-                <th>大阪府</th>
-            </tr>
-            <tr>
-                <th hidden>42</th>
-                <th>兵庫県</th>
-            </tr>
-            <tr>
-                <th hidden>43</th>
-                <th>奈良県</th>
-            </tr>
-            <tr>
-                <th hidden>44</th>
-                <th>和歌山県</th>
-            </tr>
-            <tr class="borderTop">
-                <th hidden>45</th>
-                <th>鳥取県</th>
-            </tr>
-            <tr>
-                <th hidden>46</th>
-                <th>島根県</th>
-            </tr>
-            <tr>
-                <th hidden>47</th>
-                <th>岡山県</th>
-            </tr>
-            <tr>
-                <th hidden>48</th>
-                <th>広島県</th>
-            </tr>
-            <tr>
-                <th hidden>49</th>
-                <th>山口県</th>
-            </tr>
-            <tr class="borderTop">
-                <th hidden>50</th>
-                <th>徳島県</th>
-            </tr>
-            <tr>
-                <th hidden>51</th>
-                <th>香川県</th>
-            </tr>
-            <tr>
-                <th hidden>52</th>
-                <th>愛媛県</th>
-            </tr>
-            <tr>
-                <th hidden>53</th>
-                <th>高知県</th>
-            </tr>
-            <tr class="borderTop">
-                <th hidden>54</th>
-                <th>福岡県</th>
-            </tr>
-            <tr>
-                <th hidden>55</th>
-                <th>佐賀県</th>
-            </tr>
-            <tr>
-                <th hidden>56</th>
-                <th>長崎県</th>
-            </tr>
-            <tr>
-                <th hidden>57</th>
-                <th>熊本県</th>
-            </tr>
-            <tr>
-                <th hidden>58</th>
-                <th>大分県</th>
-            </tr>
-            <tr>
-                <th hidden>59</th>
-                <th>宮崎県</th>
-            </tr>
-            <tr>
-                <th hidden>60</th>
-                <th>鹿児島県</th>
-            </tr>
-            <tr class="borderBottom">
-                <th hidden>61</th>
-                <th>沖縄県</th>
-            </tr>
-        </table>
+                <table id="table2" class="borderControlled">
+                    <tr class="borderTopBottom">
+                        <th hidden>-1</th>
+                        <th>区分</th>
+                        <th>点数<svg class="sorter" id="col2" width="24" height="24"><use href="#arrow_drop_updown" /></svg></th>
+                        <th>通過数<svg class="sorter" id="col3" width="24" height="24"><use href="#arrow_drop_updown" /></svg></th>
+                        <th>訪問数<svg class="sorter" id="col4" width="24" height="24"><use href="#arrow_drop_updown" /></svg></th>
+                        <th>（自治体数）<svg class="sorter" id="col5" width="24" height="24"><use href="#arrow_drop_updown" /></svg></th>
+                        <th>通過率<svg class="sorter" id="col6" width="24" height="24"><use href="#arrow_drop_updown" /></svg></th>
+                        <th>訪問率<svg class="sorter" id="col7" width="24" height="24"><use href="#arrow_drop_updown" /></svg></th>
+                    </tr>
+                    <tr class="borderTopBottom">
+                        <th hidden>0</th>
+                        <th>全都道府県合計</th>
+                    </tr>
+                    <tr id="hokkaidoTr" class="borderTop">
+                        <th hidden>1</th>
+                        <th>北海道</th>
+                    </tr>
+                    <tr id="isikariTr">
+                        <th hidden>2</th>
+                        <th>（石狩振興局）</th>
+                    </tr>
+                    <tr id="osimaTr">
+                        <th hidden>3</th>
+                        <th>（渡島総合振興局）</th>
+                    </tr>
+                    <tr id="hiyamaTr">
+                        <th hidden>4</th>
+                        <th>（檜山振興局）</th>
+                    </tr>
+                    <tr id="siribesiTr">
+                        <th hidden>5</th>
+                        <th>（後志総合振興局）</th>
+                    </tr>
+                    <tr id="soratiTr">
+                        <th hidden>6</th>
+                        <th>（空知総合振興局）</th>
+                    </tr>
+                    <tr id="kamikawaTr">
+                        <th hidden>7</th>
+                        <th>（上川総合振興局）</th>
+                    </tr>
+                    <tr id="rumoiTr">
+                        <th hidden>8</th>
+                        <th>（留萌振興局）</th>
+                    </tr>
+                    <tr id="soyaTr">
+                        <th hidden>9</th>
+                        <th>（宗谷総合振興局）</th>
+                    </tr>
+                    <tr id="okhotskTr">
+                        <th hidden>10</th>
+                        <th>（オホーツク総合振興局）</th>
+                    </tr>
+                    <tr id="iburiTr">
+                        <th hidden>11</th>
+                        <th>（胆振総合振興局）</th>
+                    </tr>
+                    <tr id="hidakaTr">
+                        <th hidden>12</th>
+                        <th>（日高振興局）</th>
+                    </tr>
+                    <tr id="tokatiTr">
+                        <th hidden>13</th>
+                        <th>（十勝総合振興局）</th>
+                    </tr>
+                    <tr id="kusiroTr">
+                        <th hidden>14</th>
+                        <th>（釧路総合振興局）</th>
+                    </tr>
+                    <tr id="nemuroTr">
+                        <th hidden>15</th>
+                        <th>（根室振興局）</th>
+                    </tr>
+                    <tr class="borderTop" id="aomoriTr">
+                        <th hidden>16</th>
+                        <th>青森県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>17</th>
+                        <th>岩手県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>18</th>
+                        <th>宮城県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>19</th>
+                        <th>秋田県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>20</th>
+                        <th>山形県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>21</th>
+                        <th>福島県</th>
+                    </tr>
+                    <tr class="borderTop">
+                        <th hidden>22</th>
+                        <th>茨城県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>23</th>
+                        <th>栃木県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>24</th>
+                        <th>群馬県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>25</th>
+                        <th>埼玉県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>26</th>
+                        <th>千葉県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>27</th>
+                        <th>東京都</th>
+                    </tr>
+                    <tr>
+                        <th hidden>28</th>
+                        <th>神奈川県</th>
+                    </tr>
+                    <tr class="borderTop">
+                        <th hidden>29</th>
+                        <th>新潟県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>30</th>
+                        <th>富山県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>31</th>
+                        <th>石川県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>32</th>
+                        <th>福井県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>33</th>
+                        <th>山梨県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>34</th>
+                        <th>長野県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>35</th>
+                        <th>岐阜県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>36</th>
+                        <th>静岡県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>37</th>
+                        <th>愛知県</th>
+                    </tr>
+                    <tr class="borderTop">
+                        <th hidden>38</th>
+                        <th>三重県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>39</th>
+                        <th>滋賀県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>40</th>
+                        <th>京都府</th>
+                    </tr>
+                    <tr>
+                        <th hidden>41</th>
+                        <th>大阪府</th>
+                    </tr>
+                    <tr>
+                        <th hidden>42</th>
+                        <th>兵庫県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>43</th>
+                        <th>奈良県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>44</th>
+                        <th>和歌山県</th>
+                    </tr>
+                    <tr class="borderTop">
+                        <th hidden>45</th>
+                        <th>鳥取県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>46</th>
+                        <th>島根県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>47</th>
+                        <th>岡山県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>48</th>
+                        <th>広島県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>49</th>
+                        <th>山口県</th>
+                    </tr>
+                    <tr class="borderTop">
+                        <th hidden>50</th>
+                        <th>徳島県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>51</th>
+                        <th>香川県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>52</th>
+                        <th>愛媛県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>53</th>
+                        <th>高知県</th>
+                    </tr>
+                    <tr class="borderTop">
+                        <th hidden>54</th>
+                        <th>福岡県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>55</th>
+                        <th>佐賀県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>56</th>
+                        <th>長崎県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>57</th>
+                        <th>熊本県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>58</th>
+                        <th>大分県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>59</th>
+                        <th>宮崎県</th>
+                    </tr>
+                    <tr>
+                        <th hidden>60</th>
+                        <th>鹿児島県</th>
+                    </tr>
+                    <tr class="borderBottom">
+                        <th hidden>61</th>
+                        <th>沖縄県</th>
+                    </tr>
+                </table>
+            </section>
+        </main>
 
-        <div class="foot-info">
-            公開：2025-02-25<br>随時更新
-        </div>
+        <div class="foot-info">公開：2025-02-25<br>随時更新</div>
     </body>
 </html>

@@ -5,6 +5,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="icon" href="res/favicon.ico">
+        <link rel="stylesheet" href="res/font.css">
+        <link rel="stylesheet" href="res/color.css">
         <link rel="stylesheet" href="res/style.css">
 
         <!-- Title -->
@@ -15,32 +17,32 @@
         <script src="res/colorpicker/script.js" defer></script>
     </head>
     <body>
-        <header>
-            <a href="index.html">yatabashi.github.io</a>
-        </header>
+        <header><a href="index.html">yatabashi.github.io</a><span id="arrow"></span></header>
 
-        <h1>カラーピッカー</h1>
+        <main>
+            <h1>カラーピッカー</h1>
 
-        <p id="output"></p>
-        
-        <input type="range" id="input" min="0" max="4095" value="4095" style="width: 100%;">
+            <section>
+                <p id="output"></p>
 
-        <fieldset>
-            <legend>基数を選択</legend>
-          
-            <div>
-              <input type="radio" name="radix" id="dec" value="10" checked>
-              <label for="dec">10進</label>
-            </div>
-          
-            <div>
-              <input type="radio" name="radix" id="hex" value="16">
-              <label for="hex">16進</label>
-            </div>
-        </fieldset>
-        
-        <div class="foot-info">
-            公開：2025-03-19
-        </div>
+                <input type="range" id="input" min="0" max="4095" value="3822" style="width: 100%;">
+
+                <fieldset>
+                    <legend>基数を選択</legend>
+
+                    <div>
+                        <input type="radio" name="radix" id="dec" value="10" checked>
+                        <label for="dec">10進</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" name="radix" id="hex" value="16">
+                        <label for="hex">16進</label>
+                    </div>
+                </fieldset>
+            </section>
+        </main>
+
+        <div class="foot-info">公開：2025-03-19<br>最終更新：2026-02-22</div>
     </body>
 </html>
