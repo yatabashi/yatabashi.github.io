@@ -1,0 +1,12 @@
+.katex-display .katex {
+    text-align: left;
+    margin-left: 40px;
+
+    .remove-katex-margin-left & {
+        margin-left: 0;
+    }
+}
+
+span:not(.katex-display):has(.katex):not(:has(.katex-display)) {
+    margin-inline: 0.3em;
+}

@@ -5,6 +5,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="icon" href="res/favicon.ico">
+        <link rel="stylesheet" href="res/font.css">
+        <link rel="stylesheet" href="res/color.css">
         <link rel="stylesheet" href="res/style.css">
 
         <!-- Title -->
@@ -20,349 +22,363 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-        <link rel="stylesheet" href="res/katex-adjust.css">
+        <link rel="stylesheet" href="res/bingo/katex-adjust.css">
     </head>
     <body>
-        <header>
-            <a href="index.html">yatabashi.github.io</a>
-        </header>
+        <header><a href="index.html">yatabashi.github.io</a><span id="arrow"></span></header>
 
-        <h1>n次元ビンゴにおける可能なビンゴ列の本数</h1>
+        <main>
+            <h1>n次元ビンゴにおける可能なビンゴ列の本数</h1>
 
-        <p>複数マスから成るビンゴシート（各辺\(m\)マス、\(n\)次元）において可能なビンゴ列の本数\(\#_b(m,n)\)は、次の式で与えられる（2025-08-22加筆）：$$
-            \sout{\#_b(m, n) = \frac{1}{2} \sum_{i=0}^{n-1} (2^{n-i} - 1) 2^{n-i} {}_n C_i (m-2)^i}
-        $$$$
-            \#_b(m, n) = \frac{1}{2} ((m+2)^n - m^n)
-        $$\(2 \le m \le 9, 1 \le n \le 8\)における\(\#_b(m,n)\)の値は次の通り：</p>
-        <table id="numsb">
-            <tr>
-                <th>m \ n</th>
-                <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th>
-            </tr>
-            <tr>
-                <th>2</th>
-                <td>\(1\)</td><td>\(6\)</td><td>\(28\)</td><td>\(120\)</td><td>\(496\)</td><td>\(2016\)</td><td>\(8128\)</td><td>\(32640\)</td>
-            </tr>
-            <tr>
-                <th>3</th>
-                <td>\(1\)</td><td>\(8\)</td><td>\(49\)</td><td>\(272\)</td><td>\(1441\)</td><td>\(7448\)</td><td>\(37969\)</td><td>\(192032\)</td>
-            </tr>
-            <tr>
-                <th>4</th>
-                <td>\(1\)</td><td>\(10\)</td><td>\(76\)</td><td>\(520\)</td><td>\(3376\)</td><td>\(21280\)</td><td>\(131776\)</td><td>\(807040\)</td>
-            </tr>
-            <tr>
-                <th>5</th>
-                <td>\(1\)</td><td>\(12\)</td><td>\(109\)</td><td>\(888\)</td><td>\(6841\)</td><td>\(51012\)</td><td>\(372709\)</td><td>\(2687088\)</td>
-            </tr>
-            <tr>
-                <th>6</th>
-                <td>\(1\)</td><td>\(14\)</td><td>\(148\)</td><td>\(1400\)</td><td>\(12496\)</td><td>\(107744\)</td><td>\(908608\)</td><td>\(7548800\)</td>
-            </tr>
-            <tr>
-                <th>7</th>
-                <td>\(1\)</td><td>\(16\)</td><td>\(193\)</td><td>\(2080\)</td><td>\(21121\)</td><td>\(206896\)</td><td>\(1979713\)</td><td>\(18640960\)</td>
-            </tr>
-            <tr>
-                <th>8</th>
-                <td>\(1\)</td><td>\(18\)</td><td>\(244\)</td><td>\(2952\)</td><td>\(33616\)</td><td>\(368928\)</td><td>\(3951424\)</td><td>\(41611392\)</td>
-            </tr>
-            <tr>
-                <th>9</th>
-                <td>\(1\)</td><td>\(20\)</td><td>\(301\)</td><td>\(4040\)</td><td>\(51001\)</td><td>\(620060\)</td><td>\(7352101\)</td><td>\(85656080\)</td>
-            </tr>
-        </table>
+            <section>
+                <p>複数マスから成るビンゴシート（各辺\(m\)マス、\(n\)次元）において可能なビンゴ列の本数\(\#_b(m,n)\)は、次の式で与えられる（2025-08-22加筆）：$$
+                    \sout{\#_b(m, n) = \frac{1}{2} \sum_{i=0}^{n-1} (2^{n-i} - 1) 2^{n-i} {}_n C_i (m-2)^i}
+                $$$$
+                    \#_b(m, n) = \frac{1}{2} ((m+2)^n - m^n)
+                $$\(2 \le m \le 9, 1 \le n \le 8\)における\(\#_b(m,n)\)の値は次の通り：</p>
+                <table id="numsb">
+                    <tr>
+                        <th>m \ n</th>
+                        <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th>
+                    </tr>
+                    <tr>
+                        <th>2</th>
+                        <td>\(1\)</td><td>\(6\)</td><td>\(28\)</td><td>\(120\)</td><td>\(496\)</td><td>\(2016\)</td><td>\(8128\)</td><td>\(32640\)</td>
+                    </tr>
+                    <tr>
+                        <th>3</th>
+                        <td>\(1\)</td><td>\(8\)</td><td>\(49\)</td><td>\(272\)</td><td>\(1441\)</td><td>\(7448\)</td><td>\(37969\)</td><td>\(192032\)</td>
+                    </tr>
+                    <tr>
+                        <th>4</th>
+                        <td>\(1\)</td><td>\(10\)</td><td>\(76\)</td><td>\(520\)</td><td>\(3376\)</td><td>\(21280\)</td><td>\(131776\)</td><td>\(807040\)</td>
+                    </tr>
+                    <tr>
+                        <th>5</th>
+                        <td>\(1\)</td><td>\(12\)</td><td>\(109\)</td><td>\(888\)</td><td>\(6841\)</td><td>\(51012\)</td><td>\(372709\)</td><td>\(2687088\)</td>
+                    </tr>
+                    <tr>
+                        <th>6</th>
+                        <td>\(1\)</td><td>\(14\)</td><td>\(148\)</td><td>\(1400\)</td><td>\(12496\)</td><td>\(107744\)</td><td>\(908608\)</td><td>\(7548800\)</td>
+                    </tr>
+                    <tr>
+                        <th>7</th>
+                        <td>\(1\)</td><td>\(16\)</td><td>\(193\)</td><td>\(2080\)</td><td>\(21121\)</td><td>\(206896\)</td><td>\(1979713\)</td><td>\(18640960\)</td>
+                    </tr>
+                    <tr>
+                        <th>8</th>
+                        <td>\(1\)</td><td>\(18\)</td><td>\(244\)</td><td>\(2952\)</td><td>\(33616\)</td><td>\(368928\)</td><td>\(3951424\)</td><td>\(41611392\)</td>
+                    </tr>
+                    <tr>
+                        <th>9</th>
+                        <td>\(1\)</td><td>\(20\)</td><td>\(301\)</td><td>\(4040\)</td><td>\(51001\)</td><td>\(620060\)</td><td>\(7352101\)</td><td>\(85656080\)</td>
+                    </tr>
+                </table>
+            </section>
 
-        <h2>導出</h2>
-        <p>通常のビンゴシートは、5×5の正方形をしています。これは、各辺を 5 マスに割った 2 次元超立方体です。このように、各辺が\(m\)マスになっている\(n\)次元超立方体を使ったビンゴを考え、これを\(m^n\)ビンゴと呼ぶことにします。例えば、通常のビンゴは「 5<sup>2</sup> ビンゴ」を用いています。また\(m\)の値に拘らず、\(m^n\)ビンゴを\(n\)次元ビンゴと呼ぶことにします。<br>ここで、\(m^n\)ビンゴにおいて、ビンゴとして成立しうるマスの並びがいくつあるかということを考えます。例えば、 5<sup>2</sup> ビンゴでは縦5本、横5本、斜め2本の合計12本が最大値です。他の次元を例に取ると、 5<sup>1</sup> ビンゴでは1本、 5<sup>3</sup> ビンゴでは109本です。</p>
+            <section>
+                <h2>導出</h2>
+                <p>通常のビンゴシートは、5×5の正方形をしています。これは、各辺を 5 マスに割った 2 次元超立方体です。このように、各辺が\(m\)マスになっている\(n\)次元超立方体を使ったビンゴを考え、これを\(m^n\)ビンゴと呼ぶことにします。例えば、通常のビンゴは「 5<sup>2</sup> ビンゴ」を用いています。また\(m\)の値に拘らず、\(m^n\)ビンゴを\(n\)次元ビンゴと呼ぶことにします。<br>ここで、\(m^n\)ビンゴにおいて、ビンゴとして成立しうるマスの並びがいくつあるかということを考えます。例えば、 5<sup>2</sup> ビンゴでは縦5本、横5本、斜め2本の合計12本が最大値です。他の次元を例に取ると、 5<sup>1</sup> ビンゴでは1本、 5<sup>3</sup> ビンゴでは109本です。</p>
 
-        <table>
-            <tr>
-                <td><div class="bingo-5-0"></div></td>
-                <td><div class="bingo-5-1"></div></td>
-                <td><div class="bingo-5-2"></div></td>
-                <td>
-                    <div class="canvas">
-                        <div class="cube">
-                            <div class="cube-face bingo-5-3-front"></div>
-                            <div class="cube-face bingo-5-3-righthand"></div>
-                            <div class="cube-face bingo-5-3-ceiling"></div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td> 5<sup>0</sup> ビンゴ</td>
-                <td> 5<sup>1</sup> ビンゴ</td>
-                <td> 5<sup>2</sup> ビンゴ</td>
-                <td> 5<sup>3</sup> ビンゴ</td>
-            </tr>
-        </table>
-
-        <h3>方針</h3>
-        <p>ビンゴ列にはファセット*上のマスが必ずちょうど2つ含まれるので、ファセット上のマスから伸びるビンゴ列の数を合計すれば、その半分が求めたい値になっています。<br><small>*\(n\)次元超多面体におけるそれを囲む\(n-1\)次元の面を言う。線分に対する（端）点、多角形に対する辺、多面体に対する面。例えば 5<sup>1</sup> ビンゴでは2マス、 5<sup>2</sup> ビンゴでは16マス、 5<sup>3</sup> ビンゴでは98マスがファセットに属する（下図で橙色に塗った部分）。</small><br><br>ところで、\(m=1\)と\(n=0\)のときは、もう一方の変数の値に拘らず、ビンゴシートが 1 マスのみから成ることになります。\(m=1\)の場合、「ビンゴ列にはファセット上のマスが必ずちょうど2つ含まれる」が成り立ちません。また\(n=0\)の場合は、 1 次元以上のビンゴシートにあるような通常の意味でのビンゴ「列」が存在しません。よって、以下これらの場合は除外して、ビンゴシートが複数マスからなる、一辺 2 マス以上、 1 次元以上の場合（\(m \geq 2, n \geq 1\)）を考えることとします。</p>
-        <p></p>
-
-        <table>
-            <tr>
-                <td>
-                    <div class="bingo-5-1">
-                        <div class="square5 orange" style="translate: 1px;"></div>
-                        <div class="square5 orange" style="translate: 97px;"></div>
-                    </div>
-                </td>
-                <td>
-                    <div class="bingo-5-2">
-                        <div class="square5 orange" style="translate: 1px 1px;"></div>
-                        <div class="square5 orange" style="translate: 25px 1px;"></div>
-                        <div class="square5 orange" style="translate: 49px 1px;"></div>
-                        <div class="square5 orange" style="translate: 73px 1px;"></div>
-                        <div class="square5 orange" style="translate: 97px 1px;"></div>
-                        <div class="square5 orange" style="translate: 1px 25px;"></div>
-                        <div class="square5 orange" style="translate: 97px 25px;"></div>
-                        <div class="square5 orange" style="translate: 1px 49px;"></div>
-                        <div class="square5 orange" style="translate: 97px 49px;"></div>
-                        <div class="square5 orange" style="translate: 1px 73px;"></div>
-                        <div class="square5 orange" style="translate: 97px 73px;"></div>
-                        <div class="square5 orange" style="translate: 1px 97px;"></div>
-                        <div class="square5 orange" style="translate: 25px 97px;"></div>
-                        <div class="square5 orange" style="translate: 49px 97px;"></div>
-                        <div class="square5 orange" style="translate: 73px 97px;"></div>
-                        <div class="square5 orange" style="translate: 97px 97px;"></div>
-                    </div>
-                </td>
-                <td>
-                    <div class="canvas">
-                        <div class="cube">
-                            <div class="cube-face bingo-5-3-front orange"></div>
-                            <div class="cube-face bingo-5-3-righthand orange"></div>
-                            <div class="cube-face bingo-5-3-ceiling orange"></div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td> 5<sup>1</sup> ビンゴ</td>
-                <td> 5<sup>2</sup> ビンゴ</td>
-                <td> 5<sup>3</sup> ビンゴ</td>
-            </tr>
-        </table>
-
-        <h3>ファセット上の一マスから伸びるビンゴ列の数</h3>
-        <p>マスの位置によって、そこから伸びるビンゴ列の数は異なります。 3<sup>3</sup> ビンゴを例に取って考えましょう。以降、説明のために手前左上のマスを原点として左右方向にx軸、上下方向にy軸、前後方向にz軸を導入します。</p>
-
-        <table>
-            <tr>
-                <td>
-                    <!-- 三次元空間を表す要素 -->
-                    <div class="canvas" style="margin-top: 60px; margin-bottom: 90px;">
-                        <!-- 立方体の全体を表す要素 -->
-                        <div class="cube">
-                            <!-- 立方体の面を表す要素 -->
-                            <div class="cube-face cube-face-front">
-                                <div style="position: absolute; width: 2px; height: 147px; background-color: black; translate: -1px; border-radius: 1px;"></div>
-                                <div style="position: absolute; width: 2px; height: 185px; transform: rotate(-90deg); transform-origin: top left; background-color: black; translate: -1px 1px; border-radius: 1px;"></div>
-                                <div style="position: absolute; width: 2px; height: 90px; transform: rotate(-121deg); transform-origin: top left; background-color: black; translate: 1px 0px; border-radius: 3px;"></div>
-
-                                <div style="position: absolute; translate: 188px -14px;">\(x\)</div>
-                                <div style="position: absolute; translate: -7px 146px;">\(y\)</div>
-                                <div style="position: absolute; translate: 80px -68px;">\(z\)</div>
-
-                                <div style="position: absolute; translate: -18px 8px;">\(0\)</div>
-                                <div style="position: absolute; translate: -18px 48px;">\(1\)</div>
-                                <div style="position: absolute; translate: -18px 88px">\(2\)</div>
-                                <div style="position: absolute; translate: 16px 0px;">\(0\)</div>
-                                <div style="position: absolute; translate: 56px 0px;">\(1\)</div>
-                                <div style="position: absolute; translate: 96px 0px;">\(2\)</div>
-                                <div style="position: absolute; translate: -8px -27px;">\(0\)</div>
-                                <div style="position: absolute; translate: 12px -39px;">\(1\)</div>
-                                <div style="position: absolute; translate: 32px -51px">\(2\)</div>
+                <table>
+                    <tr>
+                        <td><div class="bingo-5-0"></div></td>
+                        <td><div class="bingo-5-1"></div></td>
+                        <td><div class="bingo-5-2"></div></td>
+                        <td>
+                            <div class="canvas">
+                                <div class="cube">
+                                    <div class="cube-face bingo-5-3-front"></div>
+                                    <div class="cube-face bingo-5-3-righthand"></div>
+                                    <div class="cube-face bingo-5-3-ceiling"></div>
+                                </div>
                             </div>
-                            <div class="cube-face cube-face-righthand"></div>
-                            <div class="cube-face cube-face-ceiling">
-                                <!-- <div style="position: absolute; width: 5px; height: 162px; transform: rotate(-180deg); transform-origin: top left; background-color: black; translate: 3px 121px; border-radius: 3px;"></div> -->
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>軸の方向</td>
-            </tr>
-        </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> 5<sup>0</sup> ビンゴ</td>
+                        <td> 5<sup>1</sup> ビンゴ</td>
+                        <td> 5<sup>2</sup> ビンゴ</td>
+                        <td> 5<sup>3</sup> ビンゴ</td>
+                    </tr>
+                </table>
 
-        <p>立方体の頂点にあたるマスからは、縦横奥行の3方向、表面上を斜めに3方向、反対側の点にかけての1方向がありますが、これは①\(x,y,z\)のいずれか1つが変化するもの：<span class="stack">\([(0,0,0),(1,0,0),(2,0,0)]\)<br>\([(0,0,0),(0,1,0),(0,2,0)]\)<br>\([(0,0,0),(0,0,1),(0,0,2)]\)</span>、②\(x,y,z\)のいずれか2つが変化するもの：<span class="stack">\([(0,0,0),(1,1,0),(2,2,0)]\)<br>\([(0,0,0),(0,1,1),(0,2,2)]\)<br>\([(0,0,0),(1,0,1),(2,0,2)]\)</span>、③\(x,y,z\)のいずれか3つ（＝全て）が変化するもの：\([(0,0,0),(1,1,1),(2,2,2)]\)、として解釈できます（座標はマス\((0,0,0)\)からの例）。立方体の辺上（除頂点）にあるマスからは、①：<span class="stack">\([(1,0,0),(1,1,0),(1,2,0)]\)<br>\([(1,0,0),(1,0,1),(1,0,2)]\)</span>と②：\([(1,0,0),(1,1,1),(1,2,2)]\)だけが、立方体の面上（除辺上）にあるマスからは、①：\([(1,1,0),(1,1,1),(1,1,2)]\)だけがあります。</p>
+                <section>
+                    <h3>方針</h3>
+                    <p>ビンゴ列にはファセット*上のマスが必ずちょうど2つ含まれるので、ファセット上のマスから伸びるビンゴ列の数を合計すれば、その半分が求めたい値になっています。<br><small>*\(n\)次元超多面体におけるそれを囲む\(n-1\)次元の面を言う。線分に対する（端）点、多角形に対する辺、多面体に対する面。例えば 5<sup>1</sup> ビンゴでは2マス、 5<sup>2</sup> ビンゴでは16マス、 5<sup>3</sup> ビンゴでは98マスがファセットに属する（下図で橙色に塗った部分）。</small><br><br>ところで、\(m=1\)と\(n=0\)のときは、もう一方の変数の値に拘らず、ビンゴシートが 1 マスのみから成ることになります。\(m=1\)の場合、「ビンゴ列にはファセット上のマスが必ずちょうど2つ含まれる」が成り立ちません。また\(n=0\)の場合は、 1 次元以上のビンゴシートにあるような通常の意味でのビンゴ「列」が存在しません。よって、以下これらの場合は除外して、ビンゴシートが複数マスからなる、一辺 2 マス以上、 1 次元以上の場合（\(m \geq 2, n \geq 1\)）を考えることとします。</p>
+                    <p></p>
 
-        <table>
-            <tr>
-                <td>
-                    <!-- 三次元空間を表す要素 -->
-                    <div class="canvas">
-                        <!-- 立方体の全体を表す要素 -->
-                        <div class="cube">
-                            <!-- 立方体の面を表す要素 -->
-                            <div class="cube-face cube-face-front">
-                                <div class="square origin front-top-left"></div>
-                                <div class="square front-top-center"></div>
-                                <div class="square front-top-right"></div>
-                                <div class="square front-middle-left"></div>
-                                <div class="square front-middle-center"></div>
-                                <div class="square front-bottom-left"></div>
-                                <div class="square front-bottom-right"></div>
-                            </div>
-                            <div class="cube-face cube-face-righthand">
-                                <div class="square righthand-top-left"></div>
-                                <div class="square righthand-top-right"></div>
-                                <div class="square righthand-bottom-left"></div>
-                                <div class="square righthand-bottom-right"></div>
-                            </div>
-                            <div class="cube-face cube-face-ceiling">
-                                <div class="square ceiling-top-left"></div>
-                                <div class="square ceiling-top-right"></div>
-                                <div class="square ceiling-middle-left"></div>
-                                <div class="square ceiling-middle-center"></div>
-                                <div class="square origin ceiling-bottom-left"></div>
-                                <div class="square ceiling-bottom-center"></div>
-                                <div class="square ceiling-bottom-right"></div>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="canvas">
-                        <div class="cube">
-                            <div class="cube-face cube-face-front">
-                                <div class="square origin front-top-center"></div>
-                                <div class="square front-middle-center"></div>
-                                <div class="square front-bottom-center"></div>
-                            </div>
-                            <div class="cube-face cube-face-righthand"></div>
-                            <div class="cube-face cube-face-ceiling">
-                                <div class="square ceiling-top-center"></div>
-                                <div class="square ceiling-middle-center"></div>
-                                <div class="square origin ceiling-bottom-center"></div>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="canvas">
-                        <div class="cube">
-                            <div class="cube-face cube-face-front">
-                                <div class="square origin front-middle-center"></div>
-                            </div>
-                            <div class="cube-face cube-face-righthand"></div>
-                            <div class="cube-face cube-face-ceiling"></div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>頂点から</td>
-                <td>辺上から</td>
-                <td>面上から</td>
-            </tr>
-        </table>
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="bingo-5-1">
+                                    <div class="square5 orange" style="translate: 1px;"></div>
+                                    <div class="square5 orange" style="translate: 97px;"></div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="bingo-5-2">
+                                    <div class="square5 orange" style="translate: 1px 1px;"></div>
+                                    <div class="square5 orange" style="translate: 25px 1px;"></div>
+                                    <div class="square5 orange" style="translate: 49px 1px;"></div>
+                                    <div class="square5 orange" style="translate: 73px 1px;"></div>
+                                    <div class="square5 orange" style="translate: 97px 1px;"></div>
+                                    <div class="square5 orange" style="translate: 1px 25px;"></div>
+                                    <div class="square5 orange" style="translate: 97px 25px;"></div>
+                                    <div class="square5 orange" style="translate: 1px 49px;"></div>
+                                    <div class="square5 orange" style="translate: 97px 49px;"></div>
+                                    <div class="square5 orange" style="translate: 1px 73px;"></div>
+                                    <div class="square5 orange" style="translate: 97px 73px;"></div>
+                                    <div class="square5 orange" style="translate: 1px 97px;"></div>
+                                    <div class="square5 orange" style="translate: 25px 97px;"></div>
+                                    <div class="square5 orange" style="translate: 49px 97px;"></div>
+                                    <div class="square5 orange" style="translate: 73px 97px;"></div>
+                                    <div class="square5 orange" style="translate: 97px 97px;"></div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="canvas">
+                                    <div class="cube">
+                                        <div class="cube-face bingo-5-3-front orange"></div>
+                                        <div class="cube-face bingo-5-3-righthand orange"></div>
+                                        <div class="cube-face bingo-5-3-ceiling orange"></div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> 5<sup>1</sup> ビンゴ</td>
+                            <td> 5<sup>2</sup> ビンゴ</td>
+                            <td> 5<sup>3</sup> ビンゴ</td>
+                        </tr>
+                    </table>
+                </section>
 
-        <p>このように、\(n\)次元ビンゴにおけるファセット上のマスには、その位置に応じて、利用可能な成分が 1 個から\(n\)個あります。また、特に\(N\)個の成分が利用可能な場合に、そこから（ビンゴ列を伸ばす方向を指定するために）実際に利用する成分を選ぶ方法は\(\sum_{k=1}^N {}_N C_k\)通り、すなわち$$
-            2^N - 1
-        $$通りあります。</p>
+                <section>
+                    <h3>ファセット上の一マスから伸びるビンゴ列の数</h3>
+                    <p>マスの位置によって、そこから伸びるビンゴ列の数は異なります。 3<sup>3</sup> ビンゴを例に取って考えましょう。以降、説明のために手前左上のマスを原点として左右方向にx軸、上下方向にy軸、前後方向にz軸を導入します。</p>
 
-        <h3>ファセット上のマスの数</h3>
-        <p>さて、前節で、特定のマスから引けるビンゴ列の数は分かりました。次は、それらのマス自体の数を数えます。前述の通り、ファセット上のマスはビンゴ列を伸ばす方向として利用可能な成分の数で\(n\)通りに分類できます。ここで、\(N\)個の成分が利用可能なマスは、特に余次元\(N\)の面上にあります。 3<sup>3</sup> ビンゴでは次のようになっています：</p>
+                    <table>
+                        <tr>
+                            <td>
+                                <!-- 三次元空間を表す要素 -->
+                                <div class="canvas" style="margin-top: 60px; margin-bottom: 90px;">
+                                    <!-- 立方体の全体を表す要素 -->
+                                    <div class="cube">
+                                        <!-- 立方体の面を表す要素 -->
+                                        <div class="cube-face cube-face-front">
+                                            <div style="position: absolute; width: 2px; height: 147px; background-color: black; translate: -1px; border-radius: 1px;"></div>
+                                            <div style="position: absolute; width: 2px; height: 185px; transform: rotate(-90deg); transform-origin: top left; background-color: black; translate: -1px 1px; border-radius: 1px;"></div>
+                                            <div style="position: absolute; width: 2px; height: 90px; transform: rotate(-121deg); transform-origin: top left; background-color: black; translate: 1px 0px; border-radius: 3px;"></div>
 
-        <table>
-            <tr>
-                <th>ビンゴ列に利用可能な成分の数</th>
-                <th>余次元</th>
-                <th>次元</th>
-                <th>名称</th>
-                <th>個数</th>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>3</td>
-                <td>0</td>
-                <td>頂点</td>
-                <td>8</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>2</td>
-                <td>1</td>
-                <td>辺</td>
-                <td>12</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>1</td>
-                <td>2</td>
-                <td>面</td>
-                <td>6</td>
-            </tr>
-        </table>
+                                            <div style="position: absolute; translate: 188px -14px;">\(x\)</div>
+                                            <div style="position: absolute; translate: -7px 146px;">\(y\)</div>
+                                            <div style="position: absolute; translate: 80px -68px;">\(z\)</div>
 
-        <p>ここで、\(n\)次元多面体における余次元\(N\)の面、\(ν = n - N\)として\(ν\)次元面の個数は次の式で与えられます：$$
-            2^{n-ν} {}_n C_{ν}
-        $$これは、\(ν\)次元面を構成する成分の選び方が\({}_n C_{ν}\)通りあり、また面は面を構成しない成分のそれぞれ両側に配置される*ので、同じ成分からなる面がそれぞれ\(2^{n-ν}\)個あるためです。<br><small>* 3次元の立体を例に取ると、xyからなる面は前後の2箇所（z軸の両側）にあり、xからなる辺は上下と前後の組み合わせによる4箇所（y軸とz軸の両側）にあり、頂点は左右・上下・前後の組み合わせによる8箇所（x軸とy軸とz軸の両側）にある。</small></p>
+                                            <div style="position: absolute; translate: -18px 8px;">\(0\)</div>
+                                            <div style="position: absolute; translate: -18px 48px;">\(1\)</div>
+                                            <div style="position: absolute; translate: -18px 88px">\(2\)</div>
+                                            <div style="position: absolute; translate: 16px 0px;">\(0\)</div>
+                                            <div style="position: absolute; translate: 56px 0px;">\(1\)</div>
+                                            <div style="position: absolute; translate: 96px 0px;">\(2\)</div>
+                                            <div style="position: absolute; translate: -8px -27px;">\(0\)</div>
+                                            <div style="position: absolute; translate: 12px -39px;">\(1\)</div>
+                                            <div style="position: absolute; translate: 32px -51px">\(2\)</div>
+                                        </div>
+                                        <div class="cube-face cube-face-righthand"></div>
+                                        <div class="cube-face cube-face-ceiling">
+                                            <!-- <div style="position: absolute; width: 5px; height: 162px; transform: rotate(-180deg); transform-origin: top left; background-color: black; translate: 3px 121px; border-radius: 3px;"></div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>軸の方向</td>
+                        </tr>
+                    </table>
 
-        <p>次に、ある一つの面に属するマスの個数を考えます。ただし、本来求めたいのは\(ν\)次元面に属するマスの個数というよりも、\(ν\)次元面に属し、\(ν\)以下の次元の面に属さないマスの個数です。同じ\(ν\)次元面に属していても、\(ν\)以下の次元の面に<u>属する</u>マスから引けるビンゴ列の本数は、\(ν\)以下の次元の面に<u>属さない</u>マスから引けるビンゴ列の本数よりも多くなるためです。よってその面のファセットに属するマスを除いて数える必要がありますが、これは一辺のマス数から両端分を除いた値に面の次元を乗じた$$
-            (m-2)^{ν}
-        $$で済みます（\(m \ge 2\)であることを確認してください）。問題になりそうなのは「両端」が存在しない\(ν=0\)（頂点）の場合ですが、「\(ν\)以下の次元」が存在しないため\(ν\)次元面に属するマスの個数である 1 を得られればよく、実際常に 1 を返すため都合よく行きます。</p>
+                    <p>立方体の頂点にあたるマスからは、縦横奥行の3方向、表面上を斜めに3方向、反対側の点にかけての1方向がありますが、これは①\(x,y,z\)のいずれか1つが変化するもの：<span class="stack">\([(0,0,0),(1,0,0),(2,0,0)]\)<br>\([(0,0,0),(0,1,0),(0,2,0)]\)<br>\([(0,0,0),(0,0,1),(0,0,2)]\)</span>、②\(x,y,z\)のいずれか2つが変化するもの：<span class="stack">\([(0,0,0),(1,1,0),(2,2,0)]\)<br>\([(0,0,0),(0,1,1),(0,2,2)]\)<br>\([(0,0,0),(1,0,1),(2,0,2)]\)</span>、③\(x,y,z\)のいずれか3つ（＝全て）が変化するもの：\([(0,0,0),(1,1,1),(2,2,2)]\)、として解釈できます（座標はマス\((0,0,0)\)からの例）。立方体の辺上（除頂点）にあるマスからは、①：<span class="stack">\([(1,0,0),(1,1,0),(1,2,0)]\)<br>\([(1,0,0),(1,0,1),(1,0,2)]\)</span>と②：\([(1,0,0),(1,1,1),(1,2,2)]\)だけが、立方体の面上（除辺上）にあるマスからは、①：\([(1,1,0),(1,1,1),(1,1,2)]\)だけがあります。</p>
 
-        <p>したがって、\(n\)個の成分が利用可能なマスの個数は、\(ν = n - N\)を用いて$$
-            2^{n-ν} {}_n C_{ν} (m-2)^{ν}
-        $$で与えられます。</p>
+                    <table>
+                        <tr>
+                            <td>
+                                <!-- 三次元空間を表す要素 -->
+                                <div class="canvas">
+                                    <!-- 立方体の全体を表す要素 -->
+                                    <div class="cube">
+                                        <!-- 立方体の面を表す要素 -->
+                                        <div class="cube-face cube-face-front">
+                                            <div class="square origin front-top-left"></div>
+                                            <div class="square front-top-center"></div>
+                                            <div class="square front-top-right"></div>
+                                            <div class="square front-middle-left"></div>
+                                            <div class="square front-middle-center"></div>
+                                            <div class="square front-bottom-left"></div>
+                                            <div class="square front-bottom-right"></div>
+                                        </div>
+                                        <div class="cube-face cube-face-righthand">
+                                            <div class="square righthand-top-left"></div>
+                                            <div class="square righthand-top-right"></div>
+                                            <div class="square righthand-bottom-left"></div>
+                                            <div class="square righthand-bottom-right"></div>
+                                        </div>
+                                        <div class="cube-face cube-face-ceiling">
+                                            <div class="square ceiling-top-left"></div>
+                                            <div class="square ceiling-top-right"></div>
+                                            <div class="square ceiling-middle-left"></div>
+                                            <div class="square ceiling-middle-center"></div>
+                                            <div class="square origin ceiling-bottom-left"></div>
+                                            <div class="square ceiling-bottom-center"></div>
+                                            <div class="square ceiling-bottom-right"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="canvas">
+                                    <div class="cube">
+                                        <div class="cube-face cube-face-front">
+                                            <div class="square origin front-top-center"></div>
+                                            <div class="square front-middle-center"></div>
+                                            <div class="square front-bottom-center"></div>
+                                        </div>
+                                        <div class="cube-face cube-face-righthand"></div>
+                                        <div class="cube-face cube-face-ceiling">
+                                            <div class="square ceiling-top-center"></div>
+                                            <div class="square ceiling-middle-center"></div>
+                                            <div class="square origin ceiling-bottom-center"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="canvas">
+                                    <div class="cube">
+                                        <div class="cube-face cube-face-front">
+                                            <div class="square origin front-middle-center"></div>
+                                        </div>
+                                        <div class="cube-face cube-face-righthand"></div>
+                                        <div class="cube-face cube-face-ceiling"></div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>頂点から</td>
+                            <td>辺上から</td>
+                            <td>面上から</td>
+                        </tr>
+                    </table>
 
-        <h3>可能なビンゴ列の本数</h3>
-        <p>前二節での議論から、\(n\)個の成分が利用可能なマスから引かれるビンゴ列の本数は、ビンゴシート全体で$$
-            (2^{n-ν} - 1) 2^{n-ν} {}_n C_{ν} (m-2)^{ν}
-        $$として得られます（\(2^N - 1\)を\(N = n - ν\)で置換しています）。よってこれのビンゴ列に利用可能な成分の数（＝余次元）\(N = 1,\ldots,n\)での総和、すなわち面の次元\(ν = 0,\ldots,n-1\)での総和を取った値がファセット上の全てのマスから引けるビンゴ列の本数の合計です：$$
-            \sum_{ν=0}^{n-1} (2^{n-ν} - 1) 2^{n-ν} {}_n C_{ν} (m-2)^{ν}
-        $$これは各ビンゴ列を2回ずつ数えているので、この半分が求めるべきものです。</p>
-        <p>以上のことから、\(m^n\)ビンゴにおいて可能なビンゴ列の本数は$$
-            \frac{1}{2} \sum_{i=0}^{n-1} (2^{n-i} - 1) 2^{n-i} {}_n C_i (m-2)^i
-        $$によって求まります。</p>
+                    <p>このように、\(n\)次元ビンゴにおけるファセット上のマスには、その位置に応じて、利用可能な成分が 1 個から\(n\)個あります。また、特に\(N\)個の成分が利用可能な場合に、そこから（ビンゴ列を伸ばす方向を指定するために）実際に利用する成分を選ぶ方法は\(\sum_{k=1}^N {}_N C_k\)通り、すなわち$$
+                        2^N - 1
+                    $$通りあります。</p>
+                </section>
 
-        <h3>除外したケースについて</h3>
-        <p>冒頭で「 1 マスビンゴ」になってしまう\(m=1\)と\(n=0\)の場合を除外しました。これらにおけるビンゴ列（？）の本数を考えるならば、唯一のマスが開いた 1 本であるということになるでしょう。しかし、上で得た式に\(m=1\)を代入すると\(0,1,4,13,40, \cdots (n \ge 0)\)となり、\(n=0\)を代入すると常に 0 が得られます。これらの場合にも対応させるならば、$$
-            \#_b(m,n) = \left\{ \begin{array}{ll}
-                1 & (m=1 \lor n=0)\\
-                \frac{1}{2} \sum_{i=1}^{n-1} (2^{n-i} - 1) 2^{n-i} {}_n C_i (m-2)^i & (m > 1 \land n > 0) 
-            \end{array} \right.
-        $$としてもいいかもしれません。</p>
+                <section>
+                    <h3>ファセット上のマスの数</h3>
+                    <p>さて、前節で、特定のマスから引けるビンゴ列の数は分かりました。次は、それらのマス自体の数を数えます。前述の通り、ファセット上のマスはビンゴ列を伸ばす方向として利用可能な成分の数で\(n\)通りに分類できます。ここで、\(N\)個の成分が利用可能なマスは、特に余次元\(N\)の面上にあります。 3<sup>3</sup> ビンゴでは次のようになっています：</p>
 
-        <h3>式を簡単にする（2025-08-22追記）</h3>
-        <p>この記事を書いたあと、私は<a href="https://yatabashi.github.io/zorome.html">別の記事</a>でLLMの助けを借りて式を簡単にする経験をしました。いま前掲の式を見てみたときに、より簡単な表現ができそうな気配を感じたので、実行してみました。</p>
-        <p>まず、式を二つの項に分解します。$$
-            \begin{align*}
-                \#_b(m, n)
-                &= \frac{1}{2} \sum_{i=0}^{n-1} (2^{n-i} - 1) 2^{n-i} \binom{n}{i} (m-2)^i \\
-                &= \frac{1}{2} \sum_{i=0}^{n-1} ((2^{n-i})^2 - 2^{n-i}) \binom{n}{i} (m-2)^i \\
-                &= \frac{1}{2} (\sum_{i=0}^{n-1} 4^{n-i} \binom{n}{i} (m-2)^i - \sum_{i=0}^{n-1} 2^{n-i} \binom{n}{i} (m-2)^i) \\
-            \end{align*}
-        $$ここで\(S_1 = \sum_{i=0}^{n-1} 4^{n-i} \binom{n}{i} (m-2)^i, S_2 = \sum_{i=0}^{n-1} 2^{n-i} \binom{n}{i} (m-2)^i\)と置くと、二項定理から$$
-            \begin{align*}
-                S_1 &= \sum_{i=0}^{n} \binom{n}{i} 4^{n-i} (m-2)^i - \binom{n}{n} 4^{n-n} (m-2)^n \\
-                    &= (4+(m-2))^n - (m-2)^i \\
-                    &= (m+2)^n - (m-2)^i \\
-            \end{align*}
-        $$$$
-            \begin{align*}
-                S_2 &= \sum_{i=0}^{n} \binom{n}{i} 2^{n-i} (m-2)^i - \binom{n}{n} 2^{n-n} (m-2)^n\\
-                    &= (2+(m-2))^n - (m-2)^i \\
-                    &= m^n - (m-2)^i
-            \end{align*}
-        $$と簡単にできます。従って$$
-            \begin{align*}
-                \#_b(m, n)
-                &= \frac{1}{2} (S_1 - S_2) \\
-                &= \frac{1}{2} ((m+2)^n - m^n) \\
-            \end{align*}
-        $$ということになります。実際この式に基づいて計算した結果は最初に載せた表と一致しました。なるほど言われてみれば二項定理っぽい香りが漂ってますね。ありがとう Gemini 2.5 Pro。</p>
+                    <table>
+                        <tr>
+                            <th>ビンゴ列に利用可能な成分の数</th>
+                            <th>余次元</th>
+                            <th>次元</th>
+                            <th>名称</th>
+                            <th>個数</th>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>3</td>
+                            <td>0</td>
+                            <td>頂点</td>
+                            <td>8</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>辺</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>面</td>
+                            <td>6</td>
+                        </tr>
+                    </table>
 
-        <div class="foot-info">
-            公開：2024-08-12<br>最終更新：2025-08-22
-        </div>
+                    <p>ここで、\(n\)次元多面体における余次元\(N\)の面、\(ν = n - N\)として\(ν\)次元面の個数は次の式で与えられます：$$
+                        2^{n-ν} {}_n C_{ν}
+                    $$これは、\(ν\)次元面を構成する成分の選び方が\({}_n C_{ν}\)通りあり、また面は面を構成しない成分のそれぞれ両側に配置される*ので、同じ成分からなる面がそれぞれ\(2^{n-ν}\)個あるためです。<br><small>* 3次元の立体を例に取ると、xyからなる面は前後の2箇所（z軸の両側）にあり、xからなる辺は上下と前後の組み合わせによる4箇所（y軸とz軸の両側）にあり、頂点は左右・上下・前後の組み合わせによる8箇所（x軸とy軸とz軸の両側）にある。</small></p>
+
+                    <p>次に、ある一つの面に属するマスの個数を考えます。ただし、本来求めたいのは\(ν\)次元面に属するマスの個数というよりも、\(ν\)次元面に属し、\(ν\)以下の次元の面に属さないマスの個数です。同じ\(ν\)次元面に属していても、\(ν\)以下の次元の面に<u>属する</u>マスから引けるビンゴ列の本数は、\(ν\)以下の次元の面に<u>属さない</u>マスから引けるビンゴ列の本数よりも多くなるためです。よってその面のファセットに属するマスを除いて数える必要がありますが、これは一辺のマス数から両端分を除いた値に面の次元を乗じた$$
+                        (m-2)^{ν}
+                    $$で済みます（\(m \ge 2\)であることを確認してください）。問題になりそうなのは「両端」が存在しない\(ν=0\)（頂点）の場合ですが、「\(ν\)以下の次元」が存在しないため\(ν\)次元面に属するマスの個数である 1 を得られればよく、実際常に 1 を返すため都合よく行きます。</p>
+
+                    <p>したがって、\(n\)個の成分が利用可能なマスの個数は、\(ν = n - N\)を用いて$$
+                        2^{n-ν} {}_n C_{ν} (m-2)^{ν}
+                    $$で与えられます。</p>
+                </section>
+
+                <section>
+                    <h3>可能なビンゴ列の本数</h3>
+                    <p>前二節での議論から、\(n\)個の成分が利用可能なマスから引かれるビンゴ列の本数は、ビンゴシート全体で$$
+                        (2^{n-ν} - 1) 2^{n-ν} {}_n C_{ν} (m-2)^{ν}
+                    $$として得られます（\(2^N - 1\)を\(N = n - ν\)で置換しています）。よってこれのビンゴ列に利用可能な成分の数（＝余次元）\(N = 1,\ldots,n\)での総和、すなわち面の次元\(ν = 0,\ldots,n-1\)での総和を取った値がファセット上の全てのマスから引けるビンゴ列の本数の合計です：$$
+                        \sum_{ν=0}^{n-1} (2^{n-ν} - 1) 2^{n-ν} {}_n C_{ν} (m-2)^{ν}
+                    $$これは各ビンゴ列を2回ずつ数えているので、この半分が求めるべきものです。</p>
+                    <p>以上のことから、\(m^n\)ビンゴにおいて可能なビンゴ列の本数は$$
+                        \frac{1}{2} \sum_{i=0}^{n-1} (2^{n-i} - 1) 2^{n-i} {}_n C_i (m-2)^i
+                    $$によって求まります。</p>
+                </section>
+
+                <section>
+                    <h3>除外したケースについて</h3>
+                    <p>冒頭で「 1 マスビンゴ」になってしまう\(m=1\)と\(n=0\)の場合を除外しました。これらにおけるビンゴ列（？）の本数を考えるならば、唯一のマスが開いた 1 本であるということになるでしょう。しかし、上で得た式に\(m=1\)を代入すると\(0,1,4,13,40, \cdots (n \ge 0)\)となり、\(n=0\)を代入すると常に 0 が得られます。これらの場合にも対応させるならば、$$
+                        \#_b(m,n) = \left\{ \begin{array}{ll}
+                            1 & (m=1 \lor n=0)\\
+                            \frac{1}{2} \sum_{i=1}^{n-1} (2^{n-i} - 1) 2^{n-i} {}_n C_i (m-2)^i & (m > 1 \land n > 0) 
+                        \end{array} \right.
+                    $$としてもいいかもしれません。</p>
+                </section>
+
+                <section>
+                    <h3>式を簡単にする（2025-08-22追記）</h3>
+                    <p>この記事を書いたあと、私は<a href="https://yatabashi.github.io/zorome.html">別の記事</a>でLLMの助けを借りて式を簡単にする経験をしました。いま前掲の式を見てみたときに、より簡単な表現ができそうな気配を感じたので、実行してみました。</p>
+                    <p>まず、式を二つの項に分解します。$$
+                        \begin{align*}
+                            \#_b(m, n)
+                            &= \frac{1}{2} \sum_{i=0}^{n-1} (2^{n-i} - 1) 2^{n-i} \binom{n}{i} (m-2)^i \\
+                            &= \frac{1}{2} \sum_{i=0}^{n-1} ((2^{n-i})^2 - 2^{n-i}) \binom{n}{i} (m-2)^i \\
+                            &= \frac{1}{2} (\sum_{i=0}^{n-1} 4^{n-i} \binom{n}{i} (m-2)^i - \sum_{i=0}^{n-1} 2^{n-i} \binom{n}{i} (m-2)^i) \\
+                        \end{align*}
+                    $$ここで\(S_1 = \sum_{i=0}^{n-1} 4^{n-i} \binom{n}{i} (m-2)^i, S_2 = \sum_{i=0}^{n-1} 2^{n-i} \binom{n}{i} (m-2)^i\)と置くと、二項定理から$$
+                        \begin{align*}
+                            S_1 &= \sum_{i=0}^{n} \binom{n}{i} 4^{n-i} (m-2)^i - \binom{n}{n} 4^{n-n} (m-2)^n \\
+                                &= (4+(m-2))^n - (m-2)^i \\
+                                &= (m+2)^n - (m-2)^i \\
+                        \end{align*}
+                    $$$$
+                        \begin{align*}
+                            S_2 &= \sum_{i=0}^{n} \binom{n}{i} 2^{n-i} (m-2)^i - \binom{n}{n} 2^{n-n} (m-2)^n\\
+                                &= (2+(m-2))^n - (m-2)^i \\
+                                &= m^n - (m-2)^i
+                        \end{align*}
+                    $$と簡単にできます。従って$$
+                        \begin{align*}
+                            \#_b(m, n)
+                            &= \frac{1}{2} (S_1 - S_2) \\
+                            &= \frac{1}{2} ((m+2)^n - m^n) \\
+                        \end{align*}
+                    $$ということになります。実際この式に基づいて計算した結果は最初に載せた表と一致しました。なるほど言われてみれば二項定理っぽい香りが漂ってますね。ありがとう Gemini 2.5 Pro。</p>
+                </section>
+            </section>
+        </main>
+
+        <div class="foot-info">公開：2024-08-12<br>最終更新：2025-08-22</div>
     </body>
 </html>
