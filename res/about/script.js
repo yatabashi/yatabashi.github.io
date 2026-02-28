@@ -9,7 +9,7 @@ for (let i of numbers) {
     elmBook.className = "book";
     elmBook.open = "true";
 
-    let elmTitle = document.createElement("p");
+    let elmTitle = document.createElement("div");
     elmTitle.className = "title";
     let titles = book[0].reduce((acc, val) => {
         if (acc) {
@@ -21,7 +21,7 @@ for (let i of numbers) {
     elmTitle.innerHTML = titles;
     elmBook.appendChild(elmTitle);
 
-    let elmComment = document.createElement("p");
+    let elmComment = document.createElement("div");
     elmComment.className = "comment";
     elmComment.innerHTML = book[1];
     elmBook.appendChild(elmComment);

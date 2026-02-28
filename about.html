@@ -5,6 +5,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="icon" href="res/favicon.ico">
+        <link rel="stylesheet" href="res/font.css">
+        <link rel="stylesheet" href="res/color.css">
         <link rel="stylesheet" href="res/style.css">
         <script src="res/script.js"></script>
 
@@ -17,43 +19,41 @@
         <script src="res/about/script.js" defer></script>
     </head>
     <body>
-        <header>
-            <a href="index.html">yatabashi.github.io</a>
-        </header>
+        <header><a href="index.html">yatabashi.github.io</a><span id="arrow"></span></header>
 
-        <h1>自己紹介</h1>
+        <main>
+            <h1>自己紹介</h1>
 
-        <p class="has-middle-placed-img"><span>谷田橋という名前の、ほとんど Twitter 上のいきものです。このサイトを作ってからはインターネット存在としての冗長性が増しました。</p>
+            <section>
+                <p><span>谷田橋という名前の、ほとんど Twitter 上のいきものです。このサイトができてからはインターネット存在としての冗長性が増しました。</p>
 
-        <ul>
-            <li>名前 → 谷田橋<ul>
-                <li>読み → やたばし</li>
-                <li>読み → <span style="font-family: 'Gentium';">[jatabaɕ]</span></li>
-                <li>アクセント → 平板型</li>
-                <li>ラテン文字転写 → yatabashi</li>
-            </ul></li>
-            <li><span style="display: inline-flex; align-items: center; white-space: pre;">アイコン → <img class="icon" src="res/icon.svg"></span></li>
-            <li>出身地 → JP-13</li>
-            <li>所在地 → JP-26</li>
-        </ul>
-        
-        <p>本棚は人の関心事を透けて見せることに定評があります。家に並んだ本から何冊か抜き出してきてみました。</p>
-        <div id="shelf-interests"></div>
+                <ul>
+                    <li>名前 → 谷田橋<ul>
+                        <li>読み → やたばし</li>
+                        <li>読み → <span style="font-family: 'Gentium';">[jatabaɕ]</span></li>
+                        <li>アクセント → 平板型</li>
+                        <li>ラテン文字転写 → yatabashi</li>
+                    </ul></li>
+                    <li><span class="with-img">アイコン → <img style="width: 3em;" src="res/icon.svg"></span></li>
+                    <li>出身地 → JP-13</li>
+                    <li>所在地 → JP-26</li>
+                </ul>
 
-        <h2>Kontakt</h2>
-        <ul>
-            <li>Twitter: <a href="https://twitter.com/yatabashi">@yatabashi</a></li>
-            <li>GitHub: <a href="https://github.com/yatabashi">yatabashi</a></li>
-            <li><b>Neaktivní účty</b><ul>
-                <li>Mastodon: <a href="https://fedibird.com/@yatabashi">@yatabashi@fedibird.com</a></li>
-                <li>Misskey: <a href="https://misskey.io/@yatabashi">@yatabashi@misskey.io</a></li>
-                <li>Bluesky: <a href="https://bsky.app/profile/yatabashi.bsky.social">@yatabashi.bsky.social</a></li>
-                <li>Mixi2: <a href="https://mixi.social/@yatabashi">@yatabashi</a></li>
-            </ul></li>
-        </ul>
+                <p>本棚は人の関心事を透けて見せることに定評があります。家に並んだ本から何冊か抜き出してきてみました。</p>
 
-        <div class="foot-info">
-            公開：2025-09-09
-        </div>
+                <div id="shelf-interests"></div>
+            </section>
+
+            <section>
+                <h2>リンク</h2>
+                <ul>
+                    <li>Twitter: <a href="https://twitter.com/yatabashi">@yatabashi</a></li>
+                    <li>GitHub: <a href="https://github.com/yatabashi">yatabashi</a></li>
+                    <li>(Misskey: <a href="https://misskey.io/@yatabashi">@yatabashi@misskey.io</a>)</li>
+                </ul>
+            </section>
+        </main>
+
+        <div class="foot-info">公開：2025-09-09<br>最終更新：2026-02-22</div>
     </body>
 </html>

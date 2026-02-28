@@ -4,35 +4,20 @@
     src: url('../../fonts/Gentium/Gentium-Regular.woff2');
 }
 
-.icon {
-    width: 3em;
-    aspect-ratio: 1;
-}
-
-.has-middle-placed-img > * {
-    vertical-align: middle
-}
-
 .book {
     width: 100%;
-    padding: 0.5rem 0.75rem;
     box-sizing: border-box;
-    background-color: #D5EEFC;
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 0.75em;
 
-    font-family: "Noto Serif JP", serif;
-    /* font-weight: 300; */
-
-    margin-bottom: 0.5em;
-}
-
-.title, .comment {
-    margin: 0;
+    background-color: var(--bg-gray3);
+    border-radius: 0.5em;
 }
 
 .title {
     padding-bottom: 0.3em;
     margin-bottom: 0.3em;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--text-gray);
 }
 
 .comment {
