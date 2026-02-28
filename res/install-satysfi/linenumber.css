@@ -1,0 +1,35 @@
+pre {
+    counter-reset: ln;
+    position: relative;
+}
+
+pre code {
+    &.code-ln {
+        padding-left: 3.6em;
+    }
+
+    &.code-bgn {
+        padding-left: 2em;
+    }
+}
+
+:where(.ln, .bgn)::before {
+    color: var(--text-gray);
+    position: absolute;
+    left: 0;
+    padding-left: 0.75em;
+}
+
+.ln::before {
+    counter-increment: ln;
+    content: counter(ln);
+    width: 1.8em;
+    display: inline-block;
+    border-right: 1px solid var(--gray);
+    padding-right: 0.4em;
+    text-align: right;
+}
+
+.bgn::before {
+    content: "$ ";
+}
