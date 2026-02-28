@@ -5,6 +5,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="icon" href="res/favicon.ico">
+        <link rel="stylesheet" href="res/font.css">
+        <link rel="stylesheet" href="res/color.css">
         <link rel="stylesheet" href="res/style.css">
         <script src="res/script.js"></script>
 
@@ -16,75 +18,76 @@
         <script src="res/12-segments/data.js"></script>
         <script src="res/12-segments/script.js" defer></script>
 
-        <!-- highlight.js -->
-        <link rel="stylesheet" href="res/highlight-theme.css">
-        <link rel="stylesheet" href="res/highlight-precode.css">
+        <!-- highlight.js + linenumber -->
+        <link rel="stylesheet" href="res/12-segments/highlight-theme.css">
         <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
-        <script src="res/highlight-plugin.js"></script>
+        <script src="res/12-segments/highlight-plugin.js"></script>
+        <link rel="stylesheet" href="res/12-segments/linenumber.css">
+        <script src="res/12-segments/linenumber.js"></script>
 
         <!-- KaTeX -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-        <link rel="stylesheet" href="res/katex-adjust.css">
     </head>
     <body>
-        <header>
-            <a href="index.html">yatabashi.github.io</a>
-        </header>
+        <header><a href="index.html">yatabashi.github.io</a><span id="arrow"></span></header>
 
         <h1>12セグメントで文字を作る</h1>
 
-        <p>7セグメントディスプレイってありますよね。<img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/7-segment_abdeg.svg" style="vertical-align: bottom; height: 1.5em;">←こういうやつです。デジタル数字と言うと大抵これのことを指し、横線3本・縦線4本からなる7つのセグメントを点けたり消したりすることで数字（文字）を表示することができます。ただ7セグメントというのはなかなか小さくて、表現できる形には限りがあります。論理的にも128 (2<sup>7</sup>) 通りしかなく、ラテン文字を例に取っても K と X を H と区別して表示するのは無理ですね。これを解消するためにセグメントを増やしたディスプレイにはいくつかの種類があるようです。</p>
+        <section>
+            <p>7セグメントディスプレイってありますよね。<img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/7-segment_abdeg.svg" style="vertical-align: bottom; height: 1.5em;">←こういうやつです。デジタル数字と言うと大抵これのことを指し、横線3本・縦線4本からなる7つのセグメントを点けたり消したりすることで数字（文字）を表示することができます。ただ7セグメントというのはなかなか小さくて、表現できる形には限りがあります。論理的にも128 (2<sup>7</sup>) 通りしかなく、ラテン文字を例に取っても K と X を H と区別して表示するのは無理ですね。これを解消するためにセグメントを増やしたディスプレイにはいくつかの種類があるようです。</p>
 
-        <figure>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Common_segment_displays.svg" width="300px">
-            <figcaption>Errorage, CC0 (<a href="https://commons.wikimedia.org/wiki/File:Common_segment_displays.svg">Wikimedia</a>)</figcaption>
-        </figure>
+            <figure>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Common_segment_displays.svg" width="300px">
+                <figcaption>Errorage, CC0 (<a href="https://commons.wikimedia.org/wiki/File:Common_segment_displays.svg">Wikimedia</a>)</figcaption>
+            </figure>
 
-        <p>ただ、斜線を使うと、表せるものが増えはする一方で雰囲気が結構変わってしまうんですよね。斜線を含むnセグメントディスプレイの例として、ロシアの郵便番号の表記を載せました。ロシアでは、郵便番号は図下部のような数字を図上部のように与えられる記入欄に書き込むようです。これらの字体は、7セグメントディスプレイに斜線を2本付け足した「9セグメント」に基づいていると言えます。</p>
+            <p>ただ、斜線を使うと、表せるものが増えはする一方で雰囲気が結構変わってしまうんですよね。斜線を含むnセグメントディスプレイの例として、ロシアの郵便番号の表記を載せました。ロシアでは、郵便番号は図下部のような数字を図上部のように与えられる記入欄に書き込むようです。これらの字体は、7セグメントディスプレイに斜線を2本付け足した「9セグメント」に基づいていると言えます。</p>
 
-        <figure>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Russian_postal_codes.svg" width="300px">
-            <figcaption>Юкатан, CC BY-SA 4.0 (<a href="https://commons.wikimedia.org/wiki/File:Russian_postal_codes.svg">Wikimedia</a>)</figcaption>
-        </figure>
+            <figure>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Russian_postal_codes.svg" width="300px">
+                <figcaption>Юкатан, CC BY-SA 4.0 (<a href="https://commons.wikimedia.org/wiki/File:Russian_postal_codes.svg">Wikimedia</a>)</figcaption>
+            </figure>
 
-        <p>そこで、斜線を使わずに表せる図形を増やすために、田の字型に12本のセグメントを配置したディスプレイを考えます。セグメントが5本増えると32倍の図形が区別できるようになるので、かなり表現力が広がりそうです。この「12セグメントディスプレイ」では、何種類の図形が区別できるのでしょうか？</p>
+            <p>そこで、斜線を使わずに表せる図形を増やすために、田の字型に12本のセグメントを配置したディスプレイを考えます。セグメントが5本増えると32倍の図形が区別できるようになるので、かなり表現力が広がりそうです。この「12セグメントディスプレイ」では、何種類の図形が区別できるのでしょうか？</p>
+        </section>
 
-        <p style="margin-top: 60px;">ということで、次の条件を満たす図形の数を数えてみましょう。</p>
-        <ol>
-            <li>12セグメントのディスプレイに表示される。以降、次の図のようにセグメントに番号を付ける。<blockquote style="width: fit-content;">
-        <figure style="margin-left: 0;">
-            <img src="res/12-segments/display.svg" width="200px">
-        </figure></blockquote></li>
-            <li>横幅・縦幅ともに<b>0または2</b>のもの。ただし、横幅と縦幅の少なくとも一方は2とする。
-            <li><b>連結なもの。</b></li>
-        </ol>
+        <section>
+            <p>ということで、次の条件を満たす図形の数を数えてみましょう。</p>
+            <ol>
+                <li>12セグメントのディスプレイに表示される。以降、次の図のようにセグメントに番号を付ける。<blockquote style="width: fit-content;">
+            <figure style="margin: 0 auto;">
+                <img src="res/12-segments/display.svg" width="200px">
+            </figure></blockquote></li>
+                <li>横幅・縦幅ともに<b>0または2</b>のもの。ただし、横幅と縦幅の少なくとも一方は2とする。
+                <li><b>連結なもの。</b></li>
+            </ol>
 
-        <p>条件1は良いでしょう。条件2は、幅1のものは、適当に延長して幅2のものと同一視してしまうということです。例えば {3, 6, 7} <span id="s1"></span> と {8, 11, 12} <span id="s4"></span> は {3, 8, 11, 12} <span id="s2"></span> と同じと見ます。特定の方向に伸縮させれば一致する形ですから、これも良いでしょう。後半は、縦横ともに幅0の「図形」を除くためです。条件3については、二つの理由があります。一つは、非連結なもの（{1, 3, 8, 9, 10, 12} <span id="s3"></span> など）は一文字として認識しにくいためです。もちろん自然の文字体系にはギリシャ文字の「Ξ」（ξ の大文字）やヘブライ文字の「<span style="font-family: Noto Sans;">ה</span>」、片仮名の「ハ」のような例があるので、理由としては少し弱いですね。もう一つの理由は、それらを許容する場合、条件2から縦幅と横幅のどちらかが1である 2×2×2<sup>7</sup> = 2<sup>9</sup> 個以下（7セグメントで表せる図形を縦向き2箇所・横向き2箇所に配置することを考える）の図形が除かれるとはいえ、論理的に可能な 2<sup>12</sup> 個のうち半数以上の図形が許容されてしまうためです。そうなるとわざわざ調べるには面白みに欠けますね。そこで、今回は連結という制約を課してみることにしましょう。</p>
+            <p>条件1は良いでしょう。条件2は、幅1のものは、適当に延長して幅2のものと同一視してしまうということです。例えば {3, 6, 7} <span id="s1"></span> と {8, 11, 12} <span id="s4"></span> は {3, 8, 11, 12} <span id="s2"></span> と同じと見ます。特定の方向に伸縮させれば一致する形ですから、これも良いでしょう。後半は、縦横ともに幅0の「図形」を除くためです。条件3については、二つの理由があります。一つは、非連結なもの（{1, 3, 8, 9, 10, 12} <span id="s3"></span> など）は一文字として認識しにくいためです。もちろん自然の文字体系にはギリシャ文字の「Ξ」（ξ の大文字）やヘブライ文字の「<span style="font-family: Noto Sans;">ה</span>」、片仮名の「ハ」のような例があるので、理由としては少し弱いですね。もう一つの理由は、それらを許容する場合、条件2から縦幅と横幅のどちらかが1である 2×2×2<sup>7</sup> = 2<sup>9</sup> 個以下（7セグメントで表せる図形を縦向き2箇所・横向き2箇所に配置することを考える）の図形が除かれるとはいえ、論理的に可能な 2<sup>12</sup> 個のうち半数以上の図形が許容されてしまうためです。そうなるとわざわざ調べるには面白みに欠けますね。そこで、今回は連結という制約を課してみることにしましょう。</p>
 
-        <p>さて、条件2について考えると、縦幅が0のものは、横幅が2の3つ（ {1, 2} <span id="s5"></span>, {6, 7} <span id="s6"></span>, {11, 12} <span id="s7"></span>）しかありません。これらは同一視してしまいましょう。横幅が0のものについても同様です。すると、幅の一方が0の図形は2種類のみということになります。では、幅が縦横ともに2であるものを考えていきましょう。条件3の連結性制約を合わせて考えると、横幅を2にするためには</p>
-        <ul>
-            <li>左側の横線： {1, 6, 11}</li>
-            <li>右側の横線： {2, 7, 12}</li>
-        </ul>
-        <p>からそれぞれ少なくとも1つ以上取る必要があり、縦幅を2にするためには</p>
-        <ul>
-            <li>上側の縦線： {3, 4, 5}</li>
-            <li>下側の縦線： {8, 9, 10}</li>
-        </ul>
-        <p>からそれぞれ少なくとも1つ以上取る必要があります（例えば {1, 6, 12} <span id="s8"></span> も縦幅2ですが、連結ではありません。連結であるためには {1, <b>3</b>, 6, <b>9</b>, 12} <span id="s9"></span> のように縦線を足してやる必要があります）。従って、条件を満たす図形は (2<sup>3</sup> - 1)<sup>4</sup> = 2401 から、最大で2401通りあるみたいですね。</p>
-        <p>さて、これら2401個の図形について考えていくのですが、条件3にある通り連結でないものを除外したいところです。ただ、実際にプログラムを走らせる以外の方法がどうも思いつきません。仕方がないのでコンピュータに投げましょう。連結かどうかは、セグメントの隣接関係が分かれば判定できます。隣接関係は次のグラフのように整理できますね。頂点がセグメント、辺がセグメントの隣接関係です。（セグメント上に描かれる図形はこのグラフの部分グラフと見做せます。特にセグメント間の隣接関係はディスプレイ上の配置に従うものなので、誘導部分グラフであると言えます。）</p>
+            <p>さて、条件2について考えると、縦幅が0のものは、横幅が2の3つ（ {1, 2} <span id="s5"></span>, {6, 7} <span id="s6"></span>, {11, 12} <span id="s7"></span>）しかありません。これらは同一視してしまいましょう。横幅が0のものについても同様です。すると、幅の一方が0の図形は2種類のみということになります。では、幅が縦横ともに2であるものを考えていきましょう。条件3の連結性制約を合わせて考えると、横幅を2にするためには</p>
+            <ul>
+                <li>左側の横線： {1, 6, 11}</li>
+                <li>右側の横線： {2, 7, 12}</li>
+            </ul>
+            <p>からそれぞれ少なくとも1つ以上取る必要があり、縦幅を2にするためには</p>
+            <ul>
+                <li>上側の縦線： {3, 4, 5}</li>
+                <li>下側の縦線： {8, 9, 10}</li>
+            </ul>
+            <p>からそれぞれ少なくとも1つ以上取る必要があります（例えば {1, 6, 12} <span id="s8"></span> も縦幅2ですが、連結ではありません。連結であるためには {1, <b>3</b>, 6, <b>9</b>, 12} <span id="s9"></span> のように縦線を足してやる必要があります）。従って、条件を満たす図形は (2<sup>3</sup> - 1)<sup>4</sup> = 2401 から、最大で2401通りあるみたいですね。</p>
+            <p>さて、これら2401個の図形について考えていくのですが、条件3にある通り連結でないものを除外したいところです。ただ、実際にプログラムを走らせる以外の方法がどうも思いつきません。仕方がないのでコンピュータに投げましょう。連結かどうかは、セグメントの隣接関係が分かれば判定できます。隣接関係は次のグラフのように整理できますね。頂点がセグメント、辺がセグメントの隣接関係です。（セグメント上に描かれる図形はこのグラフの部分グラフと見做せます。特にセグメント間の隣接関係はディスプレイ上の配置に従うものなので、誘導部分グラフであると言えます。）</p>
 
-        <figure>
-            <img src="res/12-segments/graph.svg" width="300px">
-        </figure>
+            <figure>
+                <img src="res/12-segments/graph.svg" width="300px">
+            </figure>
 
-        <p>あとはプログラムをぶん回すだけです。</p>
+            <p>あとはプログラムをぶん回すだけです。</p>
 
-        <details>
-            <summary>ソースコード</summary>
-            <pre><code class="code-ln language-python">from itertools import chain, combinations, product
+            <details>
+                <summary>ソースコード</summary>
+                <pre><code class="code-ln language-python">from itertools import chain, combinations, product
 
 # セグメントとその隣接関係
 vertices = [[1, 6, 11], [2, 7, 12], [3, 4, 5], [8, 9, 10]]
@@ -137,20 +140,22 @@ with open("data.txt", "w") as o:
 
         if connected:
             print(sorted(subset_vertices), file=o)
-        
+
         counter[connected] += 1
 
 print(f"Connected: {counter[1]}, Disconnected: {counter[0]}")</code></pre>
-        </details>
+            </details>
 
-        <pre><code class="code-bgn">Connected: 1493, Disconnected: 908</code></pre>
+            <pre><code class="code-bgn nohighlight">Connected: 1493, Disconnected: 908</code></pre>
 
-        <p>ということで、1493個の連結な図形が得られました。具体的な図形のリストは .txt ファイルとして書き出しています。これらは幅が縦横ともに2のものです。いずれかの幅が0であるもの2種類を足し合わせて1495個の図形が12セグメントのディスプレイで表示可能な「文字」だということになりました。思ったよりありますね。</p>
+            <p>ということで、1493個の連結な図形が得られました。具体的な図形のリストは .txt ファイルとして書き出しています。これらは幅が縦横ともに2のものです。いずれかの幅が0であるもの2種類を足し合わせて1495個の図形が12セグメントのディスプレイで表示可能な「文字」だということになりました。思ったよりありますね。</p>
+        </section>
 
-        <p style="margin-top: 60px;"><b>余談</b>　先のプログラムでは、冒頭で二つの変数<code>vertices</code>, <code>edges</code>を定義しています。<code>vertices</code>にはセグメントの集合の適切な分割（前述の通り）を与えています。また<code>edges</code>にはディスプレイをグラフとして表したものの隣接リストを与えています。これらを目的のkセグメントディスプレイに合わせて設定すれば、（十分に小さいものなら）どのようなディスプレイにも対応できるわけです。ということで m &le; 4, n &le; 4 の範囲で調べてみました。ついでに、<code>vertices</code>と<code>edges</code>を自動で計算してくれる関数<code>graphgen</code>を作って利用したので載せておきます。</p>
-        <details>
-            <summary><code>graphgen</code>のコード</summary>
-            <pre><code class="code-ln language-python">def graphgen(m, n):
+        <section>
+            <p><b>余談</b>　先のプログラムでは、冒頭で二つの変数<code>vertices</code>, <code>edges</code>を定義しています。<code>vertices</code>にはセグメントの集合の適切な分割（前述の通り）を与えています。また<code>edges</code>にはディスプレイをグラフとして表したものの隣接リストを与えています。これらを目的のkセグメントディスプレイに合わせて設定すれば、（十分に小さいものなら）どのようなディスプレイにも対応できるわけです。ということで m &le; 4, n &le; 4 の範囲で調べてみました。ついでに、<code>vertices</code>と<code>edges</code>を自動で計算してくれる関数<code>graphgen</code>を作って利用したので載せておきます。</p>
+            <details>
+                <summary><code>graphgen</code>のコード</summary>
+                <pre><code class="code-ln language-python">def graphgen(m, n):
     # セグメントディスプレイを生成
     segments = []
     k = 1
@@ -219,54 +224,55 @@ print(f"Connected: {counter[1]}, Disconnected: {counter[0]}")</code></pre>
             edges[row[j]] = paired
 
     return [vertices, edges]</code></pre>
-        </details>
+            </details>
 
-        <figure>
-            <figcaption>上段：表示可能な「文字」（幅が 0 または m,n の空でない連結な図形）の種類<br>中段：分割に基づく「文字」の種類の上限 (2<sup>m+1</sup> - 1)<sup>n</sup>(2<sup>n+1</sup> - 1)<sup>m</sup><br>下段：論理的な図形の種類 2<sup>s</sup> (セグメントの数 s = (m+1)n + m(n+1))</figcaption>
-            <table id="numsb">
-                <tr>
-                    <th>m \ n</th>
-                    <th>1</th><th>2</th><th>3</th><th>4</th>
-                </tr>
-                <tr>
-                    <th>1</th>
-                    <td>\(9\)<br>\(9\)<br>\(16\)</td>
-                    <td>\(53\)<br>\(63\)<br>\(128\)</td>
-                    <td>\(279\)<br>\(405\)<br>\(1024\)</td>
-                    <td>\(1431\)<br>\(2511\)<br>\(8192\)</td>
-                </tr>
-                <tr>
-                    <th>2</th>
-                    <td>\(53\)<br>\(63\)<br>\(128\)</td>
-                    <td>\(1493\)<br>\(2401\)<br>\(4096\)</td>
-                    <td>\(34911\)<br>\(77175\)<br>\(131072\)</td>
-                    <td>\(776689\)<br>\(2307361\)<br>\(4194304\)</td>
-                </tr>
-                <tr>
-                    <th>3</th>
-                    <td>\(279\)<br>\(405\)<br>\(1024\)</td>
-                    <td>\(34911\)<br>\(77175\)<br>\(131072\)</td>
-                    <td>\(3417353\)<br>\(11390625\)<br>\(16777216\)</td>
-                    <td>\(311995809\)<br>\(1508169375\)<br>\(2147483648\)</td>
-                </tr>
-                <tr>
-                    <th>4</th>
-                    <td>\(1431\)<br>\(2511\)<br>\(8192\)</td>
-                    <td>\(776689\)<br>\(2307361\)<br>\(4194304\)</td>
-                    <td>\(311995809\)<br>\(1508169375\)<br>\(2147483648\)</td>
-                    <td>\(?\)<br>\(852891037441\)<br>\(1099511627776\)</td>
-                </tr>
-            </table>
-        </figure>
+            <figure>
+                <figcaption>上段：表示可能な「文字」（幅が 0 または m,n の空でない連結な図形）の種類<br>中段：分割に基づく「文字」の種類の上限 (2<sup>m+1</sup> - 1)<sup>n</sup>(2<sup>n+1</sup> - 1)<sup>m</sup><br>下段：論理的な図形の種類 2<sup>s</sup> (セグメントの数 s = (m+1)n + m(n+1))</figcaption>
+                <table id="numsb">
+                    <tr>
+                        <th>m \ n</th>
+                        <th>1</th><th>2</th><th>3</th><th>4</th>
+                    </tr>
+                    <tr>
+                        <th>1</th>
+                        <td>\(9\)<br>\(9\)<br>\(16\)</td>
+                        <td>\(53\)<br>\(63\)<br>\(128\)</td>
+                        <td>\(279\)<br>\(405\)<br>\(1024\)</td>
+                        <td>\(1431\)<br>\(2511\)<br>\(8192\)</td>
+                    </tr>
+                    <tr>
+                        <th>2</th>
+                        <td>\(53\)<br>\(63\)<br>\(128\)</td>
+                        <td>\(1493\)<br>\(2401\)<br>\(4096\)</td>
+                        <td>\(34911\)<br>\(77175\)<br>\(131072\)</td>
+                        <td>\(776689\)<br>\(2307361\)<br>\(4194304\)</td>
+                    </tr>
+                    <tr>
+                        <th>3</th>
+                        <td>\(279\)<br>\(405\)<br>\(1024\)</td>
+                        <td>\(34911\)<br>\(77175\)<br>\(131072\)</td>
+                        <td>\(3417353\)<br>\(11390625\)<br>\(16777216\)</td>
+                        <td>\(311995809\)<br>\(1508169375\)<br>\(2147483648\)</td>
+                    </tr>
+                    <tr>
+                        <th>4</th>
+                        <td>\(1431\)<br>\(2511\)<br>\(8192\)</td>
+                        <td>\(776689\)<br>\(2307361\)<br>\(4194304\)</td>
+                        <td>\(311995809\)<br>\(1508169375\)<br>\(2147483648\)</td>
+                        <td>\(?\)<br>\(852891037441\)<br>\(1099511627776\)</td>
+                    </tr>
+                </table>
+            </figure>
 
-        <p>(m, n) = (3, 4) の時点で（multiprocessingによる数倍の高速化をした上で）計算に90分以上掛かったので、 (m, n) = (4, 4) のときの計算は諦めました。真面目に求めていませんが、先のプログラムでは (2<sup>m+1</sup> - 1)<sup>n</sup>(2<sup>n+1</sup> - 1)<sup>m</sup> 回のループを回していて、かつその中で頂点と辺の数が mn のオーダーのグラフ（頂点はセグメントの数なので (m+1)n + m(n+1) 個、辺はセグメントは最大6つとしか隣り合えないので高々その6倍）に対して深さ優先探索をしているので、計算量は下から Ω(2<sup>mn</sup>mn) と押さえられます（<a href="https://qiita.com/drken/items/4a7869c5e304883f539b#3-5-dfs-%E3%81%AE%E8%A8%88%E7%AE%97%E9%87%8F">深さ優先探索の計算量についての参考</a>）。でっか。改善できないのかな……</p>
+            <p>(m, n) = (3, 4) の時点で（multiprocessingによる数倍の高速化をした上で）計算に90分以上掛かったので、 (m, n) = (4, 4) のときの計算は諦めました。真面目に求めていませんが、先のプログラムでは (2<sup>m+1</sup> - 1)<sup>n</sup>(2<sup>n+1</sup> - 1)<sup>m</sup> 回のループを回していて、かつその中で頂点と辺の数が mn のオーダーのグラフ（頂点はセグメントの数なので (m+1)n + m(n+1) 個、辺はセグメントは最大6つとしか隣り合えないので高々その6倍）に対して深さ優先探索をしているので、計算量は下から Ω(2<sup>mn</sup>mn) と押さえられます（<a href="https://qiita.com/drken/items/4a7869c5e304883f539b#3-5-dfs-%E3%81%AE%E8%A8%88%E7%AE%97%E9%87%8F">深さ優先探索の計算量についての参考</a>）。でっか。改善できないのかな……</p>
+        </section>
 
-        <p style="margin-top: 60px;"><b>おまけ</b>　12セグメントディスプレイに表示できる「文字」を一覧にしてみました。</p>
+        <section>
+            <p><b>おまけ</b>　12セグメントディスプレイに表示できる「文字」を一覧にしてみました。</p>
 
-        <div id="svgs"></div>
+            <div id="svgs"></div>
+        </section>
 
-        <div class="foot-info">
-            公開：2025-08-10<br>最終更新：2025-08-20
-        </div>
+        <div class="foot-info">公開：2025-08-10<br>最終更新：2025-08-20</div>
     </body>
 </html>
