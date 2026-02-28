@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <!-- Common settings -->
+        <meta charset="utf-8">
+        <link rel="icon" href="res/favicon.ico">
+        <link rel="stylesheet" href="res/font.css">
+        <link rel="stylesheet" href="res/color.css">
+        <link rel="stylesheet" href="res/style.css">
+
+        <!-- Title -->
+        <title>素数判定時計 - yatabashi</title>
+
+        <!-- External files -->
+        <link rel="stylesheet" href="res/primeclock/style.css">
+        <script src="res/primeclock/script.js" defer></script>
+
+        <style></style>
+    </head>
+    <body>
+        <div class="main">
+            <p>現在時刻</p>
+            <p id="clock"></p>
+            <p id="result"></p>
+        </div>
+
+        <div class="preference">
+            <form id="typeform">
+                <div>
+                    <input type="radio" name="type" id="test" value="ts" checked>
+                    <label for="test">素数判定</label>
+                </div>
+
+                <div>
+                    <input type="radio" name="type" id="factorization" value="fc">
+                    <label for="factorization">素因数分解</label>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
