@@ -1,9 +1,5 @@
 textarea {
     font-family: 'Noto Sans Mono', monospace;
-    width: 25rem;
+    width: 25em;
     max-width: 100%;
-}
-
-.mono {
-    font-family: 'Noto Sans Mono';
 }

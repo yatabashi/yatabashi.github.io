@@ -29,14 +29,15 @@ function isBlank(chr) {
 }
 
 function expr(s, i) {
-    depth++; console.log(" ".repeat(depth)+"Expr called");
+    depth++;
+    // console.log(" ".repeat(depth)+"Expr called");
 
     const term0 = term(s, i);
     let value = term0[0];
     i = term0[1];
 
     while (s[i] == "+" || s[i] == "-") {
-        console.log(" ".repeat(depth+1)+"Operator found: "+s[i]);
+        // console.log(" ".repeat(depth+1)+"Operator found: "+s[i]);
 
         let op = s[i];
         i = incremented(s, i);
@@ -51,20 +52,22 @@ function expr(s, i) {
         }
     }
 
-    console.log(" ".repeat(depth)+"Expr exit"); depth--;
+    // console.log(" ".repeat(depth)+"Expr exit");
+    depth--;
 
     return [value, i];
 }
 
 function term(s, i) {
-    depth++; console.log(" ".repeat(depth)+"Term called");
+    depth++;
+    // console.log(" ".repeat(depth)+"Term called");
 
     const factor0 = factor(s, i);
     let value = factor0[0];
     i = factor0[1];
 
     while (s[i] == "*" || s[i] == "/") {
-        console.log(" ".repeat(depth+1)+"Operator found: "+s[i]);
+        // console.log(" ".repeat(depth+1)+"Operator found: "+s[i]);
 
         let op = s[i];
         i = incremented(s, i);
@@ -79,24 +82,27 @@ function term(s, i) {
         }
     }
 
-    console.log(" ".repeat(depth)+"Term exit");  depth--;
+    // console.log(" ".repeat(depth)+"Term exit");
+    depth--;
 
     return [value, i];
 }
 
 function factor(s, i) {
-    depth++; console.log(" ".repeat(depth)+"Factor called");
+    depth++;
+    // console.log(" ".repeat(depth)+"Factor called");
 
     if (DIGITS.includes(s[i])) {
-        console.log(" ".repeat(depth+1)+"Digit found: "+s[i]);
+        // console.log(" ".repeat(depth+1)+"Digit found: "+s[i]);
 
         const vals = number(s, i);
 
-        console.log(" ".repeat(depth)+"Factor exit"); depth--;
+        // console.log(" ".repeat(depth)+"Factor exit");
+        depth--;
 
         return vals;
     } else if (s[i] == "(") {
-        console.log(" ".repeat(depth+1)+"Parenthesis opened: "+s[i]);
+        // console.log(" ".repeat(depth+1)+"Parenthesis opened: "+s[i]);
 
         i = incremented(s, i);
 
@@ -112,7 +118,7 @@ function factor(s, i) {
         i = exp[1];
 
         if (s[i] == ")") {
-            console.log(" ".repeat(depth+1)+"Parenthesis closed: "+s[i]);
+            // console.log(" ".repeat(depth+1)+"Parenthesis closed: "+s[i]);
 
             i = incremented(s, i);
         } else {
@@ -121,11 +127,12 @@ function factor(s, i) {
 
         // value *= sign;
 
-        console.log(" ".repeat(depth)+"Factor exit"); depth--;
+        // console.log(" ".repeat(depth)+"Factor exit");
+        depth--;
 
         return [value, i];
     } else if (s[i] == "-") {  // <factor> ::= <number> | '(' <expr> ')' | '-' <factor>
-        console.log(" ".repeat(depth+1)+"Minus sign found: "+s[i]);
+        // console.log(" ".repeat(depth+1)+"Minus sign found: "+s[i]);
 
         i = incremented(s, i);
 
@@ -133,7 +140,8 @@ function factor(s, i) {
         let value = fctr[0];
         i = fctr[1];
 
-        console.log(" ".repeat(depth)+"Factor exit"); depth--;
+        // console.log(" ".repeat(depth)+"Factor exit");
+        depth--;
 
         return [value * -1, i];
     } else {
@@ -146,27 +154,28 @@ function factor(s, i) {
 }
 
 function number(s, i) {
-    depth++; console.log(" ".repeat(depth)+"Number called");
+    depth++;
+    // console.log(" ".repeat(depth)+"Number called");
 
     let value = parseInt(s[i], 16);
     i = incremented(s, i);
 
     while (DIGITS.includes(s[i])) {
-        console.log(" ".repeat(depth+1)+"Digit found: "+s[i]);
+        // console.log(" ".repeat(depth+1)+"Digit found: "+s[i]);
 
         value = value * 16 + parseInt(s[i], 16);
         i = incremented(s, i);
     }
 
     if (s[i] == ".") {
-        console.log(" ".repeat(depth+1)+"Point found: "+s[i]);
+        // console.log(" ".repeat(depth+1)+"Point found: "+s[i]);
 
         i = incremented(s, i);
 
         let place = 16;
 
         while (DIGITS.includes(s[i])) {
-            console.log(" ".repeat(depth+1)+"Digit found: "+s[i]);
+            // console.log(" ".repeat(depth+1)+"Digit found: "+s[i]);
 
             value += parseInt(s[i], 16) / place;
             place *= 16;
@@ -174,13 +183,15 @@ function number(s, i) {
         }
     }
 
-    console.log(" ".repeat(depth)+"Number exit"); depth--;
+    // console.log(" ".repeat(depth)+"Number exit");
+    depth--;
 
     return [value, i];
 }
 
 function calc() {
-    depth=0; console.log("".repeat(depth)+"Calc called");
+    depth = 0;
+    // console.log("".repeat(depth)+"Calc called");
 
     const expression = document.getElementById("exp").value;
     let i = 0;
@@ -188,7 +199,7 @@ function calc() {
 
     // 計算
     if (expression == "") {
-        console.log("".repeat(depth+1)+"Input is null");
+        // console.log("".repeat(depth+1)+"Input is null");
         value = 0;
     } else {
         while (isBlank(expression[i])) {
@@ -206,7 +217,7 @@ function calc() {
             }
         } catch (e) {
             document.getElementById("val").innerHTML = e.message;
-            console.log("Calc aborted")
+            // console.log("Calc aborted");
             return;
         }
     }
@@ -217,5 +228,5 @@ function calc() {
     // 表示
     document.getElementById("val").textContent = result;
 
-    console.log(" ".repeat(depth)+"Calc exit");
+    // console.log(" ".repeat(depth)+"Calc exit");
 }

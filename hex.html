@@ -5,6 +5,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="icon" href="res/favicon.ico">
+        <link rel="stylesheet" href="res/font.css">
+        <link rel="stylesheet" href="res/color.css">
         <link rel="stylesheet" href="res/style.css">
         <script src="res/script.js"></script>
 
@@ -16,43 +18,44 @@
         <script src="res/hex/script.js" defer></script>
     </head>
     <body>
-        <header>
-            <a href="index.html">yatabashi.github.io</a>
-        </header>
+        <header><a href="index.html">yatabashi.github.io</a><span id="arrow"></span></header>
 
-        <h1>16進計算機</h1>
-        
-        <p>例：<code>12*(3+7)/(-c)</code> → <code>-f</code><br>※入力に含まれる空白（U+0020）と改行（U+000A）は無視されます。</p>
-        
-        <textarea id="exp" placeholder="Expression in hexadecimal" oninput="resize();calc()"></textarea>
-        <p id="val"></p>
-        
-        <h3>実装について</h3>
-        
-        <p>入力（<code>&lt;input&gt;</code>）は、次の導出規則を元に解釈されます：</p>
-        
-        <!-- 
-            <input>  ::= ε | <expr>
-            <expr>   ::= <term> (('+' | '-') <term>)*
-            <term>   ::= <factor> (('*' | '/') <factor>)*
-            <factor> ::= <number> | '(' <expr> ')' | '-' <factor>
-            <number> ::= <digit>+ ('.' (<digit>+)?)?
-            <digit>  ::= '0' | ... | '9' | 'a' | ... | 'f' | 'A' | ... | 'F'
-         -->
-        <blockquote style="font-family: 'Noto Sans Mono'; white-space: pre-wrap;">&lt;input&gt;  ::= ε | &lt;expr&gt;
+        <main>
+            <h1>16進計算機</h1>
+
+            <section>
+                <p>例：<code>12*(3+7)/(-c)</code> → <code>-f</code><br>※入力に含まれる空白（U+0020）と改行（U+000A）は無視されます。</p>
+
+                <textarea id="exp" placeholder="Expression in hexadecimal" oninput="resize();calc()"></textarea>
+                <p id="val" style="font-variant-ligatures: no-common-ligatures;"></p>
+            </section>
+
+            <section>
+                <h3>実装について</h3>
+
+                <p>入力<code>&lt;input&gt;</code>は、次の導出規則を元に解釈されます：</p>
+
+                <!-- 
+                    <input>  ::= ε | <expr>
+                    <expr>   ::= <term> (('+' | '-') <term>)*
+                    <term>   ::= <factor> (('*' | '/') <factor>)*
+                    <factor> ::= <number> | '(' <expr> ')' | '-' <factor>
+                    <number> ::= <digit>+ ('.' (<digit>+)?)?
+                    <digit>  ::= '0' | ... | '9' | 'a' | ... | 'f' | 'A' | ... | 'F'
+                -->
+                <blockquote class="mono" style="white-space: pre-wrap;">&lt;input&gt;  ::= ε | &lt;expr&gt;
 &lt;expr&gt;   ::= &lt;term&gt; (('+' | '-') &lt;term&gt;)*
 &lt;term&gt;   ::= &lt;factor&gt; (('*' | '/') &lt;factor&gt;)*
 &lt;factor&gt; ::= &lt;number&gt; | '(' &lt;expr&gt; ')' | '-' &lt;factor&gt;
 &lt;number&gt; ::= &lt;digit&gt;+ ('.' (&lt;digit&gt;+)?)?
 &lt;digit&gt;  ::= '0' | ... | '9' | 'a' | ... | 'f' | 'A' | ... | 'F'</blockquote>
-        
-        <p>ただし、計算上は<span class="mono">&lt;factor&gt;</span>から<span class="mono">&lt;number&gt;</span>を導出する際に先頭の一文字を先読みしています。</p>
-        
-        <p>参考：<br><a href="https://dai1741.github.io/maximum-algo-2012/docs/parsing/">構文解析 - アルゴリズム講習会</a></p>
-        
-        <div class="foot-info">
-            公開：2024-02-26<br>最終更新：2024-08-02
-        </div>
+
+                <p>ただし、計算上は<code>&lt;factor&gt;</code>から<code>&lt;number&gt;</code>を導出する際に先頭の一文字を先読みしています。</p>
+
+                <p>参考：<a href="https://dai1741.github.io/maximum-algo-2012/docs/parsing/">構文解析 - アルゴリズム講習会</a></p>
+            </section>
+        </main>
+
+        <div class="foot-info">公開：2024-02-26<br>最終更新：2024-08-02</div>
     </body>
 </html>
-
