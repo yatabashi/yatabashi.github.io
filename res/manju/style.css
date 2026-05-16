@@ -1,18 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mongolian&family=Open+Sans&display=swap');
 
-@font-face {
-    font-family: 'Gentium';
-    font-weight: 400;
-    src: url('../../fonts/Gentium/Gentium-Regular.woff2');
-}
-
-
 .manju {
     font-family: 'Fu_XM_ZhengBai', 'Noto Sans Mongolian';
 }
 
 textarea {
-    font-family: 'Gentium', serif;
+    font-family: 'Gentium Plus', serif;
     font-size: 2rem;
     width: 100%;
     box-sizing: border-box;

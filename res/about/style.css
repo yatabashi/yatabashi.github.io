@@ -1,9 +1,3 @@
-@font-face {
-    font-family: 'Gentium';
-    font-weight: 400;
-    src: url('../../fonts/Gentium/Gentium-Regular.woff2');
-}
-
 .book {
     width: 100%;
     box-sizing: border-box;
