@@ -1,0 +1,98 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 495" width="100%">
+	<g>
+		<polyline points="0,120 340,120 340,480 0,480" fill="none" stroke="black" stroke-dasharray="4" />
+	</g>
+	
+
+	<!-- 智恵光院通下立売下る西側 -->
+	<polygon points="290,70 400,70 500,120 500,170 390,170 390,300 290,300" fill="none" stroke="black" />
+	
+	<!-- 下立売交番 -->
+	<polygon points="467,70 500,86 500,70" fill="none" stroke="black" />
+	
+	<!-- 椹木町通智恵光院西入北側 -->
+	<polygon points="400,185 500,185 500,300 400,300" fill="none" stroke="black" />
+	
+	<!-- 二条城北小学校の北 -->
+	<polygon points="70,70 270,70 270,145 70,145" fill="none" stroke="black" />
+	
+	<!-- 二条城北小学校 -->
+	<polygon points="70,160 270,160 270,300 70,300" fill="none" stroke="black" />
+	
+	<!-- 二条城北小学校の南 -->
+	<polygon points="70,320 270,320 270,405 70,405" fill="none" stroke="black" />
+	
+	<!-- 丸太町通智恵光院西入二丁目 -->
+	<polygon points="290,320 390,320 390,405 290,405" fill="none" stroke="black" />
+	
+	<!-- 丸太町通智恵光院西入一丁目 -->
+	<polygon points="400,320 500,320 500,405 400,405" fill="none" stroke="black" />
+	
+	<!-- 下立売智恵光院西入北側 -->
+	<polyline points="60,0 60,50 400,50 400,0" fill="none" stroke="black" />
+	
+	<!-- 下立売智恵光院東入北側 -->
+	<polyline points="430,0 430,50 580,50" fill="none" stroke="black" />
+	
+	<!-- 中村公園 -->
+	<polyline points="580,70 530,70 530,415 580,440" fill="none" stroke="black" />
+	
+	<!-- 丸太町通智恵光院東入南側 -->
+	<polyline points="415,495 415,445 500,445 580,485" fill="none" stroke="black" />
+	
+	<!-- 丸太町通美福東入南側 -->
+	<polyline points="230,495 230,445 390,445 390,495" fill="none" stroke="black" />
+	
+	<!-- 丸太町通浄福寺東入南側 -->
+	<polyline points="70,495 70,445 200,445 200,495" fill="none" stroke="black" />
+	
+	<!-- 浄福寺通西側 -->
+	<polyline points="50,0 50,50 0,50" fill="none" stroke="black" />
+	<polyline points="0,70 50,70 50,180 0,180" fill="none" stroke="black" />
+	<polyline points="0,195 50,195 50,255 0,255" fill="none" stroke="black" />
+	<polyline points="0,270 50,270 50,330 0,330" fill="none" stroke="black" />
+	<polyline points="0,345 50,345 50,405 0,405" fill="none" stroke="black" />
+	<polyline points="0,445 50,445 50,495" fill="none" stroke="black" />
+	
+	
+		
+	
+	<!-- 広報板と道筋 -->
+	<circle cx="270" cy="255" r="5" fill="#FF4B00" />
+	<rect x="495" y="125" width="40" height="170" rx="10" fill="#005AFF88" />
+	
+	<circle cx="515" cy="310" r="6" fill="#8FD2BA" />
+	<rect x="277" y="307" width="238" height="6" fill="#8FD2BA" />
+	<rect x="277" y="270" width="6" height="38" fill="#8FD2BA" />
+	<path d="M 280,258 L 273,270 L 287,270 z" fill="#8FD2BA" />
+	
+	<circle cx="120" cy="160" r="5" fill="white" stroke="#FF4B00" />
+	
+	
+	<!-- ランドマーク -->
+	<rect x="75" y="185" width="190" height="110" rx="5" fill="#E0E0E0" />
+	<g fill="black" font-size="12" font-family="YuGothic" 
+	   dominant-baseline="central" text-anchor="middle">
+		<text x="170" y="231">二条城北小学校</text>
+		<text x="170" y="247">（出水校）</text>
+	</g>
+	
+	<!-- <rect x="535" y="75" width="40" height="94" rx="5" fill="#E0E0E0" />
+	<text x="555" y="122" fill="black" 
+	      font-size="12" font-family="YuGothic" writing-mode="vertical-rl" 
+	      dominant-baseline="central" text-anchor="middle">中村公園</text> -->
+	
+	
+	<!-- 通り -->
+	<g fill="black" font-family="YuGothic" 
+	   dominant-baseline="central" text-anchor="middle">
+		<text x="340" y="60" font-size="12">下立売通</text>
+		<text x="170" y="310" font-size="12" font-weight="bold">椹木町通</text>
+		<text x="250" y="425" font-size="16" font-weight="bold">丸太町通</text>
+		<!-- <text x="415" y="27" font-size="10" writing-mode="vertical-rl">智恵光院通</text> -->
+		<text x="515" y="363" font-size="14" font-weight="bold" writing-mode="vertical-rl">智恵光院通</text>
+		<!-- <text x="402" y="468" font-size="10" writing-mode="vertical-rl">智恵光院通</text> -->
+		<!-- <text x="215" y="470" font-size="12" writing-mode="vertical-rl">美福通</text> -->
+		<text x="60" y="250" font-size="12" writing-mode="vertical-rl">浄福寺通</text>
+	</g>
+</svg>

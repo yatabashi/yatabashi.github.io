@@ -42,7 +42,7 @@ div.grid {
 
 @media (min-width: 768px) {
     div.grid {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
     }
 }
 
@@ -71,7 +71,7 @@ img.yoko {
 }
 
 img.yoko-grid {
-    width: 280px;
+    width: 400px;
 }
 
 img.indef {
