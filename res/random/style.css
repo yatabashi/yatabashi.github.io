@@ -1,0 +1,21 @@
+main {
+    display: grid;
+    grid-template-columns: max(100%, max-content);
+}
+
+article {
+    min-width: fit-content;
+    margin-bottom: 2rem;
+
+    border: 1px solid var(--gray);
+    border-radius: 1rem;
+    padding: 1rem;
+    background-color: #FFFFFFAA;
+    box-shadow: 0.15rem 0.15rem 1rem #00000040;
+}
+
+.board {
+    font-family: 'Noto Sans Mono', monospace;
+    
+    white-space: preserve;
+}
