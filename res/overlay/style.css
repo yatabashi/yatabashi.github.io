@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@200&family=Noto+Serif+JP:wght@200&display=swap');
+
+#input-container {
+    height: 3.5rem;
+}
+
+#input {
+    font-size: 2rem;
+    width: 30rem;
+
+    font-family: 'Noto Sans JP';
+    &.serif {
+        font-family: 'Noto Serif JP';
+    }
+}
+
+#funcs {
+    margin-top: 0.8rem;
+    
+    * {
+        font-size: 1.15rem;
+        font-family: inherit;
+    }
+
+    #buttons {
+        display: inline-flex;
+        margin-left: 2rem;
+        gap: 1rem;
+    }
+}
+
+#outputdiv {
+    width: 390px;
+    height: 390px;
+    border: 1px solid black;
+    border-radius: 5rem;
+    padding: 15px;
+    box-sizing: border-box;
+    margin: 15px;
+    background-color: white;
+}

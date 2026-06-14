@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <!-- Common settings -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="icon" href="res/favicon.ico">
+        <link rel="stylesheet" href="res/font.css">
+        <link rel="stylesheet" href="res/color.css">
+        <link rel="stylesheet" href="res/style.css">
+        <script src="res/script.js"></script>
+
+        <!-- Title -->
+        <title>全角文字重ね - yatabashi</title>
+
+        <!-- External files -->
+        <link rel="stylesheet" href="res/overlay/style.css">
+        <script src="res/overlay/script.js" defer></script>
+    </head>
+    <body>
+        <header><a href="index.html">yatabashi.github.io</a><span id="arrow"></span></header>
+
+        <main>
+            <h1>全角文字重ね</h1>
+            
+            <div>
+                <input id="input" placeholder="文字列を入力">
+            </div>
+
+            <div id="funcs">
+                <span>font: </span><select id="font">
+                    <option value="Sans" selected>ゴシック</option>
+                    <option value="Serif">明朝</option>
+                </select>
+                <div id="buttons">
+                    <button id="rnd" onclick="rnd()">Render</button>
+                    <button id="ers" onclick="ers()">Erase</button>
+                    <button id="dld" onclick="dld()" disabled>Download</button>
+                </div>
+            </div>
+
+            <div id="outputdiv">
+                <canvas id="outputcanvas" width="640" height="640" style="width: 360px; height: 360px;"></canvas>
+            </div>
+        </main>
+
+        <div class="foot-info">公開：****-**-**</div>
+    </body>
+</html>
