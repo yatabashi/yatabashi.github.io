@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 /* body */
 body {
     color: var(--text-black);

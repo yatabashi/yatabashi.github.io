@@ -10,7 +10,6 @@ td {
     min-width: 15px;
     padding: 0;
     border: 1px solid black;
-    box-sizing: border-box;
 
     &:nth-child(2) {
         width: 10px;

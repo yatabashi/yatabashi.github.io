@@ -19,7 +19,6 @@ tr:nth-child(1) {
 
 /* 〇次元 */
 .bingo-5-0 {
-    box-sizing: border-box;
     width: 26px;
     height: 26px;
     border: 2px solid black;
@@ -27,7 +26,6 @@ tr:nth-child(1) {
 
 /* 一次元：m=5 */
 .bingo-5-1 {
-    box-sizing: border-box;
     width: 122px;
     height: 26px;
     border: 1px solid black;
@@ -47,7 +45,6 @@ tr:nth-child(1) {
 
 /* 二次元：m=5 */
 .bingo-5-2 {
-    box-sizing: border-box;
     width: 122px;
     height: 122px;
     border: 1px solid black;
@@ -92,7 +89,6 @@ tr:nth-child(1) {
 
 /* 立方体の面クラス */
 .cube-face {
-    box-sizing: border-box;
     position: absolute;
     width: 122px;
     height: 122px;

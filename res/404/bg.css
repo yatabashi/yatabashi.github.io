@@ -1,7 +1,6 @@
 /* 背景画像 */
 body {
     min-height: 100vh;
-    box-sizing: border-box;
     position: relative;
 }
 

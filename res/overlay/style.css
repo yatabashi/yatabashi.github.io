@@ -35,7 +35,6 @@
     border: 1px solid black;
     border-radius: 5rem;
     padding: 15px;
-    box-sizing: border-box;
     margin: 15px;
     background-color: white;
 }
