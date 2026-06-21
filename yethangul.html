@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <!-- Common settings -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="icon" href="res/favicon.ico">
+        <link rel="stylesheet" href="res/font.css">
+        <link rel="stylesheet" href="res/color.css">
+        <link rel="stylesheet" href="res/style.css">
+        <script src="res/script.js"></script>
+
+        <!-- Title -->
+        <title>古ハングルキーボード - yatabashi</title>
+
+        <!-- External files -->
+         <link rel="stylesheet" href="https://hangeul.pstatic.net/hangeul_static/css/NanumMyeongjoYetHangul.css">
+         <link rel="stylesheet" href="https://hangeul.pstatic.net/hangeul_static/css/NanumBarunGothicYetHangul.css">
+        <link rel="stylesheet" href="res/yethangul/style.css">
+        <script src="res/yethangul/script.js" defer></script>
+    </head>
+    <body>
+        <header><a href="index.html">yatabashi.github.io</a><span id="arrow"></span></header>
+
+        <main>
+            <h1>古ハングルキーボード</h1>
+
+            <section>
+                <textarea id="input" class="mono" placeholder="naramalss@mi diuqguig'eidar.'a" rows="2"></textarea>
+
+                <div id="review-wrapper" class="kr">
+                    <div id="before-review">옛한글 출력란<button id="copier" onclick="copy()" disabled>복사</button></div>
+                    <p id="review"></p>
+                </div>
+            </section>
+
+            <h2>説明</h2>
+
+            <p><a href="https://www.tufs.ac.jp/ts/personal/choes/korean/middle/fukui.html">福井玲式ローマ字転写法</a>（を拡張した転写法）を用いて古ハングルを入力できます。</p>
+
+            <table>
+                <tr>
+                    <td>入力</td>
+                    <td colspan="11" class="mono">naramalss@mi diuqguig'eidar.'a</td>
+                </tr>
+                <tr>
+                    <td style="font-size: initial;">解析</td>
+                    <td><code>na</code></td>
+                    <td><code>ra</code></td>
+                    <td><code>mal</code></td>
+                    <td><code>ss@</code></td>
+                    <td><code>mi</code></td>
+                    <td style="white-space: pre-wrap;"><code> </code></td>
+                    <td><code>diuq</code></td>
+                    <td><code>guig</code></td>
+                    <td><code>'ei</code></td>
+                    <td><code>dar</code></td>
+                    <td><code>'a</code></td>
+                </tr>
+                <tr class="kr">
+                    <td class="ja">変換</td>
+                    <td>나</td>
+                    <td>라</td>
+                    <td>말</td>
+                    <td>ᄊᆞ</td>
+                    <td>미</td>
+                    <td style="white-space: pre-wrap;"> </td>
+                    <td>듀ᇰ</td>
+                    <td>귁</td>
+                    <td>에</td>
+                    <td>달</td>
+                    <td>아</td>
+                </tr>
+                <tr>
+                    <td>出力</td>
+                    <td class="kr" colspan="11">나라말ᄊᆞ미 듀ᇰ귁에달아</td>
+                </tr>
+            </table>
+
+            <p>子音（初声と終声）：</p>
+
+            <table>
+                <tr class="kr">
+                    <td class="ja">NanumBarunGothic YetHangul</td>
+                    <td>&#x1100;</td>
+                    <td>&#x1102;</td>
+                    <td>&#x1103;</td>
+                    <td>&#x1105;</td>
+                    <td>&#x1106;</td>
+                    <td>&#x1107;</td>
+                    <td>&#x1109;</td>
+                    <td>&#x110b;</td>
+                    <td>&#x110c;</td>
+                    <td>&#x110e;</td>
+                    <td>&#x110f;</td>
+                    <td>&#x1110;</td>
+                    <td>&#x1111;</td>
+                    <td>&#x1112;</td>
+                    <td>&#x113c;</td>
+                    <td>&#x113e;</td>
+                    <td>&#x1140;</td>
+                    <td>&#x114c;</td>
+                    <td>&#x114e;</td>
+                    <td>&#x1150;</td>
+                    <td>&#x1154;</td>
+                    <td>&#x1155;</td>
+                    <td>&#x1159;</td>
+                </tr>
+                <tr>
+                    <td>システムフォント</td>
+                    <td>&#x1100;</td>
+                    <td>&#x1102;</td>
+                    <td>&#x1103;</td>
+                    <td>&#x1105;</td>
+                    <td>&#x1106;</td>
+                    <td>&#x1107;</td>
+                    <td>&#x1109;</td>
+                    <td>&#x110b;</td>
+                    <td>&#x110c;</td>
+                    <td>&#x110e;</td>
+                    <td>&#x110f;</td>
+                    <td>&#x1110;</td>
+                    <td>&#x1111;</td>
+                    <td>&#x1112;</td>
+                    <td>&#x113c;</td>
+                    <td>&#x113e;</td>
+                    <td>&#x1140;</td>
+                    <td>&#x114c;</td>
+                    <td>&#x114e;</td>
+                    <td>&#x1150;</td>
+                    <td>&#x1154;</td>
+                    <td>&#x1155;</td>
+                    <td>&#x1159;</td>
+                </tr>
+                <tr class="mono">
+                    <td class="ja" style="font-size: initial;">転写</td>
+                    <td>g</td>
+                    <td>n</td>
+                    <td>d</td>
+                    <td>r</td>
+                    <td>m</td>
+                    <td>b</td>
+                    <td>s</td>
+                    <td>'</td>
+                    <td>j</td>
+                    <td>c</td>
+                    <td>k</td>
+                    <td>t</td>
+                    <td>p</td>
+                    <td>h</td>
+                    <td>s1</td>
+                    <td>s2</td>
+                    <td>z</td>
+                    <td>q</td>
+                    <td>j1</td>
+                    <td>j2</td>
+                    <td>c1</td>
+                    <td>c2</td>
+                    <td>x</td>
+                </tr>
+            </table>
+
+            <p>母音（中声）：</p>
+
+            <table>
+                <tr class="kr">
+                    <td class="ja">NanumBarunGothic YetHangul</td>
+                    <td>&#x1161;</td>
+                    <td>&#x1163;</td>
+                    <td>&#x1165;</td>
+                    <td>&#x1167;</td>
+                    <td>&#x1169;</td>
+                    <td>&#x116d;</td>
+                    <td>&#x116e;</td>
+                    <td>&#x1172;</td>
+                    <td>&#x1173;</td>
+                    <td>&#x1175;</td>
+                    <td>&#x119e;</td>
+                </tr>
+                <tr>
+                    <td>システムフォント</td>
+                    <td>&#x1161;</td>
+                    <td>&#x1163;</td>
+                    <td>&#x1165;</td>
+                    <td>&#x1167;</td>
+                    <td>&#x1169;</td>
+                    <td>&#x116d;</td>
+                    <td>&#x116e;</td>
+                    <td>&#x1172;</td>
+                    <td>&#x1173;</td>
+                    <td>&#x1175;</td>
+                    <td>&#x119e;</td>
+                </tr>
+                <tr class="mono">
+                    <td class="ja" style="font-size: initial;">転写</td>
+                    <td>a</td>
+                    <td>ia</td>
+                    <td>e</td>
+                    <td>ie</td>
+                    <td>o</td>
+                    <td>io</td>
+                    <td>u</td>
+                    <td>iu</td>
+                    <td>y</td>
+                    <td>i</td>
+                    <td>@/A</td>
+                </tr>
+            </table>
+
+            <p>基本字母を組み合わせて合成字母を入力できます（<code>gg</code> → <span class="kr">ㄲ</span>, <code>jj2</code> → <span class="kr">ᅑ</span>, <code>bsg</code> → <span class="kr">ᄢ</span>）。唇軽音（<span class="kr">ㅸ</span>, <span class="kr">ㅹ</span>, <span class="kr">ㆄ</span>, <span class="kr">ㅱ</span>）は福井玲式に従って <code>v</code>, <code>vv</code>, <code>f</code>, <code>w</code> でも入力できますが、 <code>b'</code>, <code>bb'</code>, <code>p'</code>, <code>m'</code> とすることもできます。</p>
+
+            <p><span class="kr">ㅏ</span>, <span class="kr">ㅓ</span>, <span class="kr">ㅗ</span>, <span class="kr">ㅜ</span> の前に <span class="kr">ㅣ</span> が現れる字母（<span class="kr">ᆘ</span>, <span class="kr">ᆚ</span>, <span class="kr">ퟁ</span>, <span class="kr">ᆛ</span>, <span class="kr">ᆗ</span>）では、「<code>Ia</code>」のように <code>i</code> を大文字で入力してください。</p>
+
+            <table>
+                <tr class="kr">
+                    <td rowspan="2" class="ja">小文字の<code>i</code></td>
+                    <td>&#x1100;&#x1163;</td>
+                    <td>&#x1100;&#x116d;</td>
+                    <td>&#x1100;&#x1188;</td>
+                    <td>&#x1100;&#x1172;</td>
+                </tr>
+                <tr class="mono">
+                    <td>g<b>i</b>a</td>
+                    <td>g<b>i</b>o</td>
+                    <td>g<b>i</b>oi</td>
+                    <td>g<b>i</b>u</td>
+                </tr>
+                <tr class="kr">
+                    <td rowspan="2" class="ja">大文字の<code>I</code></td>
+                    <td>&#x1100;&#x1198;</td>
+                    <td>&#x1100;&#x119a;</td>
+                    <td>&#x1100;&#xd7c1;</td>
+                    <td>&#x1100;&#x119b;</td>
+                    <td>&#x1100;&#x1197;</td>
+                </tr>
+                <tr class="mono">
+                    <td>g<b>I</b>a</td>
+                    <td>g<b>I</b>o</td>
+                    <td>g<b>I</b>oi</td>
+                    <td>g<b>I</b>u</td>
+                    <td>gy<b>I</b>u</td>
+                </tr>
+            </table>
+
+            <p>ピリオドを挟むことで、文字と文字の間の区切りを明示できます。子音字が連続すると、意図しない位置で区切られる場合があります。</p>
+
+            <table>
+                <tr class="kr">
+                    <td rowspan="2" class="ja">ピリオドなし</td>
+                    <td>하ᄓᅳᆯ</td>
+                    <td>일ᅚᅡ</td>
+                </tr>
+                <tr class="mono">
+                    <td>hangyl</td>
+                    <td>'ilgda</td>
+                </tr>
+                <tr class="kr">
+                    <td rowspan="2" class="ja">ピリオドあり</td>
+                    <td>한글</td>
+                    <td>읽다</td>
+                </tr>
+                <tr class="mono">
+                    <td>han.gyl</td>
+                    <td>'ilg.da</td>
+                </tr>
+            </table>
+
+            <p>傍点は、一点（U+302E）が<code>H</code>、二点（U+302F）が<code>R</code>で入力できます。FILLER (U+115F, U+1160) は <code>*</code> で入力できます。</p>
+
+            <h3>注意</h3>
+
+            <p>Firefox では、「<span class="kr">ᄓ</span>」にU+1161 .. U+1176（すなわち現代語で使われる母音と「<span class="kr">ᅶ</span>」）の続く文字列はコピーできないか、異なる文字列としてコピーされます（Firefox 151.0.3 で確認）。他の主要ブラウザ Chrome, Edge, Safari, Opera では、この現象は確認されていません。</p>
+
+            <p>また macOS で古ハングルの表示に使われる Arial Unicode MS には、「<span class="kr">ᆄ</span> (U+1184)」を「<span class="kr">ᆆ</span> (U+1186)」と同じ字形で表示する誤りがあります。</p>
+        </main>
+
+        <div class="foot-info">公開：2026-06-21</div>
+    </body>
+</html>

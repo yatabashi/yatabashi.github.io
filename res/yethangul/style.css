@@ -1,0 +1,38 @@
+.kr {
+    font-family: 'NanumBarunGothicYetHangul';
+}
+
+.ja {
+    font-family: 'Koruri', sans-serif;
+}
+
+table {
+    text-align: center;
+}
+
+#input {
+    width: 100%;
+}
+
+#review-wrapper {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    background-color: var(--bg-gray2);
+    border-radius: 1rem;
+}
+
+#before-review {
+    padding-bottom: 2px;
+    border-bottom: 1px black solid;
+    margin-bottom: 0px;
+}
+
+#copier {
+    font-family: 'Koruri', sans-serif;
+    margin-inline-start: 0.75rem;
+    vertical-align: 0.1rem;
+}
+
+#review {
+    margin-inline: 0.5em;
+}
