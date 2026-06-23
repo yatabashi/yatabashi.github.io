@@ -271,9 +271,29 @@
 
             <p>Firefox では、「<span class="kr">ᄓ</span>」にU+1161 .. U+1176（すなわち現代語で使われる母音と「<span class="kr">ᅶ</span>」）の続く文字列はコピーできないか、異なる文字列としてコピーされます（Firefox 151.0.3 で確認）。他の主要ブラウザ Chrome, Edge, Safari, Opera では、この現象は確認されていません。</p>
 
-            <p>また macOS で古ハングルの表示に使われる Arial Unicode MS には、「<span class="kr">ᆄ</span> (U+1184)」を「<span class="kr">ᆆ</span> (U+1186)」と同じ字形で表示する誤りがあります。</p>
+            <p>また macOS で古ハングルの表示に使われる Arial Unicode / Arial Unicode MS には、「<span class="kr">ᆄ</span> (U+1184)」を「<span class="kr">ᆆ</span> (U+1186)」と同じ字形で表示する誤りがあります。これらのフォントを利用する際には注意してください。以下の表では NanumBarunGothic YetHangul を正しい表示の例として使用しています。これらの文字の本来の字形については、<a href="https://www.unicode.org/charts/PDF/U1100.pdf">Unicode「ハングル字母」ブロック</a>のコード表も参照してください。</p>
+
+            <table>
+                <tr>
+                    <th></th>
+                    <td>U+1184<br>HANGUL JUNGSEONG YO-YA</td>
+                    <td>U+1186<br>HANGUL JUNGSEONG YO-YEO</td>
+                </tr>
+                <tr style="font-family: 'Arial Unicode', 'Arial Unicode MS', 'Adobe Blank';">
+                    <th class="ja">Arial Unicode (MS)</th>
+                    <td class="x2">&#x1184;</td>
+                    <td class="x2">&#x1186;</td>
+                </tr>
+                <tr style="font-family: 'NanumBarunGothicYetHangul';">
+                    <th class="ja">NanumBarunGothic YetHangul</th>
+                    <td class="x2">&#x1184;</td>
+                    <td class="x2">&#x1186;</td>
+                </tr>
+            </table>
+
+            <p>（<b>Arial Unicode (MS)</b> の行に文字が何も表示されない場合、当該フォントがあなたの端末にインストールされていないことを意味します。つまり、この注意については何も気にしなくてよいということです）</p>
         </main>
 
-        <div class="foot-info">公開：2026-06-21</div>
+        <div class="foot-info">公開：2026-06-21<br>最終更新：2026-06-24</div>
     </body>
 </html>
