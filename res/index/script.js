@@ -1,41 +1,6 @@
-function getTodaysNumber() {
-    function now() {
-        let now = new Date();
-        let year = now.getFullYear().toString();
-        let month = (now.getMonth() + 1).toString().padStart(2, '0');
-        let day = now.getDate().toString().padStart(2, '0');
-
-        return Number(year+month+day);
-
-        // let hour = now.getHours().toString().padStart(2, '0');
-        // let minute = now.getMinutes().toString().padStart(2, '0');
-        // let second = now.getSeconds().toString().padStart(2, '0');
-        // let milli = now.getMilliseconds().toString();
-        // console.log(year+month+day+hour+minute+second+milli);
-        // return Number(year+month+day+hour+minute+second+milli);
-    }
-
-    let x = 123456789;
-    let y = 362436069;
-    let z = 521288629;
-    let w = now();
-
-    function xorshift() {
-        const t = x ^ (x << 11);
-        x = y; y = z; z = w;
-        w = (w^(w>>19))^(t^(t>>8));
-    };
-
-    for (let i = 0; i < 32; i++) {
-        xorshift();
-    }
-
-    return w;
-}
+import { dailyRand } from "/res/rand.js"
 
 function getLibDatStr(n) {
-    // console.log(`startgetdat: ${(new Date()).getTime()} ms`);
-
     const LIB = 7936;
     const MUS = 4372;
     const ARC = 102;
@@ -86,5 +51,5 @@ function getInsertion(dat) {
     }
 }
 
-let data = getLibDatStr(getTodaysNumber());
+let data = getLibDatStr(dailyRand());
 document.getElementById('lib').innerHTML = getInsertion(data);
