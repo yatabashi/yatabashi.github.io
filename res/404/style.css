@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap');
+
 body {
     display: flex;
     justify-content: center;
@@ -24,6 +26,27 @@ p {
     font-weight: bold;
 }
 
-.light {
-    font-weight: 300;
+.serif {
+    font-family: 'Gentium Plus', 'Noto Serif JP', serif;
+}
+
+#quote {
+    text-align: center;
+
+    &::before {
+        content: '“';
+        margin-inline-end: 0.25em;
+    }
+
+    &::after {
+        content: '”';
+        margin-inline-start: 0.25em;
+    }
+}
+
+hr {
+    margin-block: 1em;
+    border-width: 0;
+    height: 1px;
+    background-color: var(--text-black);
 }
