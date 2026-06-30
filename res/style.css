@@ -4,7 +4,7 @@
 
 /* body */
 body {
-    color: var(--text-black);
+    color: var(--black);
     background-color: var(--bg-gray1);
 
     display: flow-root;
@@ -32,7 +32,7 @@ h2 {
 
     width: fit-content;
     padding-inline: 0.1em;
-    border-bottom: 2px solid var(--text-black);
+    border-bottom: 2px solid var(--black);
 }
 
 h3 {
@@ -75,13 +75,13 @@ blockquote {
     .quote-footer {
         margin-top: 0.5em;
         padding-top: 0.25em;
-        border-top: 1px solid var(--gray);
+        border-top: 1px solid var(--border-gray);
     }
 
     hr {
         border: none;
         height: 1px;
-        background-color: var(--text-black);
+        background-color: var(--black);
         margin-top: 0.5em;
         margin-bottom: 0.25em;
     }
@@ -93,18 +93,18 @@ table {
 
 th, td {
     padding: 0.25em 0.375em;
-    border: 1px solid var(--text-black);
+    border: 1px solid var(--black);
 }
 
 div.foot-info {
     padding: 0.125em 0.25em 0 0.125em;
     margin-top: 2rem;
-    border-top: 1px solid var(--text-black);
+    border-top: 1px solid var(--black);
     width: fit-content;
 }
 
 .notice {
-    background-color: var(--bg-gray3);
+    background-color: var(--bg-gray2);
 
     width: fit-content;
     padding: 0.375em 0.75em 0.375em 2em;
@@ -148,10 +148,10 @@ a {
 }
 
 code {
-    background-color: var(--bg-gray3);
+    background-color: var(--bg-gray2);
 
     blockquote & {
-        background-color: var(--bg-gray4);
+        background-color: var(--bg-gray3);
     }
 
     padding: 0.1rem 0.2rem;

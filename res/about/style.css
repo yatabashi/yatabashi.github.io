@@ -3,14 +3,14 @@
     padding: 0.5rem 0.75rem;
     margin-bottom: 0.75em;
 
-    background-color: var(--bg-gray3);
+    background-color: var(--bg-gray2);
     border-radius: 0.5em;
 }
 
 .title {
     padding-bottom: 0.3em;
     margin-bottom: 0.3em;
-    border-bottom: 1px solid var(--text-gray);
+    border-bottom: 1px solid var(--border-gray);
 }
 
 .comment {

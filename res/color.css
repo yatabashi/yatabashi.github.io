@@ -1,17 +1,10 @@
 :root {
-    --text-black: #222222;
-    --text-gray: #888888;
-    --text-blue: #085cd8;
-    --text-lightblue: #4a8ef3;
-    --gray: #aaaaaa;
-    --bg-gray1: #f8f8f8;
-    --bg-gray2: #eaeaea;
-    --bg-gray3: #e8e8e8;
-    --bg-gray4: #dadada;
-    /* --border-lightgray: lightgray;
-    --border-gray: gray;
-    --bg-lightgray: #F0F0F0;
-    --bg-lightblue: #D5EEFC;
-    --text-gray: #A0A1A7;
-    --code-black: #383a42; */
+    --black: #222222;  /* 文字（通常）, 黒一般 */
+    --text-gray: #888888;  /* 文字（副見出し、行番号） */
+    --text-blue: #085cd8;  /* 文字（リンク） */
+    /* --text-lightblue: #4a8ef3; */
+    --border-gray: #aaaaaa;  /* 枠線, 区切り線 */
+    --bg-gray1: #f8f8f8;  /* 背景（body） */
+    --bg-gray2: #e8e8e8;  /* 背景（引用、コード） */
+    --bg-gray3: #d8d8d8;  /* 背景（引用内のコード） */
 }
