@@ -28,10 +28,10 @@
             </div>
 
             <div id="funcs">
-                <span>font: </span><select id="font">
+                <span id="font-span">font: <select id="font">
                     <option value="Sans" selected>ゴシック</option>
                     <option value="Serif">明朝</option>
-                </select>
+                </select></span>
                 <div id="buttons">
                     <button id="rnd" onclick="rnd()">Render</button>
                     <button id="ers" onclick="ers()">Erase</button>
@@ -40,7 +40,7 @@
             </div>
 
             <div id="outputdiv">
-                <canvas id="outputcanvas" width="640" height="640" style="width: 360px; height: 360px;"></canvas>
+                <canvas id="outputcanvas" width="640" height="640"></canvas>
             </div>
         </main>
 
