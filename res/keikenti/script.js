@@ -110,7 +110,7 @@ for (let table of [document.getElementById("table1"), document.getElementById("t
 
 
 // 北海道の振興局を表示・非表示
-document.getElementById("showsSubpref").addEventListener("change", (e) => {
+function showsSubPref(e) {
     let hokkaidoLi = document.getElementsByClassName("hokkaido")[0];
 
     if (!e.target.checked) {
@@ -126,7 +126,10 @@ document.getElementById("showsSubpref").addEventListener("change", (e) => {
             document.getElementById(subpref+"Tr").hidden = false;
         }
     }
-});
+}
+
+document.getElementById("showsSubpref").addEventListener("change", showsSubPref);
+window.addEventListener("load", showsSubPref);
 
 
 // 表のソート
