@@ -4,18 +4,25 @@ body {
     position: relative;
 }
 
+#bg-container {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+
+    z-index: -1;
+}
+
 #bg-img {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
 
-    background-image: url("yumihari-180.jpg");
+    background-image: url("yokaiti-blur.jpg");
     background-attachment: scroll;
     background-size: cover;
-    background-position: bottom;
-
-    z-index: -2;
+    background-position: 20% bottom;
 }
 
 #bg-overlay {
@@ -25,6 +32,4 @@ body {
     height: 100%;
 
     background-color: rgba(255, 252, 249, 0.8);
-
-    z-index: -1;
 }
