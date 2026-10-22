@@ -4,7 +4,6 @@ main {
 }
 
 article {
-    min-width: fit-content;
     margin-bottom: 2rem;
 
     border: 1px solid var(--border-gray);
