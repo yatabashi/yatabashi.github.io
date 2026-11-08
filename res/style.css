@@ -199,6 +199,10 @@ code {
     } */
 }
 
+button {
+    font-family: inherit;
+}
+
 span.with-img {
     display: inline-flex;
     align-items: center;
