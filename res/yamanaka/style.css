@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP&family=Noto+Serif+JP:wght@700&display=swap');
+
+figure {
+    text-align: center;
+}
+
+.red {
+    color: #ff0000;
+}
+
+.blue {
+    color: #0000ff;
+}
+
+
+
+div.container {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 0.75rem;
+    margin-bottom: 1.5rem;
+
+    p.time {
+        font-weight: bold;
+    }
+}
+
+@media (min-width: 768px) {
+    div.container {
+        flex-direction: row;
+        align-items: flex-end;
+
+        p {
+            margin-top: 0;
+        }
+    }
+}
+
+img.yoko {
+    width: 400px;
+    max-width: 100%;
+    max-height: 95vh;
+    margin-right: 0.75em;
+}
+
+figcaption {
+    font-size: 0.9em;
+}
+
+#siga-map, #siga-admin-map {
+    datalist {
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        width: calc(min(300px, 90%) + 1em);
+        margin-inline: auto;
+    }
+
+    option {
+        padding: 0;
+    }
+
+    #siga-year-selector, #siga-admin-year-selector {
+        width: 300px;
+        max-width: 90%;
+        margin: 0;
+    }
+}
+
+#siga-admin-map {
+    datalist {
+        width: calc(min(200px, 90%) + 1em);
+    }
+
+    #siga-admin-year-selector {
+        width: 200px;
+    }
+}
+
+span.notice-kanji {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 2em;
+}
+
+blockquote {
+    font-family: 'Noto Serif JP', serif;
+
+    div.title {
+        padding-bottom: 0.25em;
+        margin-bottom: 0.25em;
+        border-bottom: 1px solid var(--border-gray);
+    }
+
+    p {
+        text-indent: 1em each-line;
+        margin: 0.25em 0 0;
+    }
+
+    blockquote+p {
+        margin-top: 0.5em;
+    }
+
+    blockquote {
+        all: initial;
+        color: inherit;
+        font-family: inherit;
+        display: block;
+        margin: 0.5em 2em 0;
+    }
+
+    span.larger {
+        font-size: 1.5em;
+    }
+}
+
+@media (min-width: 768px) {
+    figure img {
+        width: 100%;
+    }
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: var(--black);
+}
