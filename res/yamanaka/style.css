@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP&family=Noto+Serif+JP:wght@700&display=swap');
 
+/* yamanaka.html */
+
 figure {
     text-align: center;
 }
@@ -12,7 +14,95 @@ figure {
     color: #0000ff;
 }
 
+figure img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 400px;
+}
 
+figcaption {
+    font-size: 0.9em;
+}
+
+@media (max-width: 768px) {
+    figure {
+        margin-inline: 0;
+        width: 100%;
+    }
+}
+
+#siga-map, #siga-admin-map, #overlay-rittai, #overlay-usa {
+    width: 100%;
+    margin-inline: 0;
+    position: relative;
+
+    img {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 400px;
+    }
+
+    img+img {
+        position: absolute; top: 0; left: 0; right: 0; margin-inline: auto;
+    }
+}
+
+#siga-map, #siga-admin-map {
+    text-align: center;
+
+    datalist {
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        margin-inline: auto;
+    }
+
+    option {
+        padding: 0;
+    }
+
+    input {
+        max-width: 90%;
+        margin: 0;
+    }
+}
+
+#siga-map {
+    datalist {
+        width: calc(min(300px, 90%) + 1em);
+    }
+
+    input#siga-year-selector {
+        width: 300px;
+    }
+}
+
+#siga-admin-map {
+    datalist {
+        width: calc(min(200px, 90%) + 1em);
+    }
+
+    input#siga-admin-year-selector {
+        width: 200px;
+    }
+}
+
+#overlay-rittai, #overlay-usa {
+    input#rittai-opacity, input#current-opacity {
+        vertical-align: top;
+        margin-inline: 0.5em;
+    }
+}
+
+.annotation {
+    font-size: 0.9em;
+    border-top: 1px solid var(--black);
+    border-bottom: 1px solid var(--black);
+}
+
+/* yamanaka-{1,2,3}.html */
 
 div.container {
     display: flex;
@@ -44,39 +134,7 @@ img.yoko {
     margin-right: 0.75em;
 }
 
-figcaption {
-    font-size: 0.9em;
-}
-
-#siga-map, #siga-admin-map {
-    datalist {
-        text-align: center;
-        display: flex;
-        justify-content: space-between;
-        width: calc(min(300px, 90%) + 1em);
-        margin-inline: auto;
-    }
-
-    option {
-        padding: 0;
-    }
-
-    #siga-year-selector, #siga-admin-year-selector {
-        width: 300px;
-        max-width: 90%;
-        margin: 0;
-    }
-}
-
-#siga-admin-map {
-    datalist {
-        width: calc(min(200px, 90%) + 1em);
-    }
-
-    #siga-admin-year-selector {
-        width: 200px;
-    }
-}
+/* yamanaka-articles.html */
 
 span.notice-kanji {
     font-family: 'Noto Serif JP', serif;
@@ -112,16 +170,4 @@ blockquote {
     span.larger {
         font-size: 1.5em;
     }
-}
-
-@media (min-width: 768px) {
-    figure img {
-        width: 100%;
-    }
-}
-
-hr {
-    border: none;
-    height: 1px;
-    background-color: var(--black);
 }
