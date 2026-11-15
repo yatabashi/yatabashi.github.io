@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP&family=Noto+Serif+JP:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC&family=Noto+Sans+SC&display=swap&text=查');
 
 /* yamanaka.html */
 
@@ -140,6 +141,14 @@ img.yoko {
 span.notice-kanji {
     font-family: 'Noto Serif JP', serif;
     font-size: 2em;
+}
+
+span.sans-sc {
+    font-family: 'Noto Sans SC', sans-serif;
+}
+
+span.serif-sc {
+    font-family: 'Noto Serif SC', serif;
 }
 
 blockquote {
