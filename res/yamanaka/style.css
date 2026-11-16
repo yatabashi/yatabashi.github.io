@@ -151,6 +151,17 @@ span.serif-sc {
     font-family: 'Noto Serif SC', serif;
 }
 
+span.sic {
+    text-decoration: underline dotted 1px;
+    &::after {
+        content: '[原文ママ]';
+        font-size: 0.8em;
+        vertical-align: top;
+        display: inline-block;
+        text-indent: 0;
+    }
+}
+
 blockquote {
     font-family: 'Noto Serif JP', serif;
 
