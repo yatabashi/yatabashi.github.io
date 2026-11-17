@@ -15,12 +15,23 @@
 
         <!-- External files -->
         <link rel="stylesheet" href="res/keikenti-map/style.css">
-        <script src="res/keikenti-map/script-interaction.js" defer></script>
         <script src="res/keikenti-map/script-application.js" defer></script>
     </head>
     <body>
         <div id="container">
             <object id="map" type="image/svg+xml" data="res/keikenti-map/map.svg"></object>
         </div>
+
+        <!-- panzoom -->
+        <script src="https://cdn.jsdelivr.net/npm/panzoom@9.4.4/dist/panzoom.min.js"></script>
+        <script>
+            const elm = document.getElementById('map');
+            panzoom(elm, {
+                minZoom: 1,
+                maxZoom: 48,
+                zoomSpeed: 0.3,
+                pinchSpeed: 1,
+            });
+        </script>
     </body>
 </html>
