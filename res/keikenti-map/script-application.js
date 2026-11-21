@@ -21,7 +21,7 @@ async function applyValues(csvPath) {
   const municipalities = document.getElementById("map").getSVGDocument().getElementById("municipalities").children;
   Array.from(municipalities).forEach(elm => {
     const valueToSet = valueMap.get(elm.id);
-    
+
     elm.setAttribute('fill', 
       valueToSet == 5 ? "#e87afd" : 
       valueToSet == 4 ? "#f56d64" : 
